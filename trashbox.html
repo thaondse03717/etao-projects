@@ -69,7 +69,6 @@ function addItems() {
 			addItem();
 		}, 120);
 	}
-
 }
 
 // 递归提交所有的下架请求
@@ -84,7 +83,7 @@ function submitItems() {
 		return false;
 	});
 
-	var host = 'http://eharmony.taobao.com/eharmony/';
+	var host = assistant.getOption('server_url');
 	var selected = $('tbody tr');
 
 	var current = 0;
@@ -118,10 +117,18 @@ function submitItems() {
 				loader.show();
 			},
 			complete: function (response) {
-				var json = JSON.parse(response.responseText);
+				try {
+					var json = JSON.parse(response.responseText);
+				} catch (error) {
+					assistant.notify('可能因为您未在当前浏览器中登录到工具中,请登录后重试!', 'error');
+					item.find('td.actions').text('出错啦');
+					return false;
+				}
+
 				loader.removeClass('loader').addClass('icon');
 				loader.addClass(json.status ? 'accept' : 'block');
 				item.find('td.actions').append(json.code);
+
 				setTimeout(function () {
 					current++;
 					submitItem();
