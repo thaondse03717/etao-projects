@@ -7,7 +7,7 @@
 
 <script type="text/javascript">
 
-//添加所有已选商品到垃圾箱
+//添加所有已选宝贝到垃圾箱
 function addItems() {
 	$('#datalist tr:has(td)').remove();
 
@@ -21,7 +21,7 @@ function addItems() {
 	}
 
 	if (selectedNids.length === 0) {
-		showMessage('未找到任何选中的商品,请重试!', 'success', onAddComplete);
+		showMessage('未找到任何选中的宝贝,请重试!', 'success', onAddComplete);
 		return false;
 	}
 
@@ -29,15 +29,15 @@ function addItems() {
 	addItem();
 
 
-	// 添加1个商品到垃圾箱
+	// 添加1个宝贝到垃圾箱
 	function addItem() {
 		if (current === selectedNids.length) {
-			showMessage('共找到' + current + '个待下架的商品', 'success', onAddComplete);
+			showMessage('共找到' + current + '个待下架的宝贝', 'success', onAddComplete);
 			return false;
 		}
 
 		var item = selected[selectedNids[current]];
-		var close = $('<a href="javascript:void(0)" title="不下架该商品">删除</a>').click(function () {
+		var close = $('<a href="javascript:void(0)" title="不下架该宝贝">删除</a>').click(function () {
 			$(this).parents('tr').remove();
 			if ($('#datalist tr:has(td)').size() === 0) {
 				$('#datalist').hide();
@@ -74,7 +74,7 @@ function addItems() {
 function submitItems() {
 	var memo = $('#memo').val();
 	if (memo == '') {
-		showMessage('请输入下架这些商品的原因', 'error');
+		showMessage('请输入下架这些宝贝的原因', 'error');
 		return false;
 	}
 
@@ -88,7 +88,7 @@ function submitItems() {
 	var current = 0;
 	submitItem();
 
-	// 提交单个的商品下架请求, 每次Ajax结束后都会对当前状态调整
+	// 提交单个的宝贝下架请求, 每次Ajax结束后都会对当前状态调整
 	function submitItem() {
 		if (current === selected.length) {
 			showMessage('所有的请求已处理完毕!', 'success', onSubmitComplete);
@@ -169,16 +169,16 @@ $(document).ready(function () {
 <div class="trashbox">
 
 	<div class="header">
-		<a href="javascript:void(0)" id="extract" class="button">抽取商品</a>
-		<textarea id="memo" placeholder="请输入下架这些商品的原因"></textarea>
+		<a href="javascript:void(0)" id="extract" class="button">抽取宝贝</a>
+		<textarea id="memo" placeholder="请输入下架这些宝贝的原因"></textarea>
 		<a href="javascript:void(0)" id="submit" class="button current">下架所有</a>
 	</div>
 
 	<table class="datalist" id="datalist" style="display:none;">
 		<thead>
 			<tr>
-				<th width="18%">商品NID</th>
-				<th width="60%">商品标题</th>
+				<th width="18%">宝贝NID</th>
+				<th width="60%">宝贝标题</th>
 				<th width="22%">操作</th>
 			</tr>
 		</thead>
@@ -186,7 +186,7 @@ $(document).ready(function () {
 		</tbody>
 	</table>
 
-	<p class="footer">商品下架助手 v1.0 by <a href="mailto:wangshijun2010@gmail.com">wangshijun2010@gmail.com</a></p>
+	<p class="footer">宝贝下架助手 v1.0 by <a href="mailto:wangshijun2010@gmail.com">wangshijun2010@gmail.com</a></p>
 
 </div>
 
