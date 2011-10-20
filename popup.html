@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<head>
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<script type="text/javascript" src="js/jquery.1.6.2.min.js"></script>
+</head>
+
+<script type="text/javascript">
+
+// 添加1个商品到垃圾箱
+function addItem(item) {
+	var close = $('<a href="javascript:void(0)" title="不下架该商品">删除</a>').click(function () {
+		$(this).parents('tr').remove();
+		if ($('#datalist tr:has(td)').size() === 0) {
+			$('#datalist').hide();
+		}
+	});
+
+	$('<tr/>')
+		.attr('id', item.nid)
+		.append($('<td/>').text(item.nid))
+		.append($('<td/>').html('<a target="_blank" href="' + item.url + '">' + item.title + '</a>' ))
+		.append($('<td/>').append(close))
+		.appendTo($('#datalist tbody'));
+}
+
+//添加所有已选商品到垃圾箱
+function addItems() {
+
+	var selected = chrome.extension.getBackgroundPage().selected;
+	for (var nid in selected) {
+		if (selected[nid] !== null) {
+			addItem(selected[nid]);
+		}
+	}
+
+	// 表格隔行变色
+	$("table.datalist tbody tr:nth-child(even)").addClass("altrow");
+	$("table.datalist tbody tr").hover(function () {
+		$(this).addClass('highlight');
+	}, function () {
+		$(this).removeClass('highlight');
+	});
+
+	$("table.datalist").show();
+
+}
+
+function submitItems() {
+	alert('clicked submit button');
+}
+
+$(document).ready(function () {
+	$('#submit').click(submitItems);
+	$('#extract').click(addItems);
+});
+
+</script>
+
+<body>
+
+<div class="popup">
+
+	<a href="javascript:void(0)" id="extract" class="button extra">抽取所选商品NID</a>
+	<a href="javascript:void(0)" id="submit" class="button extra currentbtn">下架所有已选商品</a>
+
+	<table class="datalist" id="datalist" style="display:none; width: 98%;">
+		<thead>
+			<tr>
+				<th width="30%">商品NID</th>
+				<th width="60%">商品标题</th>
+				<th width="10%">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+
+</div>
+
+</body>
+</html>
