@@ -30,19 +30,9 @@ $.each(items, function (i, item) {
 		$('a:has(img):first', this).append(checkbox.click(function () {
 			var request = {nid: nid, url: href, title: title, status: this.checked};
 			chrome.extension.sendRequest(request, function(response) {
-				console.log('status:' + response.status + ', code: ' + response.code);
+				//console.log('status:' + response.status + ', code: ' + response.code);
 			});
 		}));
 	}
 
 });
-
-// 每次添加完毕之后, 取消所有复选框
-chrome.extension.onRequest.addListener(
-	function(request, sender, sendResponse) {
-		if (request.completed) {
-			$('input.injected').attr('checked', false);
-		}
-		sendResponse({});
-	}
-);
