@@ -29,11 +29,11 @@ $(document).ready(function () {
 		$('#selector_link').attr('value', assistant.defaults['selector_link']);
 		$('#selector_title').attr('value', assistant.defaults['selector_title']);
 		$('#server_url').attr('value', assistant.defaults['server_url']);
-		if (assistant.defaults['auto_extract']) {
-			$('#auto_extract').attr('checked', 'checked');
+		if (assistant.defaults['auto_extract'] == true) {
+			$('#auto_extract').attr('checked', true);
 		}
-		if (assistant.defaults['auto_memo']) {
-			$('#auto_memo').attr('checked', 'checked');
+		if (assistant.defaults['auto_memo'] == true) {
+			$('#auto_memo').attr('checked', true);
 		}
 		assistant.notify('已经恢复到工具默认的设置', 'success');
 	}
@@ -43,12 +43,14 @@ $(document).ready(function () {
 		$('#selector_link').attr('value', assistant.getOption('selector_link'));
 		$('#selector_title').attr('value', assistant.getOption('selector_title'));
 		$('#server_url').attr('value', assistant.getOption('server_url'));
-		if (assistant.getOption('auto_extract')) {
-			$('#auto_extract').attr('checked', 'checked');
+		if (assistant.getOption('auto_extract') == true) {
+			$('#auto_extract').attr('checked', true);
 		}
-		if (assistant.getOption('auto_memo')) {
-			$('#auto_memo').attr('checked', 'checked');
+		if (assistant.getOption('auto_memo') == true) {
+			$('#auto_memo').attr('checked', true);
 		}
+		console.log(assistant.getOption('auto_memo'));
+		console.log(assistant.getOption('auto_extract'));
 	}
 
 });
