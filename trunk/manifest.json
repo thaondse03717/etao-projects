@@ -8,8 +8,8 @@
 	"permissions" : [
 		"contextMenus",
 		"tabs",
-		"http://s.etao.com/search?*",
-		"http://www.etao.com/search?*"
+		"http://*.taobao.com/*",
+		"http://*.etao.com/search?*"
 	],
 	"content_scripts": [{
 		"matches": [
