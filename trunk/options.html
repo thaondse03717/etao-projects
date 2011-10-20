@@ -19,6 +19,8 @@ $(document).ready(function () {
 		assistant.setOption('selector_link', $('#selector_link').attr('value'));
 		assistant.setOption('selector_title', $('#selector_title').attr('value'));
 		assistant.setOption('server_url', $('#server_url').attr('value'));
+		assistant.setOption('auto_extract', $('#auto_extract')[0].checked);
+		assistant.setOption('auto_memo', $('#auto_memo')[0].checked);
 		assistant.notify('自定义设置已经保存', 'success');
 	}
 
@@ -27,6 +29,12 @@ $(document).ready(function () {
 		$('#selector_link').attr('value', assistant.defaults['selector_link']);
 		$('#selector_title').attr('value', assistant.defaults['selector_title']);
 		$('#server_url').attr('value', assistant.defaults['server_url']);
+		if (assistant.defaults['auto_extract']) {
+			$('#auto_extract').attr('checked', 'checked');
+		}
+		if (assistant.defaults['auto_memo']) {
+			$('#auto_memo').attr('checked', 'checked');
+		}
 		assistant.notify('已经恢复到工具默认的设置', 'success');
 	}
 
@@ -35,6 +43,12 @@ $(document).ready(function () {
 		$('#selector_link').attr('value', assistant.getOption('selector_link'));
 		$('#selector_title').attr('value', assistant.getOption('selector_title'));
 		$('#server_url').attr('value', assistant.getOption('server_url'));
+		if (assistant.getOption('auto_extract')) {
+			$('#auto_extract').attr('checked', 'checked');
+		}
+		if (assistant.getOption('auto_memo')) {
+			$('#auto_memo').attr('checked', 'checked');
+		}
 	}
 
 });
@@ -65,6 +79,18 @@ $(document).ready(function () {
 		</div>
 
 		<div class="input">
+			<label>其他选项</label>
+			<input type="checkbox" name="auto_extract" id="auto_extract" value="1" />
+			<label for="auto_extract" class="inline">打开宝贝下架助手时自动抽取NID?</label>
+		</div>
+
+		<div class="input">
+			<label>&nbsp;</label>
+			<input type="checkbox" name="auto_memo" id="auto_memo" value="1" />
+			<label for="auto_memo" class="inline">记住上次操作时填写的下架原因?</label>
+		</div>
+
+		<div class="input" style="margin-top: 1em;">
 			<label>&nbsp;</label>
 			<a href="javascript:void(0)" id="submit" class="button" style="margin-right: 1em;">保存选项</a>
 			<a href="javascript:void(0)" id="restore" class="button current">恢复默认</a>

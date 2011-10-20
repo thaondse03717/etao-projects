@@ -35,6 +35,8 @@ var assistant = {
 		'selector_entry': 'li.entry',
 		'selector_link': 'a:has(img):first',
 		'selector_title': 'h3 a',
-		'server_url': 'http://eharmony.taobao.com/eharmony/'
+		'server_url': 'http://eharmony.taobao.com/eharmony/',
+		'auto_extract': true,
+		'auto_memo': true
 	}
 };
