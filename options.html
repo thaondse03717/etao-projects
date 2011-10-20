@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<head>
+	<title>偏好设置 - 宝贝下线助手</title>
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<script type="text/javascript" src="js/jquery.1.6.2.min.js"></script>
+	<script type="text/javascript" src="js/assistant.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+$(document).ready(function () {
+
+	$('#submit').click(setOptions);
+	$('#restore').click(restoreOptions);
+	getOptions();
+
+	function setOptions() {
+		assistant.setOption('selector_entry', $('#selector_entry').attr('value'));
+		assistant.setOption('selector_link', $('#selector_link').attr('value'));
+		assistant.setOption('selector_title', $('#selector_title').attr('value'));
+		assistant.setOption('server_url', $('#server_url').attr('value'));
+		assistant.notify('自定义设置已经保存', 'success');
+	}
+
+	function restoreOptions() {
+		$('#selector_entry').attr('value', assistant.defaults['selector_entry']);
+		$('#selector_link').attr('value', assistant.defaults['selector_link']);
+		$('#selector_title').attr('value', assistant.defaults['selector_title']);
+		$('#server_url').attr('value', assistant.defaults['server_url']);
+		assistant.notify('已经恢复到工具默认的设置', 'success');
+	}
+
+	function getOptions() {
+		$('#selector_entry').attr('value', assistant.getOption('selector_entry'));
+		$('#selector_link').attr('value', assistant.getOption('selector_link'));
+		$('#selector_title').attr('value', assistant.getOption('selector_title'));
+		$('#server_url').attr('value', assistant.getOption('server_url'));
+	}
+
+});
+</script>
+
+<div class="options main">
+
+	<fieldset>
+		<legend>配置宝贝下架助手</legend>
+		<div class="input">
+			<label>商品选择器</label>
+			<input type="text" id="selector_entry" name="selector_entry" class="text" />
+		</div>
+
+		<div class="input">
+			<label>连接选择器</label>
+			<input type="text" id="selector_link" name="selector_link" class="text" />
+		</div>
+
+		<div class="input">
+			<label>标题选择器</label>
+			<input type="text" id="selector_title" name="selector_title" class="text" />
+		</div>
+
+		<div class="input">
+			<label>服务器地址</label>
+			<input type="text" id="server_url" name="server_url" class="text" />
+		</div>
+
+		<div class="input">
+			<label>&nbsp;</label>
+			<a href="javascript:void(0)" id="submit" class="button">保存选项</a>
+			<a href="javascript:void(0)" id="restore" class="button current">恢复默认</a>
+		</div>
+
+	</fieldset>
+
+	<p class="footer">宝贝下架助手 v1.0 by <a href="mailto:wangshijun2010@gmail.com">wangshijun2010@gmail.com</a></p>
+
+</div>
+
+</body>
+</html>

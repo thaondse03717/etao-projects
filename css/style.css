@@ -162,15 +162,55 @@ a.current {
 	cursor: pointer;
 }
 
-textarea {
+/* Form Elements */
+input.text,textarea, select {
 	padding: 2px;
 	color: #222222;
 	outline: none;
 	display: inline-block;
-	font-size: 150%;
 	font-family: 'Microsoft Yahei',Verdana,Arial,Sans-Serif;
 	border: 1px solid #999999;
 	border-radius: 3px;
+}
+
+input.text {
+	min-width: 240px;
+}
+
+select {
+	padding: 1px;
+	max-width: 180px;
+	width: auto;
+}
+
+fieldset {
+	border: 1px solid #aaaaaa;
+	vertical-align: middle;
+	border-radius: 4px;
+}
+
+div.input {
+	clear: both;
+	margin-bottom: 3px;
+	padding: 3px;
+	vertical-align: top;
+}
+
+div.input label {
+	display: inline-block;
+	width: 90px;
+	font-weight: bold;
+	text-align: right;
+	margin-right: 5px;
+	vertical-align: baseline;
+}
+
+div.input label.error,
+div.input label.inline {
+	display: inline;
+	width: auto;
+	font-weight: normal;
+	vertical-align: baseline;
 }
 
 /* Icons & Messages */
@@ -222,21 +262,7 @@ div.message.success {
 	color: #FFFFFF;
 }
 
-/* 弹出窗口区域 */
-div.popup {
-	min-width: 600px;
-	min-height: 60px;
-	padding: 6px;
-}
-
 /* 待下架商品列表区 */
-div.trashbox {
-	min-width: 600px;
-	max-width: 960px;
-	width: 960px;
-	padding: 1em;
-}
-
 div.trashbox a.button {
 	width: 120px;
 	height: 40px;
@@ -248,13 +274,24 @@ div.trashbox textarea {
 	width: 630px;
 	height: 60px;
 	margin: 0px 5px;
+	font-size: 150%;
 }
 
-div.trashbox .header {
+/* 偏好设置页 */
+
+/* Shared Elements */
+div.main {
+	min-width: 600px;
+	max-width: 960px;
+	width: 960px;
+	padding: 1em;
+}
+
+.header {
 	margin-bottom: 5px;
 }
 
-div.trashbox .footer {
+.footer {
 	text-align: right;
 	padding: 10px;
 	color: #999999;
