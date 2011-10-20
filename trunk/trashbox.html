@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<head>
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<script type="text/javascript" src="js/jquery.1.6.2.min.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+
+// 添加1个商品到垃圾箱
+function addItem(item) {
+	var close = $('<a href="javascript:void(0)" title="不下架该商品">删除</a>').click(function () {
+		$(this).parents('tr').remove();
+		if ($('#datalist tr:has(td)').size() === 0) {
+			$('#datalist').hide();
+		}
+	});
+
+	$('<tr/>')
+		.attr('id', item.nid)
+		.append($('<td/>').text(item.nid))
+		.append($('<td/>').html('<a target="_blank" href="' + item.url + '">' + item.title + '</a>' ))
+		.append($('<td class="actions"/>').append(close))
+		.appendTo($('#datalist tbody'));
+}
+
+//添加所有已选商品到垃圾箱
+function addItems() {
+
+	var selected = chrome.extension.getBackgroundPage().selected;
+	for (var nid in selected) {
+		if (selected[nid] !== null) {
+			addItem(selected[nid]);
+		}
+	}
+
+	// 表格隔行变色
+	$("table.datalist tbody tr:nth-child(even)").addClass("altrow");
+	$("table.datalist tbody tr").hover(function () {
+		$(this).addClass('highlight');
+	}, function () {
+		$(this).removeClass('highlight');
+	});
+
+	$("table.datalist").show();
+
+}
+
+function submitItems() {
+	var memo = $('#memo').val();
+	if (memo == '') {
+		alert('请填写下架原因');
+		return false;
+	}
+
+	$('#submit').click(function () {
+		return false;
+	});
+
+	var host = 'http://eharmony.taobao.com/eharmony/';
+	var selected = $('tbody tr');
+
+	var current = 0;
+	startQueue();
+
+	function startQueue() {
+		if (current === selected.length) {
+			chrome.tabs.getSelected(null, function (tab) {
+				var selectedIndex = chrome.extension.getBackgroundPage().selectedIndex;
+				chrome.extension.getBackgroundPage().resetCheckBoxes();
+				if (selectedIndex !== null) {
+					chrome.tabs.update(selectedIndex, {selected: true});
+				}
+				chrome.tabs.remove(tab.id, function () { });
+			});
+			return false;
+		}
+
+		var item = $(selected[current]);
+		var nid = item.attr('id');
+		var loader = $('<span class="loader">&nbsp;</span>').hide();
+
+		item.find('td.actions').empty().append(loader);
+
+		$.ajax({
+			url: host,
+			data: {
+				c: 'auction_offlines',
+				f: 'add',
+				nid: nid,
+				memo: memo,
+				ajax: 1
+			},
+			method: 'POST',
+			dataType: 'json',
+			beforeSend: function () {
+				loader.show();
+			},
+			complete: function (response) {
+				var json = JSON.parse(response.responseText);
+				loader.removeClass('loader').addClass('icon');
+				loader.addClass(json.status ? 'accept' : 'block');
+				item.find('td.actions').append(json.code);
+				setTimeout(function () {
+					current++;
+					startQueue();
+				}, 250);
+			}
+		});
+	}
+}
+
+$(document).ready(function () {
+	addItems();
+	$('#submit').click(submitItems);
+});
+
+</script>
+
+<div class="trashbox">
+
+	<div class="buttons" style="margin-bottom: 0.5em;">
+		<a href="javascript:void(0)" id="extract" class="button large">抽取所选商品NID</a>
+		<a href="javascript:void(0)" id="submit" class="button large currentbtn">下架所有已选商品</a>
+	</div>
+
+	<table class="datalist" id="datalist" style="display:none;">
+		<thead>
+			<tr>
+				<th width="18%">商品NID</th>
+				<th width="60%">商品标题</th>
+				<th width="22%">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+
+	<textarea id="memo" placeholder="请在这里输入下架的理由"></textarea>
+
+</div>
+
+</body>
+</html>

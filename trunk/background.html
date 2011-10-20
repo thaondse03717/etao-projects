@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<script type="text/javascript">
+
+var selectedIndex = null;
+var selected = {};
+
+// 注册商品的选择
+chrome.extension.onRequest.addListener(
+	function(request, sender, sendResponse) {
+		if (request.nid) {
+			selected[request.nid] = request.status ? request : null;
+			sendResponse({status: true, code: request.status ? '商品已经被丢到垃圾箱' : '商品已经移出垃圾箱' });
+		} else {
+			sendResponse({});
+		}
+	}
+);
+
+// 注册下架操作
+function getClickHandler() {
+	return function(info, tab) {
+		chrome.tabs.getSelected(null, function (tab) {
+			selectedIndex = tab.id;
+			chrome.tabs.create({ url: 'trashbox.html', selected: true, index: tab.index+1 });
+		});
+	};
+};
+
+// 下架完毕后重置按钮
+function resetCheckBoxes() {
+	selected = {};
+	selectedIndex = null;
+	var request = {completed: true};
+	chrome.extension.sendRequest(request, function(response) { });
+}
+
+// 注册右键菜单
+chrome.contextMenus.create({
+	"title" : "抽取所选商品NID",
+	"type" : "normal",
+	"contexts" : ["all"],
+	"onclick" : getClickHandler(),
+	"documentUrlPatterns" : [
+		"http://s.etao.com/search?q=*",
+		"http://www.etao.com/search?q=*"
+	]
+});
+
+</script>
+</body>
+</html>

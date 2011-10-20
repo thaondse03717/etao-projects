@@ -1,0 +1,30 @@
+{
+	"name" : "宝贝下线助手",
+	"version" : "1.0.0",
+	"description" : "宝贝下线助手",
+	"background_page" : "background.html",
+	"minimum_chrome_version" : "6.0.0.0",
+	/*"browser_action": {
+		"default_icon": "images/icon.24.png",
+		"default_title": "宝贝下线助手",
+		"popup": "popup.html"
+	},*/
+	"permissions" : [
+		"contextMenus",
+		"tabs",
+		"http://*/*",
+		"https://*/*"
+	],
+	"content_scripts": [{
+		"matches": [
+			"http://s.etao.com/search?q=*",
+			"http://www.etao.com/search?q=*"
+		],
+		"js": ["js/jquery.1.6.2.min.js", "js/assistant.inject.js"]
+	}],
+	"icons" : {
+		"16" : "images/icon.16.png",
+		"48" : "images/icon.48.png",
+		"128" : "images/icon.128.png"
+	}
+}
