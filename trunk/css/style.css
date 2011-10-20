@@ -183,6 +183,14 @@ select {
 	width: auto;
 }
 
+input.injected {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 3em;
+	height: 3em;
+}
+
 fieldset {
 	border: 1px solid #aaaaaa;
 	vertical-align: middle;

@@ -26,7 +26,7 @@ $.each(items, function (i, item) {
 	// 创建复选框
 	if (nid) {
 		//console.log('#' + i + ', NID: ' + nid + ', TITLE: ' + title);
-		var checkbox = $('<input type="checkbox" class="injected" title="单击将该商品加入垃圾箱" style="position: absolute; left: 0px; top: 0px; width: 5em; height: 6em;">');
+		var checkbox = $('<input type="checkbox" class="checkbox injected" title="单击将该商品加入垃圾箱" style="position: absolute; left: 0px; top: 0px; width: 3em; height: 3em;">');
 		$('a:has(img):first', this).append(checkbox.click(function () {
 			var request = {nid: nid, url: href, title: title, status: this.checked};
 			chrome.extension.sendRequest(request, function(response) {
