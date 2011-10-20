@@ -32,10 +32,9 @@ function getClickHandler() {
 
 // 下架完毕后重置按钮
 function resetCheckBoxes() {
+	chrome.tabs.executeScript(selectedIndex, {code: "$('input.injected').attr('checked', false);"});
 	selected = {};
 	selectedIndex = null;
-	var request = {completed: true};
-	chrome.extension.sendRequest(request, function(response) { });
 }
 
 // 注册右键菜单
