@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <head>
+	<title>宝贝下线助手</title>
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 	<script type="text/javascript" src="js/jquery.1.6.2.min.js"></script>
 </head>
@@ -25,14 +26,25 @@ function addItems() {
 		return false;
 	}
 
+	$("#datalist").show();
+
 	var current = 0;
 	addItem();
 
 
 	// 添加1个宝贝到垃圾箱
 	function addItem() {
+
 		if (current === selectedNids.length) {
-			showMessage('共找到' + current + '个待下架的宝贝', 'success', onAddComplete);
+			$("table.datalist tbody tr:nth-child(even)").addClass("altrow");
+			$("table.datalist tbody tr").hover(function () {
+				$(this).addClass('highlight');
+			}, function () {
+				$(this).removeClass('highlight');
+			});
+
+			showMessage('共找到' + current + '个待下架的宝贝', 'success');
+
 			return false;
 		}
 
@@ -54,20 +66,9 @@ function addItems() {
 		setTimeout(function () {
 			current++;
 			addItem();
-		}, 100);
+		}, 120);
 	}
 
-	// 表格隔行变色
-	function onAddComplete() {
-		$("table.datalist tbody tr:nth-child(even)").addClass("altrow");
-		$("table.datalist tbody tr").hover(function () {
-			$(this).addClass('highlight');
-		}, function () {
-			$(this).removeClass('highlight');
-		});
-
-		$("table.datalist").show();
-	}
 }
 
 // 递归提交所有的下架请求
@@ -147,7 +148,7 @@ function showMessage(message, type, callback) {
 
 	var popup = $('<div class="message"></div>')
 		.text(message).addClass(type).hide()
-		.appendTo($('div.trashbox'));
+		.appendTo(document.body);
 
 	popup
 		.css({ left: ($(window).width() - popup.width() ) / 2 + 'px' })
@@ -162,6 +163,7 @@ function showMessage(message, type, callback) {
 $(document).ready(function () {
 	$('#submit').click(submitItems);
 	$('#extract').click(addItems);
+	addItems();
 });
 
 </script>
