@@ -133,8 +133,8 @@ table td.actions a {
 	font-weight: bold;
 }
 
-/* Form Elements */
-input.button, a.button {
+/* Buttons */
+a.button {
 	color: #ffffff;
 	text-decoration: none;
 	font-size: 14px;
@@ -144,91 +144,36 @@ input.button, a.button {
 	letter-spacing: 0;
 	text-transform: uppercase;
 	padding: 3px 8px;
-	margin: 0 10px 5px 0;
-	background: #3aa3e6;
-	background: -moz-linear-gradient(top, #87c6ee, #3aa3e6 2%, #028fe8);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #87c6ee), color-stop(.01, #3aa3e6), to(#028fe8));
 	border: 1px solid #0082d5;
-	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
 	outline: none;
-}
-
-a.button {
 	display: inline-block;
-}
-
-a.button.large,
-input[type=button].button.large,
-input[type=submit].button.large,
-input[type=reset].button.large {
 	font-size: 1.2em;
+	text-align: center;
+	vertical-align: top;
+	border-radius: 5px;
 }
 
-input.button:hover,
-input.currentbtn,
-a.button:hover,
-a.currentbtn {
+a.current {
 	text-shadow: 0 1px 1px #6f3a02;
 	border: 1px solid #e6791c;
 	border-bottom: 1px solid #d86f15;
-	background: #f48423;
-	background: -moz-linear-gradient(top, #ffdf9e, #f5b026 2%, #f48423);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ffd683), color-stop(.01, #f5b026), to(#f48423));
 	cursor: pointer;
 }
 
-input.text,textarea,select {
+textarea {
 	padding: 2px;
 	color: #222222;
 	outline: none;
-	font-size: 110%;
+	display: inline-block;
+	font-size: 150%;
 	font-family: 'Microsoft Yahei',Verdana,Arial,Sans-Serif;
 	border: 1px solid #999999;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
 	border-radius: 3px;
 }
 
-input.text {
-	min-width: 240px;
-}
-
-input[type=text].large {
-	min-width: 300px;
-}
-
-input[type=text].short {
-	min-width: 50px;
-}
-
-input[type=text].extra {
-	min-width: 300px;
-	font-size: 150%;
-}
-
-textarea {
-	width: 300px;
-	min-height: 90px;
-	min-width: 450px;
-}
-
-textarea.large {
-	height: 150px;
-}
-
-input.valid,
-textarea.valid {
-	border: 1px solid #008000;
-}
-
-input.error,
-textarea.error {
-	border: 1px solid #ff0000;
-}
-
-/* Icons */
+/* Icons & Messages */
 a.icon, span.icon {
 	display: inline-block;
 	vertical-align: middle;
@@ -246,6 +191,7 @@ a.icon, span.icon {
 .icon.accept { background-position: 0px -250px; }
 .icon.block { background-position: 0px -275px; }
 
+/* Ajax Loader */
 span.loader {
 	background: transparent url(../images/loader.gif) center center no-repeat;
 	display: inline-block;
@@ -253,15 +199,63 @@ span.loader {
 	height: 16px;
 }
 
-/* Layout elements */
+/* Messages */
+div.message {
+	border-radius: 8px;
+	box-shadow: 2px 2px 1px #BDBDBD;
+	font-weight: bold;
+	font-size: 1.5em;
+	padding: 0.75em;
+	text-align: center;
+	width: auto;
+	position: absolute;
+	top: 20%;
+}
+
+div.message.error {
+	background-color: #ED1B24;
+	color: #FFFFFF;
+}
+
+div.message.success {
+	background-color: #1FA038;
+	color: #FFFFFF;
+}
+
+/* 弹出窗口区域 */
 div.popup {
 	min-width: 600px;
 	min-height: 60px;
 	padding: 6px;
 }
 
+/* 待下架商品列表区 */
 div.trashbox {
 	min-width: 600px;
 	max-width: 960px;
+	width: 960px;
 	padding: 1em;
+}
+
+div.trashbox a.button {
+	width: 120px;
+	height: 40px;
+	font-size: 2em;
+	padding: 12px;
+}
+
+div.trashbox textarea {
+	width: 630px;
+	height: 60px;
+	margin: 0px 5px;
+}
+
+div.trashbox .header {
+	margin-bottom: 5px;
+}
+
+div.trashbox .footer {
+	text-align: right;
+	padding: 10px;
+	color: #999999;
 }
