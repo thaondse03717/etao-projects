@@ -3,6 +3,7 @@
 	<title>宝贝下线助手</title>
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 	<script type="text/javascript" src="js/jquery.1.6.2.min.js"></script>
+	<script type="text/javascript" src="js/assistant.js"></script>
 </head>
 <body>
 
@@ -22,7 +23,7 @@ function addItems() {
 	}
 
 	if (selectedNids.length === 0) {
-		showMessage('未找到任何选中的宝贝,请重试!', 'success', onAddComplete);
+		assistant.notify('未找到任何选中的宝贝,请重试!', 'success', onAddComplete);
 		return false;
 	}
 
@@ -43,7 +44,7 @@ function addItems() {
 				$(this).removeClass('highlight');
 			});
 
-			showMessage('共找到' + current + '个待下架的宝贝', 'success');
+			assistant.notify('共找到' + current + '个待下架的宝贝', 'success');
 
 			return false;
 		}
@@ -75,7 +76,7 @@ function addItems() {
 function submitItems() {
 	var memo = $('#memo').val();
 	if (memo == '') {
-		showMessage('请输入下架这些宝贝的原因', 'error');
+		assistant.notify('请输入下架这些宝贝的原因', 'error');
 		return false;
 	}
 
@@ -92,7 +93,7 @@ function submitItems() {
 	// 提交单个的宝贝下架请求, 每次Ajax结束后都会对当前状态调整
 	function submitItem() {
 		if (current === selected.length) {
-			showMessage('所有的请求已处理完毕!', 'success', onSubmitComplete);
+			assistant.notify('所有的请求已处理完毕!', 'success', onSubmitComplete);
 			return false;
 		}
 
@@ -142,23 +143,6 @@ function submitItems() {
 	}
 }
 
-// 系统消息
-function showMessage(message, type, callback) {
-	var callback = callback || function () {};
-
-	var popup = $('<div class="message"></div>')
-		.text(message).addClass(type).hide()
-		.appendTo(document.body);
-
-	popup
-		.css({ left: ($(window).width() - popup.width() ) / 2 + 'px' })
-		.fadeIn('fast');
-
-	setTimeout(function () {
-		popup.fadeOut('fast', callback);
-	}, 3000);
-}
-
 // 页面加载后自动抽取NID
 $(document).ready(function () {
 	$('#submit').click(submitItems);
@@ -168,7 +152,7 @@ $(document).ready(function () {
 
 </script>
 
-<div class="trashbox">
+<div class="trashbox main">
 
 	<div class="header">
 		<a href="javascript:void(0)" id="extract" class="button">抽取宝贝</a>
