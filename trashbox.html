@@ -26,6 +26,9 @@ function addItems() {
 
 	if (selectedNids.length == 0) {
 		assistant.notify('No auction is selected, please select auctions to be offline first!', 'error');
+		if (jQuery('#datalist tr:has(td)').size() === 0) {
+			jQuery('#datalist').hide();
+		}
 		return false;
 	}
 
