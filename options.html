@@ -8,43 +8,43 @@
 <body>
 
 <script type="text/javascript">
-$(document).ready(function () {
+jQuery(document).ready(function () {
 
-	$('#submit').click(setOptions);
-	$('#restore').click(restoreOptions);
+	jQuery('#submit').click(setOptions);
+	jQuery('#restore').click(restoreOptions);
 	getOptions();
 
 	function setOptions() {
-		assistant.setOption('selector_entry', $('#selector_entry').attr('value'));
-		assistant.setOption('selector_link', $('#selector_link').attr('value'));
-		assistant.setOption('server_url', $('#server_url').attr('value'));
-		assistant.setOption('auto_extract', $('#auto_extract')[0].checked);
-		assistant.setOption('auto_memo', $('#auto_memo')[0].checked);
+		assistant.setOption('selector_entry', jQuery('#selector_entry').attr('value'));
+		assistant.setOption('selector_link', jQuery('#selector_link').attr('value'));
+		assistant.setOption('server_url', jQuery('#server_url').attr('value'));
+		assistant.setOption('auto_extract', jQuery('#auto_extract')[0].checked);
+		assistant.setOption('auto_memo', jQuery('#auto_memo')[0].checked);
 		assistant.notify('自定义设置已经保存', 'success');
 	}
 
 	function restoreOptions() {
-		$('#selector_entry').attr('value', assistant.defaults['selector_entry']);
-		$('#selector_link').attr('value', assistant.defaults['selector_link']);
-		$('#server_url').attr('value', assistant.defaults['server_url']);
+		jQuery('#selector_entry').attr('value', assistant.defaults['selector_entry']);
+		jQuery('#selector_link').attr('value', assistant.defaults['selector_link']);
+		jQuery('#server_url').attr('value', assistant.defaults['server_url']);
 		if (assistant.defaults['auto_extract'] == true) {
-			$('#auto_extract').attr('checked', true);
+			jQuery('#auto_extract').attr('checked', true);
 		}
 		if (assistant.defaults['auto_memo'] == true) {
-			$('#auto_memo').attr('checked', true);
+			jQuery('#auto_memo').attr('checked', true);
 		}
 		assistant.notify('已经恢复到工具默认的设置', 'success');
 	}
 
 	function getOptions() {
-		$('#selector_entry').attr('value', assistant.getOption('selector_entry'));
-		$('#selector_link').attr('value', assistant.getOption('selector_link'));
-		$('#server_url').attr('value', assistant.getOption('server_url'));
+		jQuery('#selector_entry').attr('value', assistant.getOption('selector_entry'));
+		jQuery('#selector_link').attr('value', assistant.getOption('selector_link'));
+		jQuery('#server_url').attr('value', assistant.getOption('server_url'));
 		if (assistant.getOption('auto_extract') == true) {
-			$('#auto_extract').attr('checked', true);
+			jQuery('#auto_extract').attr('checked', true);
 		}
 		if (assistant.getOption('auto_memo') == true) {
-			$('#auto_memo').attr('checked', true);
+			jQuery('#auto_memo').attr('checked', true);
 		}
 		console.log(assistant.getOption('auto_memo'));
 		console.log(assistant.getOption('auto_extract'));
