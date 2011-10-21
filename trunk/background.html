@@ -15,7 +15,7 @@ chrome.extension.onRequest.addListener(
 	function(request, sender, sendResponse) {
 		if (request.nid) {
 			selected[request.nid] = request.status ? request : null;
-			sendResponse({status: true, code: request.status ? '商品已经被丢到垃圾箱' : '商品已经移出垃圾箱' });
+			sendResponse({status: true, code: request.status ? 'Item moved into trashbox' : 'Item moved out of trashbox' });
 		} else if (request.options) {
 			sendResponse(assistant.getOptions());
 		} else {
@@ -43,7 +43,7 @@ function resetCheckBoxes() {
 
 // 注册右键菜单
 chrome.contextMenus.create({
-	"title" : "打开宝贝下架助手",
+	"title" : "Open Offline Assistant",
 	"type" : "normal",
 	"contexts" : ["all"],
 	"onclick" : getClickHandler(),

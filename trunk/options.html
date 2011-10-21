@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-	<title>偏好设置 - 宝贝下线助手</title>
+	<title>Options - Etao Auction Offline Assistant</title>
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 	<script type="text/javascript" src="js/jquery.1.6.2.min.js"></script>
 	<script type="text/javascript" src="js/assistant.js"></script>
@@ -16,13 +16,13 @@ jQuery(document).ready(function () {
 
 	function saveOptions(internal) {
 		_saveOptions();
-		assistant.notify('自定义设置已经保存', 'success');
+		assistant.notify('Options Saved', 'success');
 	}
 
 	function restoreOptions() {
 		_renderOptions(assistant.defaults);
 		_saveOptions();
-		assistant.notify('已经恢复到工具默认的设置', 'success');
+		assistant.notify('Default Options Restored', 'success');
 	}
 
 	function getOptions() {
@@ -65,44 +65,42 @@ jQuery(document).ready(function () {
 
 <div class="options main">
 
-	<fieldset>
-		<legend>配置宝贝下架助手</legend>
-		<div class="input">
-			<label>商品选择器</label>
-			<input type="text" id="selector_entry" name="selector_entry" class="text" />
-		</div>
+	<h1>Config Auction Offline Assistant</h1>
 
-		<div class="input">
-			<label>连接选择器</label>
-			<input type="text" id="selector_link" name="selector_link" class="text" />
-		</div>
+	<div class="input">
+		<label>Server URI</label>
+		<input type="text" id="server_url" name="server_url" class="text" />
+	</div>
 
-		<div class="input">
-			<label>服务器地址</label>
-			<input type="text" id="server_url" name="server_url" class="text" />
-		</div>
+	<div class="input">
+		<label>Item Selector</label>
+		<input type="text" id="selector_entry" name="selector_entry" class="text" />
+	</div>
 
-		<div class="input">
-			<label>其他选项</label>
-			<input type="checkbox" name="auto_extract" id="auto_extract" value="1" />
-			<label for="auto_extract" class="inline">打开宝贝下架助手时自动抽取NID?</label>
-		</div>
+	<div class="input">
+		<label>Link Selector</label>
+		<input type="text" id="selector_link" name="selector_link" class="text" />
+	</div>
 
-		<div class="input">
-			<label>&nbsp;</label>
-			<input type="checkbox" name="auto_memo" id="auto_memo" value="1" />
-			<label for="auto_memo" class="inline">记住上次操作时填写的下架原因?</label>
-		</div>
+	<div class="input">
+		<label>Other Options</label>
+		<input type="checkbox" name="auto_extract" id="auto_extract" value="1" />
+		<label for="auto_extract" class="inline">extract selected auctions after opening the assistant?</label>
+	</div>
 
-		<div class="input" style="margin-top: 1em;">
-			<label>&nbsp;</label>
-			<a href="javascript:void(0)" id="submit" class="button" style="margin-right: 1em;">保存选项</a>
-			<a href="javascript:void(0)" id="restore" class="button current">恢复默认</a>
-		</div>
+	<div class="input">
+		<label>&nbsp;</label>
+		<input type="checkbox" name="auto_memo" id="auto_memo" value="1" />
+		<label for="auto_memo" class="inline">remember the offline reason from last operation?</label>
+	</div>
 
-	</fieldset>
+	<div class="input" style="margin-top: 1em;">
+		<label>&nbsp;</label>
+		<a href="javascript:void(0)" id="submit" class="button" style="margin-right: 1em;">Save</a>
+		<a href="javascript:void(0)" id="restore" class="button current">Restore</a>
+	</div>
 
-	<p class="footer">宝贝下架助手 v1.0 by <a href="mailto:wangshijun2010@gmail.com">wangshijun2010@gmail.com</a></p>
+	<p class="footer">Auction Offline Assistant v1.1 by <a href="mailto:wangshijun2010@gmail.com">wangshijun2010@gmail.com</a></p>
 
 </div>
 

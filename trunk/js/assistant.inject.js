@@ -3,13 +3,13 @@ chrome.extension.sendRequest({options: true}, onOptionsLoaded);
 // 读取插件配置后, 在页面中查找NID节点, 并且注入复选框
 function onOptionsLoaded(options) {
 	if (!options.selector_entry || !options.selector_link) {
-		alert('抱歉! 无法加载宝贝下架助手的配置文件, 请联系开发者!');
+		alert('Oops! cannot load extension settings, please contact the developer');
 		return false;
 	}
 
 	var auctions = jQuery(options.selector_entry).css({ position: 'relative' });
 	var checkbox = jQuery('<input type="checkbox"/>')
-		.attr('title', '单击将该商品加入垃圾箱')
+		.attr('title', 'Click to offline!')
 		.addClass('checkbox injected')
 		.css({
 			position: 'absolute',
