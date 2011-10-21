@@ -11,7 +11,7 @@
 
 //添加所有已选宝贝到垃圾箱
 function addItems() {
-	$('#datalist tr:has(td)').remove();
+	jQuery('#datalist tr:has(td)').remove();
 
 	// 从Background页抽取以选中的数据
 	var selected = chrome.extension.getBackgroundPage().selected;
@@ -27,7 +27,7 @@ function addItems() {
 		return false;
 	}
 
-	$("#datalist").show();
+	jQuery("#datalist").show();
 
 	var current = 0;
 	addItem();
@@ -37,11 +37,11 @@ function addItems() {
 	function addItem() {
 
 		if (current === selectedNids.length) {
-			$("table.datalist tbody tr:nth-child(even)").addClass("altrow");
-			$("table.datalist tbody tr").hover(function () {
-				$(this).addClass('highlight');
+			jQuery("table.datalist tbody tr:nth-child(even)").addClass("altrow");
+			jQuery("table.datalist tbody tr").hover(function () {
+				jQuery(this).addClass('highlight');
 			}, function () {
-				$(this).removeClass('highlight');
+				jQuery(this).removeClass('highlight');
 			});
 
 			assistant.notify('共找到' + current + '个待下架的宝贝', 'success');
@@ -50,19 +50,19 @@ function addItems() {
 		}
 
 		var item = selected[selectedNids[current]];
-		var close = $('<a href="javascript:void(0)" title="不下架该宝贝">删除</a>').click(function () {
-			$(this).parents('tr').remove();
-			if ($('#datalist tr:has(td)').size() === 0) {
-				$('#datalist').hide();
+		var close = jQuery('<a href="javascript:void(0)" title="不下架该宝贝">删除</a>').click(function () {
+			jQuery(this).parents('tr').remove();
+			if (jQuery('#datalist tr:has(td)').size() === 0) {
+				jQuery('#datalist').hide();
 			}
 		});
 
-		$('<tr/>')
+		jQuery('<tr/>')
 			.attr('id', item.nid)
-			.append($('<td/>').text(item.nid))
-			.append($('<td/>').html('<a target="_blank" href="' + item.url + '">' + item.title + '</a>' ))
-			.append($('<td class="actions"/>').append(close))
-			.appendTo($('#datalist tbody'));
+			.append(jQuery('<td/>').text(item.nid))
+			.append(jQuery('<td/>').html('<a target="_blank" href="' + item.url + '">' + item.title + '</a>' ))
+			.append(jQuery('<td class="actions"/>').append(close))
+			.appendTo(jQuery('#datalist tbody'));
 
 		setTimeout(function () {
 			current++;
@@ -73,18 +73,18 @@ function addItems() {
 
 // 递归提交所有的下架请求
 function submitItems() {
-	var memo = $('#memo').val();
+	var memo = jQuery('#memo').val();
 	if (memo == '') {
 		assistant.notify('请输入下架这些宝贝的原因', 'error');
 		return false;
 	}
 
-	$('#submit').click(function () {
+	jQuery('#submit').click(function () {
 		return false;
 	});
 
 	var host = assistant.getOption('server_url');
-	var selected = $('tbody tr');
+	var selected = jQuery('tbody tr');
 
 	var current = 0;
 	submitItem();
@@ -96,13 +96,13 @@ function submitItems() {
 			return false;
 		}
 
-		var item = $(selected[current]);
+		var item = jQuery(selected[current]);
 		var nid = item.attr('id');
-		var loader = $('<span class="loader">&nbsp;</span>').hide();
+		var loader = jQuery('<span class="loader">&nbsp;</span>').hide();
 
 		item.find('td.actions').empty().append(loader);
 
-		$.ajax({
+		jQuery.ajax({
 			url: host,
 			data: {
 				c: 'auction_offlines',
@@ -151,9 +151,9 @@ function submitItems() {
 }
 
 // 页面加载后自动抽取NID
-$(document).ready(function () {
-	$('#submit').click(submitItems);
-	$('#extract').click(addItems);
+jQuery(document).ready(function () {
+	jQuery('#submit').click(submitItems);
+	jQuery('#extract').click(addItems);
 	addItems();
 });
 

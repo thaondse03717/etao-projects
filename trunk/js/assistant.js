@@ -3,12 +3,12 @@ var assistant = {
 	notify: function(message, type, callback) {
 		var callback = callback || function () {};
 
-		var popup = $('<div class="message"></div>')
+		var popup = jQuery('<div class="message"></div>')
 			.text(message).addClass(type).hide()
 			.appendTo(document.body);
 
 		popup
-			.css({ left: ($(window).width() - popup.width() ) / 2 + 'px' })
+			.css({ left: (jQuery(window).width() - popup.width() ) / 2 + 'px' })
 			.fadeIn('fast');
 
 		setTimeout(function () {
@@ -23,6 +23,16 @@ var assistant = {
 			value = assistant.defaults[key] ? assistant.defaults[key] : null;
 		}
 		return value;
+	},
+
+	// 读取所有偏好
+	getOptions: function () {
+		var keys = ['selector_entry', 'selector_link', 'server_url', 'auto_extract', 'auto_memo'];
+		var options = {};
+		for (i = 0; i < keys.length; i++) {
+			options[keys[i]] = assistant.getOption(keys[i]);
+		}
+		return options;
 	},
 
 	// 设置偏好

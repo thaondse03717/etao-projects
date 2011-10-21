@@ -16,7 +16,7 @@
 			"http://s.etao.com/search?*",
 			"http://www.etao.com/search?*"
 		],
-		"js": ["js/jquery.1.6.2.min.js", "js/assistant.js", "js/assistant.inject.js"]
+		"js": ["js/jquery.1.6.2.min.js", "js/assistant.inject.js"]
 	}],
 	"icons" : {
 		"16" : "images/icon.16.png",

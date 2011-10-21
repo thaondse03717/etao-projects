@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script type="text/javascript" src="js/jquery.1.6.2.min.js"></script>
+	<script type="text/javascript" src="js/assistant.js"></script>
 </head>
 <body>
 <script type="text/javascript">
@@ -8,19 +10,21 @@
 var selectedIndex = null;
 var selected = {};
 
-// 注册商品的选择
+// 监听从contentScript传来的添加商品和获取配置的事件
 chrome.extension.onRequest.addListener(
 	function(request, sender, sendResponse) {
 		if (request.nid) {
 			selected[request.nid] = request.status ? request : null;
 			sendResponse({status: true, code: request.status ? '商品已经被丢到垃圾箱' : '商品已经移出垃圾箱' });
+		} else if (request.options) {
+			sendResponse(assistant.getOptions());
 		} else {
 			sendResponse({});
 		}
 	}
 );
 
-// 注册下架操作
+// 右键菜单打开宝贝下架页面
 function getClickHandler() {
 	return function(info, tab) {
 		chrome.tabs.getSelected(null, function (tab) {
@@ -32,7 +36,7 @@ function getClickHandler() {
 
 // 下架完毕后重置按钮
 function resetCheckBoxes() {
-	chrome.tabs.executeScript(selectedIndex, {code: "$('input.injected').attr('checked', false);"});
+	chrome.tabs.executeScript(selectedIndex, {code: "jQuery('input.injected').attr('checked', false);"});
 	selected = {};
 	selectedIndex = null;
 }
@@ -44,8 +48,8 @@ chrome.contextMenus.create({
 	"contexts" : ["all"],
 	"onclick" : getClickHandler(),
 	"documentUrlPatterns" : [
-		"http://s.etao.com/search?q=*",
-		"http://www.etao.com/search?q=*"
+		"http://s.etao.com/search?*",
+		"http://www.etao.com/search?*"
 	]
 });
 
