@@ -10,7 +10,7 @@
 
 body {
 	background: #ffffff;
-	font-size: 13px;
+	font-size: 14px;
 	font-family: Arial, Sans-serif;
 	margin: 0;
 	padding: 0;
@@ -201,7 +201,7 @@ div.input {
 
 div.input label {
 	display: inline-block;
-	width: 120px;
+	width: 100px;
 	font-weight: bold;
 	text-align: right;
 	margin-right: 5px;
