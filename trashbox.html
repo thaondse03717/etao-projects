@@ -24,8 +24,8 @@ function addItems() {
 		}
 	}
 
-	if (selectedNids.length === 0) {
-		assistant.notify('No auction is selected, try again please!', 'success', onAddComplete);
+	if (selectedNids.length == 0) {
+		assistant.notify('No auction is selected, please select auctions to be offline first!', 'error');
 		return false;
 	}
 
