@@ -8,6 +8,8 @@
 <body>
 
 <script type="text/javascript">
+// 读取插件配置
+var options = assistant.getOptions();
 
 //添加所有已选宝贝到垃圾箱
 function addItems() {
@@ -79,11 +81,13 @@ function submitItems() {
 		return false;
 	}
 
-	jQuery('#submit').click(function () {
-		return false;
-	});
+	unregisterCallbacks();
 
-	var host = assistant.getOption('server_url');
+	if (options.auto_memo === 'true') {
+		setLastMemo(memo);
+	}
+
+	var server = options.server_url;
 	var selected = jQuery('tbody tr');
 
 	var current = 0;
@@ -92,7 +96,8 @@ function submitItems() {
 	// 提交单个的宝贝下架请求, 每次Ajax结束后都会对当前状态调整
 	function submitItem() {
 		if (current === selected.length) {
-			assistant.notify('所有的请求已处理完毕!', 'success', onSubmitComplete);
+			assistant.notify('所有的宝贝下架条目已处理完毕!', 'success', onSubmitComplete);
+			registerCallbacks();
 			return false;
 		}
 
@@ -103,7 +108,7 @@ function submitItems() {
 		item.find('td.actions').empty().append(loader);
 
 		jQuery.ajax({
-			url: host,
+			url: server,
 			data: {
 				c: 'auction_offlines',
 				f: 'add',
@@ -150,11 +155,39 @@ function submitItems() {
 	}
 }
 
+// 注册按钮回调
+function registerCallbacks() {
+	jQuery('#submit').click(submitItems).removeClass('disabled');
+	jQuery('#extract').click(addItems).removeClass('disabled');
+}
+
+// 取消按钮回调
+function unregisterCallbacks() {
+	jQuery('#submit, #extract').unbind('click').addClass('disabled');
+}
+
+// 读取上次的下架原因
+function getLastMemo() {
+	var memo = window.localStorage.getItem('memo');
+	if (memo !== null) {
+		jQuery('#memo').text(memo);
+	}
+}
+
+// 设置上次的下架原因到textarea
+function setLastMemo(memo) {
+	return window.localStorage.setItem('memo', memo);
+}
+
 // 页面加载后自动抽取NID
 jQuery(document).ready(function () {
-	jQuery('#submit').click(submitItems);
-	jQuery('#extract').click(addItems);
-	addItems();
+	registerCallbacks();
+	if (options.auto_extract === 'true') {
+		addItems();
+	}
+	if (options.auto_memo === 'true') {
+		getLastMemo();
+	}
 });
 
 </script>
