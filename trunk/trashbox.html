@@ -97,7 +97,6 @@ function submitItems() {
 	function submitItem() {
 		if (current === selected.length) {
 			assistant.notify('All auction offline requests completed successfully!', 'success', onSubmitComplete);
-			registerCallbacks();
 			return false;
 		}
 
@@ -127,6 +126,7 @@ function submitItems() {
 				} catch (error) {
 					assistant.notify('Sorry, an error occurred, maybe you are not logged in Eharmony in current browser!', 'error');
 					item.find('td.actions').text('Oops!');
+					registerCallbacks(); /* 出错之后需要重新监听 */
 					return false;
 				}
 
@@ -142,15 +142,23 @@ function submitItems() {
 		});
 	}
 
-	// 所有请求处理完毕之后给出提示, 回到SRP页
+	// 所有请求处理完毕之后给出提示
 	function onSubmitComplete() {
 		chrome.tabs.getSelected(null, function (tab) {
-			var selectedIndex = chrome.extension.getBackgroundPage().selectedIndex;
 			chrome.extension.getBackgroundPage().resetCheckBoxes();
-			if (selectedIndex !== null) {
-				chrome.tabs.update(selectedIndex, {selected: true});
+
+			// 回到SRP页
+			if (options.auto_close === 'true') {
+				var selectedIndex = chrome.extension.getBackgroundPage().selectedIndex;
+				if (selectedIndex !== null) {
+					chrome.tabs.update(selectedIndex, {selected: true});
+				}
+				chrome.tabs.remove(tab.id, function () { });
+
+			// 如果不关闭当前页, 则重新注册事件
+			} else {
+				registerCallbacks();
 			}
-			chrome.tabs.remove(tab.id, function () { });
 		});
 	}
 }

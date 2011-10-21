@@ -12,6 +12,10 @@ jQuery(document).ready(function () {
 
 	jQuery('#submit').click(saveOptions);
 	jQuery('#restore').click(restoreOptions);
+	jQuery('#toggle').click(function () {
+		$('#advanced').toggle();
+	});
+
 	getOptions();
 
 	function saveOptions(internal) {
@@ -36,6 +40,7 @@ jQuery(document).ready(function () {
 
 		assistant.setOption('auto_extract', jQuery('#auto_extract')[0].checked);
 		assistant.setOption('auto_memo', jQuery('#auto_memo')[0].checked);
+		assistant.setOption('auto_close', jQuery('#auto_close')[0].checked);
 
 		//console.log('#auto_extract: ' + jQuery('#auto_extract')[0].checked);
 		//console.log('#auto_memo: ' + jQuery('#auto_memo')[0].checked);
@@ -56,6 +61,10 @@ jQuery(document).ready(function () {
 			jQuery('#auto_memo').attr('checked', 'checked');
 		}
 
+		if (options.auto_close === 'true') {
+			jQuery('#auto_close').attr('checked', 'checked');
+		}
+
 		//console.log('auto_memo: ' + options.auto_extract);
 		//console.log('auto_extract: ' + options.auto_memo);
 	}
@@ -72,18 +81,20 @@ jQuery(document).ready(function () {
 		<input type="text" id="server_url" name="server_url" class="text" />
 	</div>
 
-	<div class="input">
-		<label>Item Selector</label>
-		<input type="text" id="selector_entry" name="selector_entry" class="text" />
+	<div id="advanced" style="display:none;">
+		<div class="input">
+			<label>Item Selector</label>
+			<input type="text" id="selector_entry" name="selector_entry" class="text" />
+		</div>
+
+		<div class="input">
+			<label>Link Selector</label>
+			<input type="text" id="selector_link" name="selector_link" class="text" />
+		</div>
 	</div>
 
 	<div class="input">
-		<label>Link Selector</label>
-		<input type="text" id="selector_link" name="selector_link" class="text" />
-	</div>
-
-	<div class="input">
-		<label>Other Options</label>
+		<label>&nbsp;</label>
 		<input type="checkbox" name="auto_extract" id="auto_extract" value="1" />
 		<label for="auto_extract" class="inline">extract selected auctions after opening the assistant?</label>
 	</div>
@@ -91,13 +102,20 @@ jQuery(document).ready(function () {
 	<div class="input">
 		<label>&nbsp;</label>
 		<input type="checkbox" name="auto_memo" id="auto_memo" value="1" />
-		<label for="auto_memo" class="inline">remember the offline reason from last operation?</label>
+		<label for="auto_memo" class="inline">remember & recall the offline reason from last operation?</label>
+	</div>
+
+	<div class="input">
+		<label>&nbsp;</label>
+		<input type="checkbox" name="auto_close" id="auto_close" value="1" />
+		<label for="auto_close" class="inline">close the auction offline assistant page after proccess complete?</label>
 	</div>
 
 	<div class="input" style="margin-top: 1em;">
 		<label>&nbsp;</label>
-		<a href="javascript:void(0)" id="submit" class="button" style="margin-right: 1em;">Save</a>
-		<a href="javascript:void(0)" id="restore" class="button current">Restore</a>
+		<a href="javascript:void(0)" id="submit" class="button current" style="margin-right: 1em;">Save Options</a>
+		<a href="javascript:void(0)" id="restore" class="button" style="margin-right: 1em;">Restore Defaults</a>
+		<a href="javascript:void(0)" id="toggle" class="button">Advanced Options</a>
 	</div>
 
 	<p class="footer">Auction Offline Assistant v1.1 by <a href="mailto:wangshijun2010@gmail.com">wangshijun2010@gmail.com</a></p>

@@ -27,7 +27,10 @@ var assistant = {
 
 	// 读取所有偏好
 	getOptions: function () {
-		var keys = ['selector_entry', 'selector_link', 'server_url', 'auto_extract', 'auto_memo'];
+		var keys = [
+			'selector_entry', 'selector_link', 'server_url',
+			'auto_extract', 'auto_memo', 'auto_close'
+		];
 		var options = {};
 		for (i = 0; i < keys.length; i++) {
 			options[keys[i]] = assistant.getOption(keys[i]);
@@ -44,8 +47,9 @@ var assistant = {
 	defaults: {
 		'selector_entry': 'li.entry',
 		'selector_link': 'a:first',
-		'server_url': 'http://eharmony.taobao.com/eharmony/',
+		'server_url': 'http://psp.search.taobao.com:9999/eharmony/',
 		'auto_extract': 'true',
+		'auto_close': 'true',
 		'auto_memo': 'true'
 	}
 };
