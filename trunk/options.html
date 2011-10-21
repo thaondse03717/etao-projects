@@ -17,7 +17,6 @@ $(document).ready(function () {
 	function setOptions() {
 		assistant.setOption('selector_entry', $('#selector_entry').attr('value'));
 		assistant.setOption('selector_link', $('#selector_link').attr('value'));
-		assistant.setOption('selector_title', $('#selector_title').attr('value'));
 		assistant.setOption('server_url', $('#server_url').attr('value'));
 		assistant.setOption('auto_extract', $('#auto_extract')[0].checked);
 		assistant.setOption('auto_memo', $('#auto_memo')[0].checked);
@@ -27,7 +26,6 @@ $(document).ready(function () {
 	function restoreOptions() {
 		$('#selector_entry').attr('value', assistant.defaults['selector_entry']);
 		$('#selector_link').attr('value', assistant.defaults['selector_link']);
-		$('#selector_title').attr('value', assistant.defaults['selector_title']);
 		$('#server_url').attr('value', assistant.defaults['server_url']);
 		if (assistant.defaults['auto_extract'] == true) {
 			$('#auto_extract').attr('checked', true);
@@ -41,7 +39,6 @@ $(document).ready(function () {
 	function getOptions() {
 		$('#selector_entry').attr('value', assistant.getOption('selector_entry'));
 		$('#selector_link').attr('value', assistant.getOption('selector_link'));
-		$('#selector_title').attr('value', assistant.getOption('selector_title'));
 		$('#server_url').attr('value', assistant.getOption('server_url'));
 		if (assistant.getOption('auto_extract') == true) {
 			$('#auto_extract').attr('checked', true);
@@ -68,11 +65,6 @@ $(document).ready(function () {
 		<div class="input">
 			<label>连接选择器</label>
 			<input type="text" id="selector_link" name="selector_link" class="text" />
-		</div>
-
-		<div class="input">
-			<label>标题选择器</label>
-			<input type="text" id="selector_title" name="selector_title" class="text" />
 		</div>
 
 		<div class="input">
