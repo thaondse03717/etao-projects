@@ -18,7 +18,6 @@ var assistant = {
 
 	// 读取偏好
 	getOption: function (key) {
-		return window.localStorage.getItem(key);
 		var value = window.localStorage.getItem(key);
 		if (value === null) {
 			value = assistant.defaults[key] ? assistant.defaults[key] : null;
