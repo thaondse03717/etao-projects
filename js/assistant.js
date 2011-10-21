@@ -18,6 +18,7 @@ var assistant = {
 
 	// 读取偏好
 	getOption: function (key) {
+		return window.localStorage.getItem(key);
 		var value = window.localStorage.getItem(key);
 		if (value === null) {
 			value = assistant.defaults[key] ? assistant.defaults[key] : null;
@@ -45,7 +46,7 @@ var assistant = {
 		'selector_entry': 'li.entry',
 		'selector_link': 'a:first',
 		'server_url': 'http://eharmony.taobao.com/eharmony/',
-		'auto_extract': true,
-		'auto_memo': true
+		'auto_extract': 'true',
+		'auto_memo': 'true'
 	}
 };

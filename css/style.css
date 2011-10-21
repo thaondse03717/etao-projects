@@ -162,6 +162,10 @@ a.current {
 	cursor: pointer;
 }
 
+a.disabled {
+	opacity: 0.5;
+}
+
 /* Form Elements */
 input.text,textarea, select {
 	padding: 2px;
