@@ -45,7 +45,7 @@ var assistant = {
 
 	// 默认选项
 	defaults: {
-		'selector_entry': 'li.entry',
+		'selector_entry': 'li.listitem, div.griditem, ul.p4p-list li',
 		'selector_link': 'a:first',
 		'server_url': 'http://psp.search.taobao.com:9999/eharmony/',
 		'auto_extract': 'true',

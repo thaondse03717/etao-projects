@@ -26,29 +26,47 @@ function onOptionsLoaded(options) {
 		var url = auction.attr('href'), title = auction.attr('title'), nid = false;
 
 		// 提取NID (内网商品和外网商品的连接不同)
+		// 对于P4P商品需要额外的ajax请求来确定
 		if (url != '') {
-			var regex_id = /\?id=\d+/gi;
-			var regex_nid = /&nid=\d+/gi;
+			var patterns = {
+				id: /\?id=\d+/gi,						// 内网商品NID
+				nid: /&nid=\d+/gi,					// 外网商品NID
+				item_id: /itemid:\"\d+\"/gi	// P4P商品NID
+			};
 
-			var matches_id = url.match(regex_id);
-			var matches_nid = url.match(regex_nid);
+			var matches = {
+				id : url.match(patterns.id),
+				nid : url.match(patterns.nid)
+			};
 
-			if (matches_id) {
-				nid = matches_id[0].substring(4, matches_id[0].length);
-			} else if (matches_nid) {
-				nid = matches_nid[0].substring(5, matches_nid[0].length);
+			if (matches.id) {
+				nid = matches.id[0].substring(4, matches.id[0].length);
+				addCheckboxListener(auction, checkbox, nid, url, title);
+			} else if (matches.nid) {
+				nid = matches.nid[0].substring(5, matches.nid[0].length);
+				addCheckboxListener(auction, checkbox, nid, url, title);
+			} else {
+				jQuery.get(url, function (data) {
+					matches.item_id = data.match(patterns.item_id);
+					if (matches.item_id) {
+						var nid = matches.item_id[0].substring(8, matches.item_id[0].length - 1);
+						addCheckboxListener(auction, checkbox, nid, url, title);
+					}
+				});
 			}
 		}
 
-		// 注入复选框
-		if (nid) {
-			//console.log('#' + (i+1) + ', NID: ' + nid + ', 标题: ' + title);
-			auction.append(checkbox.clone().click(function () {
-				var request = {nid: nid, url: url, title: title, status: this.checked};
-				chrome.extension.sendRequest(request, function(response) {
-					//console.log('status:' + response.status + ', code: ' + response.code);
-				});
-			}));
-		}
 	});
+}
+
+function addCheckboxListener(auction, checkbox, nid, url, title) {
+	if (nid) {
+		console.log('NID: ' + nid + ', 标题: ' + title);
+		auction.append(checkbox.clone().click(function () {
+			var request = {nid: nid, url: url, title: title, status: this.checked};
+			chrome.extension.sendRequest(request, function(response) {
+				//console.log('status:' + response.status + ', code: ' + response.code);
+			});
+		}));
+	}
 }
