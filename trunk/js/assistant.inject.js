@@ -61,7 +61,7 @@ function onOptionsLoaded(options) {
 
 function addCheckboxListener(auction, checkbox, nid, url, title) {
 	if (nid) {
-		console.log('NID: ' + nid + ', 标题: ' + title);
+		// console.log('NID: ' + nid + ', 标题: ' + title);
 		auction.append(checkbox.clone().click(function () {
 			var request = {nid: nid, url: url, title: title, status: this.checked};
 			chrome.extension.sendRequest(request, function(response) {
