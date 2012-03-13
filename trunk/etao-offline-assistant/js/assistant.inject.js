@@ -29,14 +29,14 @@ function onOptionsLoaded(options) {
 		// 对于P4P商品需要额外的ajax请求来确定
 		if (url != '') {
 			var patterns = {
-				id: /\?id=\d+/gi,						// 内网商品NID
-				nid: /&nid=\d+/gi,					// 外网商品NID
-				item_id: /itemid:\"\d+\"/gi	// P4P商品NID
+				id: /\?id=\d+/gi,									// 内网商品NID
+				nid: [/&nid=\d+/gi, /\?nid=\d+/gi],	// 外网商品NID
+				item_id: /itemid:\"\d+\"/gi				// P4P商品NID
 			};
 
 			var matches = {
 				id : url.match(patterns.id),
-				nid : url.match(patterns.nid)
+				nid : url.match(patterns.nid[0]) ? url.match(patterns.nid[0]) : url.match(patterns.nid[1])
 			};
 
 			if (matches.id) {
