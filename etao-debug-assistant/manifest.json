@@ -1,0 +1,26 @@
+{
+	"name" : "Etao Debug Assistant",
+	"version" : "1.0",
+	"description" : "Etao Debug Assistant",
+	"minimum_chrome_version" : "12.0.0.0",
+	"background_page" : "background.html",
+	"options_page": "options.html",
+	"permissions" : [
+		"contextMenus",
+		"tabs",
+		"http://*.taobao.com/*",
+		"http://*.etao.com/search?*"
+	],
+	"content_scripts": [{
+		"matches": [
+			"http://s.etao.com/search?*",
+			"http://www.etao.com/search?*"
+		],
+		"js": ["js/jquery.1.6.2.min.js", "js/assistant.inject.js"]
+	}],
+	"icons" : {
+		"16" : "images/icon.16.png",
+		"48" : "images/icon.48.png",
+		"128" : "images/icon.128.png"
+	}
+}
