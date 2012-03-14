@@ -19,24 +19,33 @@ function onOptionsLoaded(options) {
 			height: '3em'
 		});
 
+	//if (options.hide_compare_links) {
+	//	jQuery('a.btn-compare').parents('div.griditem, li.listitem').remove();
+	//}
+
 	jQuery.each(auctions, function (i, item) {
 
 		// 提取URI, 标题
 		var auction = jQuery(options.selector_link, this);
-		var url = auction.attr('href'), title = auction.attr('title'), nid = false;
+		var url = auction.attr('href'),
+			title = auction.attr('title'),
+			stat = auction.attr('data-stat'),
+			nid = false;
 
 		// 提取NID (内网商品和外网商品的连接不同)
 		// 对于P4P商品需要额外的ajax请求来确定
 		if (url != '') {
 			var patterns = {
-				id: /\?id=\d+/gi,									// 内网商品NID
-				nid: [/&nid=\d+/gi, /\?nid=\d+/gi],	// 外网商品NID
-				item_id: /itemid:\"\d+\"/gi				// P4P商品NID
+				id:			 /\?id=\d+/gi,									// 内网商品NID
+				nid:			[/&nid=\d+/gi, /\?nid=\d+/gi],		// 外网商品NID
+				p4p:			/&value=nid_\d+/gi,							// P4P商品NID
+				rec:			/itemid:\"\d+\"/gi							// 推广商品NID
 			};
 
 			var matches = {
 				id : url.match(patterns.id),
-				nid : url.match(patterns.nid[0]) ? url.match(patterns.nid[0]) : url.match(patterns.nid[1])
+				nid : url.match(patterns.nid[0]) ? url.match(patterns.nid[0]) : url.match(patterns.nid[1]),
+				p4p : stat !== undefined ? stat.match(patterns.p4p) : false
 			};
 
 			if (matches.id) {
@@ -45,11 +54,14 @@ function onOptionsLoaded(options) {
 			} else if (matches.nid) {
 				nid = matches.nid[0].substring(5, matches.nid[0].length);
 				addCheckboxListener(auction, checkbox, nid, url, title);
+			} else if (matches.p4p) {
+				nid = matches.p4p[0].substring(11, matches.p4p[0].length);
+				addCheckboxListener(auction, checkbox, nid, url, title);
 			} else {
 				jQuery.get(url, function (data) {
-					matches.item_id = data.match(patterns.item_id);
-					if (matches.item_id) {
-						var nid = matches.item_id[0].substring(8, matches.item_id[0].length - 1);
+					matches.rec = data.match(patterns.rec);
+					if (matches.rec) {
+						var nid = matches.rec[0].substring(8, matches.rec[0].length - 1);
 						addCheckboxListener(auction, checkbox, nid, url, title);
 					}
 				});

@@ -1,7 +1,7 @@
 {
-	"name" : "Auction Offline Assistant",
-	"version" : "1.2",
-	"description" : "Auction Offline Assistant",
+	"name" : "Etao Offline Assistant",
+	"version" : "1.3",
+	"description" : "Etao Offline Assistant",
 	"minimum_chrome_version" : "12.0.0.0",
 	"background_page" : "background.html",
 	"options_page": "options.html",
@@ -9,6 +9,7 @@
 		"contextMenus",
 		"tabs",
 		"http://*.taobao.com/*",
+		"http://*.tmall.com/*",
 		"http://*.etao.com/search?*"
 	],
 	"content_scripts": [{
