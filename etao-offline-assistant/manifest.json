@@ -10,12 +10,12 @@
 		"tabs",
 		"http://*.taobao.com/*",
 		"http://*.tmall.com/*",
-		"http://*.etao.com/search?*"
+		"http://*.etao.com/*"
 	],
 	"content_scripts": [{
 		"matches": [
-			"http://s.etao.com/search?*",
-			"http://www.etao.com/search?*"
+			"http://s.etao.com/*",
+			"http://www.etao.com/*"
 		],
 		"js": ["js/jquery.1.6.2.min.js", "js/assistant.inject.js"]
 	}],
