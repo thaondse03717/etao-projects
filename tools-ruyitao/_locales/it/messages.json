@@ -1,0 +1,10 @@
+{
+   "extDescription": {
+      "description": "extension description",
+      "message": "Vi aiuta a confrontare i prezzi su Amazon, Ebay, ecc. quando cercate dei prodotti su molti siti."
+   },
+   "extName": {
+      "description": "extension name",
+      "message": "Shopping Assistant"
+   }
+}

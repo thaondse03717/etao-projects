@@ -1,0 +1,10 @@
+{
+   "extDescription": {
+      "description": "extension description",
+      "message": "vous permet de comparer les prix avec Amazon, eBay, Cdiscount, FNAC, etc... Quand vous souhaitez effectuer des achats sur Internet."
+   },
+   "extName": {
+      "description": "extension name",
+      "message": "Shopping Assistant"
+   }
+}

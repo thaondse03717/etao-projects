@@ -1,0 +1,22 @@
+{
+   "background_page": "background.html",
+   "content_scripts": [ {
+      "js": [ "assets/js/jquery-1.7.1.min.js", "views/shoppingassist.js" ],
+      "matches": [ "http://*/*" ]
+   }, {
+      "js": [ "views/ruyitao-site.js" ],
+      "matches": [ "http://ruyi.taobao.com/", "http://ruyi.etao.com/" ]
+   } ],
+   "default_locale": "zh_CN",
+   "description": "__MSG_extDescription__",
+   "icons": {
+      "128": "assets/icons/logo-128.png",
+      "48": "assets/icons/logo-48.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDT+doHkZRefn/93hPrFrlalrkWCZjtthM3MadN5GqqZLc8c/HHosbnjbkheNIQmvAgW3geiPoiYrc42CCVNg0bqiljnjSyhntQHkWSXvAgq7xmb3kJMcS6/MWn/ySeIpnG//Imc6D3YCBVljrOIk6n1mYbPZ/IETJJA9eOVw5e0QIDAQAB",
+   "name": "__MSG_extName__",
+   "options_page": "views/options.html",
+   "permissions": [ "tabs", "http://*/*" ],
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "3.1.5.6"
+}
