@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <title>StayFocusd : Popup</title>
+        <link href="css/reset.css" rel="stylesheet" type="text/css"> 
+        <link href="css/popup.css" rel="stylesheet" type="text/css"> 
+        <script type="text/javascript" src="js/lib/jquery-1.4.min.js"></script>
+        <script type="text/javascript" src="js/Popup.js"></script>
+        <script type="text/javascript">
+
+            /**
+             * Shorthand for getting background page
+             */
+            function bg(){
+                return chrome.extension.getBackgroundPage();
+            }
+            
+             /**
+             * Only allow numeric input for max time allowed
+             */
+            $(document).ready(function() {
+                Popup.init();
+            });
+            
+        </script>
+    </head>
+    <body>
+        
+        <ul id="header">
+            <li id="logo"><img src="img/logo_popup.png" title="StayFocusd" alt="StayFocusd"></li>
+            <li id="close-button">
+                <a href="javascript:void(0);" class="close">close</a>
+            </li>
+        </ul>
+        
+        <ul id="body">
+            
+            <li id="current-domain">
+                <div class="label">You are currently on:</div>
+                <div class="domain base-domain"></div>
+            </li>
+            
+            <li id="status-msg"></li>
+            
+            <li id="left-col">
+                <ul class="options">
+                    <li class="option">
+                        <a href="javascript:void(0);" id="block-entire" title="Block all pages on this site">
+                            <b>Block</b> this entire site
+                        </a>
+                    </li>
+                    <li class="more-options">
+                        <a href="javascript:void(0);" id="show-advanced-options">
+                            Advanced options
+                        </a>&#160;|&#160;
+                        <a href="javascript:void(0);" id="show-options">
+                            Settings
+                        </a>&#160;|&#160;
+                        <a href="javascript:void(0);" id="show-help">
+                            Help/FAQ
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            
+            <li id="right-col">
+                <ul id="timer-box">
+                    <li id="timer-label">TIME REMAINING</li>
+                    <li id="display-timer">loading</li>
+                </ul>
+            </li>
+            
+            <li class="clear-fix"></li>
+            
+            <li id="advanced-options">
+                <ul class="options">
+                    <li class="option">
+                        <a href="javascript:void(0);" id="allow-entire" class="allow">
+                            <b>Allow</b> this entire site
+                        </a>
+                    </li>
+                    <li class="custom">
+                        <div class="label">Enter a custom url</div>
+                        <input type="text" id="custom-url" value="">
+                        <a href="javascript:void(0);" id="block-custom">
+                            Block custom url
+                        </a>
+                        <span class="allow">
+                            &#160;|&#160;
+                            <a href="javascript:void(0);" id="allow-custom">
+                                Allow custom url
+                            </a>
+                        </span>
+                    </li>
+                    <li class="option">
+                        Want to block or allow multiple sites at once? <a href="javascript:void(0);" onclick="Popup.showOptions('blockedSites');">Click here</a>.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        
+    </body>
+</html>

@@ -1,0 +1,8 @@
+
+var SmartBomb=function(){return{timer:null,interval:.5,smartBomb:{},handleBackgroundScriptRequest:function(request,sender){var response={};switch(request.message){case"smartBomb":SmartBomb.init(request.smartBomb);break;}
+return response;},init:function(smartBomb){this.smartBomb=smartBomb;clearInterval(this.timer);this.timer=setInterval('SmartBomb_tick()',(this.interval*1000));},bomb:function(){if(this.smartBomb.multimedia){this.bombMultimedia();}
+if(this.smartBomb.images){this.bombImages();}
+if(this.smartBomb.forms){this.bombForms();}
+if(this.smartBomb.logins){this.bombLogins();}},bombMultimedia:function(){$('embed,object,applet,canvas,video,iframe').each(function(){SmartBomb.replace($(this));});},bombImages:function(){$('img').each(function(){SmartBomb.replace($(this));});},bombForms:function(){$('input,select,textarea').each(function(){SmartBomb.replace($(this));});},bombLogins:function(){$('input[type=password]').each(function(){SmartBomb.replace($(this));});},replace:function(jqElement){if(jqElement.attr('class')=='StayFocusd-smartBombed'){return false;}
+var width=jqElement.attr('width');var height=jqElement.attr('height');var display=jqElement.css('display');if(display=='none'){return false;}
+var replacement='<div style="height:'+height+'px;width:'+width+'px;background:url('+chrome.extension.getURL('img/smartBombBG.png')+') #000" class="StayFocusd-smartBombed"></div>';jqElement.replaceWith(replacement);}}}();function SmartBomb_tick(){SmartBomb.bomb();}
