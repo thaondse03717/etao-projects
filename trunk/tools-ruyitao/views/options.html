@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<title rel="i18n[title]"></title>
+<style>
+body, h1, h2, h3, ul, div, input {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 14px;
+  font-family: "微软雅黑", "Microsoft YaHei", Verdana, Geneva, sans-serif;
+  background: #d4eef7;
+}
+
+#logo {
+  float: left;
+  width: 310px;
+  height: 65px;
+  padding: 5px;
+  text-align: center;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: 0 0 7px #a9e0f5;
+  background: white;
+}
+
+h1 img {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+#links {
+  float: right;
+}
+
+#links a, #links iframe {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+a, a:visited {
+  color: #4ca7ee;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#header {
+  overflow: hidden;
+  height: 80px;
+  width: 850px;
+  margin: 0 auto;
+}
+
+h2#options-text {
+  width: 100px;
+  height: 20px;
+  color: #8dbede;
+  font-size: 120%;
+  margin-bottom: 10px;
+}
+
+h3, ul {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: normal;
+  vertical-align: top;
+  margin-right: 20px;
+}
+
+#country-list {
+  width: 500px;
+}
+
+.container {
+  width: 700px;
+  margin: 30px auto 0 auto;
+  padding: 25px;
+  border: 3px solid #a9e0f5;
+  border-radius: 15px;
+  background: white;
+  overflow: hidden;
+}
+
+.section {
+  padding: 20px 0;
+  border-bottom: 2px dotted #d9e4e7;
+}
+
+#store-container > li {
+  margin-bottom: 10px;
+}
+
+.stores li {
+  display: inline-block;
+}
+
+ul, li {
+  list-style: none;
+}
+
+input {
+  margin-right: 5px;
+}
+
+ul.list li *, ul.stores li * {
+  vertical-align: middle;
+}
+
+.jiathis_txt {
+  font-size: 0 !important;
+  margin-left: 0 !important;
+}
+
+.tsina {
+  padding-left: 20px;
+  background: transparent url(../assets/images/weibo_logo.png) 0 center no-repeat;
+}
+
+#feedback {
+  padding-left: 20px;
+  background: transparent url(../assets/images/feedback_icon.png) 0 center no-repeat;
+}
+
+#share-wrapper {
+  padding-top: 20px;
+}
+
+#add-this-wrapper {
+  display: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  height: 32px;
+  width: 400px;
+}
+
+#share-to-text {
+  float: left;
+  padding-top: 5px;
+  padding-right: 10px;
+}
+
+#ckepop {
+  display: inline-block;
+}
+
+#jia-this-wrapper span {
+  vertical-align: middle;
+}
+
+#other-extensions {
+  margin: 0 auto;
+  width: 756px;
+}
+
+#other-extensions iframe {
+  background: white;
+  border: none;
+  border-radius: 10px;
+}
+
+.share-to-buttons {
+  margin-right: 40px;
+}
+
+button {
+  padding: 0 10px;
+  margin: 0;
+  border: 1px solid #e3e3e3;
+  border-radius: 5px;
+  height: 30px;
+  background: -webkit-linear-gradient(top, white, #e3e3e3);
+  background: -o-linear-gradient(top, white, #e3e3e3);
+  cursor: pointer;
+}
+
+button:hover {
+  background: -webkit-linear-gradient(bottom, white, #e3e3e3);
+  background: -o-linear-gradient(bottom, white, #e3e3e3);
+}
+
+label {
+  padding-right: 10px;
+}
+
+.list li {
+  list-style: none;
+  float: left;
+  margin-right: 20px;
+}
+
+.clearfix:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+  overflow: hidden;
+}
+
+#price-compare-result-setting-wrapper {
+  margin-top: 20px;
+}
+</style>
+</head>
+<body>
+<script src="../assets/js/jquery-1.7.1.min.js"></script>
+<div id="header">
+  <a id="logo" href="http://ruyi.etao.com/?utm_medium=ext&utm_source=ruyi"
+     target="_blank" title="如意淘">
+    <img src="../assets/images/option-logo-zh.png" alt="如意淘">
+  </a>
+
+  <p id="links">
+    <a class="tsina" href="http://weibo.com/ruyitao" target="_blank">官方微博</a>
+    <a class="text-separater"> | </a>
+    <a id="feedback" rel="i18n[feedback_text]" target="_blank"
+       href="http://ruyi.etao.com/feedback">用户反馈</a>
+  </p>
+</div>
+<div class="container">
+  <h2 id="options-text" rel="i18n[options]"></h2>
+
+  <div class="section">
+    <h3 rel="i18n[country]"></h3>
+    <ul id="country-list" class="list clearfix">
+      <li><input name="ruyitao-locale" id="ruyitao-locale-us" value="us"
+                 type="radio"/><label rel="i18n[country_us]"
+                                      for="ruyitao-locale-us">US</label></li>
+      <li><input name="ruyitao-locale" id="ruyitao-locale-zh" value="zh"
+                 type="radio"/><label rel="i18n[country_zh]"
+                                      for="ruyitao-locale-zh">CN</label></li>
+      <li><input name="ruyitao-locale" id="ruyitao-locale-uk" value="uk"
+                 type="radio"/><label rel="i18n[country_uk]"
+                                      for="ruyitao-locale-uk">UK</label></li>
+      <li><input name="ruyitao-locale" id="ruyitao-locale-de" value="de"
+                 type="radio"/><label rel="i18n[country_de]"
+                                      for="ruyitao-locale-de">DE</label></li>
+      <li><input name="ruyitao-locale" id="ruyitao-locale-fr" value="fr"
+                 type="radio"/><label rel="i18n[country_fr]"
+                                      for="ruyitao-locale-fr">FR</label></li>
+      <li><input name="ruyitao-locale" id="ruyitao-locale-ca" value="ca"
+                 type="radio"/><label rel="i18n[country_ca]"
+                                      for="ruyitao-locale-ca">CA</label></li>
+      <li><input name="ruyitao-locale" id="ruyitao-locale-it" value="it"
+                 type="radio"/><label rel="i18n[country_it]"
+                                      for="ruyitao-locale-it">IT</label></li>
+    </ul>
+  </div>
+  <div class="section">
+    <h3 rel="i18n[search_result_setting]"></h3>
+    <span id="search-result-setting">
+      <input type="radio" name="search-result-setting" value="no" id="srs-no" checked="checked" /><label for="srs-no" rel="i18n[no]"></label>
+      <input type="radio" name="search-result-setting" value="yes" id="srs-yes" /><label for="srs-yes" rel="i18n[yes]"></label>
+    </span>
+    <div id="price-compare-result-setting-wrapper">
+      <h3 rel="i18n[price_compare_result_setting]"></h3>
+      <span id="price-compare-result-setting">
+        <input type="radio" name="price-compare-result-setting" value="no" id="pcrs-no" /><label for="pcrs-no" rel="i18n[no]"></label>
+        <input type="radio" name="price-compare-result-setting" value="yes" id="pcrs-yes" checked="checked" /><label for="pcrs-yes" rel="i18n[yes]"></label>
+      </span>
+    </div>
+  </div>
+  <div id="share-wrapper">
+    <div id="share-to-text" rel="i18n[share_to_text]"></div>
+    <div id="jia-this-wrapper">
+      <span id="jiathis_style_32x32">
+        <!-- JiaThis Button BEGIN -->
+        <span id="ckepop" class="share-to-buttons">
+          <a class="jiathis_button_tools_1"></a>
+          <a class="jiathis_button_tools_2"></a>
+          <a class="jiathis_button_tools_3"></a>
+          <a class="jiathis_button_tools_4"></a>
+          <a class="jiathis_button_tools_5"></a>
+          <a href="http://www.jiathis.com/share/?uid=900480"
+             class="jiathis jiathis_txt jtico jtico_jiathis"
+             target="_blank">分享到：</a>
+        </span>
+        <!-- JiaThis Button END -->
+      </span>
+    </div>
+    <iframe id="add-this-wrapper" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+  </div>
+</div>
+<div id="other-extensions">
+  <p rel="i18n[guanyin]"></p>
+  <iframe src="http://ext4u.com/show/ruyi" frameborder="0" height="140"
+          width="756"></iframe>
+</div>
+
+<script>
+if (!exports) var exports = {};
+(function(S) {
+  var timer = null;
+  var SAVED_MESSAGE_HIDDEN_DELAY = 2000;
+  var exports = S;
+  S.browser = chrome;
+  S.i18n = {
+    locale: 'en',
+    messages: {
+      zh: {
+        search_on: '搜索网站',
+        title: '如意淘 - 选项',
+        country: '选择国家：',
+        country_us: '美国',
+        country_zh: '中国',
+        country_uk: '英国',
+        country_de: '德国',
+        country_fr: '法国',
+        country_ca: '加拿大',
+        country_it: '意大利',
+        guanyin: '其他Chrome爱好者的扩展：',
+        feedback_link: 'http://ruyi.etao.com/feedback',
+        feedback_text: '用户反馈',
+        options: '选项：',
+        yes: '是',
+        no: '否',
+        search_result_setting: '搜索页面默认显示比价信息：',
+        price_compare_result_setting: '产品详情页默认显示比价信息：',
+        share_to_text: '分享到：'
+      },
+      en: {
+        search_on: 'Search on',
+        title: 'Shopping Assistant - Options',
+        country: 'Select Country',
+        country_us: 'United States',
+        country_zh: 'China',
+        country_uk: 'United Kingdom',
+        country_de: 'Deutschland',
+        country_fr: 'France',
+        country_ca: 'Canada',
+        country_it: 'Italy',
+        guanyin: 'Other extensions developed by Chrome fans:',
+        feedback_link: 'http://spreadsheets.google.com/viewform?hl=en&formkey=dFhZVkE5ZC1veFk4YzRfVnpDRGtkTWc6MQ',
+        feedback_text: 'Feedback',
+        options: 'Options: ',
+        yes: 'Yes',
+        no: 'No',
+        search_result_setting: 'Show more results by default: ',
+        share_to_text: 'Share to: '
+      },
+      fr: {
+        search_on: 'Recherche sur',
+        title: 'Shopping Assistant - Options',
+        country: 'sélection pays',
+        country_us: 'Etats-Unis',
+        country_zh: 'Chine',
+        country_uk: "Royaume Uni",
+        country_de: "Allemagne",
+        country_fr: 'France',
+        country_ca: 'Canada',
+        country_it: "Italie",
+        guanyin: "Autres extensions développées par les fans de Chrome:",
+        feedback_link: 'http://spreadsheets.google.com/viewform?hl=en&formkey=dFhZVkE5ZC1veFk4YzRfVnpDRGtkTWc6MQ',
+        feedback_text: "Feedback",
+        options: 'Options: ',
+        yes: 'Soyez',
+        no: 'Aucun',
+        search_result_setting: 'Show more results by default: ',
+        share_to_text: 'Share to: '
+      },
+      it: {
+        search_on: 'Cerca su',
+        title: 'Shopping Assistant - Opzioni',
+        country: 'Seleziona Paese',
+        country_us: 'Stati Uniti',
+        country_zh: 'Cina',
+        country_uk: "Regno Unito",
+        country_de: "Germania",
+        country_fr: 'Francia',
+        country_ca: 'Canada',
+        country_it: "Italia",
+        guanyin: "Altre estensioni sviluppate dai fan di Chrome:",
+        feedback_link: 'http://spreadsheets.google.com/viewform?hl=en&formkey=dFhZVkE5ZC1veFk4YzRfVnpDRGtkTWc6MQ',
+        feedback_text: "Feedback",
+        options: 'Opzioni: ',
+        yes: 'essere',
+        no: 'no',
+        search_result_setting: 'Show more results by default: ',
+        share_to_text: 'Share to: '
+      },
+      de: {
+        'search_on' : 'Suche bei',
+        'title' : 'Shopping Assistant - Optionen',
+        'country' : 'Land auswählen',
+        'country_de' : 'Deutschland',
+        'country_uk' : 'Vereinigtes Königreich',
+        'country_us' : 'Vereinigte Staaten',
+        'country_zh' : 'China',
+        country_fr: 'France',
+        country_ca: 'Canada',
+        country_it: 'Italy',
+        guanyin: 'Andere Erweiterungen, die von Chrome Fans entwickelt wurden:',
+        feedback_link: '<a href="http://spreadsheets.google.com/viewform?hl=en&formkey=dFhZVkE5ZC1veFk4YzRfVnpDRGtkTWc6MQ">Reaktion</a>',
+        feedback_text: 'Reaktion',
+        'options': 'Optionen: ',
+        yes: 'sein',
+        no: 'nicht',
+        search_result_setting: 'Show more results by default: ',
+        share_to_text: 'Share to: '
+      }
+    },
+
+    setLocale: function(locale) {
+      if (!(locale in this.messages)) {
+        return;
+      }
+      this.locale = locale;
+    },
+
+    getMessage: function(name) {
+      if ((name in this.messages[this.locale])) {
+        return this.messages[this.locale][name];
+      } else {
+        return '';
+      }
+    }
+  };
+
+  var set_locale = function(event) {
+    S.browser.extension.sendRequest({
+      topic: 'options_set',
+      locale: this.value
+    }, function() {
+      location.reload();
+    })
+  };
+
+  var addShareFeature = function(type) {
+    if (type == 'jia-this') {
+      window.jiathis_config = {
+        url: "http://ruyi.etao.com",
+        title: "比价，直接点！我推荐大家使用购物比价工具#如意淘#，坑爹的强大，一键搜索多家网上商城，轻松多站点比价。如意，如意，淘我心意。介绍视频http://t.cn/zOyD3l6 官方新浪微博： @如意淘，官方网站 ",
+        sm: 'qzone,tsina,tqq,renren,kaixin001'
+      };
+
+      $(document.body).append('<script type="text/javascript" src="http://v2.jiathis.com/code/jia.js?uid=900480" charset="utf-8"><\/script>');
+    } else if (type == 'add-this') {
+      var $addThisIframe = $('#add-this-wrapper');
+      $addThisIframe.attr('src', 'http://taoassistant.com/extension/addthis');
+    }
+  };
+
+  S.browser.extension.sendRequest({
+    topic: 'get_search_engines'
+  }, function(options) {
+    var locale = options.locale;
+    S.i18n.setLocale(locale);
+    $('#ruyitao-locale-' + locale).attr('checked', true);
+
+    if (locale != 'zh') {
+      $('#logo').attr({
+        'title': 'Shopping Assistant',
+        'href': 'http://taoassistant.com/?utm_source=ruyi&utm_medium=ext'
+      }).find('img')
+              .attr({
+                'src': '../assets/images/option-logo-en.png',
+                'alt': 'Shopping Assistant'
+              });
+      $('#feedback').attr('href',
+              'http://spreadsheets.google.com/viewform?hl=en&formkey=dFhZVkE5ZC1veFk4YzRfVnpDRGtkTWc6MQ');
+      addShareFeature('add-this');
+      $('#jia-this-wrapper').hide();
+      $('#add-this-wrapper').show();
+      $('.text-separater, .tsina').hide();
+      $('#price-compare-result-setting-wrapper').hide();
+    } else {
+      addShareFeature('jia-this');
+    }
+
+    $('*').each(function() {
+      var match;
+      if (match = ($(this).attr('rel') || '').match(/i18n\[(.*?)\]/)) {
+        $(this).html(S.i18n.getMessage(match[1]));
+      }
+    });
+  });
+
+  $("input[name=ruyitao-locale]").change(set_locale);
+
+  var setResultSetting = function(type, showing) {
+    var request = {
+      topic: 'options_set'
+    };
+
+    if (type == 'search') {
+      request.search_result_setting = showing;
+    } else if (type == 'price_compare') {
+      request.price_compare_result_setting = showing;
+    }
+
+    S.browser.extension.sendRequest(request);
+  };
+
+  $('#srs-no').click(function() {
+    setResultSetting('search', false);
+  });
+
+  $('#srs-yes').click(function() {
+    setResultSetting('search', true);
+  });
+
+  $('#pcrs-no').click(function() {
+    setResultSetting('price_compare', false);
+  });
+
+  $('#pcrs-yes').click(function() {
+    setResultSetting('price_compare', true);
+  });
+
+  // Init search result setting.
+  S.browser.extension.sendRequest({
+    topic: 'options_get',
+    options: ['search', 'price_compare']
+  }, function(result) {
+    if (result.search_result_setting) {
+      $('#srs-yes').attr('checked', 'checked');
+    } else {
+      $('#srs-no').attr('checked', 'checked');
+    }
+
+    if (result.price_compare_result_setting) {
+      $('#pcrs-yes').attr('checked', 'checked');
+    } else {
+      $('#pcrs-no').attr('checked', 'checked');
+    }
+  });
+})(exports);
+</script>
+</body>
+</html>

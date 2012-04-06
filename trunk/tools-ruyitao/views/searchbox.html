@@ -1,0 +1,1012 @@
+<style type="text/css">
+.ruyitao-reset, .ruyitao-wrapper input, .ruyitao-wrapper td {
+  padding: 0;
+  margin: 0;
+}
+
+.ruyitao-wrapper ul, .ruyitao-wrapper li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  background: none;
+  vertical-align: baseline;
+}
+
+.ruyitao-wrapper table {
+  display: table;
+  table-layout: auto;
+  border-collapse: separate;
+  border-spacing: 2px;
+  border: none;
+}
+
+.ruyitao-wrapper tbody {
+  display: table-row-group;
+  vertical-align: middle;
+}
+
+.ruyitao-wrapper a {
+  padding: 0;
+  background-color: transparent;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  background-image: none;
+}
+
+.ruyitao-wrapper a:hover {
+  text-decoration: none;
+}
+
+.ruyitao-wrapper img, .ruyitao-wrapper img:hover {
+  display: inline;
+  margin: 0;
+  border: none;
+  vertical-align: baseline;
+}
+
+.ruyitao-wrapper form {
+  padding: 0;
+  margin: 0;
+  position: static;
+}
+
+.ruyitao-wrapper button {
+  padding: 1px 10px;
+  margin: 0;
+  border: 1px solid #aaa;
+  border-radius: 2px;
+  background-color: #ddd;
+  background: transparent;
+  background: -webkit-linear-gradient(top, #f2f2f2, #ebebeb 50%, #ddd 50%, #cfcfcf);
+  background: -moz-linear-gradient(top, #f2f2f2, #ebebeb 50%, #ddd 50%, #cfcfcf);
+  background: -o-linear-gradient(top, #f2f2f2, #ebebeb 50%, #ddd 50%, #cfcfcf);
+  background: -ms-linear-gradient(top, #f2f2f2, #ebebeb 50%, #ddd 50%, #cfcfcf);
+  cursor: pointer;
+  color: black;
+  font-weight: normal;
+  font-family: "微软雅黑", "Microsoft YaHei", "宋体", Verdana, Geneva, sans-serif;
+  font-size: 12px;
+  background-color: #f0f0f0;
+}
+
+.ruyitao-wrapper button:hover {
+  color: black;
+  border: 1px solid #aaa;
+  background-color: #d9f0fc;
+  background: transparent;
+  background: -webkit-linear-gradient(top, #eaf6fd, #d9f0fc 50%, #bee6fa 50%, #a7d9f5);
+  background: -moz-linear-gradient(top, #eaf6fd, #d9f0fc 50%, #bee6fa 50%, #a7d9f5);
+  background: -o-linear-gradient(top, #eaf6fd, #d9f0fc 50%, #bee6fa 50%, #a7d9f5);
+  background: -ms-linear-gradient(top, #eaf6fd, #d9f0fc 50%, #bee6fa 50%, #a7d9f5);
+}
+
+.ruyitao-wrapper button:active {
+  color: black;
+  border: 1px solid #aaa;
+  background: transparent;
+  background: -webkit-linear-gradient(top, #cfcfcf, #f2f2f2);
+  background: -moz-linear-gradient(top, #cfcfcf, #f2f2f2);
+  background: -o-linear-gradient(top, #cfcfcf, #f2f2f2);
+  background: -ms-linear-gradient(top, #cfcfcf, #f2f2f2);
+}
+
+.ruyitao-ib {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+}
+
+.ruyitao-wrapper {
+  width: auto;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  -position: absolute;
+  left: 20px;
+  color: black;
+  font-size: 12px;
+  font-family: "微软雅黑", "Microsoft YaHei", "宋体", Verdana, Geneva, sans-serif;
+  text-align: left;
+  -webkit-user-select: none;
+  z-index: 2147483647 !important;
+}
+
+/* controller bar styles start*/
+
+#ruyitao-controller-bar {
+  bottom: 80px;
+  height: 27px;
+  opacity: 0;
+  -webkit-transition: opacity .5s ease-out;
+  -moz-transition: opacity .5s ease-out;
+  -o-transition: opacity .5s ease-out;
+  -ms-transition: opacity .5s ease-out;
+  zoom: 1;
+}
+
+#ruyitao-logo {
+  display: inline-block;
+  position: relative;
+  width: 32px;
+  height: 25px;
+  padding: 0;
+  border: 1px solid #00aeff;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  background: transparent url(%chrome-extension%assets/images/search/logo.png) no-repeat 0 0;
+  box-shadow: 0 0 5px #aaa;
+}
+
+#ruyitao-logo:hover {
+  background: transparent url(%chrome-extension%assets/images/search/logo-hover.png) no-repeat 0 0;
+  background: transparent url(%chrome-extension%assets/images/search/logo.png) no-repeat 0 0\0;
+}
+
+#ruyitao-control-icons {
+  display: inline-block;
+  vertical-align: top;
+  height: 25px;
+  background: url(%chrome-extension%assets/images/search/controller-bg.png) repeat-x 0 0;
+  border: 1px solid #bfbfbf;
+  border-radius: 3px;
+  box-shadow: 0 0 5px #aaa;
+  border-left: none;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  overflow: hidden;
+}
+
+#ruyitao-search-engines {
+  overflow: hidden;
+  height: 25px;
+  padding-left: 5px;
+}
+
+#ruyitao-search-engines .ruyitao-se {
+  float: left;
+  text-align: center;
+  width: 25px;
+  height: 20px;
+  padding-top: 5px;
+  cursor: pointer;
+}
+
+.ruyitao-se-active {
+  cursor: default;
+  background: url(%chrome-extension%assets/images/search/func-icon-hover.png) no-repeat 0 0;
+}
+
+.ruyitao-separator-small {
+  width: 2px;
+  margin: 0 4px;
+  height: 100%;
+  vertical-align: top;
+  background: url(%chrome-extension%assets/images/search/separator-small.png) no-repeat center center;
+}
+
+#ruyitao-functional-btns {
+  height: 100%;
+  overflow: hidden;
+}
+
+#ruyitao-functional-btns .ruyitao-func-btn {
+  float: left;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#ruyitao-functional-btns img {
+  vertical-align: middle;
+}
+
+#ruyitao-collection-btn {
+  display: none;
+}
+
+.ruyitao-active-control-icon {
+  background: url(%chrome-extension%assets/images/search/func-icon-hover.png) 0 0 no-repeat !important;
+}
+
+#ruyitao-search-icon {}
+
+/* controller bar styles end*/
+
+/* product list bar styles start*/
+
+#ruyitao-products-wrapper {
+  display: none;
+  min-width: 300px;
+  bottom: 0;
+  height: 75px;
+  border: 1px solid #bfbfbf;
+  border-radius: 3px;
+  box-shadow: 0 0 5px #aaa;
+  background: url(%chrome-extension%assets/images/search/product-item-bg.png) repeat-x 0 0;
+  white-space: nowrap;
+}
+
+#ruyitao-product-list-wrapper {
+  float: left;
+  height: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  min-width: 240px;
+  -width: 240px;
+  -webkit-transition: width .15s ease-in-out;
+  -moz-transition: width .15s ease-in-out;
+  -o-transition: width .15s ease-in-out;
+  -ms-transition: width .15s ease-in-out;
+}
+
+#ruyitao-product-list {
+  position: absolute;
+  left: 0;
+  -webkit-transition: left .15s ease-in-out;
+  -moz-transition: left .15s ease-in-out;
+  -o-transition: left .15s ease-in-out;
+  -ms-transition: left .15s ease-in-out;
+}
+
+.ruyitao-arrow {
+  float: left;
+  width: 30px;
+  height: 100%;
+  cursor: default;
+  -webkit-transition: all .15s ease-in-out;
+}
+
+.ruyitao-active-arrow:hover, .ruyitao-active-arrow-hl {
+  background-color: #ddd!important;
+}
+
+#ruyitao-prev-page-btn {
+  background: url(%chrome-extension%assets/images/search/prev-page-btn-default.png) center center no-repeat;
+}
+
+#ruyitao-prev-page-btn.ruyitao-active-arrow {
+  cursor: pointer;
+  background: url(%chrome-extension%assets/images/search/prev-page-btn-active.png) center center no-repeat;
+}
+
+#ruyitao-next-page-btn {
+  background: url(%chrome-extension%assets/images/search/next-page-btn-default.png) center center no-repeat;
+}
+
+#ruyitao-next-page-btn.ruyitao-active-arrow {
+  cursor: pointer;
+  background: url(%chrome-extension%assets/images/search/next-page-btn-active.png) center center no-repeat;
+}
+
+#ruyitao-product-list {
+  overflow: hidden;
+  height: 100%;
+}
+
+#ruyitao-product-list .ruyitao-product-item {
+  float: left;
+  width: 80px;
+  height: 70px;
+  padding-top: 5px;
+  text-align: center;
+  cursor: pointer;
+  -webkit-transition: all .15s ease-in-out;
+}
+
+#ruyitao-product-list .ruyitao-product-item:hover, .ruyitao-product-item-hl {
+  background: url(%chrome-extension%assets/images/search/product-item-hover-bg.png) repeat-x 0 0 !important;
+}
+
+.ruyitao-product-item-separator {
+  float: left;
+  height: 100%;
+  width: 0;
+  border-left: 1px solid #b7b7b7;
+  border-right: 1px solid white;
+}
+
+.ruyitao-product-image {
+  max-height: 50px;
+  max-width: 50px;
+  vertical-align: middle !important;
+}
+
+.ruyitao-product-image-wrapper {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  background: white;
+  box-shadow: 0 0 5px #aaa;
+  outline: 1px solid #aaa\9;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+.ruyitao-line-height-setter {
+  display: inline-block;
+  border: 0;
+  width: 0;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.ruyitao-product-price {
+  width: 92%;
+  padding-top: 3px;
+  margin: 0 auto;
+  color: #ce0d12;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.ruyitao-product-price img, .ruyitao-product-price img:hover {
+  margin-top: 2px;
+}
+
+.ruyitao-product-price-wrapper {
+  display: inline-block;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+  font-family: "微软雅黑", "Microsoft YaHei", "宋体", Verdana, Geneva, sans-serif;
+}
+
+#ruyitao-product-list-overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+  text-align: center;
+}
+
+#ruyitao-loading {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  margin-top: 15px;
+  background: transparent url(%chrome-extension%assets/images/search/loading.gif) center center no-repeat;
+  border-radius: 7px;
+}
+
+#ruyitao-message {
+  display: none;
+  font-size: 15px;
+  padding: 28px 20px 0 20px;
+  text-shadow: 0 1px #ccc;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.5);
+  background-color: white\9;
+  height: 100%;
+}
+/* product list bar styles end*/
+
+.ruyitao-popup {
+  position: absolute;
+  bottom: 30px;
+  z-index: 2147483646 !important;
+  border: 1px solid #bfbfbf;
+  border-radius: 3px;
+  box-shadow: 0 0 3px #aaa;
+  zoom: 1;
+}
+
+/* down arrow style start*/
+.ruyitao-arrow-down {
+  display: none;
+  position: absolute;
+  width: 16px;
+  height: 7px;
+  bottom: -7px;
+  background: url(%chrome-extension%assets/images/search/arrow-down.png) 0 0 no-repeat;
+  z-index: 2147483647 !important;
+}
+
+.ruyitao-arrow-down2 {
+  background: url(%chrome-extension%assets/images/search/arrow-down2.png) 0 0 no-repeat;
+}
+/* down arrow style end*/
+
+/* search bar styles start*/
+#ruyitao-search-bar {
+  display: none;
+  width: 189px;
+  height: 20px;
+  padding: 2px 0 3px 4px;
+  left: 0;
+  background: url(%chrome-extension%assets/images/search/search-bar-bg.png) 0 0 repeat-x;
+}
+
+#ruyitao-search-wrapper {
+  width: 152px;
+  height: 19px;
+  vertical-align: middle;
+  overflow: hidden;
+  padding: 0 2px;
+  border: 1px solid #abadb3;
+  border-radius: 2px;
+  background: white;
+}
+
+#ruyitao-search {
+  width: 152px;
+  height: 19px;
+  line-height: 19px;
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+  outline: none;
+  vertical-align: middle;
+  color: black !important;
+  font-size: 12px;
+  font-family: "微软雅黑", "Microsoft YaHei", "宋体", Verdana, Geneva, sans-serif;
+  font-weight: normal;
+  box-shadow: none;
+}
+
+#ruyitao-search-btn {
+  width: 20px;
+  height: 21px;
+  border: none;
+  border-radius: 2px;
+  margin-left: 5px;
+  cursor: pointer;
+  vertical-align: middle;
+  filter: '';
+  background: url(%chrome-extension%assets/images/search/search-en.png) center center no-repeat;
+}
+
+#ruyitao-search-bar .ruyitao-arrow-down {
+  right: 20px;
+}
+/* search bar styles end*/
+
+/* search engines settings styles start*/
+#ruyitao-search-engines-setting {
+  display: none;
+  padding: 5px 8px;
+  background: #fbfbfb;
+  min-width: 100px;
+  -width: 100px; /*Fix min-width for IE6*/
+}
+
+#ruyitao-ses-text {
+  display: block;
+  float: none;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#ruyitao-ses-table {
+  padding-bottom: 5px;
+  margin: 0;
+}
+
+#ruyitao-ses-table .ruyitao-ses-row {
+  margin: 8px 0;
+}
+
+#ruyitao-ses-table .ruyitao-ses-cell {
+  padding: 5px 8px 0 0;
+  white-space: nowrap;
+  font-family: "微软雅黑", "Microsoft YaHei", "宋体", Verdana, Geneva, sans-serif;
+  font-size: 12px;
+  border: none;
+}
+
+#ruyitao-ses-table .ruyitao-ses {
+  float: none;
+  border: none;
+  margin-right: 8px;
+  height: auto;
+  width: auto;
+  line-height: normal;
+}
+
+.ruyitao-ses, .ruyitao-ses-label {
+  display: inline;
+  vertical-align: middle;
+  cursor: default;
+  float: none;
+  margin: 0;
+  padding: 0;
+}
+
+#ruyitao-search-engines-setting .ruyitao-arrow-down {
+  right: 20px;
+}
+
+#ruyitao-submit-ses-btn {
+  height: 24px;
+  min-width: 48px;
+  max-width: 120px;
+}
+
+#ruyitao-ses-msg {
+  display: none;
+  padding-bottom: 5px;
+  color: red;
+}
+/* search engines settings styles end*/
+
+/* option list styles start*/
+#ruyitao-option-list-content {
+  -width: 80px; /* Set fixed width for IE6 */
+  display: none;
+  bottom: 28px;
+  left: 0;
+  padding: 4px;
+  background: #fbfbfb;
+  zoom: 1;
+}
+
+#ruyitao-option-list {
+  zoom: 1;
+}
+
+#ruyitao-option-list .ruyitao-option-item {
+  min-width: 70px; /*Fix shrink to fit width bug for IE7*/
+  width: auto !important;
+  width: 70px;
+  height: 19px;
+  border-radius: 2px;
+  padding: 3px 6px;
+  cursor: pointer;
+  zoom: 1;
+  white-space: nowrap;
+}
+
+.ruyitao-option-item:hover, .ruyitao-option-item-hl {
+  background: url(%chrome-extension%assets/images/search/option-item-hover.png) repeat-x 0 0 !important;
+}
+
+.ruyitao-option-item:hover .ruyitao-option-text,
+.ruyitao-option-item-hl .ruyitao-option-text {
+  color: white;
+}
+
+.ruyitao-option-link {
+  display: inline-block;
+  height: 19px;
+  line-height: 19px\9;
+  width: 100%;
+}
+
+#ruyitao-option-list .ruyitao-option-image {
+  width: 18px;
+  height: 16px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  margin-right: 5px;
+  vertical-align: middle;
+  background-image: url(%chrome-extension%assets/images/search/option-icons.png);
+}
+
+.ruyitao-option-text {
+  color: #5f5f5f;
+  font-size: 12px;
+  font-family: "微软雅黑", "Microsoft YaHei", "宋体", Verdana, Geneva, sans-serif;
+  vertical-align: middle;
+}
+
+#ruyitao-option-link .ruyitao-option-image {
+background-position: 0 -119px;
+}
+
+#ruyitao-feedback-link .ruyitao-option-image {
+background-position: 0 -17px;
+}
+
+#ruyitao-help-link .ruyitao-option-image {
+background-position: 0 -51px;
+}
+
+#ruyitao-official-website-link .ruyitao-option-image {
+background-position: 0 -85px;
+}
+
+#ruyitao-official-microblog-link .ruyitao-option-image {
+background-position: 0 -153px;
+}
+
+#ruyitao-renren-link .ruyitao-option-image {
+background-position: 0 -136px;
+}
+
+#ruyitao-option-link:hover .ruyitao-option-image, .ruyitao-option-link-hl {
+background-position: 0 -102px;
+}
+
+#ruyitao-feedback-link:hover .ruyitao-option-image, .ruyitao-feedback-link-hl {
+background-position: 0 0;
+}
+
+#ruyitao-help-link:hover .ruyitao-option-image, .ruyitao-help-link-hl {
+background-position: 0 -34px;
+}
+
+#ruyitao-official-website-link:hover .ruyitao-option-image, .ruyitao-official-website-link-hl {
+background-position: 0 -68px;
+}
+
+/* option list settings styles end*/
+
+#ruyitao-product-detail-container {
+  display: none;
+  position: absolute;
+  width: 242px;
+  bottom: 110px;
+  border: 1px solid #ccc;
+  background: -webkit-linear-gradient(top, #fbfbfb, #f9f9f9);
+  background: -moz-linear-gradient(top, #fbfbfb, #f9f9f9);
+  background: -o-linear-gradient(top, #fbfbfb, #f9f9f9);
+  background: -ms-linear-gradient(top, #fbfbfb, #f9f9f9);
+  background: white\9;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px #ccc;
+  padding: 8px;
+  color: #4e4e4e;
+  font-size: 13px;
+  overflow: hidden;
+  white-space: normal;
+  z-index: 2147483646 !important
+}
+
+#ruyitao-product-detail-container a, #ruyitao-product-detail-container a:link, #ruyitao-product-page-link {
+  color: #0092d2;
+  text-decoration: none;
+  font-family: "微软雅黑", "Microsoft YaHei", "宋体", Verdana, Geneva, sans-serif;
+}
+
+#ruyitao-product-page-link {
+  line-height: 1.2em;
+}
+
+#ruyitao-product-detail-container a:hover, #ruyitao-product-page-link:hover {
+  color: #036db1 !important;
+  text-decoration: underline !important;
+}
+
+#ruyitao-product-detail-container div {
+  margin-top: 3px;
+}
+
+#ruyitao-product-title {
+  min-height: 1.2em;
+  max-height: 2.4em;
+  line-height: 1.2em;
+  font-weight: bold;
+  overflow: hidden;
+  margin-top: 0 !important;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+#ruyitao-product-price {
+  font-size: 13px;
+}
+
+#ruyitao-product-image {
+  width: 240px;
+  height: 240px;
+  border: 1px solid #ccc;
+  margin: 5px 0;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+#ruyitao-product-image img {
+  max-width: 240px;
+  max-height: 240px;
+  vertical-align: middle;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+#ruyitao-product-image span {
+  height: 100%;
+  vertical-align: middle;
+}
+
+#ruyitao-product-rating span {
+  height: 100%;
+  vertical-align: middle;
+}
+#ruyitao-product-other-info div {
+  height: 24px;
+  line-height: 24px;
+}
+
+#ruyitao-product-used-price {
+  text-decoration: line-through;
+}
+
+#ruyitao-product-now-price {
+  color: red;
+}
+
+#ruyitao-product-rating-stars {
+  font-size: 12px;
+}
+#ruyitao-product-fast-trick {
+  width: 242px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+}
+
+#ruyitao-product-detail-container.ruyitao-product-detail-container-for-etao {
+  width: 350px;
+}
+
+#ruyitao-product-detail-container #ruyitao-product-detail-container-for-etao,
+#ruyitao-product-detail-container-for-etao div {
+  margin-top: 0;
+}
+
+#ruyitao-product-image-for-etao {
+  float: left;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #ccc;
+  text-align: center;
+  margin: 0 12px 10px 0;
+  overflow: hidden;
+}
+
+#ruyitao-product-image-for-etao img {
+  max-width: 100px;
+  max-height: 100px;
+  vertical-align: middle;
+}
+
+#ruyitao-product-image-for-etao span {
+  height: 100%;
+  vertical-align: middle;
+}
+
+#ruyitao-product-base-info-for-etao {
+  overflow: hidden;
+}
+
+#ruyitao-product-base-info-for-etao div {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.ruyitao-clear {
+  clear: both;
+}
+
+#ruyitao-merchants span {
+  margin-right: 10px;
+}
+
+#ruyitao-merchants-price a {
+  display: inline-block;
+  border-radius: 3px;
+  zoom: 1;
+  width: 340px;
+  height: 22px;
+  line-height: 22px\9;
+  padding: 2px 5px;
+}
+
+#ruyitao-merchants-price a:hover {
+  background-color: #ddd;
+  text-decoration: none !important;
+}
+
+.ruyitao-merchant-name {
+  width: 200px;
+  margin-right: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+#ruyitao-merchants-price span {
+  height: 22px;
+  display: inline-block;
+  zoom: 1;
+  vertical-align: middle;
+}
+
+.ruyitao-merchant-price {
+  text-align: right;
+  width: 120px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ruyitao-popup-loading {
+  background: url(%chrome-extension%assets/images/search/loading.gif) no-repeat center;
+  margin: 0 auto;
+  width: 100px;
+  height: 130px;
+}
+
+#ruyitao-teaching {
+  display: none;
+  position: absolute;
+  width: 350px;
+  height: 240px;
+  left: 52px;
+  bottom: 27px;
+  z-index: 2147483646 !important;
+}
+
+.ruyitao-teaching-cn {
+  background: transparent url(%chrome-extension%assets/images/search/teaching-cn.png) no-repeat 0 0;
+}
+
+.ruyitao-teaching-en {
+  background: transparent url(%chrome-extension%assets/images/search/teaching-en.png) no-repeat 0 0;
+}
+
+
+#ruyitao-overlay {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  background-color: black;
+  z-index: 2147483645 !important;
+}
+
+.ruyitao-se-hover-enabled .ruyitao-se:hover {
+  background: url(%chrome-extension%assets/images/search/func-icon-hover.png) 0 0 no-repeat !important;
+}
+
+.ruyitao-separator {
+  border-left: 1px solid #bfbfbf;
+  border-right: 1px solid white;
+  height: 100%;
+  vertical-align: top;
+}
+
+#ruyitao-hide-btn {
+  
+}
+
+#ruyitao-show-btn {
+  display: none;
+  border: 1px solid #bfbfbf;
+  border-radius: 3px;
+  box-shadow: 0 0 5px #aaa;
+  border-left: none;
+  margin-left: -2px;
+  padding-left: 2px;
+  background-position: right top;
+}
+
+.ruyitao-show-hide-icon {
+  vertical-align: middle !important;
+}
+
+.ruyitao-show-hide-btn {
+  background: url(%chrome-extension%assets/images/btn-bg.png) no-repeat 0 0;
+  width: 20px;
+  height: 25px;
+  text-align: center;
+  cursor: pointer;
+  vertical-align: top;
+}
+
+#ruyitao-close-btn {
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  width: 20px;
+  height: 20px;
+  background: url(%chrome-extension%assets/images/close-icon-32bit.png) no-repeat 0 0;
+  -background: url(%chrome-extension%assets/images/close-icon-8bit.png) no-repeat 0 0;
+  cursor: pointer;
+}
+
+#ruyitao-close-btn:hover {
+  background: url(%chrome-extension%assets/images/close-icon-hover.png) no-repeat 0 0;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="%chrome-extension%assets/css/searchbox-patch.css" />
+<div id="ruyitao-controller-bar" class="ruyitao-wrapper">
+  <a id="ruyitao-logo" data-icon-id="logo"></a><span id="ruyitao-control-icons">
+    <ul id="ruyitao-search-engines" class="ruyitao-ib"></ul><div class="ruyitao-separator-small ruyitao-ib">
+    </div><ul id="ruyitao-functional-btns" class="ruyitao-ib">
+      <li id="ruyitao-collection-btn" class="ruyitao-func-btn">
+        <img src="%chrome-extension%assets/images/search/ju.png" />
+      </li>
+      <li id="ruyitao-plus-btn" data-icon-id="plus" class="ruyitao-func-btn" data-i18n="attribute->title:search_engine_setting">
+        <img src="%chrome-extension%assets/images/search/plus.png" /><b class="ruyitao-line-height-setter"></b>
+      </li>
+      <li id="ruyitao-search-icon" data-icon-id="search" class="ruyitao-func-btn" data-i18n="attribute->title:search">
+        <img src="%chrome-extension%assets/images/search/search-en.png" /><b class="ruyitao-line-height-setter"></b>
+      </li>
+    </ul><div class="ruyitao-separator ruyitao-ib"></div><div data-i18n="attribute->title:shrink" id="ruyitao-hide-btn" class="ruyitao-show-hide-btn ruyitao-ib"><img class="ruyitao-show-hide-icon" src="%chrome-extension%assets/images/hide-icon.png" /><b class="ruyitao-line-height-setter"></b></div>
+  </span><span id="ruyitao-show-btn" class="ruyitao-show-hide-btn" data-i18n="attribute->title:expand"><img class="ruyitao-show-hide-icon" src="%chrome-extension%assets/images/show-icon.png" /><b class="ruyitao-line-height-setter"></b></span>
+
+  <div id="ruyitao-search-bar" class="ruyitao-popup">
+    <form id="ruyitao-search-form">
+      <span id="ruyitao-search-wrapper" class="ruyitao-ib"><input id="ruyitao-search" type="text" accesskey="s" autofocus="true" autocomplete="off" maxlength="50" x-webkit-speech x-webkit-grammar="builtin:translate" /></span><button id="ruyitao-search-btn" type="submit" data-i18n="attribute->title:search" hidefocus="true"></button>
+    </form>
+    <div class="ruyitao-arrow-down"></div>
+  </div>
+
+  <div id="ruyitao-search-engines-setting" class="ruyitao-popup">
+    <div id="ruyitao-ses-text" data-i18n="content->search_engine_setting_title"></div>
+    <table id="ruyitao-ses-table">
+      <tbody id="ruyitao-ses-tbody"></tbody>
+    </table>
+    <div id="ruyitao-ses-msg" data-i18n="content->search_engine_setting_msg">请至少选择一个商城</div>
+    <div id="ruyitao-ses-footer">
+      <button id="ruyitao-submit-ses-btn" type="button" hidefocus="true" data-i18n="content->search_engine_setting_commit"></button>
+    </div>
+    <div class="ruyitao-arrow-down ruyitao-arrow-down2"></div>
+  </div>
+
+  <div id="ruyitao-option-list-content" class="ruyitao-popup">
+    <ul id="ruyitao-option-list">
+      <li id="ruyitao-option-link" class="ruyitao-option-item">
+        <a class="ruyitao-option-link" data-i18n="attribute->title:settings">
+          <span class="ruyitao-option-image"></span><span class="ruyitao-option-text" data-i18n="content->settings">选项</span>
+        </a>
+      </li>
+      <li id="ruyitao-feedback-link" class="ruyitao-option-item">
+        <a class="ruyitao-option-link" data-i18n="attribute->title:feedback" href="http://ruyi.etao.com/feedback" target="_blank" hidefocus="true">
+          <span class="ruyitao-option-image"></span><span class="ruyitao-option-text" data-i18n="content->feedback">反馈</span>
+        </a>
+      </li>
+      <li id="ruyitao-help-link" class="ruyitao-option-item">
+        <a class="ruyitao-option-link" title="帮助" target="_blank" href="http://ruyi.etao.com/extension/ruyitao" hidefocus="true">
+          <span class="ruyitao-option-image"></span><span class="ruyitao-option-text">帮助</span>
+        </a>
+      </li>
+      <li id="ruyitao-official-website-link" class="ruyitao-option-item">
+        <a class="ruyitao-option-link" data-i18n="attribute->title:homepage" href="http://ruyi.etao.com/" target="_blank" hidefocus="true">
+          <span class="ruyitao-option-image"></span><span class="ruyitao-option-text" data-i18n="content->homepage">官方网站</span>
+        </a>
+      </li>
+      <li id="ruyitao-official-microblog-link" class="ruyitao-option-item">
+        <a class="ruyitao-option-link" title="官方微博" href="http://weibo.com/ruyitao" target="_blank" hidefocus="true">
+          <span class="ruyitao-option-image"></span><span class="ruyitao-option-text">官方微博</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div id="ruyitao-teaching"></div>
+</div>
+<div id="ruyitao-products-wrapper" class="ruyitao-wrapper">
+  <div id="ruyitao-prev-page-btn" class="ruyitao-arrow"></div>
+  <div id="ruyitao-product-list-wrapper">
+    <ul id="ruyitao-product-list"></ul>
+    <div id="ruyitao-product-list-overlay">
+      <div id="ruyitao-loading"></div>
+    </div>
+    <div id="ruyitao-message" data-i18n="content->no_products"></div>
+  </div>
+  <div id="ruyitao-next-page-btn" class="ruyitao-arrow"></div>
+  <div id="ruyitao-product-detail-container"></div>
+  <div id="ruyitao-close-btn" data-i18n="attribute->title:close"></div>
+</div>
+<div id="ruyitao-overlay"></div>
