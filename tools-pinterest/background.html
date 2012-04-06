@@ -1,0 +1,103 @@
+<!--
+	Copyright Shareaholic, Inc. (www.shareaholic.com).  All Rights Reserved.
+-->
+
+<!DOCTYPE html>
+  <head>
+    <script type="text/javascript">
+        if (typeof(SHR)=="undefined") SHR = {};
+        if (typeof(SHR.TweetButton)=="undefined") SHR.TweetButton = {};
+        
+        (function($) {
+            function pageInfo(tab,callback) {
+                var fallback_ms = 400;
+                
+                pageInfoCallback = callback;
+                chrome.tabs.executeScript(tab.id,{file:'content_scripts/page_info.js'});
+                fallback = setTimeout(function() {
+                    // just get info via regular chrome.tabs.* api, as it seems that content script didn't work 
+                    // (chrome://extensions etc.)
+                    callback({title:tab.title,link:tab.url});
+                    pageInfoCallback = null;
+                    fallback = null;
+                },fallback_ms);
+            }
+            
+            chrome.extension.onRequest.addListener(function(req,sender,response) {
+                if (req.type == 'pageInfo' && pageInfoCallback) {
+                    pageInfoCallback(req.info);
+                    if (fallback) clearTimeout(fallback);
+                    pageInfoCallback = null;
+                }
+            });
+            
+            chrome.browserAction.setBadgeBackgroundColor({color:[153,153,153,153 /* alpha */]});
+            /// Badge
+            var xhr = new XMLHttpRequest();
+            function handleBadgeForTab(tab) {
+                var url = "https://api.pinterest.com/v1/urls/count.json?callback=receiveCount&url="+encodeURIComponent(tab.url);
+                xhr.open("GET", url, false);
+                xhr.onreadystatechange = function() { 
+                    if (this.readyState == 4) {
+                        var match = this.responseText.match(/(\d+)/);
+                        var count = match ? match[1] : "0";
+                        if (count != "0") {
+                            if (count.length > 4) {
+                                var c = parseInt(count)/1000;
+                                var round = Math.floor(c);
+                                count = round + 'K';
+                            }
+                            chrome.browserAction.setBadgeText({text: count, tabId: tab.id});
+                        }
+                    }
+                };
+                xhr.send();
+            }
+            
+            chrome.tabs.onCreated.addListener(function(tab) {
+                if (tab.url.indexOf('chrome://') == 0) return;
+                handleBadgeForTab(tab);
+            });
+            
+            chrome.tabs.onUpdated.addListener(function(tabId,changeInfo,tab) {
+                if (tab.url.indexOf('chrome://') == 0) return;
+                if (changeInfo.status == 'loading') handleBadgeForTab(tab);
+            });
+            
+            
+            function show(tab) {
+                pageInfo(tab,function(info) {
+					var pagelink = info.link;
+					if (pagelink.indexOf("chrome.google.com") >= 0)
+					{	
+						//// Popup
+						alert ("Sorry, we can't see any big images or videos on this page. Please try pinning from another webpage.")
+						
+					} else {
+						//// Servicelet		
+														
+						var  bookmarklet_code="javascript:void((function(){var e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)})());";
+						
+						chrome.tabs.getSelected(null,function(tab){		
+							chrome.tabs.update(tab.id,{url:bookmarklet_code});
+                        });
+					}
+                });
+            }
+             function renderServices() {
+               chrome.contextMenus.removeAll();
+               chrome.contextMenus.create({"title": 'Pin It',  "onclick": genericOnClick , "contexts":["all"] });
+            }
+
+            function genericOnClick (info, tab) {
+                show(tab);
+             }
+            
+			chrome.browserAction.onClicked.addListener(show);
+            renderServices();
+        })();
+    </script>
+  </head>
+  <body>
+  </body>
+</html> 

@@ -1,0 +1,19 @@
+{
+   "background_page": "background.html",
+   "browser_action": {
+      "default_icon": "images/pinterest_16.png",
+      "default_title": "Pinterest Pin It (by Shareaholic)"
+   },
+   "description": "Send images from any website to your pinboards.",
+   "icons": {
+      "128": "images/pinterest_128.png",
+      "16": "images/pinterest_16.png",
+      "32": "images/pinterest_32.png",
+      "64": "images/pinterest_64.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCuoNktzPbfsGF6AxYvb2eDmBRzUnpwh7UMuGq/8jQvj+d36vbVkWZOsu/Ive/ryJK62cNeim/vKr6vUNbuvBusKXlFE7jiCnuh6PIiU5vTN81tXuKvk24i/ZYgTETDc3vy3Gc81ywtm6Zlbijmiwzo+zwvD9XYr2dsr0F2hjBKIwIDAQAB",
+   "name": "Pinterest Pin It Button (by Shareaholic)",
+   "permissions": [ "tabs", "contextMenus", "http://*/*", "https://*/*" ],
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "1.0.1"
+}
