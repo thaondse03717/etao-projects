@@ -1,0 +1,31 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title></title>
+	<script type="text/javascript" src="js/md5-min.js"></script>
+	<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="js/db.js"></script>
+
+	<script type="text/javascript">
+		if(!localStorage['menu_id'] && !localStorage['promotion']){
+			// window.open(chrome.extension.getURL('ad.html'));
+			window.open("https://www.diigo.com/promotion/quick_note.html")
+			localStorage['promotion'] =1;
+		}
+
+
+
+	</script>
+
+
+	<script type="text/javascript" src="js/bg.js"></script>
+	
+	<!-- <script type="text/javascript" src="google/chrome_ex_oauthsimple.js"></script>
+  <script type="text/javascript" src="google/chrome_ex_oauth.js"></script> 
+	<script type="text/javascript" src="google/background.js"></script> -->
+</head>
+<body>
+	<script type="text/javascript" src="js/cga.js"></script>
+</body>
+</html>

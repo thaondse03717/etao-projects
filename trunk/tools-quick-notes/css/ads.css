@@ -1,0 +1,64 @@
+#nav{bottom:136px;}
+
+#ads{
+    background: rgba(0,0,0,.2)!important;
+    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.7);
+    position: absolute;
+    height: 80px;
+    left: 22px;
+    bottom: 27px;
+    width: 220px;
+    padding: 0 5px;
+    border-radius: 5px;
+    display: block!important;
+}
+
+#ads #closeAdsMsg{
+    float:right;
+    height:12px;
+    width:12px;
+    background: url(http://www.readict.com/promotion/images/icon-close.png) 0 0 no-repeat;
+    margin-top:5px;
+    cursor: pointer;
+}
+#ads #closeAdsMsg:hover{
+    background-position: -12px 0;
+}
+
+#ads #adsimage{
+    width:65px;
+    height:65px;
+    float:left;
+    margin: 7px 10px 5px 5px;
+}
+
+#ads #adsimage img{
+    max-height:65px;
+    max-height:65px;
+    border-radius: 5px;
+}
+
+#ads #adlinks{
+    margin: 4px 0 4px 0;
+    height: 74px;
+    overflow:hidden;
+}
+#ads a{
+    font-size: 12px;
+    color: #303030;
+    line-height: 18px;
+    text-decoration:none;
+    overflow: hidden;
+    display: block;
+   /* white-space: nowrap;
+    text-overflow: ellipsis;*/
+}
+
+#ads a:hover{
+    text-decoration:underline;
+}
+#ads h4{
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+}
