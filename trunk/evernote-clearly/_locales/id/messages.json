@@ -1,0 +1,287 @@
+{
+   "chrome_browser_action": {
+      "message": "Tampilkan halaman di Clearly"
+   },
+   "chrome_context_menu": {
+      "message": "Clearly"
+   },
+   "firefox_button": {
+      "message": "Clearly"
+   },
+   "firefox_button_tooltip": {
+      "message": "Tampilkan halaman ini di Clearly."
+   },
+   "firefox_context_menu": {
+      "message": "Clearly"
+   },
+   "firefox_menu": {
+      "message": "Clearly"
+   },
+   "inside__blank_error__body": {
+      "message": "Clearly is currently designed to work on article pages. An article page is any page that contains one large block of text -- like, for example, a newspaper article or blog post."
+   },
+   "inside__blank_error__heading": {
+      "message": "Tip menggunakan Clearly"
+   },
+   "inside__evernote_clipping": {
+      "message": "Mengklip..."
+   },
+   "inside__evernote_clipping_failed": {
+      "message": "Gagal mengklip."
+   },
+   "inside__evernote_login__button_cancel__label": {
+      "message": "Batal"
+   },
+   "inside__evernote_login__button_do__label": {
+      "message": "Masuk"
+   },
+   "inside__evernote_login__create_account": {
+      "message": "Buat akun"
+   },
+   "inside__evernote_login__general__error": {
+      "message": "Autentikasi gagal."
+   },
+   "inside__evernote_login__heading": {
+      "message": "Masuk ke Evernote"
+   },
+   "inside__evernote_login__password__error__format": {
+      "message": "Kata sandi berisi karakter yang salah."
+   },
+   "inside__evernote_login__password__error__invalid": {
+      "message": "Nama pengguna dan kata sandi tidak cocok dengan pengguna saat ini."
+   },
+   "inside__evernote_login__password__error__length": {
+      "message": "Kata sandi harus antara 6 sampai 64 karakter."
+   },
+   "inside__evernote_login__password__error__required": {
+      "message": "Kata sandi wajib diisi."
+   },
+   "inside__evernote_login__password__label": {
+      "message": "Kata Sandi"
+   },
+   "inside__evernote_login__rememberMe__label": {
+      "message": "Ingat saya"
+   },
+   "inside__evernote_login__spinner": {
+      "message": "Masuk ke Evernote"
+   },
+   "inside__evernote_login__username__error__format": {
+      "message": "Nama pengguna berisi karakter yang salah."
+   },
+   "inside__evernote_login__username__error__invalid": {
+      "message": "Bukan pengguna aktif yang valid."
+   },
+   "inside__evernote_login__username__error__length": {
+      "message": "Nama pengguna harus antara 1 sampai 64 karakter."
+   },
+   "inside__evernote_login__username__error__required": {
+      "message": "Nama pengguna wajib diisi."
+   },
+   "inside__evernote_login__username__label": {
+      "message": "Nama Pengguna Evernote atau Alamat Email"
+   },
+   "inside__menu__clip_to_evernote__tooltip": {
+      "message": "Klip ke Evernote."
+   },
+   "inside__menu__close__tooltip": {
+      "message": "Sembunyikan overlay."
+   },
+   "inside__menu__fitts__tooltip": {
+      "message": "Sembunyikan overlay."
+   },
+   "inside__menu__print__tooltip": {
+      "message": "Cetak."
+   },
+   "inside__menu__settings__tooltip": {
+      "message": "Tampilkan Tema."
+   },
+   "inside__misc__page": {
+      "message": "laman"
+   },
+   "inside__rtl__ltr__label": {
+      "message": "Kiri ke kanan"
+   },
+   "inside__rtl__main__label": {
+      "message": "Arah teks?"
+   },
+   "inside__rtl__rtl__label": {
+      "message": "Kanan ke kiri"
+   },
+   "inside__settings__fontSize__large": {
+      "message": "besar"
+   },
+   "inside__settings__fontSize__medium": {
+      "message": "medium"
+   },
+   "inside__settings__fontSize__small": {
+      "message": "kecil"
+   },
+   "inside__settings__theme__1": {
+      "message": "Kertas Koran"
+   },
+   "inside__settings__theme__2": {
+      "message": "Baru"
+   },
+   "inside__settings__theme__3": {
+      "message": "Burung Hantu"
+   },
+   "inside__settings__theme__custom": {
+      "message": "Ubahsuaian"
+   },
+   "meta_extension_author": {
+      "message": "Evernote Corp."
+   },
+   "meta_extension_description": {
+      "message": "Clearly membuat kiriman blog, artikel, dan laman web bersih dan mudah dibaca. Simpan kiriman blog, artikel, dan laman web di Evernote untuk dibaca di mana pun."
+   },
+   "meta_extension_name": {
+      "message": "Clearly"
+   },
+   "options__account__sign_out": {
+      "message": "Masuk sebagai [[=username]]."
+   },
+   "options__account__sign_out_link": {
+      "message": "Keluar."
+   },
+   "options__account__signed_out": {
+      "message": "Anda belum masuk. Klik ikon Evernote, di bilah sisi Clearly, untuk masuk."
+   },
+   "options__base__label": {
+      "message": "CSS Dasar"
+   },
+   "options__box_width__label": {
+      "message": "Lebar Garis"
+   },
+   "options__button__more_options": {
+      "message": "Pilihan Lainnya"
+   },
+   "options__button__reset_custom": {
+      "message": "Reset"
+   },
+   "options__button__save_custom": {
+      "message": "Simpan Tema"
+   },
+   "options__button__save_general": {
+      "message": "Simpan Pilihan"
+   },
+   "options__clip_tag__no__label": {
+      "message": "Jangan melabelkan"
+   },
+   "options__clip_tag__yes__label": {
+      "message": "Labelkan dengan"
+   },
+   "options__color_background__label": {
+      "message": "Warna Latar Belakang"
+   },
+   "options__color_links__label": {
+      "message": "Menautkan Warna"
+   },
+   "options__color_text__label": {
+      "message": "Warna Latar Depan"
+   },
+   "options__custom_css__label": {
+      "message": "CSS Ubahsuaian"
+   },
+   "options__footnote_links__label": {
+      "message": "Bertaut sebagai Catatan Kaki"
+   },
+   "options__keys_activation__label": {
+      "message": "Tampilkan halaman di Clearly"
+   },
+   "options__keys_clip__label": {
+      "message": "Klip ke Evernote"
+   },
+   "options__large_graphics__label": {
+      "message": "Grafik Besar"
+   },
+   "options__message__keys": {
+      "message": "Untuk mengubah, tempatkan cursor di kolom dan tekan kombinasi kunci pada papan tombol."
+   },
+   "options__message__keys_firefox": {
+      "message": "Setelah menyimpannya, mulai ulang peramban Anda."
+   },
+   "options__message__saved": {
+      "message": "Pengaturan akan berfungsi di setiap tab baru yang menggunakan Clearly."
+   },
+   "options__text_align__label": {
+      "message": "Perataan Teks"
+   },
+   "options__text_font__label": {
+      "message": "Huruf Bagian Badan"
+   },
+   "options__text_font_header__label": {
+      "message": "Huruf Catatan Kepala"
+   },
+   "options__text_font_monospace__label": {
+      "message": "Huruf Monospace"
+   },
+   "options__text_line_height__label": {
+      "message": "Tinggi Garis"
+   },
+   "options__text_size__label": {
+      "message": "Ukuran Huruf Dasar"
+   },
+   "options__title__custom": {
+      "message": "Tema Ubahsuaian"
+   },
+   "options__title__general": {
+      "message": "Pilihan"
+   },
+   "options__title__page": {
+      "message": "Clearly/Pilihan"
+   },
+   "options__title__sub__account": {
+      "message": "Akun"
+   },
+   "options__title__sub__keyboard": {
+      "message": "Pemintas papan tombol"
+   },
+   "options__title__sub__tags": {
+      "message": "Mengklip ke Evernote"
+   },
+   "options__values__base__Blueprint": {
+      "message": "Cetak Biru"
+   },
+   "options__values__base__None": {
+      "message": "Tidak ada"
+   },
+   "options__values__base__Theme_1": {
+      "message": "Klasik"
+   },
+   "options__values__base__Theme_2": {
+      "message": "Modern"
+   },
+   "options__values__base__Theme_3": {
+      "message": "Malam"
+   },
+   "options__values__footnote_links__Always": {
+      "message": "Selalu"
+   },
+   "options__values__footnote_links__Never": {
+      "message": "Tidak pernah"
+   },
+   "options__values__footnote_links__On_Print": {
+      "message": "Ketika Dicetak"
+   },
+   "options__values__large_graphics__Do_Nothing": {
+      "message": "Selalu Tampilkan"
+   },
+   "options__values__large_graphics__Hide_Always": {
+      "message": "Selalu Sembunyikan"
+   },
+   "options__values__large_graphics__Hide_on_Print": {
+      "message": "Sembunyikan ketika Dicetak"
+   },
+   "options__values__menu_placement__Bottom_Right": {
+      "message": "Bagian Kanan Bawah"
+   },
+   "options__values__menu_placement__Top_Right": {
+      "message": "Bagian Kanan Atas"
+   },
+   "options__values__text_align__Justified": {
+      "message": "Rata kiri kanan"
+   },
+   "options__values__text_align__Normal": {
+      "message": "Normal"
+   }
+}

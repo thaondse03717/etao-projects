@@ -1,0 +1,287 @@
+{
+   "chrome_browser_action": {
+      "message": "Visionare questa pagina in Clearly."
+   },
+   "chrome_context_menu": {
+      "message": "Clearly"
+   },
+   "firefox_button": {
+      "message": "Clearly"
+   },
+   "firefox_button_tooltip": {
+      "message": "Visiona questa pagina con Clearly."
+   },
+   "firefox_context_menu": {
+      "message": "Clearly"
+   },
+   "firefox_menu": {
+      "message": "Clearly"
+   },
+   "inside__blank_error__body": {
+      "message": "Clearly e al momento rigettato per funzionare su pagine articoli. Una pagina articolo e qualsiasi pagina che contiene un grande blocco di testo -- come, per esempio, un articolo di un quotidiano o un inserzione su un blog."
+   },
+   "inside__blank_error__heading": {
+      "message": "Consigli per usare Clearly"
+   },
+   "inside__evernote_clipping": {
+      "message": "Ritagliando..."
+   },
+   "inside__evernote_clipping_failed": {
+      "message": "Ritaglio fallito."
+   },
+   "inside__evernote_login__button_cancel__label": {
+      "message": "Annulla"
+   },
+   "inside__evernote_login__button_do__label": {
+      "message": "Entra"
+   },
+   "inside__evernote_login__create_account": {
+      "message": "Crea un conto"
+   },
+   "inside__evernote_login__general__error": {
+      "message": "Autenticazione fallita."
+   },
+   "inside__evernote_login__heading": {
+      "message": "Accedi a Evernote"
+   },
+   "inside__evernote_login__password__error__format": {
+      "message": "La password contiene caratteri errati."
+   },
+   "inside__evernote_login__password__error__invalid": {
+      "message": "Nome utente e password non coincidono con utenti esistenti."
+   },
+   "inside__evernote_login__password__error__length": {
+      "message": "La password deve contenere tra i 6 e i 64 caratteri."
+   },
+   "inside__evernote_login__password__error__required": {
+      "message": "\u00C8 necessario inserire la password"
+   },
+   "inside__evernote_login__password__label": {
+      "message": "Password"
+   },
+   "inside__evernote_login__rememberMe__label": {
+      "message": "Ricordati di me"
+   },
+   "inside__evernote_login__spinner": {
+      "message": "Iscrizione a Evernote"
+   },
+   "inside__evernote_login__username__error__format": {
+      "message": "Il nome utente contiene caratteri errati."
+   },
+   "inside__evernote_login__username__error__invalid": {
+      "message": "Non \u00E8 un utente valido attivo."
+   },
+   "inside__evernote_login__username__error__length": {
+      "message": "Il nome utente deve contenere tra 1 e 64 caratteri."
+   },
+   "inside__evernote_login__username__error__required": {
+      "message": "Il nome utente \u00E8 obbligatorio"
+   },
+   "inside__evernote_login__username__label": {
+      "message": "Evernote Nome Utente o Indirizz\u00F2 Email"
+   },
+   "inside__menu__clip_to_evernote__tooltip": {
+      "message": "Ritaglia a Evernote"
+   },
+   "inside__menu__close__tooltip": {
+      "message": "Nasconie la sovrimpressione."
+   },
+   "inside__menu__fitts__tooltip": {
+      "message": "Nascondi la sovrimpressione."
+   },
+   "inside__menu__print__tooltip": {
+      "message": "Stampa."
+   },
+   "inside__menu__settings__tooltip": {
+      "message": "Mostra Temi."
+   },
+   "inside__misc__page": {
+      "message": "pagina"
+   },
+   "inside__rtl__ltr__label": {
+      "message": "Sinistra-a-destra"
+   },
+   "inside__rtl__main__label": {
+      "message": "Direzione testo?"
+   },
+   "inside__rtl__rtl__label": {
+      "message": "Destra-a-sinistra"
+   },
+   "inside__settings__fontSize__large": {
+      "message": "grande"
+   },
+   "inside__settings__fontSize__medium": {
+      "message": "medio"
+   },
+   "inside__settings__fontSize__small": {
+      "message": "piccolo"
+   },
+   "inside__settings__theme__1": {
+      "message": "StampaNotizie"
+   },
+   "inside__settings__theme__2": {
+      "message": "Rilevate"
+   },
+   "inside__settings__theme__3": {
+      "message": "Nottambulo"
+   },
+   "inside__settings__theme__custom": {
+      "message": "Personalizza"
+   },
+   "meta_extension_author": {
+      "message": "Evernote Corp."
+   },
+   "meta_extension_description": {
+      "message": "Clearly fa si che inserzioni blog, articoli e pagine web siano chiare e facili a leggere. Salvali su Evernote per leggerli ovunque."
+   },
+   "meta_extension_name": {
+      "message": "Clearly"
+   },
+   "options__account__sign_out": {
+      "message": "Entra come [[=nomeutente]]."
+   },
+   "options__account__sign_out_link": {
+      "message": "Esci."
+   },
+   "options__account__signed_out": {
+      "message": "Non sei Entrato. Clicca su icone Evernote, nel barra laterale Clearly, per Entrare."
+   },
+   "options__base__label": {
+      "message": "CSS Base"
+   },
+   "options__box_width__label": {
+      "message": "Larghezza Riga"
+   },
+   "options__button__more_options": {
+      "message": "Pi\u00F9 Opzioni"
+   },
+   "options__button__reset_custom": {
+      "message": "Reimpostare"
+   },
+   "options__button__save_custom": {
+      "message": "Salva Tema"
+   },
+   "options__button__save_general": {
+      "message": "Salva Opzioni"
+   },
+   "options__clip_tag__no__label": {
+      "message": "Non inserire tag"
+   },
+   "options__clip_tag__yes__label": {
+      "message": "Tag con"
+   },
+   "options__color_background__label": {
+      "message": "Colore Sfondo"
+   },
+   "options__color_links__label": {
+      "message": "Colore Link"
+   },
+   "options__color_text__label": {
+      "message": "Colore Primo Piano"
+   },
+   "options__custom_css__label": {
+      "message": "CSS Personalizzato"
+   },
+   "options__footnote_links__label": {
+      "message": "Link come Pi\u00E8 di Pagina"
+   },
+   "options__keys_activation__label": {
+      "message": "Visiona pagina in Clearly"
+   },
+   "options__keys_clip__label": {
+      "message": "Ritaglia a Evernote"
+   },
+   "options__large_graphics__label": {
+      "message": "Grafici Grandi"
+   },
+   "options__message__keys": {
+      "message": "Per cambiare, metti il cursore nel campo e battere conbinazione sulla tua tastiera."
+   },
+   "options__message__keys_firefox": {
+      "message": "Riavvia il tuo browser, dopo avere salvato."
+   },
+   "options__message__saved": {
+      "message": "Le impostazioni saranno in effetto su qualsiasi nuova tab su cui tu userai Clearly."
+   },
+   "options__text_align__label": {
+      "message": "Alinea Testo"
+   },
+   "options__text_font__label": {
+      "message": "Corpo Testo"
+   },
+   "options__text_font_header__label": {
+      "message": "Testo D'intestazione"
+   },
+   "options__text_font_monospace__label": {
+      "message": "Mono Spazio Testo"
+   },
+   "options__text_line_height__label": {
+      "message": "Altezza Riga"
+   },
+   "options__text_size__label": {
+      "message": "Misura di Base Caratteri"
+   },
+   "options__title__custom": {
+      "message": "Tema Personalizzato"
+   },
+   "options__title__general": {
+      "message": "Opzioni"
+   },
+   "options__title__page": {
+      "message": "Clearly / Opzioni"
+   },
+   "options__title__sub__account": {
+      "message": "Conto"
+   },
+   "options__title__sub__keyboard": {
+      "message": "Scorciatoie Tastiera"
+   },
+   "options__title__sub__tags": {
+      "message": "Ritagliando a Evernote"
+   },
+   "options__values__base__Blueprint": {
+      "message": "Cianografia"
+   },
+   "options__values__base__None": {
+      "message": "Nessuno"
+   },
+   "options__values__base__Theme_1": {
+      "message": "Classico"
+   },
+   "options__values__base__Theme_2": {
+      "message": "Moderno"
+   },
+   "options__values__base__Theme_3": {
+      "message": "Di Notte"
+   },
+   "options__values__footnote_links__Always": {
+      "message": "Sempre"
+   },
+   "options__values__footnote_links__Never": {
+      "message": "Mai"
+   },
+   "options__values__footnote_links__On_Print": {
+      "message": "Su Stampa"
+   },
+   "options__values__large_graphics__Do_Nothing": {
+      "message": "Mostra Sempre"
+   },
+   "options__values__large_graphics__Hide_Always": {
+      "message": "Nascondi Sempre"
+   },
+   "options__values__large_graphics__Hide_on_Print": {
+      "message": "Nascondi quando Stampando"
+   },
+   "options__values__menu_placement__Bottom_Right": {
+      "message": "Basso a Destra"
+   },
+   "options__values__menu_placement__Top_Right": {
+      "message": "Alto a Destra"
+   },
+   "options__values__text_align__Justified": {
+      "message": "Giustificato"
+   },
+   "options__values__text_align__Normal": {
+      "message": "Normale"
+   }
+}

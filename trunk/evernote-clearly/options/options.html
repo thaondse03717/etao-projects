@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />	
+
+	<title translate="title__page"></title>
+	<link rel="icon" href="chrome-extension://iooicodkiihhpojmmeghjclgihfjdjhj/img/favicon.ico"/>
+
+	<link rel="stylesheet" href="chrome-extension://iooicodkiihhpojmmeghjclgihfjdjhj/options/options.css"/>
+</head>
+<body class="showGeneral">
+
+	<div id="sidebar">
+		<div id="sidebar__menu">
+			<a id="sidebar__menu__general" href="#"><span translate="title__general"></span></a>
+			<a id="sidebar__menu__custom" href="#"><span translate="title__custom"></span></a>
+		</div>
+		<div id="sidebar__logo"></div>
+		<div id="sidebar__shading"></div>
+		<div id="sidebar__copyright">&copy; 2012, Evernote Corporation.</div>
+		<div id="sidebar__licenses"><a href="#">Legal Notices</a>.</div>
+	</div>
+
+	<div class="view" id="view__general">
+		
+	<div class="view__heading" translate="title__general"></div>
+	<div class="view_separator" id="view__general__separator__1"></div>
+	
+	<div class="message" id="view__general__message__keys" translate="message__keys"></div>
+	<div class="message" id="view__general__message__saved" translate="message__saved"></div>
+	
+	<!-- === -->
+	<div class="view__general__subtitle" id="view__general__subtitle__keyboard" translate="title__sub__keyboard"></div>
+	
+	<table cellspacing="0" cellpadding="0" border="0" class="controlTable" id="keys_activation__controlTable"><tr>
+		<td class="label"><label for="keys_activation__control" translate="keys_activation__label"></label></td>
+		<td class="control">
+			<input id="keys_activation__control"/>
+		</td>
+	</tr></table>
+
+	<table cellspacing="0" cellpadding="0" border="0" class="controlTable" id="keys_clip__controlTable"><tr>
+		<td class="label"><label for="keys_activation__control" translate="keys_clip__label"></label></td>
+		<td class="control">
+			<input id="keys_clip__control"/>
+		</td>
+	</tr></table>
+
+	<!-- === -->
+	<div class="view_separator" id="view__general__separator__2"></div>
+	<div class="view__general__subtitle" id="view__general__subtitle__tags" translate="title__sub__tags"></div>
+	
+	<table cellspacing="0" cellpadding="0" border="0" class="controlTable withRadio" id="clip_tag__yes__controlTable">
+	<tr>
+		<td class="radio"><input type="radio" id="clip_tag__radio__yes" name="clip_tag__radio"/></td>
+		<td class="label"><label for="clip_tag__radio__yes" translate="clip_tag__yes__label"></label></td>
+		<td class="control">
+			<input id="clip_tag__control"/>
+		</td>
+	</tr>
+	</table>
+
+	<table cellspacing="0" cellpadding="0" border="0" class="controlTable withRadio" id="clip_tag__no__controlTable">
+	<tr>
+		<td class="radio"><input type="radio" id="clip_tag__radio__no" name="clip_tag__radio"/></td>
+		<td class="label"><label for="clip_tag__radio__no" translate="clip_tag__no__label"></label></td>
+		<td class="control"></td>
+	</tr>
+	</table>
+
+	<!-- === -->
+	<div class="view_separator" id="view__general__separator__3"></div>
+	<div class="view__general__subtitle" id="view__general__subtitle__account" translate="title__sub__account"></div>
+
+	<div id="account__container"></div>
+	
+	<!-- === -->
+	<div class="view_separator" id="view__general__separator__4"></div>
+	<div class="buttonsContainer" id="view__general__buttons__container">
+		<input id="button__save_general" style="font-weight:bold;" type="button" class="button floatingButton" translate="button__save_general"/>
+		<div class="saveSpinner" id="button__save_general__spinner"></div>
+	</div>
+	
+	<!-- === -->
+	<div class="view_ending" id="view__general__ending"></div>
+	
+	</div>
+	
+	<div class="view" id="view__custom">
+		
+	<div class="view__heading" translate="title__custom"></div>
+	<div class="view_separator" id="view__custom__separator__1"></div>
+	
+	<!-- === -->
+	
+	<table cellspacing="0" cellpadding="0" border="0" class="controlTable" id="text_font__controlTable"><tr>
+		<td class="label"><label for="text_font__control" translate="text_font__label"></label></td>
+		<td class="control">
+			<select id="text_font__select">
+                
+    <option value="PT Serif">PT Serif</option>
+    <option value="Crimson Text">Crimson Text</option>
+    <option value="Droid Serif">Droid Serif</option>
+    <option value="Tinos">Tinos</option>
+    <option value="Neuton">Neuton</option>
+    <option value="Vollkorn">Vollkorn</option>
+    <option value="Cardo">Cardo</option>
+    <option value="Bentham">Bentham</option>
+    <option value="Cantarell">Cantarell</option>
+    <option value="Droid Sans">Droid Sans</option>
+    <option value="Molengo">Molengo</option>
+    <option value="Allerta">Allerta</option>
+    <option value="Ubuntu">Ubuntu</option>
+    <option value="Inconsolata">Inconsolata</option>
+    <option value="Droid Sans Mono">Droid Sans Mono</option>
+    <option value="Georgia">Georgia</option>
+    <option value="Times, Times New Roman">Times, Times New Roman</option>
+    <option value="Palatino, Palatino Linotype">Palatino, Palatino Linotype</option>
+    <option value="Helvetica">Helvetica</option>
+    <option value="Arial">Arial</option>
+    <option value="Verdana">Verdana</option>
+    <option value="Geneva">Geneva</option>
+
+			</select>
+		</td>
+	</tr></table>
+
+	<table cellspacing="0" cellpadding="0" border="0" class="controlTable" id="text_font_header__controlTable"><tr>
+		<td class="label"><label for="text_font_header__control" translate="text_font_header__label"></label></td>
+		<td class="control">
+			<select id="text_font_header__select">
+                
+    <option value="PT Serif">PT Serif</option>
+    <option value="Crimson Text">Crimson Text</option>
+    <option value="Droid Serif">Droid Serif</option>
+    <option value="Tinos">Tinos</option>
+    <option value="Neuton">Neuton</option>
+    <option value="Vollkorn">Vollkorn</option>
+    <option value="Cardo">Cardo</option>
+    <option value="Bentham">Bentham</option>
+    <option value="Cantarell">Cantarell</option>
+    <option value="Droid Sans">Droid Sans</option>
+    <option value="Molengo">Molengo</option>
+    <option value="Allerta">Allerta</option>
+    <option value="Ubuntu">Ubuntu</option>
+    <option value="Inconsolata">Inconsolata</option>
+    <option value="Droid Sans Mono">Droid Sans Mono</option>
+    <option value="Georgia">Georgia</option>
+    <option value="Times, Times New Roman">Times, Times New Roman</option>
+    <option value="Palatino, Palatino Linotype">Palatino, Palatino Linotype</option>
+    <option value="Helvetica">Helvetica</option>
+    <option value="Arial">Arial</option>
+    <option value="Verdana">Verdana</option>
+    <option value="Geneva">Geneva</option>
+
+			</select>
+		</td>
+	</tr></table>
+
+	<table cellspacing="0" cellpadding="0" border="0" class="controlTable" id="text_font_monospace__controlTable"><tr>
+		<td class="label"><label for="text_font_monospace__control" translate="text_font_monospace__label"></label></td>
+		<td class="control">
+			<select id="text_font_monospace__select">
+                
+    <option value="Courier New, Courier">Courier New, Courier</option>
+    <option value="Lucida Console">Lucida Console</option>
+    <option value="Andale Mono">Andale Mono</option>
+    <option value="Monaco">Monaco</option>
+    <option value="Inconsolata">Inconsolata</option>
+    <option value="Droid Sans Mono">Droid Sans Mono</option>
+    <option value="Cousine">Cousine</option>
+    <option value="Anonymous Pro">Anonymous Pro</option>
+
+			</select>
+		</td>
+	</tr></table>
+
+	<!-- === -->
+	<div class="controls_separator" id="controls__separator__1"></div>
+
+	<table cellspacing="0" cellpadding="0" border="0" class="controlTable" id="color_background__controlTable"><tr>
+		<td class="label"><label for="color_background__control" translate="color_background__label"></label></td>
+		<td class="control"><div class="miniColorsContainer">
+			<input id="color_background__control"/>
+		</div></td>
+	</tr></table>
+
+	<table cellspacing="0" cellpadding="0" border="0" class="controlTable" id="color_text__controlTable"><tr>
+		<td class="label"><label for="color_text__control" translate="color_text__label"></label></td>
+		<td class="control"><div class="miniColorsContainer">
+			<input id="color_text__control"/>
+		</div></td>
+	</tr></table>
+
+	<table cellspacing="0" cellpadding="0" border="0" class="controlTable" id="color_links__controlTable"><tr>
+		<td class="label"><label for="color_links__control" translate="color_links__label"></label></td>
+		<td class="control"><div class="miniColorsContainer">
+			<input id="color_links__control"/>
+		</div></td>
+	</tr></table>
+
+	<!-- === -->
+	<div class="controls_separator" id="controls__separator__2"></div>
+	
+	<table cellspacing="0" cellpadding="0" border="0" class="controlTable smaller" id="text_size__controlTable"><tr>
+		<td class="label"><label for="text_size__control" translate="text_size__label"></label></td>
+		<td class="control">
+			<input id="text_size__control"/>
+		</td>
+	</tr></table>
+	
+	<table cellspacing="0" cellpadding="0" border="0" class="controlTable smaller" id="text_line_height__controlTable"><tr>
+		<td class="label"><label for="text_line_height__control" translate="text_line_height__label"></label></td>
+		<td class="control">
+			<input id="text_line_height__control"/>
+		</td>
+	</tr></table>
+
+	<table cellspacing="0" cellpadding="0" border="0" class="controlTable smaller" id="box_width__controlTable"><tr>
+		<td class="label"><label for="box_width__control" translate="box_width__label"></label></td>
+		<td class="control">
+			<input id="box_width__control"/>
+		</td>
+	</tr></table>
+
+	<!-- === -->
+
+<div id="view__custom__miscSettings__container">
+	
+	<div class="view_separator" id="view__custom__separator__2"></div>
+	<div class="view_separator" id="view__custom__separator__3"></div>
+
+	<table cellspacing="0" cellpadding="0" border="0" class="controlTable" id="base__controlTable"><tr>
+		<td class="label"><label for="base__control" translate="base__label"></label></td>
+		<td class="control">
+			<select id="base__control">
+				<option value="blueprint" translate="values__base__Blueprint"></option>
+				<option value="theme-1" translate="values__base__Theme_1"></option>
+				<option value="theme-2" translate="values__base__Theme_2"></option>
+				<option value="theme-3" translate="values__base__Theme_3"></option>
+				<option value="" translate="values__base__None"></option>
+			</select>
+		</td>
+	</tr></table>
+
+	<table cellspacing="0" cellpadding="0" border="0" class="controlTable" id="text_align__controlTable"><tr>
+		<td class="label"><label for="text_align__control" translate="text_align__label"></label></td>
+		<td class="control">
+			<select id="text_align__control">
+				<option value="normal" translate="values__text_align__Normal"></option>
+				<option value="justified" translate="values__text_align__Justified"></option>
+			</select>
+		</td>
+	</tr></table>
+
+	<!-- === -->
+	<div class="controls_separator" id="controls__separator__3"></div>
+	
+	<table cellspacing="0" cellpadding="0" border="0" class="controlTable" id="footnote_links__controlTable"><tr>
+		<td class="label"><label for="footnote_links__control" translate="footnote_links__label"></label></td>
+		<td class="control">
+			<select id="footnote_links__control">
+				<option value="on_print" translate="values__footnote_links__On_Print"></option>
+				<option value="always" translate="values__footnote_links__Always"></option>
+				<option value="never" translate="values__footnote_links__Never"></option>
+			</select>
+		</td>
+	</tr></table>
+
+	<table cellspacing="0" cellpadding="0" border="0" class="controlTable" id="large_graphics__controlTable"><tr>
+		<td class="label"><label for="large_graphics__control" translate="large_graphics__label"></label></td>
+		<td class="control">
+			<select id="large_graphics__control">
+				<option value="do_nothing" translate="values__large_graphics__Do_Nothing"></option>
+				<option value="hide_on_print" translate="values__large_graphics__Hide_on_Print"></option>
+				<option value="hide_always" translate="values__large_graphics__Hide_Always"></option>
+			</select>
+		</td>
+	</tr></table>
+
+	<!-- === -->
+	<div class="controls_separator" id="controls__separator__4"></div>
+
+	<table cellspacing="0" cellpadding="0" border="0" class="controlTable" id="custom_css__controlTable"><tr>
+		<td class="label"><label for="custom_css__control" translate="custom_css__label"></label></td>
+		<td class="control">
+			<textarea rows="4" id="custom_css__control"></textarea>
+		</td>
+	</tr></table>
+
+</div>
+
+	<!-- === -->
+
+<div id="view__custom__frameAndButtons__container">
+	
+	<div class="message" id="view__custom__message__saved" translate="message__saved"></div>
+	
+	<div id="preview_frame">
+		<iframe frameborder="0" allowtransparency="true"></iframe>
+	</div>
+
+	<!-- === -->
+
+	<div class="buttonsContainer" id="view__custom__buttons__container">
+		<input id="button__save_custom" style="font-weight: bold;" type="button" class="button floatingButton" translate="button__save_custom"/>
+		<input id="button__reset_custom" type="button" class="button floatingButton" translate="button__reset_custom"/>
+		<input id="button__more_options" type="button" class="button floatingButton" translate="button__more_options"/>
+		<div class="saveSpinner" id="button__save_custom__spinner"></div>
+	</div>
+
+	<!-- === -->
+	<div class="view_ending" id="view__custom__ending"></div>
+	
+</div>	
+	</div>
+
+    
+	<!-- licenses -->
+	<div id="licenses">
+        <div id="licenses_overlay"></div>
+        <div id="licenses_frame">
+            <div id="licenses_frame_inner">
+                <h1>Clearly uses the following open-source software:</h1>
+<!--<ul>
+    <li><a href="#jquery">jQuery</a></li>
+    <li><a href="#flexselect">FlexSelect</a></li>
+    <li><a href="#liquidmetal">LiquidMetal</a></li>
+    <li><a href="#minicolors">MiniColors</a></li>
+</ul>-->
+
+
+<div><h2 id="jquery">jQuery</h2>
+<pre>jQuery JavaScript Library v1.6.1
+http://jquery.com/
+
+Copyright 2011, John Resig
+Dual licensed under the MIT or GPL Version 2 licenses.
+http://jquery.org/license
+
+Includes Sizzle.js
+http://sizzlejs.com/
+Copyright 2011, The Dojo Foundation
+Released under the MIT, BSD, and GPL Licenses.
+
+Copyright (c) 2011 John Resig, http://jquery.com/
+</pre></div>
+
+
+<div><h2 id="flexselect">FlexSelect</h2>
+<pre>flexselect: a jQuery plugin, version: 0.2.2 (2011-07-20)
+
+FlexSelect is a jQuery plugin that makes it easy to convert a select box into
+a Quicksilver-style, autocompleting, flex matching selection tool.
+
+For usage and examples, visit:
+http://rmm5t.github.com/jquery-flexselect/
+
+Licensed under the MIT:
+http://www.opensource.org/licenses/mit-license.php
+
+Copyright (c) 2009, Ryan McGeary (ryanonjavascript -[at]- mcgeary [*dot*] org)
+</pre></div>
+
+
+<div><h2 id="liquidmetal">LiquidMetal</h2>
+<pre>LiquidMetal, version: 0.1 (2009-02-05)
+
+A mimetic poly-alloy of Quicksilver's scoring algorithm, essentially
+LiquidMetal.
+
+For usage and examples, visit:
+http://github.com/rmm5t/liquidmetal
+
+Licensed under the MIT:
+http://www.opensource.org/licenses/mit-license.php
+
+Copyright (c) 2009, Ryan McGeary (ryanonjavascript -[at]- mcgeary [*dot*] org)
+</pre></div>
+
+
+<div><h2 id="minicolors">MiniColors</h2>
+<pre>jQuery miniColors: A small color selector
+
+Copyright 2011 Cory LaViska for A Beautiful Site, LLC. (http://abeautifulsite.net/)
+http://abeautifulsite.net/blog/2011/02/jquery-minicolors-a-color-selector-for-input-controls/
+
+Dual licensed under the MIT or GPL Version 2 licenses
+</pre></div>
+
+
+<div><h2 id="minicolors">JABSORB</h2>
+<pre>jabsorb: a Java to JavaScript Advanced Object Request Broker
+http://www.jabsorb.org
+
+Copyright 2007-2009 The jabsorb team
+Copyright (c) 2005 Michael Clark, Metaparadigm Pte Ltd
+Copyright (c) 2003-2004 Jan-Klaas Kollhof
+
+This code is based on original code from the json-rpc-java library
+which was originally based on Jan-Klaas' JavaScript o lait library
+(jsolait).
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+</pre></div>
+
+
+<!--<div><h2 id="mit">The MIT License</h2>
+<pre>Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+</pre></div>
+-->
+            </div>
+        </div>
+    </div>
+	
+	<!-- preview frame -->
+	<div id="preview_frame_contents" style="display: none;">
+		<p>In publishing and graphic design, <strong>lorem ipsum</strong> is placeholder text commonly used to demonstrate the graphic elements of a document or visual presentation &mdash; i.e. font, typography, and layout. The lorem ipsum text is typically a section of a Latin text by Cicero, with words altered, added, and removed &mdash; which makes it nonsensical in meaning.</p>
+<p>A common form of lorem ipsum text reads as follows:</p>
+<blockquote>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</blockquote>
+<p>Many variations on the standard lorem ipsum text exist; some with little resemblance to the original. There are versions that have additional letters &mdash; such as k, w, and z &mdash; that were uncommon or missing in the Latin language; these were added to achieve a distribution of letters that more closely approximates English.</p>
+
+<hr/>
+
+<ol>
+	<li><a href="#" title="Link">A Link</a></li>
+	<li><del>Deleted</del></li>
+</ol>
+
+<ul>
+	<li><strong>Strong | Bold</strong></li>
+	<li><em>Emphasis | Italic</em></li>
+</ul>
+<hr/>
+
+<h1 id="internal_link_target">Level 01 Heading</h1>
+<h2>Level 02 Heading</h2>
+<h3>Level 03 Heading</h3>
+<h4>Level 04 Heading</h4>
+<h5>Level 05 Heading</h5>
+<h6>Level 06 Heading</h6>
+<hr/>
+
+<table>
+	<caption>Table: Jimi Hendrix - albums</caption>
+	<thead>
+		<tr>
+			<th>Album</th>
+			<th>Year</th>
+			<th>Price</th>
+		</tr>
+	</thead>
+	<tfoot>
+		<tr>
+			<td>Album</td>
+			<td>Year</td>
+			<td>Price</td>
+		</tr>
+	</tfoot>
+	<tbody>
+		<tr>
+			<td>Are You Experienced </td>
+			<td>1967</td>
+			<td>$10.00</td>
+		</tr>
+		<tr>
+		  <td>Axis: Bold as Love</td>
+		  <td>1967</td>
+		  <td>$12.00</td>
+		</tr>
+		<tr>
+			<td>Electric Ladyland</td>
+			<td>1968</td>
+			<td>$10.00</td>
+		</tr>
+		<tr>
+			<td>Band of Gypsys</td>
+			<td>1970</td>
+			<td>$12.00</td>
+		</tr>
+	</tbody>
+</table>
+<hr />
+
+<pre>
+And some fixed width text.
+As a matter of fact, this is a bit of Readable's own code.
+
+var _coverElement = document.createElement('div');
+_coverElement.setAttribute('id', 'readable_cover');
+_coverElement.setAttribute('style', 'display: none');
+
+_body.appendChild(_coverElement);</pre>
+
+	</div>
+
+	
+	<!-- libs -->
+	<script src="chrome-extension://iooicodkiihhpojmmeghjclgihfjdjhj/libs/jQuery.js" type="text/javascript"></script>
+	
+	<link href="chrome-extension://iooicodkiihhpojmmeghjclgihfjdjhj/libs/miniColors/jquery.miniColors.css" rel="stylesheet" type="text/css"/>
+	<script src="chrome-extension://iooicodkiihhpojmmeghjclgihfjdjhj/libs/miniColors/jquery.miniColors.js" type="text/javascript"></script>
+	
+	<link href="chrome-extension://iooicodkiihhpojmmeghjclgihfjdjhj/libs/flexSelect/flexselect.css" rel="stylesheet" type="text/css"/>
+	<script src="chrome-extension://iooicodkiihhpojmmeghjclgihfjdjhj/libs/flexSelect/liquidmetal.js" type="text/javascript"></script>
+	<script src="chrome-extension://iooicodkiihhpojmmeghjclgihfjdjhj/libs/flexSelect/jquery.flexselect.js" type="text/javascript"></script>
+	
+	<!-- script -->
+	<script src="chrome-extension://iooicodkiihhpojmmeghjclgihfjdjhj/options/options.js" type="text/javascript"></script>
+
+    <!-- track -->
+    
+    <script type="text/javascript">
+        chrome.extension.sendRequest({_type: 'to-chrome--track--settings'});
+    </script>
+    
+</body>
+</html>

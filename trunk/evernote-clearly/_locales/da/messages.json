@@ -1,0 +1,287 @@
+{
+   "chrome_browser_action": {
+      "message": "Vis denne side i Clearly."
+   },
+   "chrome_context_menu": {
+      "message": "Clearly"
+   },
+   "firefox_button": {
+      "message": "Clearly"
+   },
+   "firefox_button_tooltip": {
+      "message": "Vis denne side i Clearly."
+   },
+   "firefox_context_menu": {
+      "message": "Clearly"
+   },
+   "firefox_menu": {
+      "message": "Clearly"
+   },
+   "inside__blank_error__body": {
+      "message": "Clearly is currently designed to work on article pages. An article page is any page that contains one large block of text -- like, for example, a newspaper article or blog post."
+   },
+   "inside__blank_error__heading": {
+      "message": "Tips til brug af Clearly"
+   },
+   "inside__evernote_clipping": {
+      "message": "Klipper..."
+   },
+   "inside__evernote_clipping_failed": {
+      "message": "Klipning mislykkedes."
+   },
+   "inside__evernote_login__button_cancel__label": {
+      "message": "Annuller"
+   },
+   "inside__evernote_login__button_do__label": {
+      "message": "Log ind"
+   },
+   "inside__evernote_login__create_account": {
+      "message": "Opret en bruger"
+   },
+   "inside__evernote_login__general__error": {
+      "message": "Godkendelsen mislykkedes"
+   },
+   "inside__evernote_login__heading": {
+      "message": "Log p\u00E5 Evernote"
+   },
+   "inside__evernote_login__password__error__format": {
+      "message": "Adgangskoden indeholder ugyldige tegn."
+   },
+   "inside__evernote_login__password__error__invalid": {
+      "message": "Brugernavn og adgangskode passer ikke til nogen eksisterende bruger."
+   },
+   "inside__evernote_login__password__error__length": {
+      "message": "Adgangskoden m\u00E5 indeholde mellem 6 og 64 tegn"
+   },
+   "inside__evernote_login__password__error__required": {
+      "message": "Adgangskode er p\u00E5kr\u00E6vet."
+   },
+   "inside__evernote_login__password__label": {
+      "message": "Adgangskode"
+   },
+   "inside__evernote_login__rememberMe__label": {
+      "message": "Husk mig"
+   },
+   "inside__evernote_login__spinner": {
+      "message": "Logger ind"
+   },
+   "inside__evernote_login__username__error__format": {
+      "message": "Brugernavnet indeholder ugyldige tegn."
+   },
+   "inside__evernote_login__username__error__invalid": {
+      "message": "Ikke gyldig aktiv bruger"
+   },
+   "inside__evernote_login__username__error__length": {
+      "message": "Brugernavnet skal v\u00E6re mellem 1 og 64 tegn."
+   },
+   "inside__evernote_login__username__error__required": {
+      "message": "Brugernavn kr\u00E6ves."
+   },
+   "inside__evernote_login__username__label": {
+      "message": "Evernote-brugernavn eller email-adresse"
+   },
+   "inside__menu__clip_to_evernote__tooltip": {
+      "message": "Klip til Evernote."
+   },
+   "inside__menu__close__tooltip": {
+      "message": "Skjul overlay."
+   },
+   "inside__menu__fitts__tooltip": {
+      "message": "Skjul overlay."
+   },
+   "inside__menu__print__tooltip": {
+      "message": "Udskriv."
+   },
+   "inside__menu__settings__tooltip": {
+      "message": "Vis temaer."
+   },
+   "inside__misc__page": {
+      "message": "side"
+   },
+   "inside__rtl__ltr__label": {
+      "message": "Venstre-til-h\u00F8jre."
+   },
+   "inside__rtl__main__label": {
+      "message": "Tekst retning?"
+   },
+   "inside__rtl__rtl__label": {
+      "message": "H\u00F8jre-til-venstre"
+   },
+   "inside__settings__fontSize__large": {
+      "message": "stor"
+   },
+   "inside__settings__fontSize__medium": {
+      "message": "medium"
+   },
+   "inside__settings__fontSize__small": {
+      "message": "lille"
+   },
+   "inside__settings__theme__1": {
+      "message": "Nyhedsartikel"
+   },
+   "inside__settings__theme__2": {
+      "message": "Bem\u00E6rkelsesv\u00E6rdig"
+   },
+   "inside__settings__theme__3": {
+      "message": "Natugle"
+   },
+   "inside__settings__theme__custom": {
+      "message": "Brugerdefineret"
+   },
+   "meta_extension_author": {
+      "message": "Evernote Corp."
+   },
+   "meta_extension_description": {
+      "message": "Clearly g\u00F8r blogindl\u00E6g, artikler og websider rene og lette at l\u00E6se. Gem dem til Evernote for at l\u00E6se dem overalt."
+   },
+   "meta_extension_name": {
+      "message": "Clearly"
+   },
+   "options__account__sign_out": {
+      "message": "Logget ind som [[=username]]."
+   },
+   "options__account__sign_out_link": {
+      "message": "Log ud."
+   },
+   "options__account__signed_out": {
+      "message": "Du er ikke logget ind. Klik p\u00E5 Evernote-ikonet i Clearly-sidebaren, for at logge ind."
+   },
+   "options__base__label": {
+      "message": "Basis-CSS"
+   },
+   "options__box_width__label": {
+      "message": "Linjebredde"
+   },
+   "options__button__more_options": {
+      "message": "Flere muligheder"
+   },
+   "options__button__reset_custom": {
+      "message": "Nulstil"
+   },
+   "options__button__save_custom": {
+      "message": "Gem tema"
+   },
+   "options__button__save_general": {
+      "message": "Gem indstillinger"
+   },
+   "options__clip_tag__no__label": {
+      "message": "M\u00E6rk ikke"
+   },
+   "options__clip_tag__yes__label": {
+      "message": "M\u00E6rk med"
+   },
+   "options__color_background__label": {
+      "message": "Baggrundsfarve"
+   },
+   "options__color_links__label": {
+      "message": "Linkfarve"
+   },
+   "options__color_text__label": {
+      "message": "Forgrundsfarve"
+   },
+   "options__custom_css__label": {
+      "message": "Brugerdefineret CSS"
+   },
+   "options__footnote_links__label": {
+      "message": "Links som fodnoter"
+   },
+   "options__keys_activation__label": {
+      "message": "Vis side i Clearly"
+   },
+   "options__keys_clip__label": {
+      "message": "Klip til Evernote"
+   },
+   "options__large_graphics__label": {
+      "message": "Grafik i stor version"
+   },
+   "options__message__keys": {
+      "message": "For at \u00E6ndre, placer cursoren i feltet og tryk tastekombinationen p\u00E5 tastaturet."
+   },
+   "options__message__keys_firefox": {
+      "message": "Genstart din browser efter at have gemt."
+   },
+   "options__message__saved": {
+      "message": "Indstillingerne vil tr\u00E6de i kraft p\u00E5 alle nye faner du bruger Clearly p\u00E5."
+   },
+   "options__text_align__label": {
+      "message": "Tekstjustering"
+   },
+   "options__text_font__label": {
+      "message": "Br\u00F8dtekstsskriftype"
+   },
+   "options__text_font_header__label": {
+      "message": "Sidehovedskrifttype"
+   },
+   "options__text_font_monospace__label": {
+      "message": "Monospatieret skrifttype"
+   },
+   "options__text_line_height__label": {
+      "message": "Linjeh\u00F8jde"
+   },
+   "options__text_size__label": {
+      "message": "Basisskriftst\u00F8rrelse"
+   },
+   "options__title__custom": {
+      "message": "Brugerdefineret tema"
+   },
+   "options__title__general": {
+      "message": "Indstillinger"
+   },
+   "options__title__page": {
+      "message": "Clearly / Indstillinger"
+   },
+   "options__title__sub__account": {
+      "message": "Konto"
+   },
+   "options__title__sub__keyboard": {
+      "message": "Tastekombinationer"
+   },
+   "options__title__sub__tags": {
+      "message": "Klipning til Evernote"
+   },
+   "options__values__base__Blueprint": {
+      "message": "Blueprint"
+   },
+   "options__values__base__None": {
+      "message": "Ingen"
+   },
+   "options__values__base__Theme_1": {
+      "message": "Klassisk"
+   },
+   "options__values__base__Theme_2": {
+      "message": "Moderne"
+   },
+   "options__values__base__Theme_3": {
+      "message": "Nat"
+   },
+   "options__values__footnote_links__Always": {
+      "message": "Altid"
+   },
+   "options__values__footnote_links__Never": {
+      "message": "Aldrig"
+   },
+   "options__values__footnote_links__On_Print": {
+      "message": "P\u00E5 udskrift"
+   },
+   "options__values__large_graphics__Do_Nothing": {
+      "message": "Vis altid"
+   },
+   "options__values__large_graphics__Hide_Always": {
+      "message": "Skjul altid"
+   },
+   "options__values__large_graphics__Hide_on_Print": {
+      "message": "Skjul p\u00E5 udskrift"
+   },
+   "options__values__menu_placement__Bottom_Right": {
+      "message": "Nederst til h\u00F8jre"
+   },
+   "options__values__menu_placement__Top_Right": {
+      "message": "\u00D8verst til h\u00F8jre"
+   },
+   "options__values__text_align__Justified": {
+      "message": "Udfyld"
+   },
+   "options__values__text_align__Normal": {
+      "message": "Normal"
+   }
+}

@@ -1,0 +1,287 @@
+{
+   "chrome_browser_action": {
+      "message": "Ver p\u00E1gina en Clearly."
+   },
+   "chrome_context_menu": {
+      "message": "Clearly"
+   },
+   "firefox_button": {
+      "message": "Clearly"
+   },
+   "firefox_button_tooltip": {
+      "message": "Ver esta p\u00E1gina en Clearly."
+   },
+   "firefox_context_menu": {
+      "message": "Clearly"
+   },
+   "firefox_menu": {
+      "message": "Clearly"
+   },
+   "inside__blank_error__body": {
+      "message": "Clearly is currently designed to work on article pages. An article page is any page that contains one large block of text -- like, for example, a newspaper article or blog post."
+   },
+   "inside__blank_error__heading": {
+      "message": "Consejos para usar Clearly"
+   },
+   "inside__evernote_clipping": {
+      "message": "Capturando..."
+   },
+   "inside__evernote_clipping_failed": {
+      "message": "Error en la captura."
+   },
+   "inside__evernote_login__button_cancel__label": {
+      "message": "Cancelar"
+   },
+   "inside__evernote_login__button_do__label": {
+      "message": "Acceder"
+   },
+   "inside__evernote_login__create_account": {
+      "message": "Crear una cuenta"
+   },
+   "inside__evernote_login__general__error": {
+      "message": "Fall\u00F3 la autenticaci\u00F3n."
+   },
+   "inside__evernote_login__heading": {
+      "message": "Acceder a Evernote"
+   },
+   "inside__evernote_login__password__error__format": {
+      "message": "La contrase\u00F1a contiene caracteres incorrectos."
+   },
+   "inside__evernote_login__password__error__invalid": {
+      "message": "El nombre de usuario y la contrase\u00F1a no coinciden con el usuario existente."
+   },
+   "inside__evernote_login__password__error__length": {
+      "message": "La contrase\u00F1a debe tener entre 6 y 64 caracteres."
+   },
+   "inside__evernote_login__password__error__required": {
+      "message": "La contrase\u00F1a es obligatoria."
+   },
+   "inside__evernote_login__password__label": {
+      "message": "Contrase\u00F1a"
+   },
+   "inside__evernote_login__rememberMe__label": {
+      "message": "Recordarme"
+   },
+   "inside__evernote_login__spinner": {
+      "message": "Accediendo a Evernote"
+   },
+   "inside__evernote_login__username__error__format": {
+      "message": "El nombre de usuario contiene caracteres incorrectos."
+   },
+   "inside__evernote_login__username__error__invalid": {
+      "message": "No es un usuario v\u00E1lido activo."
+   },
+   "inside__evernote_login__username__error__length": {
+      "message": "El nombre de usuario debe tener entre 1 y 64 caracteres."
+   },
+   "inside__evernote_login__username__error__required": {
+      "message": "El nombre de usuario es obligatorio."
+   },
+   "inside__evernote_login__username__label": {
+      "message": "Nombre de usuario o direcci\u00F3n de email de Evernote"
+   },
+   "inside__menu__clip_to_evernote__tooltip": {
+      "message": "Capturar en Evernote."
+   },
+   "inside__menu__close__tooltip": {
+      "message": "Ocultar la superposici\u00F3n."
+   },
+   "inside__menu__fitts__tooltip": {
+      "message": "Ocultar la superposici\u00F3n."
+   },
+   "inside__menu__print__tooltip": {
+      "message": "Imprimir."
+   },
+   "inside__menu__settings__tooltip": {
+      "message": "Mostrar temas."
+   },
+   "inside__misc__page": {
+      "message": "p\u00E1gina"
+   },
+   "inside__rtl__ltr__label": {
+      "message": "Izquierda a derecha"
+   },
+   "inside__rtl__main__label": {
+      "message": "\u00BFDirecci\u00F3n del texto?"
+   },
+   "inside__rtl__rtl__label": {
+      "message": "Derecha a izquierda"
+   },
+   "inside__settings__fontSize__large": {
+      "message": "grande"
+   },
+   "inside__settings__fontSize__medium": {
+      "message": "media"
+   },
+   "inside__settings__fontSize__small": {
+      "message": "peque\u00F1a"
+   },
+   "inside__settings__theme__1": {
+      "message": "Papel de peri\u00F3dico"
+   },
+   "inside__settings__theme__2": {
+      "message": "Notable"
+   },
+   "inside__settings__theme__3": {
+      "message": "B\u00FAho nocturno"
+   },
+   "inside__settings__theme__custom": {
+      "message": "Personalizado"
+   },
+   "meta_extension_author": {
+      "message": "Evernote Corp."
+   },
+   "meta_extension_description": {
+      "message": "Clearly transforma publicaciones de blog, art\u00EDculos y p\u00E1ginas web en texto claro y de f\u00E1cil lectura. Gu\u00E1rdalos en Evernote para leerlas en cualquier lugar."
+   },
+   "meta_extension_name": {
+      "message": "Clearly"
+   },
+   "options__account__sign_out": {
+      "message": "Registrado como [[=username]]."
+   },
+   "options__account__sign_out_link": {
+      "message": "Salir."
+   },
+   "options__account__signed_out": {
+      "message": "No has iniciado sesi\u00F3n. Haz clic en el icono de Evernote, ubicado en la barra lateral de Clearly, para iniciar sesi\u00F3n."
+   },
+   "options__base__label": {
+      "message": "CSS base"
+   },
+   "options__box_width__label": {
+      "message": "Ancho de l\u00EDnea"
+   },
+   "options__button__more_options": {
+      "message": "M\u00E1s opciones"
+   },
+   "options__button__reset_custom": {
+      "message": "Resetear"
+   },
+   "options__button__save_custom": {
+      "message": "Guardar tema"
+   },
+   "options__button__save_general": {
+      "message": "Guardar opciones"
+   },
+   "options__clip_tag__no__label": {
+      "message": "No etiquetar"
+   },
+   "options__clip_tag__yes__label": {
+      "message": "Etiquetar con"
+   },
+   "options__color_background__label": {
+      "message": "Color de fondo"
+   },
+   "options__color_links__label": {
+      "message": "Color de enlaces"
+   },
+   "options__color_text__label": {
+      "message": "Color de primer plano"
+   },
+   "options__custom_css__label": {
+      "message": "CSS personalizado"
+   },
+   "options__footnote_links__label": {
+      "message": "Enlaces como notas al pie"
+   },
+   "options__keys_activation__label": {
+      "message": "Ver p\u00E1gina en Clearly"
+   },
+   "options__keys_clip__label": {
+      "message": "Capturar en Evernote"
+   },
+   "options__large_graphics__label": {
+      "message": "Gr\u00E1ficos grandes"
+   },
+   "options__message__keys": {
+      "message": "Para cambiar, coloca el cursor en el campo y pulsa la combinaci\u00F3n de teclas en el teclado."
+   },
+   "options__message__keys_firefox": {
+      "message": "Despu\u00E9s de guardar, reinicia el navegador."
+   },
+   "options__message__saved": {
+      "message": "Los ajustes se aplicar\u00E1n en todas las fichas nuevas en las que uses Clearly."
+   },
+   "options__text_align__label": {
+      "message": "Alineaci\u00F3n del texto"
+   },
+   "options__text_font__label": {
+      "message": "Fuente de cuerpo"
+   },
+   "options__text_font_header__label": {
+      "message": "Fuente de encabezado"
+   },
+   "options__text_font_monospace__label": {
+      "message": "Fuente monoespaciada"
+   },
+   "options__text_line_height__label": {
+      "message": "Altura de l\u00EDnea"
+   },
+   "options__text_size__label": {
+      "message": "Tama\u00F1o de fuente base"
+   },
+   "options__title__custom": {
+      "message": "Tema personalizado"
+   },
+   "options__title__general": {
+      "message": "Opciones"
+   },
+   "options__title__page": {
+      "message": "Clearly / Opciones"
+   },
+   "options__title__sub__account": {
+      "message": "Cuenta"
+   },
+   "options__title__sub__keyboard": {
+      "message": "Atajos del teclado"
+   },
+   "options__title__sub__tags": {
+      "message": "Se est\u00E1 capturando en Evernote"
+   },
+   "options__values__base__Blueprint": {
+      "message": "Blueprint"
+   },
+   "options__values__base__None": {
+      "message": "Ninguno"
+   },
+   "options__values__base__Theme_1": {
+      "message": "Classic"
+   },
+   "options__values__base__Theme_2": {
+      "message": "Modern"
+   },
+   "options__values__base__Theme_3": {
+      "message": "Nocturno"
+   },
+   "options__values__footnote_links__Always": {
+      "message": "Siempre"
+   },
+   "options__values__footnote_links__Never": {
+      "message": "Nunca"
+   },
+   "options__values__footnote_links__On_Print": {
+      "message": "En impresi\u00F3n"
+   },
+   "options__values__large_graphics__Do_Nothing": {
+      "message": "Mostrar siempre"
+   },
+   "options__values__large_graphics__Hide_Always": {
+      "message": "Ocultar siempre"
+   },
+   "options__values__large_graphics__Hide_on_Print": {
+      "message": "Ocultar en impresi\u00F3n"
+   },
+   "options__values__menu_placement__Bottom_Right": {
+      "message": "Inferior derecha"
+   },
+   "options__values__menu_placement__Top_Right": {
+      "message": "Superior derecha"
+   },
+   "options__values__text_align__Justified": {
+      "message": "Justificado"
+   },
+   "options__values__text_align__Normal": {
+      "message": "Normal"
+   }
+}

@@ -1,0 +1,24 @@
+{
+   "background_page": "background.html",
+   "browser_action": {
+      "default_icon": "img/icon--19.png",
+      "default_title": "__MSG_chrome_browser_action__"
+   },
+   "content_scripts": [ {
+      "js": [ "content.js" ],
+      "matches": [ "\u003Call_urls\u003E" ]
+   } ],
+   "default_locale": "en",
+   "description": "__MSG_meta_extension_description__",
+   "icons": {
+      "128": "img/icon--128.png",
+      "16": "img/icon--16.png",
+      "48": "img/icon--48.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCt8MT50xj+Tim31h2VGADl6CXWpKn9K1H5IQOmUyrREYC0rOoP/vD3AQ4PC8jTuUOZNAZ06vKYFTYH7YCUrk8QldzzTTUkuxf3uv34Ogd39x6BQxomHlbZYb+yxU5daZY3FgZ4MZBjWUadi1Xb7mDO6sEfLpaFKwdWQqfKalACVQIDAQAB",
+   "name": "__MSG_meta_extension_name__",
+   "options_page": "options/options.html",
+   "permissions": [ "unlimitedStorage", "management", "contextMenus", "cookies", "tabs", "notifications", "http://*/*", "https://*/*" ],
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "4.3328.304.485"
+}
