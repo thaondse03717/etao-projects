@@ -1,0 +1,27 @@
+{
+   "app": {
+      "launch": {
+         "local_path": "main.html"
+      }
+   },
+   "background_page": "background.html",
+   "content_scripts": [ {
+      "all_frames": false,
+      "js": [ "js/contentScript.js" ],
+      "matches": [ "http://*/*", "https://*/*" ],
+      "run_at": "document_end"
+   } ],
+   "default_locale": "en_US",
+   "description": "__MSG_description__",
+   "icons": {
+      "128": "icon128.png",
+      "16": "icon16.png",
+      "48": "icon48.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDogQs3V91gC8IjQzrW3nrvws7NOzgA+BLOHPkZ709kuJNSNZI7gwbQMbjV3+ghsNqiYZP9v+KGdJkYtpvJ+u0/cr5hMpgbY1Ny4VVOAohUM/tTDCz5CyJ9JKbTgB5ika4fVbfokXetZQrK9E44G4tm4hLvf/mnhmk7cv19QwKkeQIDAQAB",
+   "name": "Read Later Fast",
+   "options_page": "options.html",
+   "permissions": [ "tabs", "http://*/*", "https://*/*", "notifications", "contextMenus", "unlimitedStorage" ],
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "1.4.0"
+}
