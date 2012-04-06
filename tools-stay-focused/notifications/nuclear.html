@@ -1,0 +1,39 @@
+<html>
+<head>
+    <title>StayFocusd : Nuclear Option starting soon!</title>
+    <script type="text/javascript" src="/js/lib/jquery-1.4.min.js"></script>
+    <script type="text/javascript">
+
+        function bg(){
+            return chrome.extension.getBackgroundPage();
+        }
+
+        $(document).ready(function(){
+
+            var totalSecondsRemaining = bg().NuclearOption.getSecondsUntilActive();
+
+            if (totalSecondsRemaining > 60){
+                $('#timeRemaining').html(totalSecondsRemaining/60 + " minutes");
+            } else {
+                $('#timeRemaining').html(totalSecondsRemaining + " seconds");
+            }
+
+            /* Close notification after 5 seconds */
+            setTimeout(function(){
+                window.close()
+            },5000);
+        })
+    </script>
+    <link href="/css/notification.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div id="wrapper">
+        <div id="icon">
+            <img src="/img/eye_48x48_nuclear.png" alt="StayFocusd" title="Time is almost up!">
+        </div>
+        <div id="message">
+            StayFocusd's Nuclear Option will start blocking sites in <span id="timeRemaining"></span>.
+        </div>
+    </div>
+</body>
+</html>

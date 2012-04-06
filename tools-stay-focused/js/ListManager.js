@@ -1,0 +1,27 @@
+
+var ListManager=function(){return{blacklist:{},whitelist:{},init:function(){this.blacklist=this.loadBlacklist();this.whitelist=this.loadWhitelist();},loadBlacklist:function(){var blacklistJSON=this.getLocal('blacklist');if(blacklistJSON==''||blacklistJSON==undefined||blacklistJSON==null||blacklistJSON.length<=1){blacklistJSON='{}';}
+if(blacklistJSON.charAt(0)!='{'){var blacklistArray=blacklistJSON.split('|');this.blacklist={};for(var i=0;i<blacklistArray.length;i++){this.blacklist[blacklistArray[i]]={};}
+this.saveBlacklist();return this.loadBlacklist();}
+var blacklistObj=JSON.parse(blacklistJSON);if(typeof blacklistObj['']=="object"){delete blacklistObj[''];this.blacklist=blacklistObj;this.saveBlacklist();}
+blacklistObj=blacklistObj.sort();return blacklistObj;},saveBlacklist:function(){var blacklistJSON=JSON.stringify(this.blacklist.sort());this.setLocal('blacklist',blacklistJSON);},addToBlacklist:function(domain){if(domain.indexOf('stayfocusd')>=0){alert('Sorry! You cannot add stayfocusd.com to the Blocked Sites list.');return false;}
+this.removeFromWhitelist(domain);this.blacklist[domain]={};this.blacklist=this.cleanUpList(domain,this.blacklist);this.saveBlacklist();StayFocusd.checkURL();return true;},removeFromBlacklist:function(domain){if(this.isBlacklisted(domain)&&StayFocusd.isMaxTimeAllowedExceeded()){alert('You cannot remove a site from the Blocked Sites list once the maximum time for the day has been exceeded. Please try again tomorrow.');return false;}
+delete this.blacklist[domain];this.saveBlacklist();StayFocusd.checkURL();return true;},clearBlacklist:function(){if(StayFocusd.isMaxTimeAllowedExceeded()){alert('You cannot clear the Blocked Sites list once the maximum time for the day has been exceeded. Please try again tomorrow.');return false;}
+this.blacklist={};this.setLocal('blacklist',{});},getBlacklistedDomains:function(){var domains=[];for(domain in this.blacklist){if(typeof this.blacklist[domain]!='function'){domains.push(domain);}}
+return domains;},loadWhitelist:function(){var whitelistJSON=this.getLocal('whitelist');if(whitelistJSON==''||whitelistJSON==undefined||whitelistJSON==null||whitelistJSON.length<=1){whitelistJSON='{}';}
+if(whitelistJSON.charAt(0)!='{'){var whitelistArray=whitelistJSON.split('|');this.whitelist={};for(var i=0;i<whitelistArray.length;i++){this.whitelist[whitelistArray[i]]={};}
+this.saveWhitelist();return this.loadWhitelist();}
+var whitelistObj=JSON.parse(whitelistJSON);if(typeof whitelistObj['']=="object"){delete whitelistObj[''];this.whitelist=whitelistObj;this.saveWhitelist();}
+whitelistObj=whitelistObj.sort();return whitelistObj;},saveWhitelist:function(){var whitelistJSON=JSON.stringify(this.whitelist.sort());this.setLocal('whitelist',whitelistJSON);},addToWhitelist:function(domain){if(StayFocusd.isMaxTimeAllowedExceeded()){if(this.isBlacklisted(domain)){alert('You cannot allow a previously blocked site once the maximum time for the day has been exceeded. Please try again tomorrow.');return false;}else if(domain.indexOf('*')>-1){alert('You cannot allow any sites using wildcards once the maximum time for the day has been exceeded. Please try again tomorrow.');return false;}}
+if(NuclearOption.isActive()){alert('You cannot add sites to the Allowed Sites list while the Nuclear Option is active');return false;}
+this.removeFromBlacklist(domain);this.whitelist[domain]={};this.whitelist=this.cleanUpList(domain,this.whitelist);this.saveWhitelist();StayFocusd.checkURL();return true;},removeFromWhitelist:function(domain){delete this.whitelist[domain];this.saveWhitelist();StayFocusd.checkURL();return true;},clearWhitelist:function(){if(NuclearOption.isActive()){alert('You cannot clear the Allowed Sites list while the Nuclear Option is active');return false;}
+this.whitelist={};this.setLocal('whitelist',{});},getWhitelistedDomains:function(){var domains=[];for(domain in this.whitelist){if(typeof this.whitelist[domain]!='function'){domains.push(domain);}}
+return domains;},isBlacklisted:function(domain){return this.isListed(domain,'black');},isWhitelisted:function(domain){return this.isListed(domain,'white');},isListed:function(domain,listType){var matchFromList=this.getMatchFromList(domain,listType);if(matchFromList===false){return false;}
+return true;},getMatchFromList:function(domainToCheck,listType){var listObj=(listType=='white')?this.whitelist:this.blacklist;for(domainInList in listObj){var regex=/^[a-z0-9]+$/i;if(regex.test(domainInList)&&typeof listObj[domainInList]=='function'){continue;}
+if(DomainParser.isMoreGeneralURL(domainInList,domainToCheck)){return domainInList;}
+if(domainInList.indexOf('*')===0&&DomainParser.matchesWildcard(domainInList,domainToCheck)){return domainInList;}}
+return false;},cleanUpList:function(domain,listObj){var cleanList={};for(anyDomain in listObj){var inCleanList=false;for(cleanDomain in cleanList){if(anyDomain==cleanDomain||DomainParser.isMoreGeneralURL(cleanDomain,anyDomain)){inCleanList=true;}}
+if(inCleanList===true){continue;}
+if(DomainParser.isMoreGeneralURL(domain,anyDomain)){cleanList[domain]={};}else if(anyDomain!=undefined&&anyDomain!=null&&anyDomain!=''){cleanList[anyDomain]={};}}
+return cleanList;},setLocal:function(name,value){localStorage.setItem(name,value);},getLocal:function(name){return localStorage.getItem(name);}};}();Object.prototype.sort=function(){var keys=[];var sortedObj={};for(key in this){keys.push(key);}
+keys.sort();for(var i=0;i<keys.length;i++){var key=keys[i];sortedObj[key]=this[key];}
+return sortedObj;};

@@ -1,0 +1,3 @@
+
+var Newtab=function(){return{init:function(){this.createAllowedSitesListHTML();},createAllowedSitesListHTML:function(){var whitelist=bg().ListManager.getWhitelistedDomains();whitelist=whitelist.sort();var html='';if(whitelist.length===0){html+='<li><i>No sites yet</i></li>';}else{for(var i=0;i<whitelist.length;i++){html+='<li id="whitelist-'+i+'" class="domain">';html+='<a href="http://'+whitelist[i]+'">'+whitelist[i]+'</a>';html+='</li>';}}
+$('#allowedSitesList').html(html);}}}();function bg(){return chrome.extension.getBackgroundPage();}

@@ -1,0 +1,3 @@
+
+chrome.extension.onRequest.addListener(function(request,sender,sendResponse){var response=null;if(request.target=='SmartBomb'){response=SmartBomb.handleBackgroundScriptRequest(request,sender);}else if(request.target=='InfoBar'){response=InfoBar.handleBackgroundScriptRequest(request,sender);}else if(request.target=='ReferrerMonitor'){response=ReferrerMonitor.handleBackgroundScriptRequest(request,sender);}else{response=ActivityMonitor.handleBackgroundScriptRequest(request,sender);}
+if(response!==null){sendResponse(response);}});$(window).scroll(function(){$('#StayFocusd-still-there').css('top',$(this).scrollTop()+"px");$('#StayFocusd-infobar').css('top',$(this).scrollTop()+"px");});$(document).ready(function(){ActivityMonitor.initContentScript();InfoBar.init();});

@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <title>New Tab</title>
+        <link href="css/reset.css" rel="stylesheet" type="text/css"> 
+        <link href="css/global.css" rel="stylesheet" type="text/css"> 
+        <link href="css/options.css" rel="stylesheet" type="text/css"> 
+        <link href="css/newtab.css" rel="stylesheet" type="text/css"> 
+        <script type="text/javascript" src="js/lib/jquery-1.4.min.js"></script>
+        <script type="text/javascript" src="js/Newtab.js"></script>
+        <script type="text/javascript">
+
+            /**
+             * Shorthand for getting background page
+             */
+            function bg(){
+                return chrome.extension.getBackgroundPage();
+            }
+
+            /**
+             * Only allow numeric input for max time allowed
+             */
+            $(document).ready(function() {
+                Newtab.init();
+            });
+            
+        </script>
+    </head>
+    <body>
+        
+        <div id="page">
+            
+            <ul id="header">
+                <li id="logo"><img src="img/logo_full.png" title="StayFocusd" alt="StayFocusd"></li>
+                <li id="page-title">
+                    <h1>newtab<h1>
+                </li>
+            </ul>
+            <ul id="body">
+                <li class="newtab">
+                    <h3>
+                        Your Allowed Sites
+                    </h3>
+                    <div id="allowedSitesList"></div>
+                    <p>
+                        <em class="disclaimer">
+                            
+                        </em>
+                    </p>
+                </li>
+                <li class="newtab donate">
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                    <input type="hidden" name="cmd" value="_s-xclick">
+                    <input type="hidden" name="hosted_button_id" value="HY4EM2H7E2WJL">
+                    <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                    <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                    </form>
+                    <h4>Have you found StayFocusd useful? Please make a donation!</h4>
+                    <p>
+                        Follow <a href="http://www.twitter.com/stayfocusd">@stayfocusd</a> on Twitter to find out when new features are released.
+                    </p>
+                </li>
+            </ul>
+            <div class="clear-fix"></div>
+        </div>
+    </body>
+</html>

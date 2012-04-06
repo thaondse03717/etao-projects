@@ -1,0 +1,24 @@
+{
+   "background_page": "background.html",
+   "browser_action": {
+      "default_icon": "img/eye_19x19_blue.png",
+      "default_title": "Block or allow this site",
+      "popup": "popup.html"
+   },
+   "content_scripts": [ {
+      "css": [ "css/content.css" ],
+      "js": [ "js/lib/jquery-1.4.min.js", "js/ActivityMonitor.js", "js/InfoBar.js", "js/SmartBomb.js", "js/DomainParser.js", "js/ReferrerMonitor.js", "js/content.js" ],
+      "matches": [ "http://*/*", "https://*/*" ]
+   } ],
+   "description": "StayFocusd increases your productivity by limiting the amount of time that you can spend on time-wasting websites.",
+   "icons": {
+      "128": "img/eye_128x128_blue.png",
+      "48": "img/eye_48x48_blue.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDIZGExPKdmpnsG6ACNioLVAFgQnEl11tYcSeD3qLnKQ51DcR8B5uJJp1uRl+BhBL/NrHtpxBQ35xKfseM2HIFeIXD9gP+o2XlcL4kHkdt2Meo9e3CdLvRJL47fhnSgD1OrU5F+NO9Rpi3h/Cka1t9oHpt3kGWveWuMHskdLUW11QIDAQAB",
+   "name": "StayFocusd",
+   "options_page": "options.html",
+   "permissions": [ "tabs", "http://stayfocusd.local/", "http://*.stayfocusd.com/", "notifications" ],
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "1.2.0.15"
+}
