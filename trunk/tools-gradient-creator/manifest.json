@@ -1,0 +1,18 @@
+{
+   "app": {
+      "launch": {
+         "local_path": "Gradient-Creator.html"
+      }
+   },
+   "description": "CSS3 gradient generator. Drag & Drop GIMP .GGR files into your browser to view them! Export your gradient into CSS or SVG.",
+   "icons": {
+      "128": "media/fav-gradient_128x128.png",
+      "16": "media/fav-gradient_16x16.png",
+      "48": "media/fav-gradient_48x48.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDGrWiewRmciSAc2G2acLj8prqXsueDiO7zvU4dCoTp2LRNUb43OVEU879l20zacUlnQrqmF8ZvbyIWmwVEzn39nvTIzH6e/YY7H6RsgSN0Wfs3QV3FVOHjhHGjrUQtHAJgCTZurZAvsv4oCq/+VQty/5Gkcz4edfnaUnSePyBvgwIDAQAB",
+   "name": "Gradient Creator!",
+   "offline_enabled": true,
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "0.2.1.3"
+}
