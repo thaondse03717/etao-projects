@@ -1,0 +1,287 @@
+{
+   "chrome_browser_action": {
+      "message": "Bekijk deze pagina in Clearly"
+   },
+   "chrome_context_menu": {
+      "message": "Clearly"
+   },
+   "firefox_button": {
+      "message": "Clearly"
+   },
+   "firefox_button_tooltip": {
+      "message": "Bekijk deze pagina in Clearly"
+   },
+   "firefox_context_menu": {
+      "message": "Clearly"
+   },
+   "firefox_menu": {
+      "message": "Clearly"
+   },
+   "inside__blank_error__body": {
+      "message": "Clearly is currently designed to work on article pages. An article page is any page that contains one large block of text -- like, for example, a newspaper article or blog post."
+   },
+   "inside__blank_error__heading": {
+      "message": "Tips voor het gebruik van Clearly"
+   },
+   "inside__evernote_clipping": {
+      "message": "Knippen..."
+   },
+   "inside__evernote_clipping_failed": {
+      "message": "Knippen mislukt."
+   },
+   "inside__evernote_login__button_cancel__label": {
+      "message": "Annuleren"
+   },
+   "inside__evernote_login__button_do__label": {
+      "message": "Inloggen"
+   },
+   "inside__evernote_login__create_account": {
+      "message": "Account aanmaken"
+   },
+   "inside__evernote_login__general__error": {
+      "message": "Authenticatie mislukt."
+   },
+   "inside__evernote_login__heading": {
+      "message": "Aanmelden bij Evernote"
+   },
+   "inside__evernote_login__password__error__format": {
+      "message": "Wachtwoord bevat verkeerde tekens."
+   },
+   "inside__evernote_login__password__error__invalid": {
+      "message": "Gebruikersnaam en wachtwoord komen niet overeen met een bestaande gebruiker."
+   },
+   "inside__evernote_login__password__error__length": {
+      "message": "Wachtwoord moet tussen de 6 en 64 tekens lang zijn."
+   },
+   "inside__evernote_login__password__error__required": {
+      "message": "Wachtwoord is vereist"
+   },
+   "inside__evernote_login__password__label": {
+      "message": "Wachtwoord"
+   },
+   "inside__evernote_login__rememberMe__label": {
+      "message": "Onthoud mij"
+   },
+   "inside__evernote_login__spinner": {
+      "message": "Aanmelden in Evernote"
+   },
+   "inside__evernote_login__username__error__format": {
+      "message": "Gebruikersnaam bevat verkeerde tekens."
+   },
+   "inside__evernote_login__username__error__invalid": {
+      "message": "Geen geldige, actieve gebruiker."
+   },
+   "inside__evernote_login__username__error__length": {
+      "message": "Gebruikersnaam moet tussen 1 en 100 tekens lang zijn."
+   },
+   "inside__evernote_login__username__error__required": {
+      "message": "Gebruikersnaam vereist."
+   },
+   "inside__evernote_login__username__label": {
+      "message": "Evernote gebruikersnaam of e-mailadres"
+   },
+   "inside__menu__clip_to_evernote__tooltip": {
+      "message": "Naar Evernote opnemen."
+   },
+   "inside__menu__close__tooltip": {
+      "message": "Verberg de overlay."
+   },
+   "inside__menu__fitts__tooltip": {
+      "message": "Verberg de overlay."
+   },
+   "inside__menu__print__tooltip": {
+      "message": "Afdrukken."
+   },
+   "inside__menu__settings__tooltip": {
+      "message": "Toon thema's."
+   },
+   "inside__misc__page": {
+      "message": "pagina"
+   },
+   "inside__rtl__ltr__label": {
+      "message": "Van links naar rechts"
+   },
+   "inside__rtl__main__label": {
+      "message": "Tekstrichting?"
+   },
+   "inside__rtl__rtl__label": {
+      "message": "Van rechts naar links"
+   },
+   "inside__settings__fontSize__large": {
+      "message": "groot"
+   },
+   "inside__settings__fontSize__medium": {
+      "message": "middel"
+   },
+   "inside__settings__fontSize__small": {
+      "message": "klein"
+   },
+   "inside__settings__theme__1": {
+      "message": "Krantenafdruk"
+   },
+   "inside__settings__theme__2": {
+      "message": "Opvallend"
+   },
+   "inside__settings__theme__3": {
+      "message": "Nachtbraker"
+   },
+   "inside__settings__theme__custom": {
+      "message": "Aangepast"
+   },
+   "meta_extension_author": {
+      "message": "Evernote Corp."
+   },
+   "meta_extension_description": {
+      "message": "Clearly maakt blogberichten, artikelen en webpagina's overzichtelijk en makkelijk leesbaar. Sla ze op in Evernote om ze overal te kunnen lezen."
+   },
+   "meta_extension_name": {
+      "message": "Clearly"
+   },
+   "options__account__sign_out": {
+      "message": "Aangemeld als [[=username]]."
+   },
+   "options__account__sign_out_link": {
+      "message": "Afmelden."
+   },
+   "options__account__signed_out": {
+      "message": "U bent niet ingelogd. Meld u aan via de Clip-naar-Evernote knop in de Clearly zijbalk."
+   },
+   "options__base__label": {
+      "message": "Basis CSS"
+   },
+   "options__box_width__label": {
+      "message": "Regelbreedte"
+   },
+   "options__button__more_options": {
+      "message": "Meer opties"
+   },
+   "options__button__reset_custom": {
+      "message": "Herstellen"
+   },
+   "options__button__save_custom": {
+      "message": "Thema opslaan"
+   },
+   "options__button__save_general": {
+      "message": "Opties opslaan"
+   },
+   "options__clip_tag__no__label": {
+      "message": "Niet labelen"
+   },
+   "options__clip_tag__yes__label": {
+      "message": "Labelen met "
+   },
+   "options__color_background__label": {
+      "message": "Achtergrondkleur"
+   },
+   "options__color_links__label": {
+      "message": "Koppelingen kleur"
+   },
+   "options__color_text__label": {
+      "message": "Voorgrondkleur"
+   },
+   "options__custom_css__label": {
+      "message": "Aangepaste CSS"
+   },
+   "options__footnote_links__label": {
+      "message": "Als voetnoten gekoppeld"
+   },
+   "options__keys_activation__label": {
+      "message": "Toon pagina in Clearly"
+   },
+   "options__keys_clip__label": {
+      "message": "Naar Evernote sturen"
+   },
+   "options__large_graphics__label": {
+      "message": "Grote afbeeldingen"
+   },
+   "options__message__keys": {
+      "message": "Plaats de cursor in het veld en druk op een toetscombinatie om te wijzigen."
+   },
+   "options__message__keys_firefox": {
+      "message": "Start de browser nog eens, na opslaan."
+   },
+   "options__message__saved": {
+      "message": "De instellingen zijn geldig op alle nieuwe tabs waar u Clearly op gebruikt."
+   },
+   "options__text_align__label": {
+      "message": "Tekst uitlijnen"
+   },
+   "options__text_font__label": {
+      "message": "Lettertype hoofdtekst"
+   },
+   "options__text_font_header__label": {
+      "message": "Lettertype kopteksten"
+   },
+   "options__text_font_monospace__label": {
+      "message": "Niet-proportionele Font"
+   },
+   "options__text_line_height__label": {
+      "message": "Regelafstand"
+   },
+   "options__text_size__label": {
+      "message": "Basis Font grootte"
+   },
+   "options__title__custom": {
+      "message": "Aangepaste thema"
+   },
+   "options__title__general": {
+      "message": "Opties"
+   },
+   "options__title__page": {
+      "message": "Clearly / Opties"
+   },
+   "options__title__sub__account": {
+      "message": "Account"
+   },
+   "options__title__sub__keyboard": {
+      "message": "Sneltoetsen"
+   },
+   "options__title__sub__tags": {
+      "message": "Naar Evernote kopi\u00EBren "
+   },
+   "options__values__base__Blueprint": {
+      "message": "Blauwdruk"
+   },
+   "options__values__base__None": {
+      "message": "Geen"
+   },
+   "options__values__base__Theme_1": {
+      "message": "Klassiek"
+   },
+   "options__values__base__Theme_2": {
+      "message": "Modern"
+   },
+   "options__values__base__Theme_3": {
+      "message": "\u00B4s Nachts"
+   },
+   "options__values__footnote_links__Always": {
+      "message": "Altijd"
+   },
+   "options__values__footnote_links__Never": {
+      "message": "Nooit"
+   },
+   "options__values__footnote_links__On_Print": {
+      "message": "Bij afdrukken"
+   },
+   "options__values__large_graphics__Do_Nothing": {
+      "message": "Altijd tonen"
+   },
+   "options__values__large_graphics__Hide_Always": {
+      "message": "Altijd verbergen"
+   },
+   "options__values__large_graphics__Hide_on_Print": {
+      "message": "Verbergen bij afdrukken"
+   },
+   "options__values__menu_placement__Bottom_Right": {
+      "message": "Rechtsonder"
+   },
+   "options__values__menu_placement__Top_Right": {
+      "message": "Rechtsboven"
+   },
+   "options__values__text_align__Justified": {
+      "message": "Uitgevuld"
+   },
+   "options__values__text_align__Normal": {
+      "message": "Normaal"
+   }
+}

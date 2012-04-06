@@ -1,0 +1,287 @@
+{
+   "chrome_browser_action": {
+      "message": "\u041E\u0442\u043A\u0440\u044B\u0442\u0438\u0435 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u044B \u0432 Clearly"
+   },
+   "chrome_context_menu": {
+      "message": "Clearly"
+   },
+   "firefox_button": {
+      "message": "Clearly"
+   },
+   "firefox_button_tooltip": {
+      "message": "\u041F\u043E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u044D\u0442\u0443 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0443 \u0432 Clearly"
+   },
+   "firefox_context_menu": {
+      "message": "Clearly"
+   },
+   "firefox_menu": {
+      "message": "Clearly"
+   },
+   "inside__blank_error__body": {
+      "message": "\u041F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435 Clearly \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u0430\u043D\u043E \u0441\u043F\u0435\u0446\u0438\u0430\u043B\u044C\u043D\u043E \u0434\u043B\u044F \u0440\u0430\u0431\u043E\u0442\u044B \u0441\u043E \u0441\u0442\u0430\u0442\u044C\u044F\u043C\u0438. \u0421\u0442\u0430\u0442\u044C\u044F - \u044D\u0442\u043E \u043B\u044E\u0431\u0430\u044F \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0430, \u0441\u043E\u0434\u0435\u0440\u0436\u0430\u0449\u0430\u044F \u0431\u043E\u043B\u044C\u0448\u043E\u0439 \u0431\u043B\u043E\u043A \u0442\u0435\u043A\u0441\u0442\u0430, \u043A\u0430\u043A, \u043D\u0430\u043F\u0440\u0438\u043C\u0435\u0440, \u043D\u043E\u0432\u043E\u0441\u0442\u043D\u0430\u044F \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F \u0438\u043B\u0438 \u0437\u0430\u043F\u0438\u0441\u044C \u0432 \u0431\u043B\u043E\u0433\u0435."
+   },
+   "inside__blank_error__heading": {
+      "message": "\u0421\u043E\u0432\u0435\u0442\u044B \u043F\u043E \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u044E Clearly"
+   },
+   "inside__evernote_clipping": {
+      "message": "\u041A\u043E\u043F\u0438\u0440\u0443\u044E..."
+   },
+   "inside__evernote_clipping_failed": {
+      "message": "\u041E\u0448\u0438\u0431\u043A\u0430 \u043A\u043E\u043F\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F."
+   },
+   "inside__evernote_login__button_cancel__label": {
+      "message": "\u041E\u0442\u043C\u0435\u043D\u0430"
+   },
+   "inside__evernote_login__button_do__label": {
+      "message": "\u0412\u043E\u0439\u0442\u0438 \u0432 \u0441\u0438\u0441\u0442\u0435\u043C\u0443"
+   },
+   "inside__evernote_login__create_account": {
+      "message": "\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u0430\u043A\u043A\u0430\u0443\u043D\u0442"
+   },
+   "inside__evernote_login__general__error": {
+      "message": "\u0410\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u044F \u043D\u0435 \u0443\u0434\u0430\u043B\u0430\u0441\u044C."
+   },
+   "inside__evernote_login__heading": {
+      "message": "\u0412\u0445\u043E\u0434 \u0432 Evernote"
+   },
+   "inside__evernote_login__password__error__format": {
+      "message": "\u041F\u0430\u0440\u043E\u043B\u044C \u0441\u043E\u0434\u0435\u0440\u0436\u0438\u0442 \u043D\u0435\u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u044B\u0435 \u0441\u0438\u043C\u0432\u043E\u043B\u044B. "
+   },
+   "inside__evernote_login__password__error__invalid": {
+      "message": "\u0418\u043C\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u0438 \u043F\u0430\u0440\u043E\u043B\u044C \u043D\u0435 \u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u044E\u0442 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u044E\u0449\u0435\u043C\u0443 \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044E."
+   },
+   "inside__evernote_login__password__error__length": {
+      "message": "\u041F\u0430\u0440\u043E\u043B\u044C \u043C\u043E\u0436\u0435\u0442 \u0438\u043C\u0435\u0442\u044C \u0434\u043B\u0438\u043D\u0443 \u043E\u0442 6 \u0434\u043E 64 \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432."
+   },
+   "inside__evernote_login__password__error__required": {
+      "message": "\u0422\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044F \u043F\u0430\u0440\u043E\u043B\u044C"
+   },
+   "inside__evernote_login__password__label": {
+      "message": "\u041F\u0430\u0440\u043E\u043B\u044C"
+   },
+   "inside__evernote_login__rememberMe__label": {
+      "message": "\u0417\u0430\u043F\u043E\u043C\u043D\u0438\u0442\u044C \u043C\u0435\u043D\u044F"
+   },
+   "inside__evernote_login__spinner": {
+      "message": "\u0412\u0445\u043E\u0434\u0438\u043C \u0432 Evernote"
+   },
+   "inside__evernote_login__username__error__format": {
+      "message": "\u0418\u043C\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u0441\u043E\u0434\u0435\u0440\u0436\u0438\u0442 \u043D\u0435\u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u044B\u0435 \u0441\u0438\u043C\u0432\u043E\u043B\u044B."
+   },
+   "inside__evernote_login__username__error__invalid": {
+      "message": "\u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u043D\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442 \u0438\u043B\u0438 \u0430\u043A\u043A\u0430\u0443\u043D\u0442 \u043D\u0435 \u0430\u043A\u0442\u0438\u0432\u0438\u0440\u043E\u0432\u0430\u043D"
+   },
+   "inside__evernote_login__username__error__length": {
+      "message": "\u0418\u043C\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u043C\u043E\u0436\u0435\u0442 \u0438\u043C\u0435\u0442\u044C \u0434\u043B\u0438\u043D\u0443 \u043E\u0442 1 \u0434\u043E 64 \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432."
+   },
+   "inside__evernote_login__username__error__required": {
+      "message": "\u0422\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044F \u0438\u043C\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F."
+   },
+   "inside__evernote_login__username__label": {
+      "message": "\u0418\u043C\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F Evernote \u0438\u043B\u0438 \u0430\u0434\u0440\u0435\u0441 \u044D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u043E\u0439 \u043F\u043E\u0447\u0442\u044B"
+   },
+   "inside__menu__clip_to_evernote__tooltip": {
+      "message": "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0432 Evernote."
+   },
+   "inside__menu__close__tooltip": {
+      "message": "\u0421\u043A\u0440\u044B\u0442\u044C \u043D\u0430\u043B\u043E\u0436\u0435\u043D\u043D\u044B\u0439 \u0441\u043B\u043E\u0439."
+   },
+   "inside__menu__fitts__tooltip": {
+      "message": "\u0421\u043A\u0440\u044B\u0442\u044C \u043D\u0430\u043B\u043E\u0436\u0435\u043D\u043D\u044B\u0439 \u0441\u043B\u043E\u0439."
+   },
+   "inside__menu__print__tooltip": {
+      "message": "\u041F\u0435\u0447\u0430\u0442\u044C."
+   },
+   "inside__menu__settings__tooltip": {
+      "message": "\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C \u0442\u0435\u043C\u044B."
+   },
+   "inside__misc__page": {
+      "message": "\u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0430"
+   },
+   "inside__rtl__ltr__label": {
+      "message": "\u0421\u043B\u0435\u0432\u0430 \u043D\u0430\u043F\u0440\u0430\u0432\u043E"
+   },
+   "inside__rtl__main__label": {
+      "message": "\u041D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435 \u0442\u0435\u043A\u0441\u0442\u0430?"
+   },
+   "inside__rtl__rtl__label": {
+      "message": "\u0421\u043F\u0440\u0430\u0432\u0430 \u043D\u0430\u043B\u0435\u0432\u043E"
+   },
+   "inside__settings__fontSize__large": {
+      "message": "\u0431\u043E\u043B\u044C\u0448\u043E\u0439"
+   },
+   "inside__settings__fontSize__medium": {
+      "message": "\u0441\u0440\u0435\u0434\u043D\u0438\u0439"
+   },
+   "inside__settings__fontSize__small": {
+      "message": "\u043C\u0430\u043B\u0435\u043D\u044C\u043A\u0438\u0439"
+   },
+   "inside__settings__theme__1": {
+      "message": "\u041F\u0435\u0447\u0430\u0442\u043D\u0430\u044F"
+   },
+   "inside__settings__theme__2": {
+      "message": "\u041F\u0440\u043E\u0441\u0442\u0430\u044F"
+   },
+   "inside__settings__theme__3": {
+      "message": "\u041F\u043E\u043B\u0443\u043D\u043E\u0447\u043D\u0430\u044F"
+   },
+   "inside__settings__theme__custom": {
+      "message": "\u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u0441\u043A\u0430\u044F"
+   },
+   "meta_extension_author": {
+      "message": "Evernote Corp."
+   },
+   "meta_extension_description": {
+      "message": "Clearly \u043E\u0447\u0438\u0449\u0430\u0435\u0442 \u043E\u0442 \u043B\u0438\u0448\u043D\u0435\u0439 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438 \u0437\u0430\u043F\u0438\u0441\u0438 \u0432 \u0431\u043B\u043E\u0433\u0435, \u0441\u0442\u0430\u0442\u044C\u0438 \u0438 \u0432\u0435\u0431-\u0441\u0442\u0440\u0430\u043D\u0438\u0446\u044B \u0438 \u0434\u0435\u043B\u0430\u0435\u0442 \u0438\u0445 \u043B\u0435\u0433\u043A\u0438\u043C\u0438 \u0434\u043B\u044F \u0447\u0442\u0435\u043D\u0438\u044F. \u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u0435 \u0438\u0445 \u0432 Evernote, \u0447\u0442\u043E\u0431\u044B \u0438\u043C\u0435\u0442\u044C \u0432\u043E\u0437\u043C\u043E\u0436\u043D\u043E\u0441\u0442\u044C \u0447\u0438\u0442\u0430\u0442\u044C \u0441\u0442\u0430\u0442\u044C\u0438 \u0432 \u043B\u044E\u0431\u043E\u043C \u043C\u0435\u0441\u0442\u0435."
+   },
+   "meta_extension_name": {
+      "message": "Clearly"
+   },
+   "options__account__sign_out": {
+      "message": "\u0412\u044B \u0432\u043E\u0448\u043B\u0438 \u043A\u0430\u043A [[=username]]."
+   },
+   "options__account__sign_out_link": {
+      "message": "\u0412\u044B\u0439\u0442\u0438."
+   },
+   "options__account__signed_out": {
+      "message": "\u0412\u044B \u043D\u0435 \u0432\u043E\u0448\u043B\u0438 \u0432 \u0441\u0438\u0441\u0442\u0435\u043C\u0443. \u0427\u0442\u043E\u0431\u044B \u0432\u043E\u0439\u0442\u0438, \u043D\u0430\u0436\u043C\u0438\u0442\u0435 \u043D\u0430 \u0438\u043A\u043E\u043D\u043A\u0443 Evernote \u043D\u0430 \u043F\u0430\u043D\u0435\u043B\u0438 Clearly."
+   },
+   "options__base__label": {
+      "message": "\u0411\u0430\u0437\u043E\u0432\u044B\u0439 CSS"
+   },
+   "options__box_width__label": {
+      "message": "\u0428\u0438\u0440\u0438\u043D\u0430 \u0441\u0442\u0440\u043E\u043A\u0438"
+   },
+   "options__button__more_options": {
+      "message": "\u0411\u043E\u043B\u044C\u0448\u0435 \u043D\u0430\u0441\u0442\u0440\u043E\u0435\u043A"
+   },
+   "options__button__reset_custom": {
+      "message": "\u0421\u0431\u0440\u043E\u0441\u0438\u0442\u044C"
+   },
+   "options__button__save_custom": {
+      "message": "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u0442\u0435\u043C\u0443"
+   },
+   "options__button__save_general": {
+      "message": "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438"
+   },
+   "options__clip_tag__no__label": {
+      "message": "\u041D\u0435 \u0434\u043E\u0431\u0430\u0432\u043B\u044F\u0442\u044C \u043C\u0435\u0442\u043A\u0438"
+   },
+   "options__clip_tag__yes__label": {
+      "message": "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u043C\u0435\u0442\u043A\u0438"
+   },
+   "options__color_background__label": {
+      "message": "\u0426\u0432\u0435\u0442 \u0444\u043E\u043D\u0430"
+   },
+   "options__color_links__label": {
+      "message": "\u0426\u0432\u0435\u0442 \u0441\u0441\u044B\u043B\u043E\u043A"
+   },
+   "options__color_text__label": {
+      "message": "\u0426\u0432\u0435\u0442 \u0442\u0435\u043A\u0441\u0442\u0430"
+   },
+   "options__custom_css__label": {
+      "message": "\u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u0441\u043A\u0438\u0435 CSS"
+   },
+   "options__footnote_links__label": {
+      "message": "\u0421\u0441\u044B\u043B\u043A\u0438 \u0432 \u0432\u0438\u0434\u0435 \u0441\u043D\u043E\u0441\u043A\u0438"
+   },
+   "options__keys_activation__label": {
+      "message": "\u041E\u0442\u043A\u0440\u044B\u0442\u0438\u0435 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u044B \u0432 Clearly"
+   },
+   "options__keys_clip__label": {
+      "message": "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0432 Evernote"
+   },
+   "options__large_graphics__label": {
+      "message": "\u0411\u043E\u043B\u044C\u0448\u0438\u0435 \u0433\u0440\u0430\u0444\u0438\u043A\u0438"
+   },
+   "options__message__keys": {
+      "message": "\u0414\u043B\u044F \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u0438\u044F \u043F\u043E\u043C\u0435\u0441\u0442\u0438\u0442\u0435 \u043A\u0443\u0440\u0441\u043E\u0440 \u0432 \u043F\u043E\u043B\u0435 \u0438 \u043D\u0430\u0436\u043C\u0438\u0442\u0435 \u043A\u043E\u043C\u0431\u0438\u043D\u0430\u0446\u0438\u044E \u043A\u043B\u0430\u0432\u0438\u0448 \u043D\u0430 \u043A\u043B\u0430\u0432\u0438\u0430\u0442\u0443\u0440\u0435."
+   },
+   "options__message__keys_firefox": {
+      "message": "\u041F\u0435\u0440\u0435\u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u0435 \u0431\u0440\u0430\u0443\u0437\u0435\u0440 \u043F\u043E\u0441\u043B\u0435 \u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u044F."
+   },
+   "options__message__saved": {
+      "message": "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438 \u0431\u0443\u0434\u0443\u0442 \u0434\u0435\u0439\u0441\u0442\u0432\u043E\u0432\u0430\u0442\u044C \u043D\u0430 \u043B\u044E\u0431\u043E\u0439 \u043D\u043E\u0432\u043E\u0439 \u0432\u043A\u043B\u0430\u0434\u043A\u0435 \u043F\u0440\u0438 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u043D\u0438\u0438 Clearly."
+   },
+   "options__text_align__label": {
+      "message": "\u0412\u044B\u0440\u043E\u0432\u043D\u044F\u0442\u044C \u0442\u0435\u043A\u0441\u0442"
+   },
+   "options__text_font__label": {
+      "message": "\u0428\u0440\u0438\u0444\u0442 \u0434\u043B\u044F \u043E\u0441\u043D\u043E\u0432\u043D\u043E\u0433\u043E \u0442\u0435\u043A\u0441\u0442\u0430"
+   },
+   "options__text_font_header__label": {
+      "message": "\u0428\u0440\u0438\u0444\u0442 \u0434\u043B\u044F \u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043A\u043E\u0432"
+   },
+   "options__text_font_monospace__label": {
+      "message": "\u041C\u043E\u043D\u043E\u0448\u0438\u0440\u0438\u043D\u043D\u044B\u0439 \u0448\u0440\u0438\u0444\u0442"
+   },
+   "options__text_line_height__label": {
+      "message": "\u0412\u044B\u0441\u043E\u0442\u0430 \u0441\u0442\u0440\u043E\u043A\u0438"
+   },
+   "options__text_size__label": {
+      "message": "\u0411\u0430\u0437\u043E\u0432\u044B\u0439 \u0440\u0430\u0437\u043C\u0435\u0440 \u0448\u0440\u0438\u0444\u0442\u0430"
+   },
+   "options__title__custom": {
+      "message": "\u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u0441\u043A\u0430\u044F \u0442\u0435\u043C\u0430"
+   },
+   "options__title__general": {
+      "message": "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438"
+   },
+   "options__title__page": {
+      "message": "Clearly / \u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438"
+   },
+   "options__title__sub__account": {
+      "message": "\u0410\u043A\u043A\u0430\u0443\u043D\u0442"
+   },
+   "options__title__sub__keyboard": {
+      "message": "\u0421\u043E\u0447\u0435\u0442\u0430\u043D\u0438\u044F \u043A\u043B\u0430\u0432\u0438\u0448"
+   },
+   "options__title__sub__tags": {
+      "message": "\u041F\u0440\u0438 \u0441\u043E\u0445\u0440\u0430\u043D\u0435\u043D\u0438\u0438 \u0437\u0430\u043C\u0435\u0442\u043A\u0438"
+   },
+   "options__values__base__Blueprint": {
+      "message": "\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430\u0446\u0438\u044F"
+   },
+   "options__values__base__None": {
+      "message": "\u041D\u0435\u0442"
+   },
+   "options__values__base__Theme_1": {
+      "message": "\u041A\u043B\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043A\u0438\u0439"
+   },
+   "options__values__base__Theme_2": {
+      "message": "\u0421\u043E\u0432\u0440\u0435\u043C\u0435\u043D\u043D\u044B\u0439"
+   },
+   "options__values__base__Theme_3": {
+      "message": "\u041D\u043E\u0447\u043D\u043E\u0435 \u0432\u0440\u0435\u043C\u044F"
+   },
+   "options__values__footnote_links__Always": {
+      "message": "\u0412\u0441\u0435\u0433\u0434\u0430"
+   },
+   "options__values__footnote_links__Never": {
+      "message": "\u041D\u0438\u043A\u043E\u0433\u0434\u0430"
+   },
+   "options__values__footnote_links__On_Print": {
+      "message": "\u041D\u0430 \u043F\u0435\u0447\u0430\u0442\u044C"
+   },
+   "options__values__large_graphics__Do_Nothing": {
+      "message": "\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u0432\u0441\u0435\u0433\u0434\u0430"
+   },
+   "options__values__large_graphics__Hide_Always": {
+      "message": "\u0412\u0441\u0435\u0433\u0434\u0430 \u0441\u043A\u0440\u044B\u0432\u0430\u0442\u044C"
+   },
+   "options__values__large_graphics__Hide_on_Print": {
+      "message": "\u041D\u0435 \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0430\u0442\u044C \u043F\u0440\u0438 \u043F\u0435\u0447\u0430\u0442\u0438"
+   },
+   "options__values__menu_placement__Bottom_Right": {
+      "message": "\u0421\u043F\u0440\u0430\u0432\u0430 \u0432\u043D\u0438\u0437\u0443"
+   },
+   "options__values__menu_placement__Top_Right": {
+      "message": "\u0421\u043F\u0440\u0430\u0432\u0430 \u043D\u0430\u0432\u0435\u0440\u0445\u0443"
+   },
+   "options__values__text_align__Justified": {
+      "message": "\u0412\u044B\u0440\u043E\u0432\u043D\u0435\u043D\u043D\u044B\u0439 \u043F\u043E \u0448\u0438\u0440\u0438\u043D\u0435"
+   },
+   "options__values__text_align__Normal": {
+      "message": "\u041E\u0431\u044B\u0447\u043D\u044B\u0439"
+   }
+}

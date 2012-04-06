@@ -1,0 +1,287 @@
+{
+   "chrome_browser_action": {
+      "message": "View this page in Clearly."
+   },
+   "chrome_context_menu": {
+      "message": "Clearly"
+   },
+   "firefox_button": {
+      "message": "Clearly"
+   },
+   "firefox_button_tooltip": {
+      "message": "View this page with Clearly."
+   },
+   "firefox_context_menu": {
+      "message": "Clearly"
+   },
+   "firefox_menu": {
+      "message": "Clearly"
+   },
+   "inside__blank_error__body": {
+      "message": "Clearly is currently designed to work on article pages. An article page is any page that contains one large block of text -- like, for example, a newspaper article or blog post."
+   },
+   "inside__blank_error__heading": {
+      "message": "Tips for using Clearly"
+   },
+   "inside__evernote_clipping": {
+      "message": "Clipping..."
+   },
+   "inside__evernote_clipping_failed": {
+      "message": "Clipping failed."
+   },
+   "inside__evernote_login__button_cancel__label": {
+      "message": "Cancel"
+   },
+   "inside__evernote_login__button_do__label": {
+      "message": "Sign in"
+   },
+   "inside__evernote_login__create_account": {
+      "message": "Create an account"
+   },
+   "inside__evernote_login__general__error": {
+      "message": "Authentication failed."
+   },
+   "inside__evernote_login__heading": {
+      "message": "Sign in to Evernote"
+   },
+   "inside__evernote_login__password__error__format": {
+      "message": "Password contains bad characters."
+   },
+   "inside__evernote_login__password__error__invalid": {
+      "message": "Username and password do not match existing user."
+   },
+   "inside__evernote_login__password__error__length": {
+      "message": "Password must be between 6 and 64 characters long."
+   },
+   "inside__evernote_login__password__error__required": {
+      "message": "Password is required."
+   },
+   "inside__evernote_login__password__label": {
+      "message": "Password"
+   },
+   "inside__evernote_login__rememberMe__label": {
+      "message": "Remember me"
+   },
+   "inside__evernote_login__spinner": {
+      "message": "Signing in to Evernote"
+   },
+   "inside__evernote_login__username__error__format": {
+      "message": "Username contains bad characters."
+   },
+   "inside__evernote_login__username__error__invalid": {
+      "message": "Not a valid, active user."
+   },
+   "inside__evernote_login__username__error__length": {
+      "message": "Username must be between 1 and 64 characters long."
+   },
+   "inside__evernote_login__username__error__required": {
+      "message": "Username is required."
+   },
+   "inside__evernote_login__username__label": {
+      "message": "Evernote Username or Email Address"
+   },
+   "inside__menu__clip_to_evernote__tooltip": {
+      "message": "Clip to Evernote."
+   },
+   "inside__menu__close__tooltip": {
+      "message": "Hide the overlay."
+   },
+   "inside__menu__fitts__tooltip": {
+      "message": "Hide the overlay."
+   },
+   "inside__menu__print__tooltip": {
+      "message": "Print."
+   },
+   "inside__menu__settings__tooltip": {
+      "message": "Show Themes."
+   },
+   "inside__misc__page": {
+      "message": "page"
+   },
+   "inside__rtl__ltr__label": {
+      "message": "Left-to-right"
+   },
+   "inside__rtl__main__label": {
+      "message": "Text direction?"
+   },
+   "inside__rtl__rtl__label": {
+      "message": "Right-to-left"
+   },
+   "inside__settings__fontSize__large": {
+      "message": "large"
+   },
+   "inside__settings__fontSize__medium": {
+      "message": "medium"
+   },
+   "inside__settings__fontSize__small": {
+      "message": "small"
+   },
+   "inside__settings__theme__1": {
+      "message": "Newsprint"
+   },
+   "inside__settings__theme__2": {
+      "message": "Notable"
+   },
+   "inside__settings__theme__3": {
+      "message": "Night Owl"
+   },
+   "inside__settings__theme__custom": {
+      "message": "Custom"
+   },
+   "meta_extension_author": {
+      "message": "Evernote Corp."
+   },
+   "meta_extension_description": {
+      "message": "Clearly makes blog posts, articles and webpages clean and easy to read. Save them to Evernote to read anywhere."
+   },
+   "meta_extension_name": {
+      "message": "Clearly"
+   },
+   "options__account__sign_out": {
+      "message": "Signed in as [[=username]]."
+   },
+   "options__account__sign_out_link": {
+      "message": "Sign out."
+   },
+   "options__account__signed_out": {
+      "message": "You are not signed in. Click on the Evernote icon, in the Clearly sidebar, to sign in."
+   },
+   "options__base__label": {
+      "message": "Base CSS"
+   },
+   "options__box_width__label": {
+      "message": "Line Width"
+   },
+   "options__button__more_options": {
+      "message": "More Options"
+   },
+   "options__button__reset_custom": {
+      "message": "Reset"
+   },
+   "options__button__save_custom": {
+      "message": "Save Theme"
+   },
+   "options__button__save_general": {
+      "message": "Save Options"
+   },
+   "options__clip_tag__no__label": {
+      "message": "Don't tag"
+   },
+   "options__clip_tag__yes__label": {
+      "message": "Tag with"
+   },
+   "options__color_background__label": {
+      "message": "Background Color"
+   },
+   "options__color_links__label": {
+      "message": "Links Color"
+   },
+   "options__color_text__label": {
+      "message": "Foreground Color"
+   },
+   "options__custom_css__label": {
+      "message": "Custom CSS"
+   },
+   "options__footnote_links__label": {
+      "message": "Links as Footnotes"
+   },
+   "options__keys_activation__label": {
+      "message": "View page in Clearly"
+   },
+   "options__keys_clip__label": {
+      "message": "Clip to Evernote"
+   },
+   "options__large_graphics__label": {
+      "message": "Large Graphics"
+   },
+   "options__message__keys": {
+      "message": "To change, place cursor in field and strike key combination on your keyboard."
+   },
+   "options__message__keys_firefox": {
+      "message": "Restart your browser, after saving."
+   },
+   "options__message__saved": {
+      "message": "Settings will be in effect on any new tabs you use Clearly on."
+   },
+   "options__text_align__label": {
+      "message": "Text Align"
+   },
+   "options__text_font__label": {
+      "message": "Body Font"
+   },
+   "options__text_font_header__label": {
+      "message": "Header Font"
+   },
+   "options__text_font_monospace__label": {
+      "message": "Monospace Font"
+   },
+   "options__text_line_height__label": {
+      "message": "Line Height"
+   },
+   "options__text_size__label": {
+      "message": "Base Font Size"
+   },
+   "options__title__custom": {
+      "message": "Custom Theme"
+   },
+   "options__title__general": {
+      "message": "Options"
+   },
+   "options__title__page": {
+      "message": "Clearly / Options"
+   },
+   "options__title__sub__account": {
+      "message": "Account"
+   },
+   "options__title__sub__keyboard": {
+      "message": "Keyboard shortcuts"
+   },
+   "options__title__sub__tags": {
+      "message": "Clipping to Evernote"
+   },
+   "options__values__base__Blueprint": {
+      "message": "Blueprint"
+   },
+   "options__values__base__None": {
+      "message": "None"
+   },
+   "options__values__base__Theme_1": {
+      "message": "Classic"
+   },
+   "options__values__base__Theme_2": {
+      "message": "Modern"
+   },
+   "options__values__base__Theme_3": {
+      "message": "Night-time"
+   },
+   "options__values__footnote_links__Always": {
+      "message": "Always"
+   },
+   "options__values__footnote_links__Never": {
+      "message": "Never"
+   },
+   "options__values__footnote_links__On_Print": {
+      "message": "On Print"
+   },
+   "options__values__large_graphics__Do_Nothing": {
+      "message": "Show Always"
+   },
+   "options__values__large_graphics__Hide_Always": {
+      "message": "Hide Always"
+   },
+   "options__values__large_graphics__Hide_on_Print": {
+      "message": "Hide on Print"
+   },
+   "options__values__menu_placement__Bottom_Right": {
+      "message": "Bottom Right"
+   },
+   "options__values__menu_placement__Top_Right": {
+      "message": "Top Right"
+   },
+   "options__values__text_align__Justified": {
+      "message": "Justified"
+   },
+   "options__values__text_align__Normal": {
+      "message": "Normal"
+   }
+}

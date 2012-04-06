@@ -1,0 +1,287 @@
+{
+   "chrome_browser_action": {
+      "message": "Xem trang n\u00E0y trong Clearly."
+   },
+   "chrome_context_menu": {
+      "message": "Clearly"
+   },
+   "firefox_button": {
+      "message": "Clearly"
+   },
+   "firefox_button_tooltip": {
+      "message": "Xem trang n\u00E0y v\u1EDBi Clearly."
+   },
+   "firefox_context_menu": {
+      "message": "Clearly"
+   },
+   "firefox_menu": {
+      "message": "Clearly"
+   },
+   "inside__blank_error__body": {
+      "message": "Clearly is currently designed to work on article pages. An article page is any page that contains one large block of text -- like, for example, a newspaper article or blog post."
+   },
+   "inside__blank_error__heading": {
+      "message": "C\u00E1c m\u00E1ch n\u01B0\u1EDBc s\u1EED d\u1EE5ng Clearly"
+   },
+   "inside__evernote_clipping": {
+      "message": "\u0110ang t\u1EA1o clip..."
+   },
+   "inside__evernote_clipping_failed": {
+      "message": "T\u1EA1o clip th\u1EA5t b\u1EA1i."
+   },
+   "inside__evernote_login__button_cancel__label": {
+      "message": "Hu\u1EF7 b\u1ECF"
+   },
+   "inside__evernote_login__button_do__label": {
+      "message": "\u0110\u0103ng &nh\u1EADp"
+   },
+   "inside__evernote_login__create_account": {
+      "message": "T\u1EA1o m\u1ED9t tr\u01B0\u01A1ng m\u1EE5c"
+   },
+   "inside__evernote_login__general__error": {
+      "message": "X\u00E1c th\u1EF1c th\u1EA5t b\u1EA1i."
+   },
+   "inside__evernote_login__heading": {
+      "message": "\u0110\u0103ng nh\u1EADp v\u00E0o Evernote"
+   },
+   "inside__evernote_login__password__error__format": {
+      "message": "M\u1EADt kh\u1EA9u ch\u1EE9a c\u00E1c k\u00FD t\u1EF1 kh\u00F4ng \u0111\u01B0\u1EE3c ph\u00E9p."
+   },
+   "inside__evernote_login__password__error__invalid": {
+      "message": "T\u00EAn ng\u01B0\u1EDDi d\u00F9ng v\u00E0 m\u1EADt kh\u1EA9u kh\u00F4ng kh\u1EDBp v\u1EDBi ng\u01B0\u1EDDi d\u00F9ng hi\u1EC7n c\u00F3."
+   },
+   "inside__evernote_login__password__error__length": {
+      "message": "M\u1EADt kh\u1EA9u ph\u1EA3i d\u00E0i t\u1EEB 6 \u0111\u1EBFn 64 k\u00FD t\u1EF1."
+   },
+   "inside__evernote_login__password__error__required": {
+      "message": "M\u1EADt kh\u1EA9u l\u00E0 b\u1EAFt bu\u1ED9c."
+   },
+   "inside__evernote_login__password__label": {
+      "message": "M\u1EADt &kh\u1EA9u"
+   },
+   "inside__evernote_login__rememberMe__label": {
+      "message": "Nh\u1EDB t\u00F4i"
+   },
+   "inside__evernote_login__spinner": {
+      "message": "\u0110ang \u0111\u0103ng nh\u1EADp v\u00E0o Evernote"
+   },
+   "inside__evernote_login__username__error__format": {
+      "message": "T\u00EAn ng\u01B0\u1EDDi d\u00F9ng ch\u1EE9a c\u00E1c k\u00FD t\u1EF1 kh\u00F4ng \u0111\u01B0\u1EE3c ph\u00E9p."
+   },
+   "inside__evernote_login__username__error__invalid": {
+      "message": "Kh\u00F4ng ph\u1EA3i ng\u01B0\u1EDDi d\u00F9ng hi\u1EC7n ho\u1EA1t, h\u1EE3p l\u1EC7"
+   },
+   "inside__evernote_login__username__error__length": {
+      "message": "T\u00EAn ng\u01B0\u1EDDi d\u00F9ng ph\u1EA3i d\u00E0i t\u1EEB 1 \u0111\u1EBFn 64 k\u00FD t\u1EF1."
+   },
+   "inside__evernote_login__username__error__required": {
+      "message": "T\u00EAn ng\u01B0\u1EDDi d\u00F9ng l\u00E0 b\u1EAFt bu\u1ED9c."
+   },
+   "inside__evernote_login__username__label": {
+      "message": "T\u00EAn ng\u01B0\u1EDDi d\u00F9ng Evernote ho\u1EB7c \u0110\u1ECBa ch\u1EC9 th\u01B0 \u0111i\u1EC7n t\u1EED"
+   },
+   "inside__menu__clip_to_evernote__tooltip": {
+      "message": "T\u1EA1o clip v\u00E0o Evernote."
+   },
+   "inside__menu__close__tooltip": {
+      "message": "\u1EA8n ph\u1EA7n ch\u1ED3ng l\u1EA5p."
+   },
+   "inside__menu__fitts__tooltip": {
+      "message": "\u1EA8n ph\u1EA7n ch\u1ED3ng l\u1EA5p."
+   },
+   "inside__menu__print__tooltip": {
+      "message": "In."
+   },
+   "inside__menu__settings__tooltip": {
+      "message": "Hi\u1EC7n Ch\u1EE7 \u0111\u1EC1."
+   },
+   "inside__misc__page": {
+      "message": "trang"
+   },
+   "inside__rtl__ltr__label": {
+      "message": "Tr\u00E1i-sang-ph\u1EA3i"
+   },
+   "inside__rtl__main__label": {
+      "message": "H\u01B0\u1EDBng v\u0103n b\u1EA3n?"
+   },
+   "inside__rtl__rtl__label": {
+      "message": "Ph\u1EA3i-sang-tr\u00E1i"
+   },
+   "inside__settings__fontSize__large": {
+      "message": "l\u1EDBn"
+   },
+   "inside__settings__fontSize__medium": {
+      "message": "trung b\u00ECnh"
+   },
+   "inside__settings__fontSize__small": {
+      "message": "nh\u1ECF"
+   },
+   "inside__settings__theme__1": {
+      "message": "Gi\u1EA5y in b\u00E1o"
+   },
+   "inside__settings__theme__2": {
+      "message": "N\u1ED5i ti\u1EBFng"
+   },
+   "inside__settings__theme__3": {
+      "message": "C\u00FA \u0110\u00EAm"
+   },
+   "inside__settings__theme__custom": {
+      "message": "T\u00F9y ch\u1EC9nh"
+   },
+   "meta_extension_author": {
+      "message": "T\u1EADp \u0111o\u00E0n Evernote"
+   },
+   "meta_extension_description": {
+      "message": "Clearly t\u1EA1o c\u00E1c m\u1EE5c \u0111\u0103ng blog, b\u00E0i vi\u1EBFt v\u00E0 trang web r\u00F5 r\u00E0ng v\u00E0 d\u1EC5 \u0111\u1ECDc. L\u01B0u ch\u00FAng v\u00E0o Evernote \u0111\u1EC3 \u0111\u1ECDc \u1EDF b\u1EA5t c\u1EE9 \u0111\u00E2u."
+   },
+   "meta_extension_name": {
+      "message": "Clearly"
+   },
+   "options__account__sign_out": {
+      "message": "\u0110\u00E3 \u0111\u0103ng nh\u1EADp l\u00E0 [[=username]]."
+   },
+   "options__account__sign_out_link": {
+      "message": "\u0110\u0103ng xu\u1EA5t."
+   },
+   "options__account__signed_out": {
+      "message": "B\u1EA1n ch\u01B0a \u0111\u0103ng nh\u1EADp. B\u1EA5m v\u00E0o bi\u1EC3u t\u01B0\u1EE3ng Evernote, trong d\u1EA3i ti\u1EC7n \u00EDch Clearly, \u0111\u1EC3 \u0111\u0103ng nh\u1EADp."
+   },
+   "options__base__label": {
+      "message": "CSS C\u01A1 s\u1EDF"
+   },
+   "options__box_width__label": {
+      "message": "\u0110\u1ED9 r\u1ED9ng N\u00E9t"
+   },
+   "options__button__more_options": {
+      "message": "Nhi\u1EC1u T\u00F9y ch\u1ECDn h\u01A1n"
+   },
+   "options__button__reset_custom": {
+      "message": "\u0110\u1EB7t l\u1EA1i"
+   },
+   "options__button__save_custom": {
+      "message": "L\u01B0u Ch\u1EE7 \u0111\u1EC1"
+   },
+   "options__button__save_general": {
+      "message": "L\u01B0u T\u00F9y ch\u1ECDn"
+   },
+   "options__clip_tag__no__label": {
+      "message": "Kh\u00F4ng t\u1EA1o th\u1EBB"
+   },
+   "options__clip_tag__yes__label": {
+      "message": "T\u1EA1o th\u1EBB v\u1EDBi"
+   },
+   "options__color_background__label": {
+      "message": "M\u00E0u n\u1EC1n"
+   },
+   "options__color_links__label": {
+      "message": "M\u00E0u N\u1ED1i k\u1EBFt"
+   },
+   "options__color_text__label": {
+      "message": "M\u00E0u Ti\u1EC1n c\u1EA3nh"
+   },
+   "options__custom_css__label": {
+      "message": "CSS T\u00F9y ch\u1EC9nh"
+   },
+   "options__footnote_links__label": {
+      "message": "C\u00E1c n\u1ED1i k\u1EBFt nh\u01B0 Ph\u1EE5 ch\u00FA"
+   },
+   "options__keys_activation__label": {
+      "message": "Xem trang trong Clearly"
+   },
+   "options__keys_clip__label": {
+      "message": "T\u1EA1o clip v\u00E0o Evernote"
+   },
+   "options__large_graphics__label": {
+      "message": "\u0110\u1ED3 h\u1ECDa L\u1EDBn"
+   },
+   "options__message__keys": {
+      "message": "\u0110\u1EC3 thay \u0111\u1ED5i, \u0111\u1EB7t con tr\u1ECF v\u00E0o tr\u01B0\u1EDDng v\u00E0 g\u00F5 t\u1ED5 h\u1EE3p ph\u00EDm tr\u00EAn b\u00E0n ph\u00EDm c\u1EE7a b\u1EA1n."
+   },
+   "options__message__keys_firefox": {
+      "message": "Kh\u1EDFi \u0111\u1ED9ng l\u1EA1i tr\u00ECnh duy\u1EC7t c\u1EE7a b\u1EA1n, sau khi l\u01B0u."
+   },
+   "options__message__saved": {
+      "message": "C\u00E1c thi\u1EBFt \u0111\u1EB7t s\u1EBD c\u00F3 hi\u1EC7u l\u1EF1c tr\u00EAn b\u1EA5t k\u1EF3 tab m\u1EDBi n\u00E0o b\u1EA1n s\u1EED d\u1EE5ng Clearly."
+   },
+   "options__text_align__label": {
+      "message": "C\u0103n ch\u1EC9nh V\u0103n b\u1EA3n"
+   },
+   "options__text_font__label": {
+      "message": "Ph\u00F4ng ch\u1EEF N\u1ED9i dung"
+   },
+   "options__text_font_header__label": {
+      "message": "Ph\u00F4ng ch\u1EEF Ti\u00EAu \u0111\u1EC1"
+   },
+   "options__text_font_monospace__label": {
+      "message": "Ph\u00F4ng ch\u1EEF \u0110\u01A1n c\u00E1ch"
+   },
+   "options__text_line_height__label": {
+      "message": "\u0110\u1ED9 cao N\u00E9t"
+   },
+   "options__text_size__label": {
+      "message": "C\u1EE1 Ph\u00F4ng C\u01A1 s\u1EDF"
+   },
+   "options__title__custom": {
+      "message": "Ch\u1EE7 \u0111\u1EC1 T\u00F9y ch\u1EC9nh"
+   },
+   "options__title__general": {
+      "message": "T\u00F9y ch\u1ECDn"
+   },
+   "options__title__page": {
+      "message": "Clearly / T\u00F9y ch\u1ECDn"
+   },
+   "options__title__sub__account": {
+      "message": "Tr\u01B0\u01A1ng m\u1EE5c"
+   },
+   "options__title__sub__keyboard": {
+      "message": "L\u1ED1i t\u1EAFt b\u00E0n ph\u00EDm"
+   },
+   "options__title__sub__tags": {
+      "message": "T\u1EA1o clip v\u00E0o Evernote"
+   },
+   "options__values__base__Blueprint": {
+      "message": "Gi\u1EA5y n\u1EC1n xanh"
+   },
+   "options__values__base__None": {
+      "message": "Kh\u00F4ng c\u00F3"
+   },
+   "options__values__base__Theme_1": {
+      "message": "C\u1ED5 \u0111i\u1EC3n"
+   },
+   "options__values__base__Theme_2": {
+      "message": "Hi\u1EC7n \u0111\u1EA1i"
+   },
+   "options__values__base__Theme_3": {
+      "message": "Ban \u0111\u00EAm"
+   },
+   "options__values__footnote_links__Always": {
+      "message": "Lu\u00F4n lu\u00F4n"
+   },
+   "options__values__footnote_links__Never": {
+      "message": "Kh\u00F4ng bao gi\u1EDD"
+   },
+   "options__values__footnote_links__On_Print": {
+      "message": "Khi In"
+   },
+   "options__values__large_graphics__Do_Nothing": {
+      "message": "Lu\u00F4n Hi\u1EC7n"
+   },
+   "options__values__large_graphics__Hide_Always": {
+      "message": "Lu\u00F4n \u1EA8n"
+   },
+   "options__values__large_graphics__Hide_on_Print": {
+      "message": "\u1EA8n khi In"
+   },
+   "options__values__menu_placement__Bottom_Right": {
+      "message": "Ph\u1EA3i D\u01B0\u1EDBi"
+   },
+   "options__values__menu_placement__Top_Right": {
+      "message": "Ph\u1EA3i Tr\u00EAn"
+   },
+   "options__values__text_align__Justified": {
+      "message": "C\u0103n \u0111\u1EC1u"
+   },
+   "options__values__text_align__Normal": {
+      "message": "B\u00ECnh th\u01B0\u1EDDng"
+   }
+}

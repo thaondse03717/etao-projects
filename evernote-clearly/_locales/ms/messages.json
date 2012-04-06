@@ -1,0 +1,287 @@
+{
+   "options__text_font_header__label" : {
+      "message" : "Fon Pengepala"
+   },
+   "firefox_menu" : {
+      "message" : "Clearly"
+   },
+   "inside__evernote_login__username__error__length" : {
+      "message" : "Nama pengguna mestilah antara 1 dan 64 aksara panjangnya."
+   },
+   "inside__evernote_clipping_failed" : {
+      "message" : "Pengklipan gagal."
+   },
+   "options__values__large_graphics__Do_Nothing" : {
+      "message" : "Sentiasa Papar"
+   },
+   "options__values__large_graphics__Hide_Always" : {
+      "message" : "Sembunyikan Selalu"
+   },
+   "inside__evernote_clipping" : {
+      "message" : "Mengklip..."
+   },
+   "options__values__footnote_links__Never" : {
+      "message" : "Jangan sekali-kali"
+   },
+   "inside__evernote_login__username__error__format" : {
+      "message" : "Nama pengguna mengandungi aksara yang tidak boleh digunakan."
+   },
+   "inside__rtl__rtl__label" : {
+      "message" : "Kanan-ke-kiri"
+   },
+   "inside__settings__fontSize__small" : {
+      "message" : "kecil"
+   },
+   "options__custom_css__label" : {
+      "message" : "CSS Tersuai"
+   },
+   "options__clip_tag__no__label" : {
+      "message" : "Jangan teg"
+   },
+   "inside__settings__fontSize__medium" : {
+      "message" : "sederhana"
+   },
+   "inside__evernote_login__create_account" : {
+      "message" : "Buat akaun"
+   },
+   "options__account__signed_out" : {
+      "message" : "Anda tidak mendaftar masuk. Klik ikon Evernote, pada bar sisi Clearly, untuk mendaftar masuk."
+   },
+   "inside__evernote_login__general__error" : {
+      "message" : "Pengesahihan gagal."
+   },
+   "inside__blank_error__heading" : {
+      "message" : "Petua untuk menggunakan Clearly"
+   },
+   "options__keys_activation__label" : {
+      "message" : "Lihat halaman dalam Clearly"
+   },
+   "options__values__base__Theme_1" : {
+      "message" : "Klasik"
+   },
+   "options__button__save_general" : {
+      "message" : "Simpan Pilihan"
+   },
+   "inside__evernote_login__spinner" : {
+      "message" : "Mendaftar masuk ke Evernote"
+   },
+   "firefox_button_tooltip" : {
+      "message" : "Lihat muka surat ini dalam Clearly."
+   },
+   "options__color_text__label" : {
+      "message" : "Warna Latar Depan"
+   },
+   "options__values__menu_placement__Bottom_Right" : {
+      "message" : "Bawah Kanan"
+   },
+   "options__large_graphics__label" : {
+      "message" : "Grafik Besar"
+   },
+   "options__values__base__Theme_3" : {
+      "message" : "Waktu-malam"
+   },
+   "options__color_background__label" : {
+      "message" : "Warna Latar Belakang"
+   },
+   "options__title__custom" : {
+      "message" : "Tema Tersuai"
+   },
+   "options__base__label" : {
+      "message" : "Asas CSS "
+   },
+   "options__account__sign_out" : {
+      "message" : "Telah daftar masuk sebagai [=username]]."
+   },
+   "inside__evernote_login__password__error__invalid" : {
+      "message" : "Nama pengguna dan kata laluan tidak sepadan dengan pengguna sedia ada."
+   },
+   "meta_extension_description" : {
+      "message" : "Clearly membuatkan siaran blog, artikel dan laman web bersih dan mudah untuk dibaca. Simpan kesemuanya ke Evernote untuk membaca di mana-mana sahaja."
+   },
+   "chrome_context_menu" : {
+      "message" : "Clearly"
+   },
+   "options__values__large_graphics__Hide_on_Print" : {
+      "message" : "Sembunyikan semasa Cetak"
+   },
+   "options__message__saved" : {
+      "message" : "Tetapan akan dilaksanakan pada mana-mana tab baharu yang anda gunakan Clearly."
+   },
+   "options__title__general" : {
+      "message" : "Pilihan"
+   },
+   "options__button__save_custom" : {
+      "message" : "Simpan Tema"
+   },
+   "inside__menu__fitts__tooltip" : {
+      "message" : "Sembunyikan tindihan."
+   },
+   "inside__evernote_login__username__error__required" : {
+      "message" : "Nama pengguna diperlukan."
+   },
+   "inside__misc__page" : {
+      "message" : "halaman"
+   },
+   "options__keys_clip__label" : {
+      "message" : "Klipkan pada Evernote"
+   },
+   "options__title__sub__tags" : {
+      "message" : "Pengklipan ke Evernote"
+   },
+   "options__text_line_height__label" : {
+      "message" : "Tinggi Baris"
+   },
+   "options__button__more_options" : {
+      "message" : "Lagi Pilihan"
+   },
+   "inside__settings__theme__3" : {
+      "message" : "Pungguk Malam"
+   },
+   "options__values__base__Blueprint" : {
+      "message" : "Cetakan Biru"
+   },
+   "inside__blank_error__body" : {
+      "message" : "Clearly is currently designed to work on article pages. An article page is any page that contains one large block of text -- like, for example, a newspaper article or blog post."
+   },
+   "options__text_size__label" : {
+      "message" : "Saiz Fon Asas"
+   },
+   "inside__rtl__ltr__label" : {
+      "message" : "Kiri-ke-kanan"
+   },
+   "inside__rtl__main__label" : {
+      "message" : "Arah teks?"
+   },
+   "inside__settings__theme__custom" : {
+      "message" : "Tersuai"
+   },
+   "options__button__reset_custom" : {
+      "message" : "Tetapkan semula"
+   },
+   "options__values__footnote_links__Always" : {
+      "message" : "Sentiasa"
+   },
+   "options__footnote_links__label" : {
+      "message" : "Pautan sebagai Nota kaki"
+   },
+   "inside__evernote_login__password__error__format" : {
+      "message" : "Kata laluan mengandungi aksara yang tidak boleh digunakan."
+   },
+   "inside__settings__fontSize__large" : {
+      "message" : "besar"
+   },
+   "inside__evernote_login__password__error__length" : {
+      "message" : "Kata laluan mestilah antara 6 dan 64 aksara panjangnya."
+   },
+   "inside__menu__settings__tooltip" : {
+      "message" : "Papar Tema."
+   },
+   "inside__menu__close__tooltip" : {
+      "message" : "Sembunyikan tindihan."
+   },
+   "meta_extension_name" : {
+      "message" : "Clearly"
+   },
+   "options__color_links__label" : {
+      "message" : "Warna Pautan"
+   },
+   "options__clip_tag__yes__label" : {
+      "message" : "Teg dengan"
+   },
+   "options__values__base__Theme_2" : {
+      "message" : "Moden"
+   },
+   "options__message__keys_firefox" : {
+      "message" : "Mulakan semula penyemak imbas anda selepas selesai menyimpan."
+   },
+   "inside__evernote_login__button_cancel__label" : {
+      "message" : "Batal"
+   },
+   "options__title__sub__account" : {
+      "message" : "Akaun"
+   },
+   "inside__settings__theme__2" : {
+      "message" : "Ketara"
+   },
+   "inside__evernote_login__username__error__invalid" : {
+      "message" : "Bukan pengguna aktif yang sah."
+   },
+   "options__values__base__None" : {
+      "message" : "Tiada"
+   },
+   "options__message__keys" : {
+      "message" : "Untuk membuat perubahan, tempatkan kursor dalam medan dan taip gabungan kekunci pada papan kekunci anda."
+   },
+   "inside__menu__clip_to_evernote__tooltip" : {
+      "message" : "Klipkan pada Evernote."
+   },
+   "inside__evernote_login__username__label" : {
+      "message" : "Nama Pengguna atau Alamat E-mel Evernote"
+   },
+   "options__values__text_align__Justified" : {
+      "message" : "Terlaras"
+   },
+   "inside__evernote_login__button_do__label" : {
+      "message" : "Daftar masuk"
+   },
+   "firefox_button" : {
+      "message" : "Clearly"
+   },
+   "inside__evernote_login__rememberMe__label" : {
+      "message" : "Ingat saya"
+   },
+   "options__text_font__label" : {
+      "message" : "Fon  Badan"
+   },
+   "options__values__text_align__Normal" : {
+      "message" : "Biasa"
+   },
+   "inside__menu__print__tooltip" : {
+      "message" : "Cetak."
+   },
+   "meta_extension_author" : {
+      "message" : "Evernote Corp."
+   },
+   "options__account__sign_out_link" : {
+      "message" : "Daftar keluar."
+   },
+   "chrome_browser_action" : {
+      "message" : "Lihat halaman dalam Clearly."
+   },
+   "inside__evernote_login__heading" : {
+      "message" : "Daftar masuk ke Evernote"
+   },
+   "options__text_align__label" : {
+      "message" : "Laras Teks"
+   },
+   "options__title__sub__keyboard" : {
+      "message" : "Pintasan papan kekunci"
+   },
+   "options__values__footnote_links__On_Print" : {
+      "message" : "Semasa Cetak"
+   },
+   "options__values__menu_placement__Top_Right" : {
+      "message" : "Atas Kanan"
+   },
+   "firefox_context_menu" : {
+      "message" : "Clearly"
+   },
+   "inside__settings__theme__1" : {
+      "message" : "Kertas Akhbar"
+   },
+   "inside__evernote_login__password__label" : {
+      "message" : "Kata laluan"
+   },
+   "options__box_width__label" : {
+      "message" : "Lebar Baris"
+   },
+   "options__text_font_monospace__label" : {
+      "message" : "Fon Monospace"
+   },
+   "inside__evernote_login__password__error__required" : {
+      "message" : "Kata laluan diperlukan."
+   },
+   "options__title__page" : {
+      "message" : "Clearly \/ Pilihan"
+   }
+}

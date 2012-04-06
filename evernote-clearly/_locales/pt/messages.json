@@ -1,0 +1,287 @@
+{
+   "chrome_browser_action": {
+      "message": "Visualizar esta p\u00E1gina no Clearly."
+   },
+   "chrome_context_menu": {
+      "message": "Clearly"
+   },
+   "firefox_button": {
+      "message": "Clearly"
+   },
+   "firefox_button_tooltip": {
+      "message": "Visualizar esta p\u00E1gina no Clearly."
+   },
+   "firefox_context_menu": {
+      "message": "Clearly"
+   },
+   "firefox_menu": {
+      "message": "Clearly"
+   },
+   "inside__blank_error__body": {
+      "message": "Clearly is currently designed to work on article pages. An article page is any page that contains one large block of text -- like, for example, a newspaper article or blog post."
+   },
+   "inside__blank_error__heading": {
+      "message": "Dicas para usar o Clearly"
+   },
+   "inside__evernote_clipping": {
+      "message": "A capturar..."
+   },
+   "inside__evernote_clipping_failed": {
+      "message": "A captura falhou."
+   },
+   "inside__evernote_login__button_cancel__label": {
+      "message": "Cancelar"
+   },
+   "inside__evernote_login__button_do__label": {
+      "message": "Iniciar sess\u00E3o"
+   },
+   "inside__evernote_login__create_account": {
+      "message": "Criar uma conta"
+   },
+   "inside__evernote_login__general__error": {
+      "message": "Falha na autentica\u00E7\u00E3o."
+   },
+   "inside__evernote_login__heading": {
+      "message": "Inicie sess\u00E3o no Evernote"
+   },
+   "inside__evernote_login__password__error__format": {
+      "message": "A palavra-passe cont\u00E9m caracteres inv\u00E1lidos."
+   },
+   "inside__evernote_login__password__error__invalid": {
+      "message": "O nome de utilizador e palavra-passe n\u00E3o correspondem a nenhum utilizador existente."
+   },
+   "inside__evernote_login__password__error__length": {
+      "message": "A palavra-passe dever\u00E1 ter entre 6 e 64 caracteres."
+   },
+   "inside__evernote_login__password__error__required": {
+      "message": "\u00C9 obrigat\u00F3ria uma palavra-passe."
+   },
+   "inside__evernote_login__password__label": {
+      "message": "Palavra-passe"
+   },
+   "inside__evernote_login__rememberMe__label": {
+      "message": "Lembrar-me"
+   },
+   "inside__evernote_login__spinner": {
+      "message": "A iniciar sess\u00E3o no Evernote"
+   },
+   "inside__evernote_login__username__error__format": {
+      "message": "O nome de utilizador cont\u00E9m caracteres inv\u00E1lidos."
+   },
+   "inside__evernote_login__username__error__invalid": {
+      "message": "Utilizador inv\u00E1lido ou inactivo."
+   },
+   "inside__evernote_login__username__error__length": {
+      "message": "O nome de utilizador tem de ter entre 1 e 64 caracteres."
+   },
+   "inside__evernote_login__username__error__required": {
+      "message": "O nome de utilizador \u00E9 obrigat\u00F3rio."
+   },
+   "inside__evernote_login__username__label": {
+      "message": "Nome de utilizador Evernote ou endere\u00E7o de e-mail"
+   },
+   "inside__menu__clip_to_evernote__tooltip": {
+      "message": "Recortar para o Evernote."
+   },
+   "inside__menu__close__tooltip": {
+      "message": "Ocultar a sobreposi\u00E7\u00E3o."
+   },
+   "inside__menu__fitts__tooltip": {
+      "message": "Ocultar a sobreposi\u00E7\u00E3o."
+   },
+   "inside__menu__print__tooltip": {
+      "message": "Imprimir."
+   },
+   "inside__menu__settings__tooltip": {
+      "message": "Mostrar temas."
+   },
+   "inside__misc__page": {
+      "message": "p\u00E1gina"
+   },
+   "inside__rtl__ltr__label": {
+      "message": "Esquerda-para-direita"
+   },
+   "inside__rtl__main__label": {
+      "message": "Direc\u00E7\u00E3o do texto?"
+   },
+   "inside__rtl__rtl__label": {
+      "message": "Direita-para-esquerda"
+   },
+   "inside__settings__fontSize__large": {
+      "message": "grande"
+   },
+   "inside__settings__fontSize__medium": {
+      "message": "m\u00E9dio"
+   },
+   "inside__settings__fontSize__small": {
+      "message": "pequeno"
+   },
+   "inside__settings__theme__1": {
+      "message": "Jornal"
+   },
+   "inside__settings__theme__2": {
+      "message": " Not\u00E1vel"
+   },
+   "inside__settings__theme__3": {
+      "message": "Noct\u00EDvago"
+   },
+   "inside__settings__theme__custom": {
+      "message": "Personalizado"
+   },
+   "meta_extension_author": {
+      "message": "Evernote Corp."
+   },
+   "meta_extension_description": {
+      "message": "O Clearly torna artigos e p\u00E1ginas web mais impas e f\u00E1ceis de ler. Guarde-as para o Evernote para poder ler em qualquer lugar."
+   },
+   "meta_extension_name": {
+      "message": "Clearly"
+   },
+   "options__account__sign_out": {
+      "message": "Logado como [[=username]]. "
+   },
+   "options__account__sign_out_link": {
+      "message": "Terminar sess\u00E3o."
+   },
+   "options__account__signed_out": {
+      "message": "N\u00E3o tem sess\u00E3o iniciada. Clique no \u00EDcone Evernote, na barra lateral do do Clearly, para iniciar sess\u00E3o."
+   },
+   "options__base__label": {
+      "message": "CSS base"
+   },
+   "options__box_width__label": {
+      "message": "Largura da linha"
+   },
+   "options__button__more_options": {
+      "message": "Mais op\u00E7\u00F5es"
+   },
+   "options__button__reset_custom": {
+      "message": "Repor"
+   },
+   "options__button__save_custom": {
+      "message": "Guardar tema"
+   },
+   "options__button__save_general": {
+      "message": "Guardar op\u00E7\u00F5es"
+   },
+   "options__clip_tag__no__label": {
+      "message": "Sem etiquetas"
+   },
+   "options__clip_tag__yes__label": {
+      "message": "Com as etiquetas"
+   },
+   "options__color_background__label": {
+      "message": "Cor de segundo plano"
+   },
+   "options__color_links__label": {
+      "message": "Cor das liga\u00E7\u00F5es"
+   },
+   "options__color_text__label": {
+      "message": "Cor de primeiro plano"
+   },
+   "options__custom_css__label": {
+      "message": "CSS personalizado"
+   },
+   "options__footnote_links__label": {
+      "message": "Liga\u00E7\u00F5es como rodap\u00E9"
+   },
+   "options__keys_activation__label": {
+      "message": "Visualizar esta p\u00E1gina no Clearly"
+   },
+   "options__keys_clip__label": {
+      "message": "Capturar para Evernote"
+   },
+   "options__large_graphics__label": {
+      "message": "Gr\u00E1ficos grandes"
+   },
+   "options__message__keys": {
+      "message": "Para alterar, coloque o cursor no campo e pressione uma combina\u00E7\u00E3o de teclas no seu teclado."
+   },
+   "options__message__keys_firefox": {
+      "message": "Reinicie o seu navegador ap\u00F3s guardar."
+   },
+   "options__message__saved": {
+      "message": "As defini\u00E7\u00F5es ser\u00E3o aplicadas em quaisquer novos separadores em que use o Clearly."
+   },
+   "options__text_align__label": {
+      "message": "Alinhamento do texto"
+   },
+   "options__text_font__label": {
+      "message": "Tipo de letra do corpo"
+   },
+   "options__text_font_header__label": {
+      "message": "Tipo de letra do cabe\u00E7alho"
+   },
+   "options__text_font_monospace__label": {
+      "message": "Tipo de letra monoespa\u00E7o"
+   },
+   "options__text_line_height__label": {
+      "message": "Altura da linha"
+   },
+   "options__text_size__label": {
+      "message": "Tamanho do tipo de letra base"
+   },
+   "options__title__custom": {
+      "message": "Tema personalizado"
+   },
+   "options__title__general": {
+      "message": "Op\u00E7\u00F5es"
+   },
+   "options__title__page": {
+      "message": "Clearly / Op\u00E7\u00F5es"
+   },
+   "options__title__sub__account": {
+      "message": "Conta"
+   },
+   "options__title__sub__keyboard": {
+      "message": "Atalhos do teclado"
+   },
+   "options__title__sub__tags": {
+      "message": "Captura para o Evernote"
+   },
+   "options__values__base__Blueprint": {
+      "message": "Diagrama"
+   },
+   "options__values__base__None": {
+      "message": "Nenhum"
+   },
+   "options__values__base__Theme_1": {
+      "message": "Cl\u00E1ssico"
+   },
+   "options__values__base__Theme_2": {
+      "message": "Moderno"
+   },
+   "options__values__base__Theme_3": {
+      "message": "Nocturno"
+   },
+   "options__values__footnote_links__Always": {
+      "message": "Sempre"
+   },
+   "options__values__footnote_links__Never": {
+      "message": "Nunca"
+   },
+   "options__values__footnote_links__On_Print": {
+      "message": "Na impress\u00E3o"
+   },
+   "options__values__large_graphics__Do_Nothing": {
+      "message": "Mostrar sempre"
+   },
+   "options__values__large_graphics__Hide_Always": {
+      "message": "Ocultar sempre"
+   },
+   "options__values__large_graphics__Hide_on_Print": {
+      "message": "Ocultar na impress\u00E3o"
+   },
+   "options__values__menu_placement__Bottom_Right": {
+      "message": "Fundo \u00E0 direita"
+   },
+   "options__values__menu_placement__Top_Right": {
+      "message": "Topo \u00E0 direita"
+   },
+   "options__values__text_align__Justified": {
+      "message": "Justificado"
+   },
+   "options__values__text_align__Normal": {
+      "message": "Normal"
+   }
+}

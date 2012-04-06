@@ -1,0 +1,287 @@
+{
+   "chrome_browser_action": {
+      "message": "N\u00E4yt\u00E4 t\u00E4m\u00E4 sivu Clearlyssa."
+   },
+   "chrome_context_menu": {
+      "message": "Clearly"
+   },
+   "firefox_button": {
+      "message": "Clearly"
+   },
+   "firefox_button_tooltip": {
+      "message": "N\u00E4yt\u00E4 t\u00E4m\u00E4 sivu Clearlyssa."
+   },
+   "firefox_context_menu": {
+      "message": "Clearly"
+   },
+   "firefox_menu": {
+      "message": "Clearly"
+   },
+   "inside__blank_error__body": {
+      "message": "Clearly is currently designed to work on article pages. An article page is any page that contains one large block of text -- like, for example, a newspaper article or blog post."
+   },
+   "inside__blank_error__heading": {
+      "message": "Vinkkej\u00E4 Clearlyn k\u00E4ytt\u00F6\u00F6n"
+   },
+   "inside__evernote_clipping": {
+      "message": "Otetaan leikett\u00E4..."
+   },
+   "inside__evernote_clipping_failed": {
+      "message": "Leike ep\u00E4onnistui."
+   },
+   "inside__evernote_login__button_cancel__label": {
+      "message": "Peruuta"
+   },
+   "inside__evernote_login__button_do__label": {
+      "message": "Kirjaudu sis\u00E4\u00E4n"
+   },
+   "inside__evernote_login__create_account": {
+      "message": "Luo tili"
+   },
+   "inside__evernote_login__general__error": {
+      "message": "Todennus ep\u00E4onnistui."
+   },
+   "inside__evernote_login__heading": {
+      "message": "Kirjaudu sis\u00E4\u00E4n Evernoteen"
+   },
+   "inside__evernote_login__password__error__format": {
+      "message": "Salasana sis\u00E4lt\u00E4\u00E4 kiellettyj\u00E4 merkkej\u00E4."
+   },
+   "inside__evernote_login__password__error__invalid": {
+      "message": "K\u00E4ytt\u00E4j\u00E4tunnus ja salasana eiv\u00E4t t\u00E4sm\u00E4\u00E4 olemassa olevaan k\u00E4ytt\u00E4j\u00E4\u00E4n."
+   },
+   "inside__evernote_login__password__error__length": {
+      "message": "Salasanan tulee olla v\u00E4hint\u00E4\u00E4n 6 ja enimmill\u00E4\u00E4n 64 merkki\u00E4 pitk\u00E4."
+   },
+   "inside__evernote_login__password__error__required": {
+      "message": "Salasana vaaditaan."
+   },
+   "inside__evernote_login__password__label": {
+      "message": "Salasana"
+   },
+   "inside__evernote_login__rememberMe__label": {
+      "message": "Muista minut"
+   },
+   "inside__evernote_login__spinner": {
+      "message": "Kirjaudutaan sis\u00E4\u00E4n Evernoteen"
+   },
+   "inside__evernote_login__username__error__format": {
+      "message": "K\u00E4ytt\u00E4j\u00E4nimi sis\u00E4lt\u00E4\u00E4 kiellettyj\u00E4 merkkej\u00E4."
+   },
+   "inside__evernote_login__username__error__invalid": {
+      "message": "Ei kelvollinen, aktiivinen k\u00E4ytt\u00E4j\u00E4."
+   },
+   "inside__evernote_login__username__error__length": {
+      "message": "K\u00E4ytt\u00E4j\u00E4tunnuksen tulee olla v\u00E4hint\u00E4\u00E4n 1 ja enimmill\u00E4\u00E4n 64 merkki\u00E4 pitk\u00E4."
+   },
+   "inside__evernote_login__username__error__required": {
+      "message": "K\u00E4ytt\u00E4j\u00E4tunnus vaaditaan."
+   },
+   "inside__evernote_login__username__label": {
+      "message": "Evernote-k\u00E4ytt\u00E4j\u00E4tunnus tai s\u00E4hk\u00F6postiosoite"
+   },
+   "inside__menu__clip_to_evernote__tooltip": {
+      "message": "Leike Evernoteen."
+   },
+   "inside__menu__close__tooltip": {
+      "message": "Piilota Clearly."
+   },
+   "inside__menu__fitts__tooltip": {
+      "message": "Piilota Clearly."
+   },
+   "inside__menu__print__tooltip": {
+      "message": "Tulosta."
+   },
+   "inside__menu__settings__tooltip": {
+      "message": "N\u00E4yt\u00E4 teemat."
+   },
+   "inside__misc__page": {
+      "message": "sivu"
+   },
+   "inside__rtl__ltr__label": {
+      "message": "Vasemmalta oikealle"
+   },
+   "inside__rtl__main__label": {
+      "message": "Tekstin suunta?"
+   },
+   "inside__rtl__rtl__label": {
+      "message": "Oikealta vasemmalle"
+   },
+   "inside__settings__fontSize__large": {
+      "message": "suuri"
+   },
+   "inside__settings__fontSize__medium": {
+      "message": "keskikoko"
+   },
+   "inside__settings__fontSize__small": {
+      "message": "pieni"
+   },
+   "inside__settings__theme__1": {
+      "message": "Sanomalehti"
+   },
+   "inside__settings__theme__2": {
+      "message": "Muistio"
+   },
+   "inside__settings__theme__3": {
+      "message": "Y\u00F6ky\u00F6peli"
+   },
+   "inside__settings__theme__custom": {
+      "message": "Mukautettu"
+   },
+   "meta_extension_author": {
+      "message": "Evernote Corp."
+   },
+   "meta_extension_description": {
+      "message": "Clearly tekee blogiartikkeleista, artikkeleista ja verkkosivuista selkeit\u00E4 ja helppolukuisia. Tallenna ne Evernoteen ja lue miss\u00E4 tahansa."
+   },
+   "meta_extension_name": {
+      "message": "Clearly"
+   },
+   "options__account__sign_out": {
+      "message": "Kirjauduttu sis\u00E4\u00E4n nimell\u00E4 [[=username]]."
+   },
+   "options__account__sign_out_link": {
+      "message": "Kirjaudu ulos."
+   },
+   "options__account__signed_out": {
+      "message": "Et ole kirjautunut sis\u00E4\u00E4n. Napsauta Evernote-kuvaketta Clearlyn sivupalkissa kirjautukasesi."
+   },
+   "options__base__label": {
+      "message": "CSS-kanta"
+   },
+   "options__box_width__label": {
+      "message": "Rivin pituus"
+   },
+   "options__button__more_options": {
+      "message": "Lis\u00E4asetukset"
+   },
+   "options__button__reset_custom": {
+      "message": "Nollaa"
+   },
+   "options__button__save_custom": {
+      "message": "Tallenna teema"
+   },
+   "options__button__save_general": {
+      "message": "Tallenna asetukset"
+   },
+   "options__clip_tag__no__label": {
+      "message": "\u00C4l\u00E4 lis\u00E4\u00E4 avainsanaa"
+   },
+   "options__clip_tag__yes__label": {
+      "message": "Avainsanalla"
+   },
+   "options__color_background__label": {
+      "message": "Taustav\u00E4ri"
+   },
+   "options__color_links__label": {
+      "message": "Linkkien v\u00E4rit"
+   },
+   "options__color_text__label": {
+      "message": "Edustav\u00E4ri"
+   },
+   "options__custom_css__label": {
+      "message": "Muokattu CSS"
+   },
+   "options__footnote_links__label": {
+      "message": "Linkit alaviitteiss\u00E4"
+   },
+   "options__keys_activation__label": {
+      "message": "N\u00E4yt\u00E4 sivu Clearlyssa"
+   },
+   "options__keys_clip__label": {
+      "message": "Leike Evernoteen"
+   },
+   "options__large_graphics__label": {
+      "message": "Suuret grafiikat"
+   },
+   "options__message__keys": {
+      "message": "Muuta asettamalla kursorin kentt\u00E4\u00E4n ja painamalla n\u00E4pp\u00E4inyhdistelm\u00E4\u00E4 n\u00E4pp\u00E4imist\u00F6ll\u00E4."
+   },
+   "options__message__keys_firefox": {
+      "message": "K\u00E4ynnist\u00E4 selain uudelleen tallennuksen j\u00E4lkeen."
+   },
+   "options__message__saved": {
+      "message": "Asetukset tulevat voimaan kaikissa uusissa v\u00E4lilehdiss\u00E4, joilla k\u00E4yt\u00E4t Clearlya."
+   },
+   "options__text_align__label": {
+      "message": "Tekstin tasaus"
+   },
+   "options__text_font__label": {
+      "message": "Rungon kirjasin"
+   },
+   "options__text_font_header__label": {
+      "message": "Otsikon kirjasin"
+   },
+   "options__text_font_monospace__label": {
+      "message": "Tasav\u00E4linen kirjasin"
+   },
+   "options__text_line_height__label": {
+      "message": "Rivin korkeus"
+   },
+   "options__text_size__label": {
+      "message": "Rungon tekstikoko"
+   },
+   "options__title__custom": {
+      "message": "Oma teema"
+   },
+   "options__title__general": {
+      "message": "Asetukset"
+   },
+   "options__title__page": {
+      "message": "Clearly / Asetukset"
+   },
+   "options__title__sub__account": {
+      "message": "K\u00E4ytt\u00E4j\u00E4tunnus"
+   },
+   "options__title__sub__keyboard": {
+      "message": "N\u00E4pp\u00E4inoikotiet"
+   },
+   "options__title__sub__tags": {
+      "message": "Leike Evernoteen"
+   },
+   "options__values__base__Blueprint": {
+      "message": "Pohjapiirros"
+   },
+   "options__values__base__None": {
+      "message": "Ei mit\u00E4\u00E4n"
+   },
+   "options__values__base__Theme_1": {
+      "message": "Klassinen"
+   },
+   "options__values__base__Theme_2": {
+      "message": "Moderni"
+   },
+   "options__values__base__Theme_3": {
+      "message": "Y\u00F6aika"
+   },
+   "options__values__footnote_links__Always": {
+      "message": "Aina"
+   },
+   "options__values__footnote_links__Never": {
+      "message": "Ei koskaan"
+   },
+   "options__values__footnote_links__On_Print": {
+      "message": "Tulosteessa"
+   },
+   "options__values__large_graphics__Do_Nothing": {
+      "message": "N\u00E4yt\u00E4 aina"
+   },
+   "options__values__large_graphics__Hide_Always": {
+      "message": "Piilota aina"
+   },
+   "options__values__large_graphics__Hide_on_Print": {
+      "message": "Piilota tulosteessa"
+   },
+   "options__values__menu_placement__Bottom_Right": {
+      "message": "Alaoikea"
+   },
+   "options__values__menu_placement__Top_Right": {
+      "message": "Yl\u00E4oikea"
+   },
+   "options__values__text_align__Justified": {
+      "message": "Tasattu"
+   },
+   "options__values__text_align__Normal": {
+      "message": "Normaali"
+   }
+}

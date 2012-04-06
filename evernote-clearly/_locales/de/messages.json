@@ -1,0 +1,287 @@
+{
+   "chrome_browser_action": {
+      "message": "Diese Seite in Clearly anzeigen."
+   },
+   "chrome_context_menu": {
+      "message": "Clearly"
+   },
+   "firefox_button": {
+      "message": "Clearly"
+   },
+   "firefox_button_tooltip": {
+      "message": "Diese Seite in Clearly anzeigen."
+   },
+   "firefox_context_menu": {
+      "message": "Clearly"
+   },
+   "firefox_menu": {
+      "message": "Clearly"
+   },
+   "inside__blank_error__body": {
+      "message": "Clearly is currently designed to work on article pages. An article page is any page that contains one large block of text -- like, for example, a newspaper article or blog post."
+   },
+   "inside__blank_error__heading": {
+      "message": "Tipps zum Umgang mit Clearly"
+   },
+   "inside__evernote_clipping": {
+      "message": "Wird ausgeschnitten..."
+   },
+   "inside__evernote_clipping_failed": {
+      "message": "Fehler beim Ausschneiden."
+   },
+   "inside__evernote_login__button_cancel__label": {
+      "message": "Abbrechen"
+   },
+   "inside__evernote_login__button_do__label": {
+      "message": "Anmelden"
+   },
+   "inside__evernote_login__create_account": {
+      "message": "Konto erstellen"
+   },
+   "inside__evernote_login__general__error": {
+      "message": "Die Authentifizierung ist fehlgeschlagen."
+   },
+   "inside__evernote_login__heading": {
+      "message": "Bei Evernote anmelden"
+   },
+   "inside__evernote_login__password__error__format": {
+      "message": "Das Passwort enth\u00E4lt fehlerhafte Zeichen."
+   },
+   "inside__evernote_login__password__error__invalid": {
+      "message": "Der Benutzername und das Passwort stimmen nicht mit den Daten des vorhandenen Benutzers \u00FCberein."
+   },
+   "inside__evernote_login__password__error__length": {
+      "message": "Das Passwort muss aus 6 bis 64 Zeichen bestehen."
+   },
+   "inside__evernote_login__password__error__required": {
+      "message": "Das Passwort ist erforderlich."
+   },
+   "inside__evernote_login__password__label": {
+      "message": "Passwort"
+   },
+   "inside__evernote_login__rememberMe__label": {
+      "message": "Anmeldeinformationen speichern"
+   },
+   "inside__evernote_login__spinner": {
+      "message": "Anmeldung bei Evernote"
+   },
+   "inside__evernote_login__username__error__format": {
+      "message": "Der Benutzername enth\u00E4lt fehlerhafte Zeichen."
+   },
+   "inside__evernote_login__username__error__invalid": {
+      "message": "Kein g\u00FCltiger, aktiver Benutzer."
+   },
+   "inside__evernote_login__username__error__length": {
+      "message": "Der Benutzername muss aus 1 bis 64 Zeichen bestehen."
+   },
+   "inside__evernote_login__username__error__required": {
+      "message": "Der Benutzername ist erforderlich."
+   },
+   "inside__evernote_login__username__label": {
+      "message": "Evernote Benutzername oder E-Mail-Adresse"
+   },
+   "inside__menu__clip_to_evernote__tooltip": {
+      "message": "Clip an Evernote."
+   },
+   "inside__menu__close__tooltip": {
+      "message": "\u00DCberlagerung ausblenden."
+   },
+   "inside__menu__fitts__tooltip": {
+      "message": "\u00DCberlagerung ausblenden."
+   },
+   "inside__menu__print__tooltip": {
+      "message": "Drucken."
+   },
+   "inside__menu__settings__tooltip": {
+      "message": "Designs anzeigen."
+   },
+   "inside__misc__page": {
+      "message": "Seite"
+   },
+   "inside__rtl__ltr__label": {
+      "message": "Von links nach rechts."
+   },
+   "inside__rtl__main__label": {
+      "message": "Textrichtung?"
+   },
+   "inside__rtl__rtl__label": {
+      "message": "Von rechts nach links."
+   },
+   "inside__settings__fontSize__large": {
+      "message": "gro\u00DF"
+   },
+   "inside__settings__fontSize__medium": {
+      "message": "mittel"
+   },
+   "inside__settings__fontSize__small": {
+      "message": "klein"
+   },
+   "inside__settings__theme__1": {
+      "message": "Klassisch"
+   },
+   "inside__settings__theme__2": {
+      "message": "interessante"
+   },
+   "inside__settings__theme__3": {
+      "message": "Klar"
+   },
+   "inside__settings__theme__custom": {
+      "message": "Benutzerdefiniert"
+   },
+   "meta_extension_author": {
+      "message": "Evernote Corp."
+   },
+   "meta_extension_description": {
+      "message": "Clearly wandelt Blogeintr\u00E4ge, Artikel und Webseiten in eine bereinigte und einfach zu lesende Form um. Speichern Sie diese in Evernote, um sie von \u00FCberall aus lesen zu k\u00F6nnen."
+   },
+   "meta_extension_name": {
+      "message": "Clearly"
+   },
+   "options__account__sign_out": {
+      "message": "Angemeldet als [[=username]]."
+   },
+   "options__account__sign_out_link": {
+      "message": "Abmelden."
+   },
+   "options__account__signed_out": {
+      "message": "Nachtschw\u00E4rmer"
+   },
+   "options__base__label": {
+      "message": "Basis-CSS"
+   },
+   "options__box_width__label": {
+      "message": "Zeilenbreite"
+   },
+   "options__button__more_options": {
+      "message": "Weitere Optionen"
+   },
+   "options__button__reset_custom": {
+      "message": "Zur\u00FCcksetzen"
+   },
+   "options__button__save_custom": {
+      "message": "Design speichern"
+   },
+   "options__button__save_general": {
+      "message": "Optionen speichern"
+   },
+   "options__clip_tag__no__label": {
+      "message": "Nicht mit Schlagwort versehen"
+   },
+   "options__clip_tag__yes__label": {
+      "message": "Hinzuzuf\u00FCgendes Schlagwort:"
+   },
+   "options__color_background__label": {
+      "message": "Hintergrundfarbe"
+   },
+   "options__color_links__label": {
+      "message": "Linkfarbe"
+   },
+   "options__color_text__label": {
+      "message": "Vordergrundfarbe"
+   },
+   "options__custom_css__label": {
+      "message": "Benutzerdefiniertes CSS"
+   },
+   "options__footnote_links__label": {
+      "message": "Links als Fu\u00DFzeilen"
+   },
+   "options__keys_activation__label": {
+      "message": "Seite in Clearly anzeigen"
+   },
+   "options__keys_clip__label": {
+      "message": "Clip an Evernote"
+   },
+   "options__large_graphics__label": {
+      "message": "Gro\u00DFe Grafiken"
+   },
+   "options__message__keys": {
+      "message": "Um \u00C4nderungen durchzuf\u00FChren, setzen Sie den Cursor in das Feld und bet\u00E4tigen die Tastatur."
+   },
+   "options__message__keys_firefox": {
+      "message": "Starten Sie nach dem Speichern den Browser neu."
+   },
+   "options__message__saved": {
+      "message": "Die Einstellungen werden von allen neuen Registerkarten, auf denen Sie Clearly verwenden, \u00FCbernommen."
+   },
+   "options__text_align__label": {
+      "message": "Textausrichtung"
+   },
+   "options__text_font__label": {
+      "message": "Schriftart f\u00FCr Textk\u00F6rper"
+   },
+   "options__text_font_header__label": {
+      "message": "Headerschriftart"
+   },
+   "options__text_font_monospace__label": {
+      "message": "Festbreitenschriftart"
+   },
+   "options__text_line_height__label": {
+      "message": "Zeilenh\u00F6he"
+   },
+   "options__text_size__label": {
+      "message": "Basisschriftgrad"
+   },
+   "options__title__custom": {
+      "message": "Benutzerdefiniertes Design"
+   },
+   "options__title__general": {
+      "message": "Optionen"
+   },
+   "options__title__page": {
+      "message": "Clearly / Optionen"
+   },
+   "options__title__sub__account": {
+      "message": "Konto"
+   },
+   "options__title__sub__keyboard": {
+      "message": "Tastenkombinationen"
+   },
+   "options__title__sub__tags": {
+      "message": "Speicherung des Clips in Evernote"
+   },
+   "options__values__base__Blueprint": {
+      "message": "Blaupause"
+   },
+   "options__values__base__None": {
+      "message": "Kein"
+   },
+   "options__values__base__Theme_1": {
+      "message": "Klassisch"
+   },
+   "options__values__base__Theme_2": {
+      "message": "Modern"
+   },
+   "options__values__base__Theme_3": {
+      "message": "Nachts"
+   },
+   "options__values__footnote_links__Always": {
+      "message": "Immer"
+   },
+   "options__values__footnote_links__Never": {
+      "message": "Nie"
+   },
+   "options__values__footnote_links__On_Print": {
+      "message": "Beim Drucken"
+   },
+   "options__values__large_graphics__Do_Nothing": {
+      "message": "Immer anzeigen"
+   },
+   "options__values__large_graphics__Hide_Always": {
+      "message": "Immer ausblenden"
+   },
+   "options__values__large_graphics__Hide_on_Print": {
+      "message": "Beim Drucken ausblenden"
+   },
+   "options__values__menu_placement__Bottom_Right": {
+      "message": "Unten rechts"
+   },
+   "options__values__menu_placement__Top_Right": {
+      "message": "Oben rechts"
+   },
+   "options__values__text_align__Justified": {
+      "message": "Gerechtfertigt "
+   },
+   "options__values__text_align__Normal": {
+      "message": "Normal"
+   }
+}
