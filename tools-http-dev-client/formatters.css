@@ -1,0 +1,103 @@
+@import url('reset.css');
+  
+.cc-xml-comment {
+  color: hsl(122, 52%, 28%);
+}
+
+.cc-xml-data {
+  color: hsl(122, 30%, 60%);
+}
+
+.cc-xml-cdata {
+  color: hsl(122, 10%, 30%);
+}
+
+.cc-xml-tag {
+  color: hsl(304, 77%, 30%);
+}
+
+.cc-xml-close-tag {
+  color: hsl(304, 60%, 30%);
+}
+
+.cc-xml-pi {
+  color: #777;
+}
+
+.cc-xml-attr-name {
+  color: hsl(27, 100%, 30%);
+}
+
+.cc-xml-attr-value {
+  color: hsl(240, 73%, 38%);
+}
+
+.cc-json-object li {
+  padding-left: 25px;
+}
+
+a .cc-json-string {
+  color: hsl(240, 73%, 38%);
+}
+
+.cc-json-string {
+  color: green;
+}
+
+/*******/
+
+.cc-tag-b {
+  color: navy;
+  }
+.cc-tag-e {
+  color: blue;
+  }
+.cc-attr-n {
+  color: green;	
+  }
+.cc-attr-v {
+  color: red;	
+  }
+.cc-json-lb, .cc-json-rb {
+  color: orange;
+  }
+.cc-json-la, .cc-json-ra {
+  color: olive;
+  }
+.cc-l2 {
+  padding-left: 20px;
+  }
+.cc-json-n {
+  color: black;
+  font-weight: bold;
+  padding-right: 5px;
+  }
+.cc-json-v {
+  padding-left: 5px;
+  color: maroon;
+  }
+.cc-json-pv {
+  padding-left: 5px;
+  color: green;
+  }
+  
+.cc-pi-b {
+  color: maroon;
+  }
+.cc-c-b {
+  color: graytext;
+  }
+  .cc-block {
+  padding: 0 0 0 25px;
+  }
+  
+  
+.cc-json-array li {
+	padding-left: 10px;
+} 
+div.cc-xml-data, div.cc-xml-cdata, div.cc-xml-comment {
+  
+}
+.cc-text {
+  
+}
