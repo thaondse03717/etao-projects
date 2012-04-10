@@ -1,6 +1,6 @@
-//	events
-//	======
-//	include
+// events
+// ======
+// include
 /*
 	first three variables will be defined
 */
@@ -71,15 +71,15 @@ var __custom_events__dispatch = function (_custom_event_object, _document, _wind
 };
 
 
-//	browser and content
+// browser and content
 chrome.extension.onRequest.addListener(function (request, sender, sendResponse) {
-	//	invalid
+	// invalid
 	if (request._type);
 	else {
 		sendResponse({});
 	}
 
-	//	switch
+	// switch
 	switch (request._type) {
 	case 'to-content--evernote-login-show':
 		__custom_events__dispatch(
@@ -118,12 +118,12 @@ chrome.extension.onRequest.addListener(function (request, sender, sendResponse) 
 		break;
 	}
 
-	//	blank on all
+	// blank on all
 	sendResponse({});
 });
 
 
-//	extension and chrome
+// extension and chrome
 window.document.addEventListener('click', function (_event) {
 	var _event_key = __custom_events__get_key(_event),
 		_event_name = __custom_events__keys_to_names[_event_key],
@@ -220,31 +220,31 @@ window.document.addEventListener('click', function (_event) {
 
 
 	case 'to-extension--evernote-clip':
-		//	include
-		//	encode
-		//	======
+		// include
+		// encode
+		// ======
 
 		function __encodeURIComponentForReadable(_string) {
-			//	none
+			// none
 			if (_string == '') {
 				return 'none';
 			}
 
-			//	encode
+			// encode
 			return encodeURIComponent(_string).replace(/!/g, '%21').replace(/'/g, '%27').replace(/\(/g, '%28').replace(/\)/g, '%29').replace(/\*/g, '%2A');
 		}
 
 
-		//	decode
-		//	======
+		// decode
+		// ======
 
 		function __decodeURIComponentForReadable(_string) {
-			//	none
+			// none
 			if (_string == 'none') {
 				return '';
 			}
 
-			//	decode
+			// decode
 			return decodeURIComponent(_string);
 		}
 
@@ -262,7 +262,7 @@ window.document.addEventListener('click', function (_event) {
 			__body = _bodyElement.innerHTML,
 			__tag = __decodeURIComponentForReadable(_tagElement.innerHTML);
 
-		//	remove fotnoted links
+		// remove fotnoted links
 		__body = __body.replace(/<sup class="readableLinkFootnote">[^<]*<\/sup>/gi, '');
 		__body = __body.replace(/<ol id="footnotedLinks">[\s\S]*?<\/ol>/gi, '');
 
@@ -309,51 +309,51 @@ window.document.addEventListener('click', function (_event) {
 
 
 
-//	keyboard hook
-//	=============
-//	keyboard hook
+// keyboard hook
+// =============
+// keyboard hook
 chrome.extension.sendRequest({_type: "to-chrome--get-keyboard-info"}, function (response) {
-	//	decode
-	//	encode
-	//	======
+	// decode
+	// encode
+	// ======
 
 	function __encodeURIComponentForReadable(_string) {
-		//	none
+		// none
 		if (_string == '') {
 			return 'none';
 		}
 
-		//	encode
+		// encode
 		return encodeURIComponent(_string).replace(/!/g, '%21').replace(/'/g, '%27').replace(/\(/g, '%28').replace(/\)/g, '%29').replace(/\*/g, '%2A');
 	}
 
 
-	//	decode
-	//	======
+	// decode
+	// ======
 
 	function __decodeURIComponentForReadable(_string) {
-		//	none
+		// none
 		if (_string == 'none') {
 			return '';
 		}
 
-		//	decode
+		// decode
 		return decodeURIComponent(_string);
 	}
 
 
 
 
-	//	global vars
+	// global vars
 	var
 	__definition_items_html = response._definition_items_html,
 
 		__key_activation = __decodeURIComponentForReadable(response._key_activation),
 		__key_clip = __decodeURIComponentForReadable(response._key_clip);
 
-	//	the event
+	// the event
 	window.addEventListener('keydown', function (_event) {
-		//	include key combo detection
+		// include key combo detection
 		/*
 		_event must be defined
 		_key_combo and _key_code will be defined at end of code
@@ -382,14 +382,14 @@ chrome.extension.sendRequest({_type: "to-chrome--get-keyboard-info"}, function (
 			break;
 		}
 
-		//	get
-		//	===
+		// get
+		// ===
 		var _modifierKeys = (_event.originalEvent ? _event.originalEvent : _event);
-		//	jQuery screws up -- fucks up the metaKey property badly
+		// jQuery screws up -- fucks up the metaKey property badly
 		var _key_combo = '' + (_modifierKeys.ctrlKey ? 'Control + ' : '') + (_modifierKeys.shiftKey ? 'Shift + ' : '') + (_modifierKeys.altKey ? 'Alt + ' : '') + (_modifierKeys.metaKey ? 'Command + ' : '') + _key_code;
 
-		//	needs a modifier -- if not just Escape key
-		//	================
+		// needs a modifier -- if not just Escape key
+		// ================
 		if ((_key_code != 'Escape') && (_key_code == _key_combo)) {
 			_key_code = 'NONE';
 			_key_combo = 'NONE';
@@ -400,17 +400,17 @@ chrome.extension.sendRequest({_type: "to-chrome--get-keyboard-info"}, function (
 		case ((__key_activation > '') && (_key_combo == __key_activation)):
 		case ((__key_clip > '') && (_key_combo == __key_clip)):
 
-			//	also clip?
-			//	==========
+			// also clip?
+			// ==========
 			var __clip_on_launch = ((__key_clip > '') && (_key_combo == __key_clip));
 
-			//	stop
-			//	====
+			// stop
+			// ====
 			_event.stopPropagation();
 			_event.preventDefault();
 
-			//	inject
-			//	======
+			// inject
+			// ======
 			var code = "" + "var " + "	_d = document, " + "	_b = _d.getElementsByTagName('body')[0], " + "	_o = _d.getElementById('__readable_extension_definitions'), " + "	_l = _d.createElement('script')" + ";"
 
 			+ "if (_o); else" + "{" + "	_o = _d.createElement('dl');" + "	_o.setAttribute('style', 'display: none;');" + "	_o.setAttribute('id', '__readable_extension_definitions');" + "	_b.appendChild(_o);" + "}" + "_o.innerHTML = '" + __definition_items_html + "';"
