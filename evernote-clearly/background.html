@@ -2,30 +2,30 @@
 <html><head>
 <script>
 
-//	set global object
-//	=================
+// set global object
+// =================
 var __readable_by_evernote = {};
 
 
-//	first run
-//	=========
+// first run
+// =========
 (function () {
 
-    //	check
-    //	=====
-    //	check -- maybe return
+    // check
+    // =====
+    // check -- maybe return
     if (localStorage['notFirstRun'] == 'yes') {
         return;
     }
 
-    //	set
+    // set
     localStorage['notFirstRun'] = 'yes';
 
 
-    //	actually run
-    //	============
-    //	open help tab
-    //	=============
+    // actually run
+    // ============
+    // open help tab
+    // =============
     chrome.tabs.create({
         'url': 'http://www.evernote.com/clearly/',
         'selected': true
@@ -34,17 +34,17 @@ var __readable_by_evernote = {};
 })();
 
 
-//	bind fast
-//	=========
-//	button
-//	======
+// bind fast
+// =========
+// button
+// ======
 chrome.browserAction.onClicked.addListener(function (tab) {
     __readable_by_evernote.__common_launch();
 });
 
 
-//	context menu
-//	============
+// context menu
+// ============
 chrome.contextMenus.create({
     'title': chrome.i18n.getMessage('chrome_context_menu'),
     'type': 'normal',
@@ -55,12 +55,12 @@ chrome.contextMenus.create({
 });
 
 
-//	both
-//	====
+// both
+// ====
 __readable_by_evernote.__common_launch = function () {
     chrome.tabs.getSelected(null, function (_tab) {
-        //	blank page
-        //	==========
+        // blank page
+        // ==========
         if (_tab.url.indexOf('chrome:') === 0) {
             chrome.tabs.update(
             _tab.id, {
@@ -69,8 +69,8 @@ __readable_by_evernote.__common_launch = function () {
             return;
         }
 
-        //	inject script
-        //	=============
+        // inject script
+        // =============
         var
         _options = __readable_by_evernote.__get_saved__options(),
             _vars = __readable_by_evernote.__get_saved__vars(),
@@ -96,46 +96,46 @@ __readable_by_evernote.__common_launch = function () {
 
 
 
-//	include
-//	=======
-//	options
-//	get options
-//	===========
+// include
+// =======
+// options
+// get options
+// ===========
 __readable_by_evernote.__get_saved__options = function () {
 
-    //	encode
-    //	======
+    // encode
+    // ======
 
 
     function __encodeURIComponentForReadable(_string) {
-        //	none
+        // none
         if (_string == '') {
             return 'none';
         }
 
-        //	encode
+        // encode
         return encodeURIComponent(_string).replace(/!/g, '%21').replace(/'/g, '%27').replace(/\(/g, '%28').replace(/\)/g, '%29').replace(/\*/g, '%2A');
     }
 
 
-    //	decode
-    //	======
+    // decode
+    // ======
 
 
     function __decodeURIComponentForReadable(_string) {
-        //	none
+        // none
         if (_string == 'none') {
             return '';
         }
 
-        //	decode
+        // decode
         return decodeURIComponent(_string);
     }
 
 
 
 
-    //	__encodeURIComponentForReadable must be defined
+    // __encodeURIComponentForReadable must be defined
     var __default_options = {
         'text_font': __encodeURIComponentForReadable('"PT Serif"'),
         'text_font_header': __encodeURIComponentForReadable('"PT Serif"'),
@@ -163,43 +163,43 @@ __readable_by_evernote.__get_saved__options = function () {
 };
 
 
-//	get vars
-//	========
+// get vars
+// ========
 __readable_by_evernote.__get_saved__vars = function () {
 
-    //	encode
-    //	======
+    // encode
+    // ======
 
 
     function __encodeURIComponentForReadable(_string) {
-        //	none
+        // none
         if (_string == '') {
             return 'none';
         }
 
-        //	encode
+        // encode
         return encodeURIComponent(_string).replace(/!/g, '%21').replace(/'/g, '%27').replace(/\(/g, '%28').replace(/\)/g, '%29').replace(/\*/g, '%2A');
     }
 
 
-    //	decode
-    //	======
+    // decode
+    // ======
 
 
     function __decodeURIComponentForReadable(_string) {
-        //	none
+        // none
         if (_string == 'none') {
             return '';
         }
 
-        //	decode
+        // decode
         return decodeURIComponent(_string);
     }
 
 
 
 
-    //	__encodeURIComponentForReadable must be defined
+    // __encodeURIComponentForReadable must be defined
     var __default_vars = {
         'theme': __encodeURIComponentForReadable('theme-1'),
 
@@ -220,8 +220,8 @@ __readable_by_evernote.__get_saved__vars = function () {
 };
 
 
-//	save
-//	====
+// save
+// ====
 __readable_by_evernote.__save_someStuff = function (_to_save) {
     for (var _x in _to_save) {
         localStorage[_x] = _to_save[_x];
@@ -229,8 +229,8 @@ __readable_by_evernote.__save_someStuff = function (_to_save) {
 };
 
 
-//	get definitionList
-//	==================
+// get definitionList
+// ==================
 __readable_by_evernote.__get__stuffAsDefinitionItemsHTML = function (_stuffToTransform) {
 /*
 				stuffToTransform = {
@@ -271,43 +271,43 @@ __readable_by_evernote.__get__stuffAsDefinitionItemsHTML = function (_stuffToTra
 };
 
 
-//	set defaults
-//	============
+// set defaults
+// ============
 (function () {
 
-    //	encode
-    //	======
+    // encode
+    // ======
 
 
     function __encodeURIComponentForReadable(_string) {
-        //	none
+        // none
         if (_string == '') {
             return 'none';
         }
 
-        //	encode
+        // encode
         return encodeURIComponent(_string).replace(/!/g, '%21').replace(/'/g, '%27').replace(/\(/g, '%28').replace(/\)/g, '%29').replace(/\*/g, '%2A');
     }
 
 
-    //	decode
-    //	======
+    // decode
+    // ======
 
 
     function __decodeURIComponentForReadable(_string) {
-        //	none
+        // none
         if (_string == 'none') {
             return '';
         }
 
-        //	decode
+        // decode
         return decodeURIComponent(_string);
     }
 
 
 
 
-    //	__encodeURIComponentForReadable must be defined
+    // __encodeURIComponentForReadable must be defined
     var __default_options = {
         'text_font': __encodeURIComponentForReadable('"PT Serif"'),
         'text_font_header': __encodeURIComponentForReadable('"PT Serif"'),
@@ -326,7 +326,7 @@ __readable_by_evernote.__get__stuffAsDefinitionItemsHTML = function (_stuffToTra
     };
 
 
-    //	__encodeURIComponentForReadable must be defined
+    // __encodeURIComponentForReadable must be defined
     var __default_vars = {
         'theme': __encodeURIComponentForReadable('theme-1'),
 
@@ -338,15 +338,15 @@ __readable_by_evernote.__get__stuffAsDefinitionItemsHTML = function (_stuffToTra
     };
 
 
-    //	mac or pc
-    //	=========
+    // mac or pc
+    // =========
     if (window.navigator.appVersion.indexOf('Mac OS') > -1) {
         __default_vars['keys_activation'] = __encodeURIComponentForReadable('Control + Command + Right Arrow');
         __default_vars['keys_clip'] = __encodeURIComponentForReadable('Control + Command + Up Arrow');
     }
 
-    //	options
-    //	=======
+    // options
+    // =======
     for (var _x in __default_options) {
         var _valueDefault = __default_options[_x];
 
@@ -358,8 +358,8 @@ __readable_by_evernote.__get__stuffAsDefinitionItemsHTML = function (_stuffToTra
         }
     }
 
-    //	vars
-    //	====
+    // vars
+    // ====
     for (var _x in __default_vars) {
         var _valueDefault = __default_vars[_x];
 
@@ -373,12 +373,12 @@ __readable_by_evernote.__get__stuffAsDefinitionItemsHTML = function (_stuffToTra
 })();
 
 
-//	evernote remote
-//	included code
-//	json-rpc must exist in context
+// evernote remote
+// included code
+// json-rpc must exist in context
 
-//	namespace
-//	=========
+// namespace
+// =========
 __readable_by_evernote.__evernote_remote = {
     'domain': 'https://www.evernote.com/',
 
@@ -397,21 +397,21 @@ __readable_by_evernote.__evernote_remote = {
 };
 
 
-//	connect
-//	=======
+// connect
+// =======
 __readable_by_evernote.__evernote_remote.connect = function (_onSuccess, _onFailure) {
     try {
         __readable_by_evernote.__evernote_remote.rpc__userStore = new __readable_by_evernote.JSONRpcClient(
 
         function () {
-            //	error
+            // error
             if (__readable_by_evernote.__evernote_remote.rpc__userStore.UserStore);
             else {
                 _onFailure('connection / invalid');
                 return;
             }
 
-            //	set conected
+            // set conected
             __readable_by_evernote.__evernote_remote.is__connected = true;
 
             //  run
@@ -425,8 +425,8 @@ __readable_by_evernote.__evernote_remote.connect = function (_onSuccess, _onFail
 };
 
 
-//	logout
-//	======
+// logout
+// ======
 __readable_by_evernote.__evernote_remote.logout = function () {
     __readable_by_evernote.__evernote_remote['rpc__userStore'] = false;
     __readable_by_evernote.__evernote_remote['rpc__noteStore'] = false;
@@ -440,14 +440,14 @@ __readable_by_evernote.__evernote_remote.logout = function () {
 };
 
 
-//	login
-//	=====
+// login
+// =====
 __readable_by_evernote.__evernote_remote.login = function (_user, _pass, _onSuccess, _onFailure) {
     //  login function
     //  ===============
     var _loginFunction = function () {
-        //	login
-        //	=====
+        // login
+        // =====
         try {
             var _loginResult = __readable_by_evernote.__evernote_remote.rpc__userStore.UserStore.authenticate(
             _user, // username
@@ -457,8 +457,8 @@ __readable_by_evernote.__evernote_remote.login = function (_user, _pass, _onSucc
             );
         }
         catch (_error) {
-            //	unknown error
-            //	=============
+            // unknown error
+            // =============
             switch (true) {
             case (!(_error.trace)):
             case (!(_error.trace.indexOf)):
@@ -467,8 +467,8 @@ __readable_by_evernote.__evernote_remote.login = function (_user, _pass, _onSucc
                 return;
             }
 
-            //	figure out error
-            //	================
+            // figure out error
+            // ================
             var _trace = _error.trace.substr(0, _error.trace.indexOf(')') + 1);
             switch (_trace) {
             case 'EDAMUserException(errorCode:INVALID_AUTH, parameter:username)':
@@ -480,15 +480,15 @@ __readable_by_evernote.__evernote_remote.login = function (_user, _pass, _onSucc
                 return;
             }
 
-            //	could not figure out error
-            //	==========================
+            // could not figure out error
+            // ==========================
             _onFailure('login / exception / unknown');
             return;
         }
 
 
-        //	check
-        //	=====
+        // check
+        // =====
         switch (true) {
         case (!(_loginResult.authenticationToken)):
         case (!(_loginResult.user)):
@@ -498,8 +498,8 @@ __readable_by_evernote.__evernote_remote.login = function (_user, _pass, _onSucc
         }
 
 
-        //	set userInfo
-        //	============
+        // set userInfo
+        // ============
         __readable_by_evernote.__evernote_remote.user__authToken = _loginResult.authenticationToken;
         __readable_by_evernote.__evernote_remote.user__shardId = _loginResult.user.shardId;
         __readable_by_evernote.__evernote_remote.user__privilege = _loginResult.user.privilege.value;
@@ -507,14 +507,14 @@ __readable_by_evernote.__evernote_remote.login = function (_user, _pass, _onSucc
         __readable_by_evernote.__evernote_remote.is__loggedIn = true;
 
 
-        //	note store
-        //	==========
-        //	make connection
+        // note store
+        // ==========
+        // make connection
         try {
             __readable_by_evernote.__evernote_remote.rpc__noteStore = new __readable_by_evernote.JSONRpcClient(
 
             function () {
-                //	error
+                // error
                 if (__readable_by_evernote.__evernote_remote.rpc__noteStore.NoteStore);
                 else {
                     _onFailure('login / note store / invalid');
@@ -531,14 +531,14 @@ __readable_by_evernote.__evernote_remote.login = function (_user, _pass, _onSucc
         }
     };
 
-    //	allready connected, connect, or error
-    //	=====================================
+    // allready connected, connect, or error
+    // =====================================
     if (__readable_by_evernote.__evernote_remote.is__connected) {
         //  do
         _loginFunction();
     }
     else {
-        //	connect
+        // connect
         __readable_by_evernote.__evernote_remote.connect(
 
         function () {
@@ -550,11 +550,11 @@ __readable_by_evernote.__evernote_remote.login = function (_user, _pass, _onSucc
 };
 
 
-//	clip
-//	====
+// clip
+// ====
 __readable_by_evernote.__evernote_remote.clip = function (_url, _title, _body, _tag, _onSuccess, _onFailure) {
-    //	preliminary check
-    //	=================
+    // preliminary check
+    // =================
     switch (true) {
     case (!(__readable_by_evernote.__evernote_remote.rpc__noteStore.NoteStore)):
     case (!(__readable_by_evernote.__evernote_remote.is__connected)):
@@ -564,8 +564,8 @@ __readable_by_evernote.__evernote_remote.clip = function (_url, _title, _body, _
     }
 
 
-    //	create tags array
-    //	=================
+    // create tags array
+    // =================
     var
     _tags_we_should_set = _tag.split(','),
         _tags_we_will_set = [];
@@ -581,8 +581,8 @@ __readable_by_evernote.__evernote_remote.clip = function (_url, _title, _body, _
     }
 
 
-    //	try and clip
-    //	============
+    // try and clip
+    // ============
     try {
         var _clipResult = __readable_by_evernote.__evernote_remote.rpc__noteStore.NoteStoreExtra.clipNote(
         __readable_by_evernote.__evernote_remote.user__authToken, // authentification token
@@ -597,8 +597,8 @@ __readable_by_evernote.__evernote_remote.clip = function (_url, _title, _body, _
         );
     }
     catch (_error) {
-        //	unknown error
-        //	=============
+        // unknown error
+        // =============
         switch (true) {
         case (!(_error.trace)):
         case (!(_error.trace.indexOf)):
@@ -607,8 +607,8 @@ __readable_by_evernote.__evernote_remote.clip = function (_url, _title, _body, _
             return;
         }
 
-        //	figure out error
-        //	================
+        // figure out error
+        // ================
         var _trace = _error.trace.substr(0, _error.trace.indexOf(')') + 1);
         switch (_trace) {
         case 'EDAMUserException(errorCode:BAD_DATA_FORMAT, parameter:authenticationToken)':
@@ -618,15 +618,15 @@ __readable_by_evernote.__evernote_remote.clip = function (_url, _title, _body, _
             return;
         }
 
-        //	could not figure out error
-        //	==========================
+        // could not figure out error
+        // ==========================
         _onFailure('clip / exception / unknown');
         return;
     }
 
 
-    //	check
-    //	=====
+    // check
+    // =====
     switch (true) {
     case (!(_clipResult > '')):
     case (!(_clipResult.split('-').length == 5)):
@@ -635,8 +635,8 @@ __readable_by_evernote.__evernote_remote.clip = function (_url, _title, _body, _
     }
 
 
-    //	success
-    //	=======
+    // success
+    // =======
     _onSuccess();
 };
 
@@ -775,12 +775,12 @@ __readable_by_evernote.__evernote_xor = {
 };
 
 
-//	stored credentials
-//	get/set stored evernote credentials
-//	requires __evernote_xor present in context
-//	==========================================
-//	get
-//	===
+// stored credentials
+// get/set stored evernote credentials
+// requires __evernote_xor present in context
+// ==========================================
+// get
+// ===
 __readable_by_evernote.__get_stored_evernote_credentials = function () {
     switch (true) {
     case (!(localStorage['storedEvernoteUsername'] > '')):
@@ -795,8 +795,8 @@ __readable_by_evernote.__get_stored_evernote_credentials = function () {
 };
 
 
-//	set
-//	===
+// set
+// ===
 __readable_by_evernote.__set_stored_evernote_credentials = function (_o) {
     switch (true) {
     case (!(_o['username'] > '')):
@@ -810,8 +810,8 @@ __readable_by_evernote.__set_stored_evernote_credentials = function (_o) {
 };
 
 
-//	logout on next action
-//	=====================
+// logout on next action
+// =====================
 __readable_by_evernote.__get_stored_evernote_logoutOnNextAction = function () {
     if (localStorage['storedEvernoteLogoutOnNextAction']);
     else {
@@ -822,57 +822,57 @@ __readable_by_evernote.__get_stored_evernote_logoutOnNextAction = function () {
         return false;
     }
 
-    //	reset
+    // reset
     localStorage['storedEvernoteLogoutOnNextAction'] = '';
 
-    //	return true
+    // return true
     return true;
 };
 
 __readable_by_evernote.__set_stored_evernote_logoutOnNextAction = function () {
-    //	set
+    // set
     localStorage['storedEvernoteLogoutOnNextAction'] = 'yes';
 };
 
 
-//	select theme and size
-//	select theme
-//	============
+// select theme and size
+// select theme
+// ============
 __readable_by_evernote.__save__select_theme = function (_theme_id) {
-    //	the themes
-    //	encode
-    //	======
+    // the themes
+    // encode
+    // ======
 
 
     function __encodeURIComponentForReadable(_string) {
-        //	none
+        // none
         if (_string == '') {
             return 'none';
         }
 
-        //	encode
+        // encode
         return encodeURIComponent(_string).replace(/!/g, '%21').replace(/'/g, '%27').replace(/\(/g, '%28').replace(/\)/g, '%29').replace(/\*/g, '%2A');
     }
 
 
-    //	decode
-    //	======
+    // decode
+    // ======
 
 
     function __decodeURIComponentForReadable(_string) {
-        //	none
+        // none
         if (_string == 'none') {
             return '';
         }
 
-        //	decode
+        // decode
         return decodeURIComponent(_string);
     }
 
 
 
 
-    //	__encodeURIComponentForReadable must be defined
+    // __encodeURIComponentForReadable must be defined
     var __the_themes = {
         'theme-1': {
             'text_font': __encodeURIComponentForReadable('"PT Serif"'),
@@ -926,93 +926,93 @@ __readable_by_evernote.__save__select_theme = function (_theme_id) {
         }
     };
 
-    //	to save
+    // to save
     var _to_save = __the_themes[_theme_id];
     _to_save['theme'] = _theme_id;
 
-    //	save
+    // save
     __readable_by_evernote.__save_someStuff(_to_save);
 };
 
 __readable_by_evernote.__save__select_theme__custom = function () {
-    //	the themes
-    //	encode
-    //	======
+    // the themes
+    // encode
+    // ======
 
 
     function __encodeURIComponentForReadable(_string) {
-        //	none
+        // none
         if (_string == '') {
             return 'none';
         }
 
-        //	encode
+        // encode
         return encodeURIComponent(_string).replace(/!/g, '%21').replace(/'/g, '%27').replace(/\(/g, '%28').replace(/\)/g, '%29').replace(/\*/g, '%2A');
     }
 
 
-    //	decode
-    //	======
+    // decode
+    // ======
 
 
     function __decodeURIComponentForReadable(_string) {
-        //	none
+        // none
         if (_string == 'none') {
             return '';
         }
 
-        //	decode
+        // decode
         return decodeURIComponent(_string);
     }
 
 
 
 
-    //	to save
+    // to save
     var _to_save = {};
     _to_save['theme'] = 'custom';
 
-    //	get custom
+    // get custom
     var _vars = __readable_by_evernote.__get_saved__vars();
     __decodeURIComponentForReadable(_vars['custom_theme_options']).replace(/\[\[=(.*?)\]\[=(.*?)\]\]/gi, function (_match, _name, _value) {
         _to_save[_name] = _value;
     });
 
-    //	save
+    // save
     __readable_by_evernote.__save_someStuff(_to_save);
 };
 
 
-//	select size
-//	===========
+// select size
+// ===========
 __readable_by_evernote.__save__select_size = function (_size) {
-    //	the sizes
-    //	encode
-    //	======
+    // the sizes
+    // encode
+    // ======
 
 
     function __encodeURIComponentForReadable(_string) {
-        //	none
+        // none
         if (_string == '') {
             return 'none';
         }
 
-        //	encode
+        // encode
         return encodeURIComponent(_string).replace(/!/g, '%21').replace(/'/g, '%27').replace(/\(/g, '%28').replace(/\)/g, '%29').replace(/\*/g, '%2A');
     }
 
 
-    //	decode
-    //	======
+    // decode
+    // ======
 
 
     function __decodeURIComponentForReadable(_string) {
-        //	none
+        // none
         if (_string == 'none') {
             return '';
         }
 
-        //	decode
+        // decode
         return decodeURIComponent(_string);
     }
 
@@ -1043,52 +1043,52 @@ __readable_by_evernote.__save__select_size = function (_size) {
     };
 
 
-    //	current vars
+    // current vars
     var _current_vars = __readable_by_evernote.__get_saved__vars();
 
-    //	save
+    // save
     __readable_by_evernote.__save_someStuff({
         'text_size': __the_sizes[_size][_current_vars['theme']]
     });
 };
 
 
-//	translations
+// translations
 __readable_by_evernote.__get_translations = function () {
-    //	include
-    //	encode
-    //	======
+    // include
+    // encode
+    // ======
 
 
     function __encodeURIComponentForReadable(_string) {
-        //	none
+        // none
         if (_string == '') {
             return 'none';
         }
 
-        //	encode
+        // encode
         return encodeURIComponent(_string).replace(/!/g, '%21').replace(/'/g, '%27').replace(/\(/g, '%28').replace(/\)/g, '%29').replace(/\*/g, '%2A');
     }
 
 
-    //	decode
-    //	======
+    // decode
+    // ======
 
 
     function __decodeURIComponentForReadable(_string) {
-        //	none
+        // none
         if (_string == 'none') {
             return '';
         }
 
-        //	decode
+        // decode
         return decodeURIComponent(_string);
     }
 
 
 
 
-    //	translations include
+    // translations include
 
     function __get_translations_inside() {
         var
@@ -1150,7 +1150,7 @@ __readable_by_evernote.__get_translations = function () {
     }
 
 
-    //	translation function
+    // translation function
 
 
     function __get_translations_inside__getForKey(_key) {
@@ -1163,16 +1163,16 @@ __readable_by_evernote.__get_translations = function () {
 
 
 
-//	events
-//	======
+// events
+// ======
 chrome.extension.onRequest.addListener(function (request, sender, sendResponse) {
-    //	invalid
+    // invalid
     if (request._type);
     else {
         sendResponse({});
     }
 
-    //	switch
+    // switch
     switch (request._type) { /* select theme */
         /* ============ */
     case 'to-chrome--select-theme-1':
@@ -1263,26 +1263,26 @@ chrome.extension.onRequest.addListener(function (request, sender, sendResponse) 
         /* ======== */
     case 'to-chrome--evernote-clip':
 
-        //	check login
-        //		if not logged in, try stored log in
-        //			on successfull login, do clip again
-        //			on failed login, or no stored login, show login form
+        // check login
+        // 	if not logged in, try stored log in
+        // 		on successfull login, do clip again
+        // 		on failed login, or no stored login, show login form
         //
-        //	try clip
-        //		on fail, because of login, try stored login
-        //			on successfull login, try clip again
-        //			on failed login, or no stored login, show login form
-        //	============================================================
+        // try clip
+        // 	on fail, because of login, try stored login
+        // 		on successfull login, try clip again
+        // 		on failed login, or no stored login, show login form
+        // ============================================================
 
-        //	logout on next action
-        //	=====================
+        // logout on next action
+        // =====================
         if (__readable_by_evernote.__get_stored_evernote_logoutOnNextAction()) {
             __readable_by_evernote.__evernote_remote.logout();
         }
 
 
-        //	stored login
-        //	============
+        // stored login
+        // ============
         var _storedLogin = __readable_by_evernote.__get_stored_evernote_credentials();
 
 
@@ -1307,14 +1307,14 @@ chrome.extension.onRequest.addListener(function (request, sender, sendResponse) 
 
         switch (true) {
 
-            //	not connected / logged-in
-            //	and we know this -- so do connect/login
-            //	=======================================
+            // not connected / logged-in
+            // and we know this -- so do connect/login
+            // =======================================
         case (!(__readable_by_evernote.__evernote_remote.is__connected)):
         case (!(__readable_by_evernote.__evernote_remote.is__loggedIn)):
 
-            //	no stored login
-            //	===============
+            // no stored login
+            // ===============
             if (_storedLogin == false) {
                 chrome.tabs.sendRequest(sender.tab.id, {
                     _type: 'to-content--evernote-login-show'
@@ -1322,26 +1322,26 @@ chrome.extension.onRequest.addListener(function (request, sender, sendResponse) 
                 return;
             }
 
-            //	do stored login
-            //	================
+            // do stored login
+            // ================
             __readable_by_evernote.__evernote_remote.login(
             _storedLogin.username, _storedLogin.password,
 
-            //	success | login
+            // success | login
 
 
             function () {
                 __readable_by_evernote.__evernote_remote.clip(
                 request._url, request._title, request._body, request._tag,
 
-                //	success | clip
+                // success | clip
 
 
                 function () {
                     _clipping_successful();
                 },
 
-                //	failure | clip
+                // failure | clip
 
 
                 function (_failReason) {
@@ -1351,7 +1351,7 @@ chrome.extension.onRequest.addListener(function (request, sender, sendResponse) 
                 });
             },
 
-            //	failure | login
+            // failure | login
 
 
             function (_failReason) {
@@ -1363,26 +1363,26 @@ chrome.extension.onRequest.addListener(function (request, sender, sendResponse) 
             break;
 
 
-            //	should be both connected and logged in
-            //		in case it fails because of login, we try another stored login
-            //	===================================================================
+            // should be both connected and logged in
+            // 	in case it fails because of login, we try another stored login
+            // ===================================================================
         default:
 
             __readable_by_evernote.__evernote_remote.clip(
             request._url, request._title, request._body, request._tag,
 
-            //	success | clip
+            // success | clip
 
 
             function () {
                 _clipping_successful();
             },
 
-            //	failuse | clip
+            // failuse | clip
 
 
             function (_failReason) {
-                //	failure because of soemthing else
+                // failure because of soemthing else
                 if (_failReason == 'login');
                 else {
                     chrome.tabs.sendRequest(sender.tab.id, {
@@ -1391,7 +1391,7 @@ chrome.extension.onRequest.addListener(function (request, sender, sendResponse) 
                     return;
                 }
 
-                //	no stored login
+                // no stored login
                 if (_storedLogin == false) {
                     chrome.tabs.sendRequest(sender.tab.id, {
                         _type: 'to-content--evernote-login-show'
@@ -1399,25 +1399,25 @@ chrome.extension.onRequest.addListener(function (request, sender, sendResponse) 
                     return;
                 }
 
-                //	try stored login
+                // try stored login
                 __readable_by_evernote.__evernote_remote.login(
                 _storedLogin.username, _storedLogin.password,
 
-                //	success | login
+                // success | login
 
 
                 function () {
                     __readable_by_evernote.__evernote_remote.clip(
                     request._url, request._title, request._body, request._tag,
 
-                    //	success | clip
+                    // success | clip
 
 
                     function () {
                         _clipping_successful();
                     },
 
-                    //	failure | clip
+                    // failure | clip
 
 
                     function (_failReason) {
@@ -1427,7 +1427,7 @@ chrome.extension.onRequest.addListener(function (request, sender, sendResponse) 
                     });
                 },
 
-                //	failure | login
+                // failure | login
 
 
                 function (_failReason) {
@@ -1445,18 +1445,18 @@ chrome.extension.onRequest.addListener(function (request, sender, sendResponse) 
 
     case 'to-chrome--evernote-login':
 
-        //	do login
-        //		store login, if rememberMe
-        //	==============================
+        // do login
+        // 	store login, if rememberMe
+        // ==============================
         __readable_by_evernote.__evernote_remote.login(
         request._user, request._pass,
 
-        //	success | login
+        // success | login
 
 
         function () {
-            //	save credentials
-            //	================
+            // save credentials
+            // ================
             if (request._rememberMe) {
                 __readable_by_evernote.__set_stored_evernote_credentials({
                     'username': request._user,
@@ -1464,13 +1464,13 @@ chrome.extension.onRequest.addListener(function (request, sender, sendResponse) 
                 });
             }
 
-            //	raise event
+            // raise event
             chrome.tabs.sendRequest(sender.tab.id, {
                 _type: 'to-content--evernote-login-successful'
             });
         },
 
-        //	fail | login
+        // fail | login
 
 
         function (_failReason) {

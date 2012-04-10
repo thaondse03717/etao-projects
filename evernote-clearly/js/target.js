@@ -1,25 +1,25 @@
-//	launch function
-//	===============
+// launch function
+// ===============
 
 
 function __readable_launch($R) {
-    //	vars
-    //	====
+    // vars
+    // ====
     $R.win = window;
     $R.document = window.document;
 
-    //	init
-    //	====
-    //	paths
-    //	=====
+    // init
+    // ====
+    // paths
+    // =====
     $R.paths = {
         'main': 'chrome-extension://iooicodkiihhpojmmeghjclgihfjdjhj/',
         'evernote': 'https://www.evernote.com/'
     };
 
 
-    //	versioning
-    //	==========
+    // versioning
+    // ==========
     $R.versioning = {
         'compile_time': '3328304485',
         'file_name_bulk_js': 'bulk.js',
@@ -38,15 +38,15 @@ function __readable_launch($R) {
     };
 
 
-    //	custom
-    //	======
+    // custom
+    // ======
     $R.customScript = false;
 
 
-    //	write
-    //	=====
-    //	iframe
-    //	======
+    // write
+    // =====
+    // iframe
+    // ======
     var
     _iframeElement = document.createElement('iframe'),
         _iframeHTML = '' + '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"' + ' "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">' + '<html id="html" xmlns="http://www.w3.org/1999/xhtml">' + '<head>' + '<link rel="stylesheet" href="' + $R.paths['main'] + 'css/' + $R.versioning['file_name_bulk_css'] + '" type="text/css" />' + '</head>' + '<body id="body">' + '<div id="bodyContent"></div>' + '<script type="text/javascript" src="' + $R.paths['main'] + 'libs/' + $R.versioning['file_name_jQuery_js'] + '"></script>' + (($R.customScript > '') ? '<script type="text/javascript" src="' + $R.customScript + '"></script>' : '') + '<script type="text/javascript" src="' + $R.paths['main'] + 'js/' + $R.versioning['file_name_bulk_js'] + '"></script>' + '</body>' + '</html>';
@@ -56,8 +56,8 @@ function __readable_launch($R) {
     _iframeElement.setAttribute('scrolling', 'auto');
 
 
-    //	css
-    //	===
+    // css
+    // ===
     var
     _cssElement = document.createElement('style'),
         _cssText = '' + '#readable_iframe { ' + 'margin: 0; padding: 0; border: none; ' + 'position: absolute; ' + 'width: 100%; height: 100%; ' + 'top: -100%; left: -100%; ' + 'z-index: 2147483647 !important; ' + '} ';
@@ -71,8 +71,8 @@ function __readable_launch($R) {
     }
 
 
-    //	write
-    //	=====
+    // write
+    // =====
     var _body = document.getElementsByTagName('body')[0];
     _body.appendChild(_cssElement);
     _body.appendChild(_iframeElement);
@@ -86,16 +86,16 @@ function __readable_launch($R) {
 }
 
 
-//	no readyState
-//	=============
+// no readyState
+// =============
 if (document.readyState);
 else {
     __readable_launch(window.$readable);
 }
 
 
-//	with ready state
-//	================
+// with ready state
+// ================
 
 
 function __readable_launch_ready(delayedNrTimes) {
