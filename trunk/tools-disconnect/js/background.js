@@ -175,7 +175,7 @@ function incrementCounter(tabId, serviceIndex) {
 	TAB_BLOCKED_COUNTS[1][serviceIndex]++;
 	BROWSER_ACTION.setIcon({
 		tabId: tabId,
-		path: 'blocked.png'
+		path: 'images/blocked.png'
 	});
 	if (deserialize(localStorage.blockingIndicated)) BROWSER_ACTION.setBadgeText({
 		tabId: tabId,
