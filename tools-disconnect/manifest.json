@@ -7,14 +7,14 @@
    },
    "content_scripts": [ {
       "all_frames": true,
-      "js": [ "content.js" ],
+      "js": [ "js/content.js" ],
       "matches": [ "http://*/*", "https://*/*" ],
       "run_at": "document_start"
    } ],
    "description": "Stop third parties and search engines from tracking the webpages you go to and searches you do.",
    "icons": {
-      "128": "128.png",
-      "48": "48.png"
+      "128": "images/128.png",
+      "48": "images/48.png"
    },
    "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQD7jr4SbXDEbGHJhx8A5p0M9icfVTGS2mPOe6F/Nam8nlcMP34Vg8hp1oEnmGwyWTRJi+jD1v8dT7hXA8WqL5Tt+gR2EPYpn8Hx7r0PqcxJcBZp0wW+LcvpY6D48wmK/Rc02bhO+UUUZpw8f/wLOdOVDG7mDkdivRuzIkdHx1HMMQIDAQAB",
    "name": "Disconnect",
