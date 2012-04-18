@@ -1,0 +1,16 @@
+{
+   "browser_action": {
+      "default_icon": "icon64.gif",
+      "default_popup": "popup.html"
+   },
+   "description": "The handy tool to unpack & tidy the JavaScript source code.",
+   "icons": {
+      "128": "icon64.gif",
+      "16": "icon64.gif",
+      "48": "icon64.gif"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDSxBbnPMuP8zXkgBdQWNNU3GruBjQ3GMVB+QrvwzwrMc1jr6UT0f2nfC2+CS/w26uXf+rpdnCTQ9Bx95ounm4k6zziHIvlAL/zCLZ6zsY26XpmKuXDOa1g6V43N3M8SYSpYrLMVKKxn8xSPnl0MLmz7631uhB4ptPrgxvHrLmR9QIDAQAB",
+   "name": "JavaScript Beautifier",
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "1.0.1"
+}
