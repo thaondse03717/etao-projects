@@ -3,8 +3,6 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Code Beautifier</title>
-	<script type="text/javascript" src="js/app.js" ></script>
-
 	<script type="text/javascript" src="js/beautify.js" ></script>
 	<script type="text/javascript" src="js/beautify-html.js" ></script>
 
@@ -15,21 +13,37 @@
 	<script type="text/javascript" src="js/unpackers/bookmarklet_unpacker.js" ></script>
 	<script type="text/javascript" src="js/unpackers/p_a_c_k_e_r_unpacker.js" ></script>
 
+	<script type="text/javascript" src="js/app.js" ></script>
+
 	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
 	<link type="text/css" rel="stylesheet" href="css/app.css" />
 </head>
 
 <body>
 
-<div id="container" class="container">
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container-fluid">
+			<a class="brand" href="javascript:void(0)">Code Beautifier</a>
+			<ul class="nav">
+				<li><a href="javascript:void(0)" id="about">About</a></li>
+				<li><a href="javascript:void(0)" id="contact">Contact</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
 
-<form method="post" action="?" class="form-horizontal">
+<div id="container" class="container-fluid">
 
-	<div class="row">
-		<h1>Code Beautifier</h1>
+	<div class="row-fluid">
+
+		<!-- 代码输出区 -->
+		<div class="span10">
+			<textarea name="content" id="content"></textarea>
+		</div>
 
 		<!-- 选项设置 -->
-		<div class="span5">
+		<div class="span2">
 			<div class="control-group">
 				<label class="control-label">Indent With</label>
 				<div class="controls">
@@ -59,17 +73,12 @@
 					</label>
 				</div>
 			</div>
-		</div>
-
-		<!-- 代码输出区 -->
-		<div class="span7">
-			<textarea class="span7" name="content" id="content"></textarea>
-			<div class="form-actions">
-				<button onclick="return do_js_beautify()" id="beautify" class="btn btn-primary btn-large">Beautify</button>
+			<div class="control-group">
+				<div class="controls">
+					<button onclick="return do_js_beautify()" id="beautify" class="btn btn-success btn-large">Beautify Code</button>
+				</div>
 			</div>
 		</div>
-
-</form>
 
 </div>
 
