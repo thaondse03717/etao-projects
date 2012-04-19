@@ -4,14 +4,14 @@
          "local_path": "index.html"
       }
    },
-   "description": "The handy tool to unpack & tidy the JavaScript source code.",
+   "description": "The handy tool to unpack & tidy Souce Code Files.",
    "icons": {
       "16": "images/icon.16.png",
       "48": "images/icon.48.png",
-      "128": "images/icon128.png"
+      "128": "images/icon.128.png"
    },
    "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDSxBbnPMuP8zXkgBdQWNNU3GruBjQ3GMVB+QrvwzwrMc1jr6UT0f2nfC2+CS/w26uXf+rpdnCTQ9Bx95ounm4k6zziHIvlAL/zCLZ6zsY26XpmKuXDOa1g6V43N3M8SYSpYrLMVKKxn8xSPnl0MLmz7631uhB4ptPrgxvHrLmR9QIDAQAB",
-   "name": "JavaScript Beautifier",
+   "name": "Code Beautifier",
    "update_url": "http://clients2.google.com/service/update2/crx",
    "version": "1.0.1"
 }

@@ -1,277 +1,69 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!--
-
-  (c) 2006-2010: Einar Lielmanis, einars@jsbeautifier.org
-
--->
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Online javascript beautifier</title>
-<script type="text/javascript">
-function add_onload_function(fn)
-{
-    var oe=window.onload;
-    window.onload = function() { if (oe) oe(); fn(); }
-}
-add_onload_function(function() {
-
-    var tabsize = get_var('tabsize');
-    var braces_on_own_line = get_var('braces');
-    var c;
-    if (tabsize) {
-        document.getElementById('tabsize').value = tabsize;
-    }
-    if (braces_on_own_line) {
-        document.getElementById('braces-on-own-line').checked = 'checked';
-    }
-
-    if (get_var('test')) {
-        run_tests();
-    } else {
-        c = document.forms[0].content;
-        c && c.setSelectionRange && c.setSelectionRange(0, 0);
-        c && c.focus && c.focus();
-    }
-
-});
-
-function trim_leading_comments(str)
-{
-    // very basic. doesn't support /* ... */
-    str = str.replace(/^(\s*\/\/[^\n]*\n)+/, '');
-    str = str.replace(/^\s+/, '');
-    return str;
-}
-
-function unpacker_filter(source)
-{
-
-    if (document.getElementById('detect-packers').checked) {
-
-        var stripped_source = trim_leading_comments(source);
-        var unpacked = '';
-
-        if (P_A_C_K_E_R.detect(stripped_source)) {
-            unpacked = P_A_C_K_E_R.unpack(stripped_source);
-            if (unpacked !== stripped_source) {
-                return unpacker_filter(unpacked);
-            }
-        }
-
-        if (EscapedBookmarklet.detect(source)) {
-            unpacked = EscapedBookmarklet.unpack(source);
-            if (unpacked !== stripped_source) {
-                return unpacker_filter(unpacked);
-            }
-        }
-
-        if (JavascriptObfuscator.detect(stripped_source)) {
-            unpacked = JavascriptObfuscator.unpack(stripped_source);
-            if (unpacked !== stripped_source) {
-                return unpacker_filter(unpacked);
-            }
-        }
-    }
-    return source;
-
-}
-
-function do_js_beautify()
-{
-    document.getElementById('beautify').disabled = true;
-    var js_source = document.getElementById('content').value.replace(/^\s+/, '');
-    var indent_size = document.getElementById('tabsize').value;
-    var indent_char = ' ';
-    var preserve_newlines = document.getElementById('preserve-newlines').checked;
-    var keep_array_indentation = document.getElementById('keep-array-indentation').checked;
-    var braces_on_own_line = document.getElementById('braces-on-own-line').checked;
-
-    if (indent_size == 1) {
-        indent_char = '\t';
-    }
-
-
-    if (js_source && js_source[0] === '<' && js_source.substring(0, 4) !== '<!--') {
-        document.getElementById('content').value = style_html(js_source, indent_size, indent_char, 80);
-    } else {
-        document.getElementById('content').value =
-        js_beautify(unpacker_filter(js_source), {
-            indent_size: indent_size,
-            indent_char: indent_char,
-            preserve_newlines:preserve_newlines,
-            braces_on_own_line: braces_on_own_line,
-            keep_array_indentation:keep_array_indentation,
-            space_after_anon_function:true});
-    }
-
-    document.getElementById('beautify').disabled = false;
-    return false;
-}
-
-
-function get_var( name )
-{
-    var res = new RegExp( "[\\?&]" + name + "=([^&#]*)" ).exec( window.location.href );
-    return res ? res[1] : "";
-}
-
-function run_tests()
-{
-    var st = new SanityTest();
-    run_beautifier_tests(st);
-    JavascriptObfuscator.run_tests(st);
-    P_A_C_K_E_R.run_tests(st);
-    EscapedBookmarklet.run_tests(st);
-
-    document.getElementById('testresults').style.display='block';
-    document.getElementById('testresults').innerHTML=st.results();
-}
-
-</script>
-<script type="text/javascript" src="js/beautify.js" ></script>
-<script type="text/javascript" src="js/beautify-html.js" ></script>
-<script type="text/javascript" src="js/tests/sanitytest.js" ></script>
-<script type="text/javascript" src="js/tests/beautify-tests.js" ></script>
-<script type="text/javascript" src="js/unpackers/javascriptobfuscator_unpacker.js" ></script>
-<script type="text/javascript" src="js/unpackers/bookmarklet_unpacker.js" ></script>
-<script type="text/javascript" src="js/unpackers/p_a_c_k_e_r_unpacker.js" ></script>
-
-<style type="text/css">
-/* I guess I need a CSS beautifer as well */
-* {
-    margin: 0;
-    padding: 0;
-}
-div#wrap {
-    padding: 0 15px;
-}
-
-form {
-    margin: 0 0 20px 0;
-}
-textarea {
-    width: 100%;
-    height: 420px;
-    border: 0;
-}
-h1 {
-    font-family: "trebuchet ms", arial, sans-serif;
-    font-weight: normal;
-    font-size: 28px;
-    color: #666;
-    margin: 10px 10px 15px 10px;
-    border-bottom: 1px solid #666;
-}
-a {
-    color: #36d;
-}
-select {
-    width: 190px;
-}
-button {
-    width: 100%;
-    padding: 3px 5px;
-    cursor: pointer;
-    bordeR: 1px solid #ccc;
-    border-bottom: 1px solid #999;
-    border-right: 1px solid #999;
-    margin-top: 2px;
-    background-color: #eee;
-}
-body {
-    font: 12px "myriad web", verdana, arial, helvetica, sans-serif;
-	width: 720px;
-	height: 540px;
-}
-body, label, button, select {
-    font-family: "myriad web", verdana, arial, helvetica, sans-serif;
-}
-textarea, pre, span.code {
-    font-family: consolas, Terminus, "lucida console", "courier new", courier, monospace;
-}
-div#bottom {
-    color: #333;
-}
-a#signature {
-    background: url(http://spicausis.lv/spic-sign-blog.png) no-repeat bottom right;
-    display:block;
-    width: 15px;
-    height: 21px;
-    position: fixed;
-    bottom: 0px;
-    right: 0px;
-}
-h2, legend {
-    color: #555;
-    margin: 5px;
-
-}
-p {
-    line-height: 150%;
-}
-h1 a {
-	font-size: 11px;
-}
-label {
-    cursor: pointer;
-}
-fieldset {
-    border: 0;
-    padding: 0;
-}
-fieldset#textarea div {
-    border: 1px solid #ccc;
-    padding: 2px;
-}
-
-fieldset ul {
-    list-style: none;
-	margin-bottom: 5px;
-}
-fieldset li {
-    margin-right: 6px;
-	display: inline;
-}
-fieldset#textarea {
-    text-align: right;
-
-}
-pre {
-    margin: 10px 0;
-}
-
-</style>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Code Beautifier</title>
+	<script type="text/javascript" src="js/app.js" ></script>
+	<script type="text/javascript" src="js/beautify.js" ></script>
+	<script type="text/javascript" src="js/beautify-html.js" ></script>
+	<script type="text/javascript" src="js/tests/sanitytest.js" ></script>
+	<script type="text/javascript" src="js/tests/beautify-tests.js" ></script>
+	<script type="text/javascript" src="js/unpackers/javascriptobfuscator_unpacker.js" ></script>
+	<script type="text/javascript" src="js/unpackers/bookmarklet_unpacker.js" ></script>
+	<script type="text/javascript" src="js/unpackers/p_a_c_k_e_r_unpacker.js" ></script>
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="css/app.css" />
 </head>
 <body>
-  <div id="wrap">
-  <h1>Javascript unpacker and beautifier</h1>
-  <form method="post" action="?">
-      <fieldset id="options">
-          <legend>Options:</legend>
-          <ul>
-          <li><label for="tabsize">indent with </label><select name="tabsize" id="tabsize">
-            <option value="1">a tab character</option>
-            <option value="2">2 spaces</option>
-            <option value="3">3 spaces</option>
-            <option value="4" selected="selected">4 spaces</option>
-            <option value="8">8 spaces</option>
-          </select></li>
-          <li><input type="checkbox" id="braces-on-own-line" /><label for="braces-on-own-line"> Braces on own line</label></li>
-          <li><input type="checkbox" id="preserve-newlines" checked="checked" /><label for="preserve-newlines"> Preserve empty lines?</label><br /></li>
-          <li><input type="checkbox" id="detect-packers" checked="checked" /><label for="detect-packers"> Detect packers?</label></li>
-          <li><input type="checkbox" id="keep-array-indentation" /><label for="keep-array-indentation"> Keep array indentation?</label></li>
-          </ul>
-      </fieldset>
-      <fieldset id="textarea">
-      <div><textarea rows="30" cols="30" name="content" id="content">
-/*   paste in your code and press Beautify button   */
-if('Hello world'=='สวัสดีชาวโลก in Thai'){helloWorld();}else{var a=b?(c%d):e[f];}
-</textarea></div>
-      <button onclick="return do_js_beautify()" id="beautify">Beautify</button>
-</fieldset>
-  </form>
+<div id="container" class="container">
+<form method="post" action="?" class="form-horizontal">
+
+	<div class="row">
+		<h1>Code Beautifier</h1>
+
+		<!-- 选项设置 -->
+		<div class="span5">
+			<div class="control-group">
+				<label class="control-label">Indent With</label>
+				<div class="controls">
+					<select name="tabsize" id="tabsize" class="span2">
+						<option value="1">a tab character</option>
+						<option value="2">2 spaces</option>
+						<option value="3">3 spaces</option>
+						<option value="4" selected="selected">4 spaces</option>
+						<option value="8">8 spaces</option>
+					</select>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Options</label>
+				<div class="controls">
+					<label class="checkbox">
+						<input type="checkbox" id="braces-on-own-line" name="braces-on-own-line">Braces on own line?
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" id="preserve-newlines" name="preserve-newlines" checked="checked">Preserve empty lines?
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" id="detect-packers" name="detect-packers" checked="checked">Detect packers?
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" id="keep-array-indentation" name="keep-array-indentation">Keep array indentation?
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<!-- 代码输出区 -->
+		<div class="span7">
+			<textarea class="span7" name="content" id="content"></textarea>
+			<div class="form-actions">
+				<button onclick="return do_js_beautify()" id="beautify" class="btn btn-primary btn-large">Beautify</button>
+			</div>
+		</div>
+
+</form>
+</div>
 
 </body>
 </html>
