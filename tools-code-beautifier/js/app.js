@@ -8,7 +8,10 @@ function add_onload_function(fn) {
 	}
 }
 
-add_onload_function(function () {
+add_onload_function(get_default_settings);
+add_onload_function(set_content_height);
+
+function get_default_settings() {
 
 	var tabsize = get_var('tabsize');
 	var braces_on_own_line = get_var('braces');
@@ -22,15 +25,11 @@ add_onload_function(function () {
 		document.getElementById('braces-on-own-line').checked = 'checked';
 	}
 
-	if (get_var('test')) {
-		run_tests();
-	} else {
-		c = document.forms[0].content;
-		c && c.setSelectionRange && c.setSelectionRange(0, 0);
-		c && c.focus && c.focus();
-	}
+}
 
-});
+function set_content_height() {
+	document.getElementById('content').style.height = (window.outerHeight - 180) + 'px';
+}
 
 function trim_leading_comments(str) {
 	// very basic. doesn't support /* ... */
