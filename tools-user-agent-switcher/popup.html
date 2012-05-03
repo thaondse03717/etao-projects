@@ -1,106 +1,110 @@
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="spoofer.css" />
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
-  <script src="spoofer.js"></script>
-  <script src="jquery.js"></script>
-  <script>
-  // Get the list of standard options.
-  function refreshView() {
-    buildTables(getOptionsByGroup());
-  }
+<link rel="stylesheet" type="text/css" href="spoofer.css" />
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,600' rel='stylesheet' type='text/css'>
+<script src="spoofer.js"></script>
+<script src="jquery.js"></script>
+<script>
+// Get the list of standard options.
+function refreshView() {
+	buildTables(getOptionsByGroup());
+}
 
-  function refreshSelected() {
-    chrome.extension.sendRequest({action: "hotlist_index"}, function(response) {
-      $('td').removeClass("popup_selected");
-      if (response && response.ua_index) {
-        $('td#ua_row_' + response.ua_index).addClass("popup_selected");
-        var options = getOptions();
-        $('td#ua_row_' + getUserAgentGroup(options[response.ua_index])).addClass("popup_selected");
-      }
-    });
-  }
+function refreshSelected() {
+	chrome.extension.sendRequest({
+		action: "hotlist_index"
+	}, function (response) {
+		$('td').removeClass("popup_selected");
+		if (response && response.ua_index) {
+			$('td#ua_row_' + response.ua_index).addClass("popup_selected");
+			var options = getOptions();
+			$('td#ua_row_' + getUserAgentGroup(options[response.ua_index])).addClass("popup_selected");
+		}
+	});
+}
 
-  function setCurrent(ua_index)  {
-    chrome.extension.sendRequest({action: "set", user_agent_index: ua_index}, function(response) {});
-    refreshSelected();
-  }
+function setCurrent(ua_index) {
+	chrome.extension.sendRequest({
+		action: "set",
+		user_agent_index: ua_index
+	}, function (response) {});
+	refreshSelected();
+}
 
-  function _newRow(title, value, onclick_callback, right_icon) {
-    var td = document.createElement("td");
-    var a = document.createElement("a");
-    td.setAttribute("class", "popup_item");
-    a.appendChild(document.createTextNode(title));
-    td.setAttribute("onclick", onclick_callback);
-    td.setAttribute("id", "ua_row_" + value);
-    td.appendChild(a);
-    var tr = document.createElement("tr");
-    tr.appendChild(td);
-    if (right_icon) {
-      td = document.createElement("td");
-      var img = document.createElement("img");
-      img.setAttribute("src", right_icon);
-      td.appendChild(img);
-      tr.appendChild(td);
-    }  
-    return tr;
-  }
+function _newRow(title, value, onclick_callback, right_icon) {
+	var td = document.createElement("td");
+	var a = document.createElement("a");
+	td.setAttribute("class", "popup_item");
+	a.appendChild(document.createTextNode(title));
+	td.setAttribute("onclick", onclick_callback);
+	td.setAttribute("id", "ua_row_" + value);
+	td.appendChild(a);
+	var tr = document.createElement("tr");
+	tr.appendChild(td);
+	if (right_icon) {
+		td = document.createElement("td");
+		var img = document.createElement("img");
+		img.setAttribute("src", right_icon);
+		td.appendChild(img);
+		tr.appendChild(td);
+	}
+	return tr;
+}
 
-  function showSubTable(sub_table_index) {
-    var sub_table = $("#sub_table_" + sub_table_index);
-    sub_table.addClass("visible");
-    sub_table.removeClass("invisible");
-    var group_table = $("#group_table");
-    group_table.addClass("invisible");
-    group_table.removeClass("visible");
-  }
- 
-  function buildTables(options_map) {
-    var outer_table = $("#options_table");
-    outer_table.empty();
-    // Build master table of groups.
-    var group_table = document.createElement("table");
-    group_table.setAttribute("id", "group_table");
-    outer_table.append(group_table);
-    group_table = $("#group_table");
-    group_table.addClass("popup_group_table");
-    var index = 0;
-    for (var group in options_map) {
-      // For each group, build a subtable of all options
-      group_table.append(_newRow( (group == "" ? "Default" : group), group, "showSubTable(" + index + ")", "Chevron-right.png"));
-      var group_sub_table = document.createElement("table");
-      group_sub_table.setAttribute("id", "sub_table_" + index);
-      outer_table.append(group_sub_table);
-      group_sub_table = $("#sub_table_" + index);
-      group_sub_table.addClass("popup_sub_table");
-      var options = options_map[group];
-      for (var i = 0; i < options.length; i++) {
-        group_sub_table.append(_newRow(options[i].title, options[i].index, "setCurrent(" + options[i].index + ")"));
-        group_sub_table.addClass("invisible");
-      }
-      index++;
-    }
-    // if there is only one group, automatically show it.
-    if (index == 1)
-      showSubTable(0);
-    group_table.append(getShowOptionsRow());
-    refreshSelected();
-  }
+function showSubTable(sub_table_index) {
+	var sub_table = $("#sub_table_" + sub_table_index);
+	sub_table.addClass("visible");
+	sub_table.removeClass("invisible");
+	var group_table = $("#group_table");
+	group_table.addClass("invisible");
+	group_table.removeClass("visible");
+}
 
-  function getShowOptionsRow() {
-    var td = document.createElement("td");
-    td.setAttribute("class", "popup_item");
-    var a = document.createElement("a");
-    a.appendChild(document.createTextNode("Settings"));
-    a.setAttribute("href", "options.html");
-    a.setAttribute("target", "_new");
-    td.appendChild(a);
-    var tr = document.createElement("tr");
-    tr.appendChild(td);
-    return tr;
-    //document.getElementById("options_table").appendChild(tr);    
-  }
-  
+function buildTables(options_map) {
+	var outer_table = $("#options_table");
+	outer_table.empty();
+	// Build master table of groups.
+	var group_table = document.createElement("table");
+	group_table.setAttribute("id", "group_table");
+	outer_table.append(group_table);
+	group_table = $("#group_table");
+	group_table.addClass("popup_group_table");
+	var index = 0;
+	for (var group in options_map) {
+		// For each group, build a subtable of all options
+		group_table.append(_newRow((group == "" ? "Default" : group), group, "showSubTable(" + index + ")", "Chevron-right.png"));
+		var group_sub_table = document.createElement("table");
+		group_sub_table.setAttribute("id", "sub_table_" + index);
+		outer_table.append(group_sub_table);
+		group_sub_table = $("#sub_table_" + index);
+		group_sub_table.addClass("popup_sub_table");
+		var options = options_map[group];
+		for (var i = 0; i < options.length; i++) {
+			group_sub_table.append(_newRow(options[i].title, options[i].index, "setCurrent(" + options[i].index + ")"));
+			group_sub_table.addClass("invisible");
+		}
+		index++;
+	}
+	// if there is only one group, automatically show it.
+	if (index == 1) showSubTable(0);
+	group_table.append(getShowOptionsRow());
+	refreshSelected();
+}
+
+function getShowOptionsRow() {
+	var td = document.createElement("td");
+	td.setAttribute("class", "popup_item");
+	var a = document.createElement("a");
+	a.appendChild(document.createTextNode("Settings"));
+	a.setAttribute("href", "options.html");
+	a.setAttribute("target", "_new");
+	td.appendChild(a);
+	var tr = document.createElement("tr");
+	tr.appendChild(td);
+	return tr;
+	//document.getElementById("options_table").appendChild(tr);
+}
+
 </script>
 </head>
 <body onload="refreshView();" class="popup">
