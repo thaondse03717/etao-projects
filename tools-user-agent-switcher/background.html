@@ -1,0 +1,307 @@
+<html>
+  <head>
+    <script src="spoofer.js"></script>
+  </head>
+  <body>
+<script type="text/javascript">
+var update_url = "http://spoofer-extension.appspot.com/update";
+var last_update_time = null;
+var req;
+
+// This is the 'current' setting.  The user can choose to set the
+// user-agent for every site they visit, independent of any white/blacklist.
+// This structure contains { domain : user_agent, ... }
+var current_ua_list = {};
+var hotlist_ua_index = -1;
+
+// Returns a list of pre-set values that are updated from a centralized
+// spoofing server.  Returns an empty array if the user has chosen not to
+// use the preset spoof list.
+function getPresets() {
+  // Check if we should look for updates.
+  if (shouldUsePresets()) {
+    // Update if our last attempt was at least a day ago.
+    var my_date = new Date();
+    my_date.setDate(my_date.getDate() - 1);
+    if (!last_update_time || my_date > last_update_time) {
+      last_update_time = new Date();
+      _updatePresetList();
+    }
+  }
+  // Check in localstorage to see if we've got the preset list cached.
+  var list = getParsedItem(PRESET_LIST_IDENTIFIER);
+  if (list && list.length > 0)
+    return list;
+  else
+    return new Array();
+}
+
+// Resets the cached preset list.
+function clearPresets() {
+  storeItem(PRESET_LIST_IDENTIFIER, "");
+}
+
+// Refreshes the cached preset list from the remote update site.
+function _updatePresetList() {
+  // Do an async XHR to the update URL, interpret the results as JSON,
+  // then cache them in localStorage.
+  req = new XMLHttpRequest();
+  req.open("GET", update_url, true);
+  req.setRequestHeader("Accept", "text/plain");
+  req.onreadystatechange = function () {
+    if (req.readyState == 4) {
+      if (req.status == 200 || req.responseText) {
+        try {
+          var list = JSON.parse(req.responseText);
+          var spoof_list = new Array();
+          if (list && list.length > 0) {
+            console.log("Update succeeded");
+            for (var i = 0; i < list.length; i++) {
+              spoof_list.push(new PresetSpoof(list[i][0],
+                                          new UserAgent("title",
+                                                        list[i][1],
+                                                        list[i][2],
+                                                        list[i][3],
+                                                        false)));
+            }
+          }
+        } catch(err) {
+          console.log("Update failed: " + err);
+          console.log("response text:" + req.responseText);
+          console.log("list:" + list);
+        }
+      } else {
+        console.log("Update failed.  Will re-attempt later.");
+      }
+    }
+  };
+  req.send(null);
+}
+
+function getSpoofList() {
+  var list = getParsedItem(SPOOFER_LIST);
+  if (!list)
+    list = new Array();
+  
+  if (shouldUsePresets())
+    list = list.concat(getPresets());
+  return list;
+}
+
+// Given a user-agent string, returns what badge should appear.
+function getBadge(user_agent) {
+  if (!user_agent || user_agent == "")
+    return "";
+  var list = getOptions();
+  for (var i = 0; i < list.length; i++) {
+    if (list[i].ua_string == user_agent)
+      return list[i].badge;
+  }
+  return "";
+}
+
+// Add an option to the configurable list.
+function addOption(domain, ua_index) {
+  var list = getSpoofList();
+  var options = getOptions();
+  if (ua_index < 0 || ua_index > options.length)
+    return;
+  list.push(new PresetSpoof(domain, options[ua_index]));
+  setSpoofList(list);
+}
+
+// Determines if the given match pattern fits with the given URL.
+function _isApplicableMatch(match_pattern, url) {
+  if (!url)
+    return false;
+  var domain = findHostname(url);
+  var pattern_is_domain = isDomainName(match_pattern);
+  var pattern = new RegExp(match_pattern);
+  return ((!pattern_is_domain && pattern.test(url)) ||  // If the pattern is not a hostname, match it anywhere.
+          pattern.test(domain) ||
+          match_pattern == domain ||
+          match_pattern == url ||
+          (pattern_is_domain && domain.indexOf(match_pattern) > -1)); // If the pattern is a hostname, match it anywhere only in the url's hostname.
+}
+
+// Given the tab in question, will return the "hot" UA for that tab.
+function getHotlist(tab) {
+  var list = getOptions();
+  if (hotlist_ua_index <= 0 || hotlist_ua_index >= list.length)
+    return null;
+  return list[hotlist_ua_index];
+}
+
+function setHotlist(tab, user_agent_index) {
+  hotlist_ua_index = user_agent_index;
+}
+
+// Returns only the FIRST match for a given URL.  If multiple pre-set
+// listeners are both looking for the same URL, only one will kick in.
+function getSpoofValuesForUrl(url) {
+  var list = getSpoofList();
+  for (var i = 0; i < list.length; i++) {
+    if (url && list[i] && list[i].domain && list[i].user_agent &&
+        _isApplicableMatch(list[i].domain, url)) {
+      return list[i].user_agent;
+    }
+  }
+  return null;
+}
+
+// Returns the configuration values for the given url given a tab.
+// If the user has a specific override chosen, use that value instead.
+// Returns a UserAgent object.
+function getSpoofValuesForTab(tab) {
+  var hotlist = getHotlist(tab);
+  if (hotlist != null)
+    return hotlist;
+  var spoof = getSpoofValuesForUrl(tab.url);
+  if (spoof)
+    return spoof;
+  return {};
+}
+
+// Updates the badge on the browserAction given the current active tab.
+function updateBadge() {
+  chrome.tabs.getSelected(null, function(tab) {
+    var badge = "";
+    var values = getSpoofValuesForTab(tab);
+    if (values && values.badge && values.badge != "") {
+      badge = values.badge;
+    }
+    chrome.browserAction.setBadgeText({tabId:tab.tabId, text:badge});
+  });
+}
+
+// Method to make the badge update as the user changes tabs.
+chrome.tabs.onSelectionChanged.addListener(function(tabId, selectInfo) {
+  updateBadge();
+});
+
+// Method to make the badge update as the user changes tabs.
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+  updateBadge();
+});
+
+// Main control flow.  Directs requests from options page/user script.
+chrome.extension.onRequest.addListener(
+  function(request, sender, sendResponse) {
+    // The request is asking for the User-agent.
+    if (request.action == "blacklist") {
+      sendResponse(getSpoofValuesForTab(sender.tab));
+    } else if (request.action == "hotlist_index") {
+      sendResponse({ua_index:hotlist_ua_index});
+    } else if (request.action == "add_ua") {
+      // Add a new user-agent string to the options list.
+      return (addCustomUAOption(request.name,
+                                request.user_agent,
+                                request.append_to_default_ua,
+                                request.indicator) ?
+              sendResponse({result:"success"}) : sendResponse({result:"failure"}));
+    } else if (request.action == "delete_ua") {
+      return (deleteUAOption(request.name, false) ?
+              sendResponse({result:"success"}) : sendResponse({result:"failure"}) );
+    } else if (request.action == "delete_base_ua") {
+      return (deleteUAOption(request.name, true) ?
+              sendResponse({result:"success"}) : sendResponse({result:"failure"}) );
+    } else if (request.action == "set") {
+      // Set the currently-used (but not saved) user-agent string and vendor
+      // for the current tab.
+      setHotlist(sender.tab, request.user_agent_index);
+      updateBadge();
+      updateListeners();
+      chrome.tabs.getSelected(null, function(tab) {
+        if (tab) {
+          chrome.tabs.reload(tab.id, {"bypassCache":true}, function() {})
+          chrome.tabs.update(tab.id, {active:true}, function() {})
+        }
+        });
+    } else if (request.action == "options") {
+      sendResponse({options: JSON.stringify(getOptions())});
+    } else if (request.action == "presets") {
+      sendResponse({options: JSON.stringify(getPresets())});
+    } else if (request.action == "add_preset") {
+      addOption(request.domain, request.option_index);
+      sendResponse({}); // Required for the requestor to update itself.
+    } else if (request.action == "clear_presets") {
+      clearPresets();
+      updateListeners();
+    } else if (request.action == "badge") {
+      updateBadge();
+    } else if (request.action == "update") {
+      updateListeners();
+    } else {
+      console.log("Got an invalid request.");
+      sendResponse({}); // Not a valid request.
+    }
+  });
+
+var onDemandListener = null;
+var presetListeners = [];
+
+function updateListeners() {
+  updateOnDemandListener();
+  updatePresetListeners();
+}
+
+// Given a UserAgent object, will replace the "User-Agent" header in the
+// map provided as requestHeaders.
+function replaceHeader(user_agent, requestHeaders) {
+  if (!user_agent || !requestHeaders)
+    return {};
+  var newHeaders = [];
+  for (var i = 0; i < requestHeaders.length; i++) {
+    if (requestHeaders[i].name != "User-Agent") {
+      newHeaders.push(requestHeaders[i]);
+    } else {
+      newHeaders.push({"name"  : "User-Agent",
+                       "value" : (user_agent.append_to_default_ua ? requestHeaders[i].value + " " + user_agent.ua_string : user_agent.ua_string)});
+    }
+  }
+  return { requestHeaders : newHeaders };
+}
+
+function updatePresetListeners() {
+  if (presetListeners != null) {
+    for (var i = 0; i < presetListeners.length; i++) {
+      chrome.webRequest.onBeforeSendHeaders.removeListener(
+          presetListeners[i]);
+    }
+  }
+  
+  var list = getSpoofList();
+  if (list && list.length > 0) {
+    presetListeners = [];
+    for (var j = 0; j < list.length; j++) {
+      var listener =
+      function(details) {
+        return replaceHeader(getSpoofValuesForUrl(details.url), details.requestHeaders);
+      };
+      presetListeners.push(listener);
+      chrome.webRequest.onBeforeSendHeaders.addListener(
+          listener, {"urls": ["http://*/*", "https://*/*"]},
+          ["requestHeaders", "blocking"]);
+    }
+  }
+}
+
+function updateOnDemandListener() {
+  // First we have to reset the listener.  Kill the old one, if it exists.
+  if (onDemandListener != null) {
+    chrome.webRequest.onBeforeSendHeaders.removeListener(
+        onDemandListener);
+  }
+  onDemandListener = function(details) {
+    return replaceHeader(getHotlist(null), details.requestHeaders);
+  };
+  chrome.webRequest.onBeforeSendHeaders.addListener(
+      onDemandListener, {"urls": ["http://*/*", "https://*/*"], "types": ["main_frame", "sub_frame", "stylesheet", "script", "image", "object", "xmlhttprequest", "other"] },
+      ["requestHeaders", "blocking"]);
+}
+
+updateListeners();
+
+</script>
+  </body>
+</html>
