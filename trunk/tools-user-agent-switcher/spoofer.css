@@ -1,15 +1,15 @@
 BODY {
-  font-family: 'Open Sans', Sans;
+  font-family: 'Droid Sans', Sans;
   font-size: 10pt;
   margin: 10px;
 }
 
 INPUT {
-  font-family: 'Open Sans', Sans;  
+  font-family: 'Droid Sans', Sans;
 }
 
 SELECT {
-  font-family: 'Open Sans', Sans;  
+  font-family: 'Droid Sans', Sans;
 }
 
 BODY.popup {
@@ -57,9 +57,9 @@ TABLE#outer TD {
 }
 
 TD {
-  font-family: 'Open Sans', Sans;
+  font-family: 'Droid Sans', Sans;
   font-size: 10pt;
-  vertical-align: top;  
+  vertical-align: top;
 }
 
 TD.header {
@@ -79,7 +79,7 @@ TD.popup_item {
 
 TD.popup_item:hover {
   background-color: #EEEEEE;
-}    
+}
 
 TD.popup_selected {
   font-weight: 600;
@@ -120,7 +120,7 @@ TABLE.other_options TD {
 
 TABLE.popup_group_table {
   width: 250px;
-  
+
 }
 
 TABLE.popup_sub_table {
