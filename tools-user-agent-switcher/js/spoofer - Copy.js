@@ -5,6 +5,57 @@ var USE_PRESETS_IDENTIFIER = "use_presets";
 var PRESET_LIST_IDENTIFIER = "preset_list";
 var SPOOFER_LIST = "spoofer_list";
 
+var DEFAULT_USER_AGENTS = [
+	// title, ua_string, vendor_string, badge, is_preset, group
+	{
+		title: "Default",
+		ua_string: "",
+		vendor_string: "",
+		badge: "",
+		is_preset: true,
+		group: "Chrome"
+	},
+	{
+		title: "Windows Firefox 3.5",
+		ua_string: "Mozilla/5.0 (Windows; U; Windows NT 6.0; en; rv:1.9.1.7) Gecko/20091221 Firefox/3.5.7",
+		vendor_string: "Mozilla, Inc.",
+		badge: "FF3",
+		is_preset: true,
+		group: "Firefox"
+	},
+	{
+		title: "Windows Firefox 4",
+		ua_string: "Mozilla/5.0 (Windows; U; Windows NT 6.0; en; rv:1.9.1.7) Gecko/20091221 Firefox/3.5.7",
+		vendor_string: "Mozilla, Inc.",
+		badge: "FF3",
+		is_preset: true,
+		group: "Firefox"
+	},
+	{
+		title: "Windows Firefox 3.5",
+		ua_string: "Mozilla/5.0 (Windows; U; Windows NT 6.0; en; rv:1.9.1.7) Gecko/20091221 Firefox/3.5.7",
+		vendor_string: "Mozilla, Inc.",
+		badge: "FF3",
+		is_preset: true,
+		group: "Firefox"
+	},
+];
+
+"Default", "", "", "", true, "Chrome"
+"Windows Firefox 3.5", "Mozilla/5.0 (Windows; U; Windows NT 6.0; en; rv:1.9.1.7) Gecko/20091221 Firefox/3.5.7", "Mozilla, Inc.", "FF3", true, "Firefox"
+"Windows Firefox 4", "Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1", "Mozilla, Inc.", "FF4", true, "Firefox"
+"Windows Firefox 10", "Mozilla/5.0 (Windows NT 6.2; rv:10.0.1) Gecko/20100101 Firefox/10.0.1", "Mozilla, Inc.", "FF4", true, "Firefox"
+"Opera 10", "Opera/9.80 (Macintosh; Intel Mac OS X; U; en) Presto/2.2.15 Version/10.00", "Mozilla, Inc.", "O10", true, "Opera"
+"Mac Safari 4", "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_8; en-us) AppleWebKit/531.21.8 (KHTML, like Gecko) Version/4.0.4 Safari/5", "Apple, Inc.", "S4", true, "Safari"
+"Internet Explorer 6", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0; WOW64; Trident/4.0; SLCC1)", "Microsoft", "IE6", true, "Internet Explorer"
+"Internet Explorer 7", "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0; WOW64; Trident/4.0; SLCC1)", "Microsoft", "IE7", true, "Internet Explorer"
+"Internet Explorer 8", "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0; WOW64; Trident/4.0; SLCC1)", "Microsoft", "IE8", true, "Internet Explorer"
+"Internet Explorer 9", "Mozilla/5.0 (MSIE 9.0; Windows NT 6.1; Trident/5.0)", "Microsoft", "IE9", true, "Internet Explorer"
+"iPhone 4", "Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_3_2 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8H7 Safari/6533.18.5", "Apple, Inc.", "IP4", true, "iPhone"
+"iPad", "Mozilla/5.0 (iPad; U; CPU OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B334b Safari/531.21.10", "Apple, Inc.", "iPad", true, "iPad"
+"Android (Motorola Xoom)", "Mozilla/5.0 (Linux; U; Android 3.0; en-us; Xoom Build/HRI39) AppleWebKit/534.13 (KHTML, like Gecko) Version/4.0 Safari/534.13", "", "AND", true, "Android"
+
+
 function UserAgent(title, ua_string, vendor_string, badge, is_preset, group) {
 	this.title = title;
 	this.ua_string = ua_string;
@@ -15,8 +66,7 @@ function UserAgent(title, ua_string, vendor_string, badge, is_preset, group) {
 	this.group = group;
 	this.show_in_list = false;
 
-	this.getUserAgentString = new
-	function (current_user_agent_string) {
+	this.getUserAgentString = function (current_user_agent_string) {
 		if (this.append_to_default_ua) {
 			return current_user_agent_string + ' ' + this.ua_string;
 		}
@@ -204,15 +254,22 @@ function getDisplayAppendOrReplaceString(user_agent) {
 function guessUserAgentGroup(str) {
 	if (!str) return "";
 	// If there is no group defined, guess one.
-	var guesses = [["Chrome", "Chrome"],
-		                 ["Firefox", "Firefox"],
-		                 ["Opera", "Opera"],
-		                 ["Safari", "Safari"],
-		                 ["IE", "Internet Explorer"],
-		                 ["Internet Explorer", "Internet Explorer"],
-		                 ["iPhone", "iPhone"],
-		                 ["iPad", "iPad"],
-		                 ["iOS", "iOS"]];
+	var guesses = [
+		["Chrome", "Chrome"],
+		["Firefox", "Firefox"],
+		["Opera", "Opera"],
+		["Safari", "Safari"],
+		["IE", "Internet Explorer"],
+		["Internet Explorer", "Internet Explorer"],
+		["iPhone", "iPhone"],
+		["iPad", "iPad"],
+		["iOS", "iOS"],
+		["UCWEB", "UCWEB"],
+		["Android", "Android"],
+		["BlackBerry", "BlackBerry"],
+		["SymbianOS", "SymbianOS"],
+		["GoBrowser", "GoBrowser"],
+	];
 	for (var i = 0; i < guesses.length; i++) {
 		if (str.toUpperCase().indexOf(guesses[i][0].toUpperCase()) > -1) return guesses[i][1];
 	}
