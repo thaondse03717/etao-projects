@@ -248,19 +248,27 @@ function addNewUAEntryRow() {
 	var add_ua_is_append = document.createElement("select");
 	var add_ua_user_agent = document.createElement("input");
 	var add_ua_group = document.createElement("input");
+
 	add_ua_name.setAttribute("id", "add_ua_name");
 	add_ua_name.setAttribute("onchange", "guessGroup();");
+
 	add_ua_indicator.setAttribute("id", "add_ua_indicator");
+
 	add_ua_user_agent.setAttribute("id", "add_ua_user_agent");
 	add_ua_user_agent.setAttribute("onchange", "guessGroup();");
+
 	add_ua_indicator.setAttribute("maxlength", "3");
 	add_ua_indicator.setAttribute("size", "3");
+
 	add_ua_is_append.setAttribute("id", "add_ua_is_append");
+
 	add_ua_group.setAttribute("id", "add_ua_group");
+
 	var add_ua_is_append_replace_option = document.createElement("option");
 	add_ua_is_append_replace_option.setAttribute("value", "false");
 	add_ua_is_append_replace_option.appendChild(document.createTextNode("Replace"));
 	add_ua_is_append.appendChild(add_ua_is_append_replace_option);
+
 	var add_ua_is_append_append_option = document.createElement("option");
 	add_ua_is_append_append_option.setAttribute("value", "true");
 	add_ua_is_append_append_option.appendChild(document.createTextNode("Append"));
@@ -376,7 +384,7 @@ function handleFileSelect(evt) {
             <table class="logo">
               <tr>
                 <td rowspan="2">
-                  <img width="48" height="48" src="spoofer-128.png" border="0">
+                  <img width="48" height="48" src="images/spoofer-128.png" border="0">
                 </td>
               </tr>
               <tr>
