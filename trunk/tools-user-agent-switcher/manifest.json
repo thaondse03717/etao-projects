@@ -1,21 +1,21 @@
 {
    "background_page": "background.html",
    "browser_action": {
-      "default_icon": "spoofer.png",
+      "default_icon": "images/spoofer.png",
       "default_title": "Chrome UA Spoofer",
       "popup": "popup.html"
    },
    "content_scripts": [ {
       "all_frames": true,
-      "js": [ "spoofer_cs.js" ],
+      "js": [ "js/spoofer_cs.js" ],
       "matches": [ "http://*/*", "https://*/*" ],
       "run_at": "document_start"
    } ],
    "description": "Spoofs & Mimics User-Agent strings.",
    "icons": {
-      "128": "spoofer-128.png",
-      "16": "spoofer-16.png",
-      "32": "spoofer-32.png"
+      "128": "images/spoofer-128.png",
+      "16": "images/spoofer-16.png",
+      "32": "images/spoofer-32.png"
    },
    "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCxnz7M5S5T87Cha/Y0CRjoEW1nI5EC/rl8YWyF41BoD2LI6sl43NAEm2MNRpxCpXfroRPT0++USTik9rC1BRGULIhy8UTcQO/lWcKdTe8i+mmAr7qHeEUz9BTatn0ArZUC6kiBzFITm15CzQo3DGYY7ZL8g8gZRDwsyCr9d00uDQIDAQAB",
    "name": "User-Agent Switcher for Chrome",

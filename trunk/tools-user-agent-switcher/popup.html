@@ -1,9 +1,9 @@
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="spoofer.css" />
+<link rel="stylesheet" type="text/css" href="css/spoofer.css" />
 <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,600' rel='stylesheet' type='text/css'>
-<script src="spoofer.js"></script>
-<script src="jquery.js"></script>
+<script src="js/spoofer.js"></script>
+<script src="js/jquery.js"></script>
 <script>
 // Get the list of standard options.
 function refreshView() {
@@ -72,7 +72,7 @@ function buildTables(options_map) {
 	var index = 0;
 	for (var group in options_map) {
 		// For each group, build a subtable of all options
-		group_table.append(_newRow((group == "" ? "Default" : group), group, "showSubTable(" + index + ")", "Chevron-right.png"));
+		group_table.append(_newRow((group == "" ? "Default" : group), group, "showSubTable(" + index + ")", "../images/Chevron-right.png"));
 		var group_sub_table = document.createElement("table");
 		group_sub_table.setAttribute("id", "sub_table_" + index);
 		outer_table.append(group_sub_table);
@@ -107,8 +107,11 @@ function getShowOptionsRow() {
 
 </script>
 </head>
+
 <body onload="refreshView();" class="popup">
-  <table id="options_table">
-  </table>
+
+<table id="options_table">
+</table>
+
 </body>
 </html>

@@ -1,26 +1,26 @@
-BODY {
+body {
   font-family: 'Droid Sans', Sans;
   font-size: 10pt;
   margin: 10px;
 }
 
-INPUT {
+input {
   font-family: 'Droid Sans', Sans;
 }
 
-SELECT {
+select {
   font-family: 'Droid Sans', Sans;
 }
 
-BODY.popup {
+body.popup {
   margin: 0px;
 }
 
-TABLE.menu {
+table.menu {
   width: 1%;
 }
 
-TABLE#outer TD {
+table#outer td {
   margin-left: 16px;
 }
 
@@ -36,14 +36,14 @@ TABLE#outer TD {
   margin-left: 8px;
 }
 
-.tablecontainer TABLE {
+.tablecontainer table {
   border-collapse: collapse;
   padding: 0px;
   border-spacing: 0px;
   width: 800px;
 }
 
-.tablecontainer TABLE TD {
+.tablecontainer table td {
   padding: 4px;
 }
 
@@ -56,19 +56,19 @@ TABLE#outer TD {
   color: #888;
 }
 
-TD {
+td {
   font-family: 'Droid Sans', Sans;
   font-size: 10pt;
   vertical-align: top;
 }
 
-TD.header {
+td.header {
   font-size: 12pt;
   font-weight: 600;
   white-space: nowrap;
 }
 
-TD.popup_item {
+td.popup_item {
   font-size: 10pt;
   white-space: nowrap;
   cursor: pointer;
@@ -77,11 +77,11 @@ TD.popup_item {
   padding-left: 8px;
 }
 
-TD.popup_item:hover {
-  background-color: #EEEEEE;
+td.popup_item:hover {
+  background-color: #eeeeee;
 }
 
-TD.popup_selected {
+td.popup_selected {
   font-weight: 600;
 }
 
@@ -93,7 +93,7 @@ TD.popup_selected {
   white-space: nowrap;
 }
 
-TABLE.menu TD.menuitem{
+table.menu td.menuitem{
   padding: 4px;
   margin-left: 8px;
   font-size: 10pt;
@@ -102,28 +102,28 @@ TABLE.menu TD.menuitem{
   white-space: nowrap;
 }
 
-TABLE.menu TD.menuitem:hover{
-  background-color: #EEEEEE;
+table.menu td.menuitem:hover{
+  background-color: #eeeeee;
   -webkit-border-radius: 10px;
   cursor: pointer;
 }
 
-TABLE.menu TD.selected{
+table.menu td.selected{
   color: #000;
   font-weight: 800;
 }
 
-TABLE.other_options TD {
+table.other_options td {
   margin: 4px;
   padding: 4px;
 }
 
-TABLE.popup_group_table {
+table.popup_group_table {
   width: 250px;
 
 }
 
-TABLE.popup_sub_table {
+table.popup_sub_table {
   width: 250px;
 }
 
@@ -135,16 +135,16 @@ TABLE.popup_sub_table {
   border-bottom: 1px solid #999;
 }
 
-TR.title {
+tr.title {
 }
 
-TR.title TD {
+tr.title td {
   font-weight: 800;
   white-space: nowrap;
   border-bottom: 1px solid #999;
 }
 
-TD.ua_title_row {
+td.ua_title_row {
   font-size: 14pt;
 }
 
@@ -152,19 +152,19 @@ table.ua_list_sub_table {
   margin-left: 20px;
 }
 
-TABLE.ua_list_sub_table TD:nth-child(1) {
+table.ua_list_sub_table td:nth-child(1) {
   width:100px;
 }
-TABLE.ua_list_sub_table TD:nth-child(2) {
+table.ua_list_sub_table td:nth-child(2) {
   width:300px;
 }
-TABLE.ua_list_sub_table TD:nth-child(3) {
+table.ua_list_sub_table td:nth-child(3) {
   width:50px;
 }
-TABLE.ua_list_sub_table TD:nth-child(4) {
+table.ua_list_sub_table td:nth-child(4) {
   width:50px;
 }
-TABLE.ua_list_sub_table TD:nth-child(5) {
+table.ua_list_sub_table td:nth-child(5) {
   width:50px;
 }
 
@@ -180,16 +180,16 @@ TABLE.ua_list_sub_table TD:nth-child(5) {
   margin: 0px;
 }
 
-INPUT.error {
+input.error {
   border: 1px solid red;
 }
 
-INPUT#add_ua_user_agent {
+input#add_ua_user_agent {
   width: 300px;
 }
 
 .deletebutton {
-  background-image: url(delete.png);
+  background-image: url(../images/delete.png);
   background-repeat: no-repeat;
   border: 0;
   width: 32px;
@@ -200,5 +200,5 @@ INPUT#add_ua_user_agent {
 
 .deletebutton:hover {
   cursor: pointer;
-  background-image: url(delete_hover.png);
+  background-image: url(../images/delete_hover.png);
 }
