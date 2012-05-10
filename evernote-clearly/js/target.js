@@ -47,7 +47,18 @@ function __readable_launch($R) {
 	// iframe
 	// ======
 	var _iframeElement = document.createElement('iframe'),
-		_iframeHTML = '<!DOCTYPE html>' + '<html id="html" xmlns="http://www.w3.org/1999/xhtml">' + '<head>' + '<link rel="stylesheet" href="' + $R.paths['main'] + 'css/' + $R.versioning['file_name_bulk_css'] + '" type="text/css" />' + '</head>' + '<body id="body">' + '<div id="bodyContent"></div>' + '<script type="text/javascript" src="' + $R.paths['main'] + 'libs/' + $R.versioning['file_name_jQuery_js'] + '"></script>' + (($R.customScript > '') ? '<script type="text/javascript" src="' + $R.customScript + '"></script>' : '') + '<script type="text/javascript" src="' + $R.paths['main'] + 'js/' + $R.versioning['file_name_bulk_js'] + '"></script>' + '</body>' + '</html>';
+		_iframeHTML = '<!DOCTYPE html>'
+			+ '<html id="html" xmlns="http://www.w3.org/1999/xhtml">'
+			+ '<head>'
+				+ '<link rel="stylesheet" href="' + $R.paths['main'] + 'css/' + $R.versioning['file_name_bulk_css'] + '" type="text/css" />'
+			+ '</head>'
+			+ '<body id="body">'
+				+ '<div id="bodyContent"></div>'
+				+ '<script type="text/javascript" src="' + $R.paths['main'] + 'libs/' + $R.versioning['file_name_jQuery_js'] + '"></script>'
+				+ (($R.customScript > '') ? '<script type="text/javascript" src="' + $R.customScript + '"></script>' : '')
+				+ '<script type="text/javascript" src="' + $R.paths['main'] + 'js/' + $R.versioning['file_name_bulk_js'] + '"></script>'
+			+ '</body>'
+			+ '</html>';
 
 	_iframeElement.setAttribute('id', 'readable_iframe');
 	_iframeElement.setAttribute('frameBorder', '0');

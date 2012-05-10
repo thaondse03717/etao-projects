@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />	
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 
 	<title translate="title__page"></title>
-	<link rel="icon" href="chrome-extension://iooicodkiihhpojmmeghjclgihfjdjhj/img/favicon.ico"/>
+	<link rel="icon" href="img/favicon.ico"/>
 
-	<link rel="stylesheet" href="chrome-extension://iooicodkiihhpojmmeghjclgihfjdjhj/options/options.css"/>
+	<link rel="stylesheet" href="css/options.css"/>
 </head>
 <body class="showGeneral">
 
@@ -22,16 +22,16 @@
 	</div>
 
 	<div class="view" id="view__general">
-		
+
 	<div class="view__heading" translate="title__general"></div>
 	<div class="view_separator" id="view__general__separator__1"></div>
-	
+
 	<div class="message" id="view__general__message__keys" translate="message__keys"></div>
 	<div class="message" id="view__general__message__saved" translate="message__saved"></div>
-	
+
 	<!-- === -->
 	<div class="view__general__subtitle" id="view__general__subtitle__keyboard" translate="title__sub__keyboard"></div>
-	
+
 	<table cellspacing="0" cellpadding="0" border="0" class="controlTable" id="keys_activation__controlTable"><tr>
 		<td class="label"><label for="keys_activation__control" translate="keys_activation__label"></label></td>
 		<td class="control">
@@ -49,7 +49,7 @@
 	<!-- === -->
 	<div class="view_separator" id="view__general__separator__2"></div>
 	<div class="view__general__subtitle" id="view__general__subtitle__tags" translate="title__sub__tags"></div>
-	
+
 	<table cellspacing="0" cellpadding="0" border="0" class="controlTable withRadio" id="clip_tag__yes__controlTable">
 	<tr>
 		<td class="radio"><input type="radio" id="clip_tag__radio__yes" name="clip_tag__radio"/></td>
@@ -73,31 +73,31 @@
 	<div class="view__general__subtitle" id="view__general__subtitle__account" translate="title__sub__account"></div>
 
 	<div id="account__container"></div>
-	
+
 	<!-- === -->
 	<div class="view_separator" id="view__general__separator__4"></div>
 	<div class="buttonsContainer" id="view__general__buttons__container">
 		<input id="button__save_general" style="font-weight:bold;" type="button" class="button floatingButton" translate="button__save_general"/>
 		<div class="saveSpinner" id="button__save_general__spinner"></div>
 	</div>
-	
+
 	<!-- === -->
 	<div class="view_ending" id="view__general__ending"></div>
-	
+
 	</div>
-	
+
 	<div class="view" id="view__custom">
-		
+
 	<div class="view__heading" translate="title__custom"></div>
 	<div class="view_separator" id="view__custom__separator__1"></div>
-	
+
 	<!-- === -->
-	
+
 	<table cellspacing="0" cellpadding="0" border="0" class="controlTable" id="text_font__controlTable"><tr>
 		<td class="label"><label for="text_font__control" translate="text_font__label"></label></td>
 		<td class="control">
 			<select id="text_font__select">
-                
+
     <option value="PT Serif">PT Serif</option>
     <option value="Crimson Text">Crimson Text</option>
     <option value="Droid Serif">Droid Serif</option>
@@ -129,7 +129,7 @@
 		<td class="label"><label for="text_font_header__control" translate="text_font_header__label"></label></td>
 		<td class="control">
 			<select id="text_font_header__select">
-                
+
     <option value="PT Serif">PT Serif</option>
     <option value="Crimson Text">Crimson Text</option>
     <option value="Droid Serif">Droid Serif</option>
@@ -161,7 +161,7 @@
 		<td class="label"><label for="text_font_monospace__control" translate="text_font_monospace__label"></label></td>
 		<td class="control">
 			<select id="text_font_monospace__select">
-                
+
     <option value="Courier New, Courier">Courier New, Courier</option>
     <option value="Lucida Console">Lucida Console</option>
     <option value="Andale Mono">Andale Mono</option>
@@ -201,14 +201,14 @@
 
 	<!-- === -->
 	<div class="controls_separator" id="controls__separator__2"></div>
-	
+
 	<table cellspacing="0" cellpadding="0" border="0" class="controlTable smaller" id="text_size__controlTable"><tr>
 		<td class="label"><label for="text_size__control" translate="text_size__label"></label></td>
 		<td class="control">
 			<input id="text_size__control"/>
 		</td>
 	</tr></table>
-	
+
 	<table cellspacing="0" cellpadding="0" border="0" class="controlTable smaller" id="text_line_height__controlTable"><tr>
 		<td class="label"><label for="text_line_height__control" translate="text_line_height__label"></label></td>
 		<td class="control">
@@ -226,7 +226,7 @@
 	<!-- === -->
 
 <div id="view__custom__miscSettings__container">
-	
+
 	<div class="view_separator" id="view__custom__separator__2"></div>
 	<div class="view_separator" id="view__custom__separator__3"></div>
 
@@ -255,7 +255,7 @@
 
 	<!-- === -->
 	<div class="controls_separator" id="controls__separator__3"></div>
-	
+
 	<table cellspacing="0" cellpadding="0" border="0" class="controlTable" id="footnote_links__controlTable"><tr>
 		<td class="label"><label for="footnote_links__control" translate="footnote_links__label"></label></td>
 		<td class="control">
@@ -293,9 +293,9 @@
 	<!-- === -->
 
 <div id="view__custom__frameAndButtons__container">
-	
+
 	<div class="message" id="view__custom__message__saved" translate="message__saved"></div>
-	
+
 	<div id="preview_frame">
 		<iframe frameborder="0" allowtransparency="true"></iframe>
 	</div>
@@ -311,11 +311,11 @@
 
 	<!-- === -->
 	<div class="view_ending" id="view__custom__ending"></div>
-	
-</div>	
+
+</div>
 	</div>
 
-    
+
 	<!-- licenses -->
 	<div id="licenses">
         <div id="licenses_overlay"></div>
@@ -439,7 +439,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             </div>
         </div>
     </div>
-	
+
 	<!-- preview frame -->
 	<div id="preview_frame_contents" style="display: none;">
 		<p>In publishing and graphic design, <strong>lorem ipsum</strong> is placeholder text commonly used to demonstrate the graphic elements of a document or visual presentation &mdash; i.e. font, typography, and layout. The lorem ipsum text is typically a section of a Latin text by Cicero, with words altered, added, and removed &mdash; which makes it nonsensical in meaning.</p>
@@ -523,25 +523,25 @@ _body.appendChild(_coverElement);</pre>
 
 	</div>
 
-	
+
 	<!-- libs -->
-	<script src="chrome-extension://iooicodkiihhpojmmeghjclgihfjdjhj/libs/jQuery.js" type="text/javascript"></script>
-	
-	<link href="chrome-extension://iooicodkiihhpojmmeghjclgihfjdjhj/libs/miniColors/jquery.miniColors.css" rel="stylesheet" type="text/css"/>
-	<script src="chrome-extension://iooicodkiihhpojmmeghjclgihfjdjhj/libs/miniColors/jquery.miniColors.js" type="text/javascript"></script>
-	
-	<link href="chrome-extension://iooicodkiihhpojmmeghjclgihfjdjhj/libs/flexSelect/flexselect.css" rel="stylesheet" type="text/css"/>
-	<script src="chrome-extension://iooicodkiihhpojmmeghjclgihfjdjhj/libs/flexSelect/liquidmetal.js" type="text/javascript"></script>
-	<script src="chrome-extension://iooicodkiihhpojmmeghjclgihfjdjhj/libs/flexSelect/jquery.flexselect.js" type="text/javascript"></script>
-	
+	<script src="libs/jQuery.js" type="text/javascript"></script>
+
+	<link href="libs/miniColors/jquery.miniColors.css" rel="stylesheet" type="text/css"/>
+	<script src="libs/miniColors/jquery.miniColors.js" type="text/javascript"></script>
+
+	<link href="libs/flexSelect/flexselect.css" rel="stylesheet" type="text/css"/>
+	<script src="libs/flexSelect/liquidmetal.js" type="text/javascript"></script>
+	<script src="libs/flexSelect/jquery.flexselect.js" type="text/javascript"></script>
+
 	<!-- script -->
-	<script src="chrome-extension://iooicodkiihhpojmmeghjclgihfjdjhj/options/options.js" type="text/javascript"></script>
+	<script src="js/options.js" type="text/javascript"></script>
 
     <!-- track -->
-    
+
     <script type="text/javascript">
         chrome.extension.sendRequest({_type: 'to-chrome--track--settings'});
     </script>
-    
+
 </body>
 </html>
