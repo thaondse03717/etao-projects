@@ -3,7 +3,7 @@
 	//	vars
 	_readableTargetPath = 'chrome-extension://iooicodkiihhpojmmeghjclgihfjdjhj/js/target.js';
 
-	
+
 	//	if body is missing, stop
 	if (document.getElementsByTagName('body').length > 0); else { return; }
 

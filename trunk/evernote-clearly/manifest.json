@@ -17,7 +17,7 @@
    },
    "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCt8MT50xj+Tim31h2VGADl6CXWpKn9K1H5IQOmUyrREYC0rOoP/vD3AQ4PC8jTuUOZNAZ06vKYFTYH7YCUrk8QldzzTTUkuxf3uv34Ogd39x6BQxomHlbZYb+yxU5daZY3FgZ4MZBjWUadi1Xb7mDO6sEfLpaFKwdWQqfKalACVQIDAQAB",
    "name": "__MSG_meta_extension_name__",
-   "options_page": "options/options.html",
+   "options_page": "options.html",
    "permissions": [ "unlimitedStorage", "management", "contextMenus", "cookies", "tabs", "notifications", "http://*/*", "https://*/*" ],
    "update_url": "http://clients2.google.com/service/update2/crx",
    "version": "4.3328.304.485"

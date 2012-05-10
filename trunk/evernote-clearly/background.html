@@ -76,7 +76,7 @@ __readable_by_evernote.__common_launch = function () {
 		if (_tab.url.indexOf('chrome:') === 0) {
 			chrome.tabs.update(
 			_tab.id, {
-				'url': 'chrome-extension://iooicodkiihhpojmmeghjclgihfjdjhj/blank.html'
+				'url': 'blank.html'
 			});
 			return;
 		}
@@ -100,7 +100,7 @@ __readable_by_evernote.__common_launch = function () {
 
 			+ "if (_o); else" + "{" + " _o = _d.createElement('dl');" + "	_o.setAttribute('style', 'display: none;');" + "	_o.setAttribute('id', '__readable_extension_definitions');" + "	_b.appendChild(_o);" + "}" + "_o.innerHTML = '" + __definition_items_html + "';"
 
-			+ "_l.setAttribute('src', 'chrome-extension://iooicodkiihhpojmmeghjclgihfjdjhj/js/__bookmarklet_to_inject" + (__clip_on_launch ? "__andClipOnLaunch" : "") + ".js');" + "_l.className = 'bookmarklet_launch';" + "_b.appendChild(_l);"
+			+ "_l.setAttribute('src', 'js/__bookmarklet_to_inject" + (__clip_on_launch ? "__andClipOnLaunch" : "") + ".js');" + "_l.className = 'bookmarklet_launch';" + "_b.appendChild(_l);"
 		});
 	});
 };
@@ -908,187 +908,115 @@ chrome.extension.onRequest.addListener(function (request, sender, sendResponse) 
 			sendResponse({});
 			break;
 
-	/* select size */
-	case 'to-chrome--select-size-small':
-		__readable_by_evernote.__save__select_size('small');
-		sendResponse({});
-		break;
-	case 'to-chrome--select-size-medium':
-		__readable_by_evernote.__save__select_size('medium');
-		sendResponse({});
-		break;
-	case 'to-chrome--select-size-large':
-		__readable_by_evernote.__save__select_size('large');
-		sendResponse({});
-		break;
+		/* select size */
+		case 'to-chrome--select-size-small':
+			__readable_by_evernote.__save__select_size('small');
+			sendResponse({});
+			break;
+		case 'to-chrome--select-size-medium':
+			__readable_by_evernote.__save__select_size('medium');
+			sendResponse({});
+			break;
+		case 'to-chrome--select-size-large':
+			__readable_by_evernote.__save__select_size('large');
+			sendResponse({});
+			break;
 
+		/* track */
+		case 'to-chrome--track--view':
+			__readable_by_evernote.__analytics__track_event(['View', request._domain, request._theme]);
+			sendResponse({});
+			break;
 
-	/* track */
-	case 'to-chrome--track--view':
-		__readable_by_evernote.__analytics__track_event(['View', request._domain, request._theme]);
-		sendResponse({});
-		break;
+		case 'to-chrome--track--clip':
+			/* will be done from inside extension code */
+			/* here just for uniformity's sake */
+			sendResponse({});
+			break;
 
-	case 'to-chrome--track--clip':
-		/* will be done from inside extension code */
-		/* here just for uniformity's sake */
-		sendResponse({});
-		break;
+		case 'to-chrome--track--theme-popup':
+			__readable_by_evernote.__analytics__track_event(['Theme Popup', 'Theme Popup']);
+			sendResponse({});
+			break;
 
-	case 'to-chrome--track--theme-popup':
-		__readable_by_evernote.__analytics__track_event(['Theme Popup', 'Theme Popup']);
-		sendResponse({});
-		break;
-
-	case 'to-chrome--track--settings':
-		__readable_by_evernote.__analytics__track_event(['Settings Page', 'Settings Page']);
-		sendResponse({});
-		break;
-
-
-	/* get info */
-	case 'to-chrome--get-keyboard-info':
-		var _options = __readable_by_evernote.__get_saved__options(),
-			_vars = __readable_by_evernote.__get_saved__vars(),
-			_translations = __readable_by_evernote.__get_translations(),
-
-			__key_activation = _vars['keys_activation'],
-			__key_clip = _vars['keys_clip'],
-			__definition_items_html = __readable_by_evernote.__get__stuffAsDefinitionItemsHTML({
-				'option': _options,
-				'var': _vars,
-				'translation': _translations
-			});
-
-		sendResponse({
-			'_key_activation': __key_activation,
-			'_key_clip': __key_clip,
-			'_definition_items_html': __definition_items_html
-		});
-		break;
-
-
-	/* evernote */
-	case 'to-chrome--evernote-clip':
-
-		// check login
-		// 	if not logged in, try stored log in
-		// 		on successfull login, do clip again
-		// 		on failed login, or no stored login, show login form
-		//
-		// try clip
-		// 	on fail, because of login, try stored login
-		// 		on successfull login, try clip again
-		// 		on failed login, or no stored login, show login form
-		// ============================================================
-		// logout on next action
-		// =====================
-		if (__readable_by_evernote.__get_stored_evernote_logoutOnNextAction()) {
-			__readable_by_evernote.__evernote_remote.logout();
-		}
-
-
-		// stored login
-		// ============
-		var _storedLogin = __readable_by_evernote.__get_stored_evernote_credentials();
-
-
-		//  success function
-		//  ================
-		var _clipping_successful = function () {
-			//  send success event
-			//  ==================
-			chrome.tabs.sendRequest(
-			sender.tab.id, {
-				_type: 'to-content--evernote-clip-successful'
-			});
-
-			//  track clip
-			//  ==========
-			__readable_by_evernote.__analytics__track_event(['Clip', (sender.tab && sender.tab.url && (sender.tab.url.indexOf('/', 8) > -1) ? sender.tab.url.substr(0, (sender.tab.url.indexOf('/', 8) + 1)) : 'blank-domain'), (__readable_by_evernote.__evernote_remote['user__privilege'] ? 'privilege-' + __readable_by_evernote.__evernote_remote['user__privilege'] : 'blank-privilege')]);
-		};
-
-		switch (true) {
-
-			// not connected / logged-in
-			// and we know this -- so do connect/login
-			// =======================================
-		case (!(__readable_by_evernote.__evernote_remote.is__connected)):
-		case (!(__readable_by_evernote.__evernote_remote.is__loggedIn)):
-
-			// no stored login
-			// ===============
-			if (_storedLogin == false) {
-				chrome.tabs.sendRequest(sender.tab.id, {
-					_type: 'to-content--evernote-login-show'
-				});
-				return;
-			}
-
-			// do stored login
-			// ================
-			__readable_by_evernote.__evernote_remote.login(
-			_storedLogin.username, _storedLogin.password,
-
-			// success | login
-
-			function () {
-				__readable_by_evernote.__evernote_remote.clip(
-				request._url, request._title, request._body, request._tag,
-
-				// success | clip
-
-				function () {
-					_clipping_successful();
-				},
-
-				// failure | clip
-
-				function (_failReason) {
-					chrome.tabs.sendRequest(sender.tab.id, {
-						_type: 'to-content--evernote-clip-failed'
-					});
-				});
-			},
-
-			// failure | login
-
-			function (_failReason) {
-				chrome.tabs.sendRequest(sender.tab.id, {
-					_type: 'to-content--evernote-login-show'
-				});
-			});
-
+		case 'to-chrome--track--settings':
+			__readable_by_evernote.__analytics__track_event(['Settings Page', 'Settings Page']);
+			sendResponse({});
 			break;
 
 
-			// should be both connected and logged in
-			// 	in case it fails because of login, we try another stored login
-			// ===================================================================
-		default:
+		/* get info */
+		case 'to-chrome--get-keyboard-info':
+			var _options = __readable_by_evernote.__get_saved__options(),
+				_vars = __readable_by_evernote.__get_saved__vars(),
+				_translations = __readable_by_evernote.__get_translations(),
 
-			__readable_by_evernote.__evernote_remote.clip(
-			request._url, request._title, request._body, request._tag,
+				__key_activation = _vars['keys_activation'],
+				__key_clip = _vars['keys_clip'],
+				__definition_items_html = __readable_by_evernote.__get__stuffAsDefinitionItemsHTML({
+					'option': _options,
+					'var': _vars,
+					'translation': _translations
+				});
 
-			// success | clip
+			sendResponse({
+				'_key_activation': __key_activation,
+				'_key_clip': __key_clip,
+				'_definition_items_html': __definition_items_html
+			});
+			break;
 
-			function () {
-				_clipping_successful();
-			},
 
-			// failuse | clip
+		/* evernote */
+		case 'to-chrome--evernote-clip':
 
-			function (_failReason) {
-				// failure because of soemthing else
-				if (_failReason == 'login');
-				else {
-					chrome.tabs.sendRequest(sender.tab.id, {
-						_type: 'to-content--evernote-clip-failed'
-					});
-					return;
-				}
+			// check login
+			// 	if not logged in, try stored log in
+			// 		on successfull login, do clip again
+			// 		on failed login, or no stored login, show login form
+			//
+			// try clip
+			// 	on fail, because of login, try stored login
+			// 		on successfull login, try clip again
+			// 		on failed login, or no stored login, show login form
+			// ============================================================
+			// logout on next action
+			// =====================
+			if (__readable_by_evernote.__get_stored_evernote_logoutOnNextAction()) {
+				__readable_by_evernote.__evernote_remote.logout();
+			}
+
+
+			// stored login
+			// ============
+			var _storedLogin = __readable_by_evernote.__get_stored_evernote_credentials();
+
+
+			//  success function
+			//  ================
+			var _clipping_successful = function () {
+				//  send success event
+				//  ==================
+				chrome.tabs.sendRequest(
+				sender.tab.id, {
+					_type: 'to-content--evernote-clip-successful'
+				});
+
+				//  track clip
+				//  ==========
+				__readable_by_evernote.__analytics__track_event(['Clip', (sender.tab && sender.tab.url && (sender.tab.url.indexOf('/', 8) > -1) ? sender.tab.url.substr(0, (sender.tab.url.indexOf('/', 8) + 1)) : 'blank-domain'), (__readable_by_evernote.__evernote_remote['user__privilege'] ? 'privilege-' + __readable_by_evernote.__evernote_remote['user__privilege'] : 'blank-privilege')]);
+			};
+
+			switch (true) {
+
+				// not connected / logged-in
+				// and we know this -- so do connect/login
+				// =======================================
+			case (!(__readable_by_evernote.__evernote_remote.is__connected)):
+			case (!(__readable_by_evernote.__evernote_remote.is__loggedIn)):
 
 				// no stored login
+				// ===============
 				if (_storedLogin == false) {
 					chrome.tabs.sendRequest(sender.tab.id, {
 						_type: 'to-content--evernote-login-show'
@@ -1096,7 +1024,8 @@ chrome.extension.onRequest.addListener(function (request, sender, sendResponse) 
 					return;
 				}
 
-				// try stored login
+				// do stored login
+				// ================
 				__readable_by_evernote.__evernote_remote.login(
 				_storedLogin.username, _storedLogin.password,
 
@@ -1128,83 +1057,153 @@ chrome.extension.onRequest.addListener(function (request, sender, sendResponse) 
 						_type: 'to-content--evernote-login-show'
 					});
 				});
-			});
 
-			break;
-		}
-
-		sendResponse({});
-		break;
-
-	case 'to-chrome--evernote-login':
-
-		// do login
-		// 	store login, if rememberMe
-		// ==============================
-		__readable_by_evernote.__evernote_remote.login(
-		request._user, request._pass,
-
-		// success | login
-
-		function () {
-			// save credentials
-			// ================
-			if (request._rememberMe) {
-				__readable_by_evernote.__set_stored_evernote_credentials({
-					'username': request._user,
-					'password': request._pass
-				});
-			}
-
-			// raise event
-			chrome.tabs.sendRequest(sender.tab.id, {
-				_type: 'to-content--evernote-login-successful'
-			});
-		},
-
-		// fail | login
-
-		function (_failReason) {
-			switch (_failReason) {
-			case 'username':
-				chrome.tabs.sendRequest(sender.tab.id, {
-					_type: 'to-content--evernote-login-failed--username'
-				});
 				break;
-			case 'password':
-				chrome.tabs.sendRequest(sender.tab.id, {
-					_type: 'to-content--evernote-login-failed--password'
-				});
-				break;
+
+
+				// should be both connected and logged in
+				// 	in case it fails because of login, we try another stored login
+				// ===================================================================
 			default:
-				chrome.tabs.sendRequest(sender.tab.id, {
-					_type: 'to-content--evernote-login-failed'
+
+				__readable_by_evernote.__evernote_remote.clip(
+				request._url, request._title, request._body, request._tag,
+
+				// success | clip
+
+				function () {
+					_clipping_successful();
+				},
+
+				// failuse | clip
+
+				function (_failReason) {
+					// failure because of soemthing else
+					if (_failReason == 'login');
+					else {
+						chrome.tabs.sendRequest(sender.tab.id, {
+							_type: 'to-content--evernote-clip-failed'
+						});
+						return;
+					}
+
+					// no stored login
+					if (_storedLogin == false) {
+						chrome.tabs.sendRequest(sender.tab.id, {
+							_type: 'to-content--evernote-login-show'
+						});
+						return;
+					}
+
+					// try stored login
+					__readable_by_evernote.__evernote_remote.login(
+					_storedLogin.username, _storedLogin.password,
+
+					// success | login
+
+					function () {
+						__readable_by_evernote.__evernote_remote.clip(
+						request._url, request._title, request._body, request._tag,
+
+						// success | clip
+
+						function () {
+							_clipping_successful();
+						},
+
+						// failure | clip
+
+						function (_failReason) {
+							chrome.tabs.sendRequest(sender.tab.id, {
+								_type: 'to-content--evernote-clip-failed'
+							});
+						});
+					},
+
+					// failure | login
+
+					function (_failReason) {
+						chrome.tabs.sendRequest(sender.tab.id, {
+							_type: 'to-content--evernote-login-show'
+						});
+					});
 				});
+
 				break;
 			}
-		});
 
-		sendResponse({});
-		break;
+			sendResponse({});
+			break;
+
+		case 'to-chrome--evernote-login':
+
+			// do login
+			// 	store login, if rememberMe
+			// ==============================
+			__readable_by_evernote.__evernote_remote.login(
+			request._user, request._pass,
+
+			// success | login
+
+			function () {
+				// save credentials
+				// ================
+				if (request._rememberMe) {
+					__readable_by_evernote.__set_stored_evernote_credentials({
+						'username': request._user,
+						'password': request._pass
+					});
+				}
+
+				// raise event
+				chrome.tabs.sendRequest(sender.tab.id, {
+					_type: 'to-content--evernote-login-successful'
+				});
+			},
+
+			// fail | login
+
+			function (_failReason) {
+				switch (_failReason) {
+				case 'username':
+					chrome.tabs.sendRequest(sender.tab.id, {
+						_type: 'to-content--evernote-login-failed--username'
+					});
+					break;
+				case 'password':
+					chrome.tabs.sendRequest(sender.tab.id, {
+						_type: 'to-content--evernote-login-failed--password'
+					});
+					break;
+				default:
+					chrome.tabs.sendRequest(sender.tab.id, {
+						_type: 'to-content--evernote-login-failed'
+					});
+					break;
+				}
+			});
+
+			sendResponse({});
+			break;
 
 
-		/* settings */
-		/* ======== */
-	case 'to-chrome--open-settings-theme':
-		chrome.tabs.create({
-			'selected': true,
-			'url': 'chrome-extension://iooicodkiihhpojmmeghjclgihfjdjhj/options/options.html#showCustom'
-		});
-		sendResponse({});
-		break;
+			/* settings */
+			/* ======== */
+		case 'to-chrome--open-settings-theme':
+			chrome.tabs.create({
+				'selected': true,
+				'url': 'options.html#showCustom'
+			});
+			sendResponse({});
+			break;
 
-	case 'to-chrome--open-settings':
-		chrome.tabs.create({
-			'selected': true,
-			'url': 'chrome-extension://iooicodkiihhpojmmeghjclgihfjdjhj/options/options.html'
-		});
-		sendResponse({});
-		break;
+		case 'to-chrome--open-settings':
+			chrome.tabs.create({
+				'selected': true,
+				'url': 'options.html'
+			});
+			sendResponse({});
+			break;
 
 	}
 });
@@ -1228,7 +1227,7 @@ __readable_by_evernote.__analytics__track_event = function (_params_array) {
 };
 
 </script>
-<script src="chrome-extension://iooicodkiihhpojmmeghjclgihfjdjhj/libs/jsonrpc.js"></script>
+<script src="libs/jsonrpc.js"></script>
 <script>
  (function() {
    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
