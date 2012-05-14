@@ -39,11 +39,9 @@ $(function () {
 			// remember stuff
 			$R.debugRemember = {};
 			// vars
-			// ====
 			$R.debugStuff = [];
 			$R.debugTimers = [];
 			// write log
-			// =========
 			$R.initializeWriteLogFunction = function () {
 				switch (true) {
 				case (!(!($R.win.console && $R.win.console.log))):
@@ -62,7 +60,6 @@ $(function () {
 				}
 			};
 			// log
-			// ===
 			$R.initializeWriteLogFunction();
 			$R.log = function () {
 				for (var i = 0, il = arguments.length; i < il; i++) {
@@ -71,7 +68,6 @@ $(function () {
 				$R.writeLog('-----------------------------------------');
 			};
 			// outline
-			// =======
 			$R.debugOutline = function (_element, _category, _reason) {
 				switch (true) {
 				case (!(_element.nodeType === 1)):
@@ -111,7 +107,6 @@ $(function () {
 				}
 			};
 			// timers
-			// ======
 			$R.debugTimerStart = function (timerName) {
 				$R.debugTimers.push({
 					'name': timerName,
@@ -125,7 +120,6 @@ $(function () {
 				return _time;
 			};
 			// output -- will be shown in Show function
-			// ======
 			$R.debugPrint = function (_key, _value) {
 				$R.debugStuff[_key] = _value;
 			};
@@ -483,9 +477,7 @@ $(function () {
 		$R.$footnotedLinks = $('#footnotedLinks');
 
 		// options
-		// ======
 		// var
-		// ===
 		// $R.options holds the options to be applied
 		// $R.appliedOptions holds the options currently applied
 		// _optionsToApply holds the decoded options that will actually be applied
@@ -624,7 +616,6 @@ $(function () {
 				}
 				$('head').append(_cssElement);
 				// body classes
-				// ============
 				$('body').removeClass('footnote_links__on_print footnote_links__always footnote_links__never').removeClass('large_graphics__do_nothing large_graphics__hide_on_print large_graphics__hide_always').addClass('footnote_links__' + _optionsToApply['footnote_links']).addClass('large_graphics__' + _optionsToApply['large_graphics']);
 			}
 
@@ -656,24 +647,19 @@ $(function () {
 							}
 						};
 					// body
-					// ====
 					_options['text_font'].replace(/"([^",]+)"/gi, _check_font);
 					_options['text_font'].replace(/([^",\s]+)/gi, _check_font);
 					// headers
-					// =======
 					_options['text_font_header'].replace(/"([^",]+)"/gi, _check_font);
 					_options['text_font_header'].replace(/([^",\s]+)/gi, _check_font);
 					// monospace
-					// =========
 					_options['text_font_monospace'].replace(/"([^",]+)"/gi, _check_font);
 					_options['text_font_monospace'].replace(/([^",\s]+)/gi, _check_font);
 					// custom css
-					// ==========
 					_options['custom_css'].replace(/font-family: "([^",]+)"/gi, _check_font);
 					_options['custom_css'].replace(/font-family: ([^",\s]+)/gi, _check_font);
 
 					// return
-					// ======
 					// transform to array
 					for (var _font in _fonts) {
 						_fonts_urls.push('' + 'http://fonts.googleapis.com/css?family=' + _font.replace(/\s+/g, '+') + ':regular,bold,italic');
@@ -890,11 +876,9 @@ $(function () {
 		};
 
 		// select theme
-		// ============
 		var __select_theme_from_menu = function (_theme_id) {
 			// the themes
 			// encode
-			// ======
 			function __encodeURIComponentForReadable(_string) {
 				// none
 				if (_string == '') {
@@ -905,7 +889,6 @@ $(function () {
 			}
 
 			// decode
-			// ======
 			function __decodeURIComponentForReadable(_string) {
 				// none
 				if (_string == 'none') {
@@ -987,7 +970,6 @@ $(function () {
 		var __select_theme_from_menu__custom = function () {
 			// the themes
 			// encode
-			// ======
 			function __encodeURIComponentForReadable(_string) {
 				// none
 				if (_string == '') {
@@ -998,7 +980,6 @@ $(function () {
 			}
 
 			// decode
-			// ======
 			function __decodeURIComponentForReadable(_string) {
 				// none
 				if (_string == 'none') {
@@ -1078,11 +1059,9 @@ $(function () {
 		};
 
 		// select size
-		// ===========
 		var __select_size_from_menu = function (_size) {
 			// the sizes
 			// encode
-			// ======
 			function __encodeURIComponentForReadable(_string) {
 				// none
 				if (_string == '') {
@@ -1093,7 +1072,6 @@ $(function () {
 			}
 
 			// decode
-			// ======
 			function __decodeURIComponentForReadable(_string) {
 				// none
 				if (_string == 'none') {
@@ -1137,7 +1115,6 @@ $(function () {
 		};
 
 		// events
-		// ======
 		// theme boxes
 		$('#settings__4__1').click(function () {
 			__select_theme_from_menu('theme-1');
@@ -1161,7 +1138,6 @@ $(function () {
 				return;
 			}
 			// apply theme
-			// ===========
 			__select_theme_from_menu__custom();
 			$('#settings__4__custom').addClass('selected');
 		});
@@ -1180,7 +1156,6 @@ $(function () {
 		});
 
 		// initially selected
-		// ==================
 		(function () {
 			// the sizes
 			var __the_sizes = {
@@ -1234,13 +1209,10 @@ $(function () {
 		})();
 
 		// menu
-		// ====
 		// var
-		// ===
 		$R.menu_functions = {};
 
 		//  set handlers
-		//  ============
 		$('#sidebar_menu__close').click(function () {
 			$R.menu_functions['close']();
 			return false;
@@ -1259,7 +1231,6 @@ $(function () {
 		});
 
 		//  set functions
-		//  =============
 		// general
 		$R.menu_functions['close'] = function () {
 			$R.hide();
@@ -1275,10 +1246,8 @@ $(function () {
 
 		$R.menu_functions['settings'] = function () {
 			//  show dialog
-			//  ===========
 			$R.showDialog('settings__4');
 			//  track event
-			//  ===========
 			$R.customEvents.dispatch(
 			$R.customEvents.names_to_objects['to-extension--track--theme-popup'], $R.document, $R.win);
 			return false;
@@ -1293,7 +1262,6 @@ $(function () {
 		};
 
 		// custom events
-		// =============
 		(function () {
 			// include events
 		/*
@@ -1369,7 +1337,6 @@ $(function () {
 				_stop = false;
 			//  __escapeForHTML
 			//  escapeForHTML
-			//  =============
 			function __escapeForHTML(_string) {
 				var _replace = {
 					"&": "amp",
@@ -1459,9 +1426,7 @@ $(function () {
 		}, true);
 
 		// misc ux
-		// =======
 		// good ux
-		// =======
 		$R.$fitts.click(function () {
 			$R.hide();
 			return false;
@@ -1472,7 +1437,6 @@ $(function () {
 		});
 
 		// Keys, on Readable window
-		// ========================
 		$(window).keydown(function (_event) {
 			// Readable visible?
 			if ($R.visible);
@@ -1506,12 +1470,10 @@ $(function () {
 				break;
 			}
 			// get
-			// ===
 			var _modifierKeys = (_event.originalEvent ? _event.originalEvent : _event);
 			// jQuery screws up -- fucks up the metaKey property badly
 			var _key_combo = '' + (_modifierKeys.ctrlKey ? 'Control + ' : '') + (_modifierKeys.shiftKey ? 'Shift + ' : '') + (_modifierKeys.altKey ? 'Alt + ' : '') + (_modifierKeys.metaKey ? 'Command + ' : '') + _key_code;
 			// needs a modifier -- if not just Escape key
-			// ================
 			if ((_key_code != 'Escape') && (_key_code == _key_combo)) {
 				_key_code = 'NONE';
 				_key_combo = 'NONE';
@@ -1548,7 +1510,6 @@ $(function () {
 		});
 
 		// scroll-back
-		// ===========
 		$R.scrollPosition = 0;
 		$R.goToNamedAnchor = function (_anchor) {
 			var _$e = $("[id='" + _anchor + "'], [name='" + _anchor + "']");
@@ -1562,13 +1523,10 @@ $(function () {
 		};
 
 		// rtl
-		// ===
 		// var
-		// ===
 		$R.rtl = false;
 
 		// functions
-		// =========
 		$R.makeRTL = function () {
 			$('#curtain__rtl__radio__rtl').get(0).checked = true;
 			$('#curtain__rtl__radio__ltr').get(0).checked = false;
@@ -1587,7 +1545,6 @@ $(function () {
 		};
 
 		// detect
-		// ======
 		(function () {
 			// definitely rtl
 			$R.$document.find('html, body').each(function (_i, _e) {
@@ -1609,7 +1566,6 @@ $(function () {
 		})();
 
 		// events
-		// ======
 		$('#curtain__rtl__radio__rtl').change(function () {
 			$R.makeRTL();
 			return false;
@@ -1620,16 +1576,13 @@ $(function () {
 		});
 
 		// measure text
-		// ============
 		// asian languages
-		// ===============
 		// http://msdn.microsoft.com/en-us/goglobal/bb688158
 		// http://en.wikipedia.org/wiki/Japanese_punctuation
 		// http://en.wikipedia.org/wiki/Japanese_typographic_symbols
 		// http://unicode.org/charts/PDF/U3000.pdf
 		// CJK: Chnese, Japanese, Korean -- HAN character set
 		// length
-		// ======
 		$R.measureText__getTextLength = function (_the_text) {
 			var _text = _the_text;
 			_text = _text.replace(/[\s\n\r]+/gi, '');
@@ -1638,11 +1591,9 @@ $(function () {
 		};
 
 		// word count
-		// ==========
 		$R.measureText__getWordCount = function (_the_text) {
 			var _text = _the_text;
 			// do stuff
-			// ========
 			_text = _text.replace(/[\s\n\r]+/gi, ' ');
 			_text = _text.replace(/([.,?!:;()\[\]'""-])/gi, ' $1 ');
 			_text = _text.replace(/([\u3000])/gi, '[=words(1)]');
@@ -1664,7 +1615,6 @@ $(function () {
 			_text = _text.replace(/([\u30A0])/gi, '[=words(1)]');
 
 			// count
-			// =====
 			var
 			_count = 0,
 				_words_match = _text.match(/([^\s\d]{3,})/gi);
@@ -1676,12 +1626,10 @@ $(function () {
 			});
 			//$R.log(_count);
 			// return
-			// ======
 			return _count;
 		};
 
 		// content
-		// =======
 		$R.footnotedLinksCount = 0;
 		$R.getContent = function () {
 			// homepage?
@@ -1703,7 +1651,6 @@ $(function () {
 		};
 
 		// options
-		// =======
 		$R.parsingOptions = {
 			'_elements_ignore': '|button|input|select|textarea|optgroup|command|datalist|--|frame|frameset|noframes|--|style|link|script|noscript|--|canvas|applet|map|--|marquee|area|base|',
 			'_elements_ignore_tag': '|form|fieldset|details|dir|--|center|font|span|',
@@ -1730,7 +1677,6 @@ $(function () {
 		};
 
 		// next page keywords -- (?? charCodeAt() > 127)
-		// ==================
 		$R.nextPage__captionKeywords = [ /* english */ 'next page', 'next',
 		/* german */ 'vorw&#228;rts', 'weiter',
 		/* japanese */ '&#27425;&#12408;'];
@@ -1738,15 +1684,12 @@ $(function () {
 		];
 
 		// skip links
-		// ==========
 		$R.skipStuffFromDomains__links = ['doubleclick.net', 'fastclick.net', 'adbrite.com', 'adbureau.net', 'admob.com', 'bannersxchange.com', 'buysellads.com', 'impact-ad.jp', 'atdmt.com', 'advertising.com', 'itmedia.jp', 'microad.jp', 'serving-sys.com', 'adplan-ds.com'];
 
 		// skip images
-		// ===========
 		$R.skipStuffFromDomain__images = ['googlesyndication.com', 'fastclick.net', '.2mdn.net', 'de17a.com', 'content.aimatch.com', 'bannersxchange.com', 'buysellads.com', 'impact-ad.jp', 'atdmt.com', 'advertising.com', 'itmedia.jp', 'microad.jp', 'serving-sys.com', 'adplan-ds.com'];
 
 		// keep video
-		// ==========
 		$R.keepStuffFromDomain__video = ['youtube.com', 'youtube-nocookie.com',
 		'vimeo.com', 'hulu.com', 'yahoo.com', 'flickr.com', 'newsnetz.ch'];
 
@@ -1767,7 +1710,6 @@ $(function () {
 				_return__candidates = [],
 				_return__links = [];
 			// recursive function
-			// ==================
 			var _recursive = function (_node) {
 				// increment index
 				// starts with 1
@@ -1816,7 +1758,6 @@ $(function () {
 					};
 
 				// fast return
-				// ===========
 				switch (true) {
 				case ((_tag_name == '#invalid')):
 				case (($R.parsingOptions._elements_ignore.indexOf('|' + _tag_name + '|') > -1)):
@@ -1852,10 +1793,8 @@ $(function () {
 				}
 
 				// do stuff
-				// ========
 				switch (true) {
 					// text node
-					// =========
 				case ((_tag_name == '#text')):
 					// mark
 					_result._is__text = true;
@@ -1882,7 +1821,6 @@ $(function () {
 					return _result;
 
 					// link
-					// ====
 				case (_tag_name == 'a'):
 					var _href = _node.href;
 					// sanity
@@ -1913,10 +1851,8 @@ $(function () {
 					break;
 
 					// image
-					// =====
 				case (_tag_name == 'img'):
 					// skip
-					// ====
 					if (_node.src && _node.src.indexOf) {
 						for (var i = 0, _i = $R.skipStuffFromDomain__images.length; i < _i; i++) {
 							if (_node.src.indexOf($R.skipStuffFromDomain__images[i]) > -1) {
@@ -1926,7 +1862,6 @@ $(function () {
 						}
 					}
 					// size
-					// ====
 					var _width = $(_node).width(),
 						_height = $(_node).height();
 					switch (true) {
@@ -1949,20 +1884,17 @@ $(function () {
 				}
 
 				// child nodes
-				// ===========
 				for (var i = 0, _i = _node.childNodes.length; i < _i; i++) {
 					var
 					_child = _node.childNodes[i],
 						_child_result = _recursive(_child);
 					// if false, continue
-					// ==================
 					if (_child_result);
 					else {
 						continue;
 					}
 
 					// add to result
-					// =============
 					_result._count__links += _child_result._count__links + (_child_result._is__link ? 1 : 0);
 					_result._count__links_skip += _child_result._count__links_skip + (_child_result._is__link_skip ? 1 : 0);
 					_result._count__images_small += _child_result._count__images_small + (_child_result._is__image_small ? 1 : 0);
@@ -1974,7 +1906,6 @@ $(function () {
 					_result._length__all_text += _child_result._length__plain_text + _child_result._length__links_text;
 					_result._count__all_words += _child_result._count__plain_words + _child_result._count__links_words;
 					// plain text / link text
-					// ======================
 					switch (true) {
 					case (_child_result._is__link):
 						// no text to add
@@ -1991,16 +1922,13 @@ $(function () {
 				}
 
 				// after child nodes
-				// =================
 				// mark as not in link anymore
-				// ===========================
 				if (true && (_result._is__link) && (_global__inside_link__element_index == _result.__index)) {
 					_global__inside_link = false;
 					_global__inside_link__element_index = 0;
 				}
 
 				// add to containers
-				// =================
 				if (_result._is__container || ((_result.__index == 1) && (_justExploring == true))) {
 					// add to containers
 					_return__containers.push(_result);
@@ -2039,7 +1967,6 @@ $(function () {
 							break;
 						}
 						// special case for body -- if it was just skipped
-						// =====================
 						if ((_result.__index == 1) && !(_result._is__candidate)) {
 							_result._is__candidate = true;
 							_result._is__bad = true;
@@ -2049,20 +1976,16 @@ $(function () {
 				}
 
 				// return
-				// ======
 				return _result;
 			};
 
 			// actually do it
-			// ==============
 			_recursive(_nodeToExplore);
 			// just exploring -- return first thing
-			// ==============
 			if (_justExploring) {
 				return _return__containers.pop();
 			}
 			// return containers list
-			// ======================
 			return {
 				'_containers': _return__containers,
 				'_candidates': _return__candidates,
@@ -2072,11 +1995,9 @@ $(function () {
 
 		$R.getContent__processCandidates = function (_candidatesToProcess) {
 			// process this var
-			// ================
 			var _candidates = _candidatesToProcess;
 
 			// sort _candidates -- the lower in the dom, the closer to position 0
-			// ================
 			_candidates.sort(function (a, b) {
 				switch (true) {
 				case (a.__index < b.__index):
@@ -2089,7 +2010,6 @@ $(function () {
 			});
 
 			// get first
-			// =========
 			var _main = _candidates[0]
 			if ($R.debug) {
 				$R.log('should be body', _main, _main.__node);
@@ -2097,10 +2017,8 @@ $(function () {
 
 			// pieces of text
 			// and points computation
-			// ======================
 			for (var i = 0, _i = _candidates.length; i < _i; i++) {
 				// pieces
-				// ======
 				var
 				_count__pieces = 0,
 					_array__pieces = [];
@@ -2121,11 +2039,9 @@ $(function () {
 				}
 
 				// candidate details
-				// =================
 				_candidates[i]['__candidate_details'] = $R.getContent__computeDetailsForCandidate(_candidates[i], _main);
 
 				// pieces -- do this here because _main doesn't yet have a pieces count
-				// ======
 				// set pieces
 				_candidates[i]['_count__pieces'] = _count__pieces;
 				_candidates[i]['_array__pieces'] = _array__pieces;
@@ -2133,13 +2049,11 @@ $(function () {
 				_candidates[i]['__candidate_details']['_ratio__count__pieces_to_total_pieces'] = (_count__pieces / (_candidates[0]._count__pieces + 1));
 
 				// points
-				// ======
 				_candidates[i].__points_history = $R.getContent__computePointsForCandidate(_candidates[i], _main);
 				_candidates[i].__points = _candidates[i].__points_history[0];
 			}
 
 			// sort _candidates -- the more points, the closer to position 0
-			// ================
 			_candidates.sort(function (a, b) {
 				switch (true) {
 				case (a.__points > b.__points):
@@ -2152,7 +2066,6 @@ $(function () {
 			});
 
 			// return
-			// ======
 			return _candidates;
 		};
 
@@ -2160,13 +2073,11 @@ $(function () {
 			var _r = {};
 
 			// bad candidate
-			// =============
 			if (_e._is__bad) {
 				return _r;
 			}
 
 			// paragraphs
-			// ==========
 			_r['_count__lines_of_65_characters'] = (_e._length__plain_text / 65);
 			_r['_count__paragraphs_of_3_lines'] = (_r._count__lines_of_65_characters / 3);
 			_r['_count__paragraphs_of_5_lines'] = (_r._count__lines_of_65_characters / 5);
@@ -2174,12 +2085,10 @@ $(function () {
 			_r['_count__paragraphs_of_80_words'] = (_e._count__plain_words / 80);
 
 			// total text
-			// ==========
 			_r['_ratio__length__plain_text_to_total_plain_text'] = (_e._length__plain_text / _main._length__plain_text);
 			_r['_ratio__count__plain_words_to_total_plain_words'] = (_e._count__plain_words / _main._count__plain_words);
 
 			// links
-			// =====
 			_r['_ratio__length__links_text_to_plain_text'] = (_e._length__links_text / _e._length__plain_text);
 			_r['_ratio__count__links_words_to_plain_words'] = (_e._count__links_words / _e._count__plain_words);
 			_r['_ratio__length__links_text_to_all_text'] = (_e._length__links_text / _e._length__all_text);
@@ -2190,7 +2099,6 @@ $(function () {
 			_r['_ratio__count__links_to_plain_words'] = ((_e._count__links * 2) / _e._count__plain_words);
 
 			// text above
-			// ==========
 			var
 			_divide__candidates = Math.max(2, Math.ceil(_e._count__above_candidates * 0.5)),
 				_above_text = ((0 + (_e._length__above_plain_text * 1) + (_e._length__above_plain_text / _divide__candidates)) / 2),
@@ -2199,12 +2107,10 @@ $(function () {
 			_r['_ratio__count__above_plain_words_to_total_plain_words'] = (_above_words / _main._count__plain_words);
 
 			// candidates
-			// ==========
 			_r['_ratio__count__candidates_to_total_candidates'] = (_e._count__candidates / (_main._count__candidates + 1));
 			_r['_ratio__count__containers_to_total_containers'] = (_e._count__containers / (_main._count__containers + 1));
 
 			// return
-			// ======
 			return _r;
 		};
 
@@ -2219,7 +2125,6 @@ $(function () {
 			}
 
 			// the basics
-			// ==========
 			_points_history.unshift(((0 + (_details._count__paragraphs_of_3_lines) + (_details._count__paragraphs_of_5_lines * 1.5) + (_details._count__paragraphs_of_50_words) + (_details._count__paragraphs_of_80_words * 1.5) + (_e._count__images_large * 3) - ((_e._count__images_skip + _e._count__images_small) * 0.5)) * 1000));
 			//  negative
 			if (_points_history[0] < 0) {
@@ -2227,7 +2132,6 @@ $(function () {
 			}
 
 			//  candidates and containers
-			//  =========================
 			var
 			_divide__pieces = Math.max(5, Math.ceil(_e._count__pieces * 0.25)),
 				_divide__candidates = Math.max(5, Math.ceil(_e._count__candidates * 0.25)),
@@ -2235,7 +2139,6 @@ $(function () {
 			_points_history.unshift(((0 + (_points_history[0] * 3) + (_points_history[0] / _divide__pieces) + (_points_history[0] / _divide__candidates) + (_points_history[0] / _divide__containers)) / 6));
 
 			// total text
-			// ==========
 			$R.getContent__computePointsForCandidate__do(0.10, 2, (1 - (1 - _details._ratio__length__plain_text_to_total_plain_text)), _points_history);
 			$R.getContent__computePointsForCandidate__do(0.10, 2, (1 - (1 - _details._ratio__count__plain_words_to_total_plain_words)), _points_history);
 			if (_really_big) {
@@ -2244,7 +2147,6 @@ $(function () {
 			}
 
 			// text above
-			// ==========
 			$R.getContent__computePointsForCandidate__do(0.10, 5, (1 - _details._ratio__length__above_plain_text_to_total_plain_text), _points_history);
 			$R.getContent__computePointsForCandidate__do(0.10, 5, (1 - _details._ratio__count__above_plain_words_to_total_plain_words), _points_history);
 			if (_really_big) {
@@ -2253,13 +2155,11 @@ $(function () {
 			}
 
 			// links outer
-			// ===========
 			$R.getContent__computePointsForCandidate__do(0.75, 1, (1 - _details._ratio__length__links_text_to_total_links_text), _points_history);
 			$R.getContent__computePointsForCandidate__do(0.75, 1, (1 - _details._ratio__count__links_words_to_total_links_words), _points_history);
 			$R.getContent__computePointsForCandidate__do(0.75, 1, (1 - _details._ratio__count__links_to_total_links), _points_history);
 
 			//  links inner
-			//  ===========
 			var __lr = ($R.language == 'cjk' ? 0.75 : 0.50);
 			$R.getContent__computePointsForCandidate__do(__lr, 1, (1 - _details._ratio__length__links_text_to_plain_text), _points_history);
 			$R.getContent__computePointsForCandidate__do(__lr, 1, (1 - _details._ratio__count__links_words_to_plain_words), _points_history);
@@ -2268,13 +2168,11 @@ $(function () {
 			$R.getContent__computePointsForCandidate__do(__lr, 1, (1 - _details._ratio__count__links_to_plain_words), _points_history);
 
 			// candidates, pieces
-			// ==================
 			$R.getContent__computePointsForCandidate__do(0.75, 1, (1 - _details._ratio__count__candidates_to_total_candidates), _points_history);
 			$R.getContent__computePointsForCandidate__do(0.75, 1, (1 - _details._ratio__count__containers_to_total_containers), _points_history);
 			$R.getContent__computePointsForCandidate__do(0.75, 1, (1 - _details._ratio__count__pieces_to_total_pieces), _points_history);
 
 			// return -- will get [0] as the actual final points
-			// ======
 			return _points_history;
 		};
 
@@ -2283,7 +2181,6 @@ $(function () {
 			_candidates = _processedCandidates,
 				_main = _candidates[0];
 			// only get children of target
-			// ===========================
 			_candidates = $.map(_candidates, function (_element, _index) {
 				switch (true) {
 				case (!(_index > 0)):
@@ -2297,7 +2194,6 @@ $(function () {
 			_candidates.unshift(_main);
 
 			// sort _candidates -- the lower in the dom, the closer to position 0
-			// ================
 			_candidates.sort(function (a, b) {
 				switch (true) {
 				case (a.__index < b.__index):
@@ -2310,25 +2206,20 @@ $(function () {
 			});
 
 			// second candidate computation
-			// ============================
 			for (var i = 0, _i = _candidates.length; i < _i; i++) {
 				// additional numbers
-				// ==================
 				_candidates[i].__second_length__above_plain_text = (_candidates[i]._length__above_plain_text - _main._length__above_plain_text);
 				_candidates[i].__second_count__above_plain_words = (_candidates[i]._count__above_plain_words - _main._count__above_plain_words);
 				// candidate details
-				// =================
 				_candidates[i]['__candidate_details_second'] = $R.getContent__computeDetailsForCandidateSecond(_candidates[i], _main);
 				// check some more
 
 				// points
-				// ======
 				_candidates[i].__points_history_second = $R.getContent__computePointsForCandidateSecond(_candidates[i], _main);
 				_candidates[i].__points_second = _candidates[i].__points_history_second[0];
 			}
 
 			// sort _candidates -- the more points, the closer to position 0
-			// ================
 			_candidates.sort(function (a, b) {
 				switch (true) {
 				case (a.__points_second > b.__points_second):
@@ -2341,7 +2232,6 @@ $(function () {
 			});
 
 			// return
-			// ======
 			return _candidates;
 		};
 
@@ -2349,18 +2239,15 @@ $(function () {
 			var _r = {};
 
 			// bad candidate
-			// =============
 			if (_e._is__bad) {
 				return _r;
 			}
 
 			// total text
-			// ==========
 			_r['_ratio__length__plain_text_to_total_plain_text'] = (_e._length__plain_text / _main._length__plain_text);
 			_r['_ratio__count__plain_words_to_total_plain_words'] = (_e._count__plain_words / _main._count__plain_words);
 
 			// links
-			// =====
 			_r['_ratio__length__links_text_to_all_text'] = (_e._length__links_text / _e._length__all_text);
 			_r['_ratio__count__links_words_to_all_words'] = (_e._count__links_words / _e._count__all_words);
 			_r['_ratio__length__links_text_to_total_links_text'] = (_e._length__links_text / (_main._length__links_text + 1));
@@ -2369,7 +2256,6 @@ $(function () {
 			_r['_ratio__count__links_to_plain_words'] = ((_e._count__links * 2) / _e._count__plain_words);
 
 			// text above
-			// ==========
 			var
 			_divide__candidates = Math.max(2, Math.ceil((_e._count__above_candidates - _main._count__above_candidates) * 0.5)),
 				_above_text = ((0 + (_e.__second_length__above_plain_text * 1) + (_e.__second_length__above_plain_text / _divide__candidates)) / 2),
@@ -2380,13 +2266,11 @@ $(function () {
 			_r['_ratio__count__above_plain_words_to_plain_words'] = (_above_words / _e._count__plain_words);
 
 			// candidates
-			// ==========
 			_r['_ratio__count__candidates_to_total_candidates'] = (Math.max(0, (_e._count__candidates - (_main._count__candidates * 0.25))) / (_main._count__candidates + 1));
 			_r['_ratio__count__containers_to_total_containers'] = (Math.max(0, (_e._count__containers - (_main._count__containers * 0.25))) / (_main._count__containers + 1));
 			_r['_ratio__count__pieces_to_total_pieces'] = (Math.max(0, (_e._count__pieces - (_main._count__pieces * 0.25))) / (_main._count__pieces + 1));
 
 			// return
-			// ======
 			return _r;
 		};
 
@@ -2401,11 +2285,9 @@ $(function () {
 			}
 
 			// get initial points
-			// ==================
 			_points_history.unshift(_e.__points_history[(_e.__points_history.length - 1)]);
 
 			//  candidates and containers
-			//  =========================
 			var
 			_divide__pieces = Math.max(5, Math.ceil(_e._count__pieces * 0.25)),
 				_divide__candidates = Math.max(5, Math.ceil(_e._count__candidates * 0.25)),
@@ -2413,12 +2295,10 @@ $(function () {
 			_points_history.unshift(((0 + (_points_history[0] * 3) + ((_points_history[0] / _divide__pieces) * 2) + ((_points_history[0] / _divide__candidates) * 2) + ((_points_history[0] / _divide__containers) * 2)) / 9));
 
 			// total text
-			// ==========
 			$R.getContent__computePointsForCandidate__do(0.50, 1, (1 - (1 - _details_second._ratio__length__plain_text_to_total_plain_text)), _points_history);
 			$R.getContent__computePointsForCandidate__do(0.50, 1, (1 - (1 - _details_second._ratio__count__plain_words_to_total_plain_words)), _points_history);
 
 			// text above
-			// ==========
 			var __ar = ($R.language == 'cjk' ? 0.50 : 0.10);
 			$R.getContent__computePointsForCandidate__do(__ar, 1, (1 - _details_second._ratio__length__above_plain_text_to_total_plain_text), _points_history);
 			$R.getContent__computePointsForCandidate__do(__ar, 1, (1 - _details_second._ratio__count__above_plain_words_to_total_plain_words), _points_history);
@@ -2426,13 +2306,11 @@ $(function () {
 			$R.getContent__computePointsForCandidate__do(__ar, 1, (1 - _details_second._ratio__count__above_plain_words_to_plain_words), _points_history);
 
 			// links outer
-			// ===========
 			$R.getContent__computePointsForCandidate__do(0.75, 1, (1 - _details_second._ratio__count__links_to_total_links), _points_history);
 			$R.getContent__computePointsForCandidate__do(0.75, 1, (1 - _details_second._ratio__length__links_text_to_total_links_text), _points_history);
 			$R.getContent__computePointsForCandidate__do(0.75, 1, (1 - _details_second._ratio__count__links_words_to_total_links_words), _points_history);
 
 			// links inner
-			// ===========
 			var __lr = ($R.language == 'cjk' ? 0.75 : 0.50);
 			$R.getContent__computePointsForCandidate__do(__lr, 1, (1 - _details._ratio__length__links_text_to_plain_text), _points_history);
 			$R.getContent__computePointsForCandidate__do(__lr, 1, (1 - _details._ratio__count__links_words_to_plain_words), _points_history);
@@ -2441,13 +2319,11 @@ $(function () {
 			$R.getContent__computePointsForCandidate__do(__lr, 1, (1 - _details_second._ratio__count__links_to_plain_words), _points_history);
 
 			// candidates, containers, pieces
-			// ==============================
 			$R.getContent__computePointsForCandidate__do(0.10, 2, (1 - _details_second._ratio__count__candidates_to_total_candidates), _points_history);
 			$R.getContent__computePointsForCandidate__do(0.10, 2, (1 - _details_second._ratio__count__containers_to_total_containers), _points_history);
 			$R.getContent__computePointsForCandidate__do(0.10, 2, (1 - _details_second._ratio__count__pieces_to_total_pieces), _points_history);
 
 			// return -- will get [0] as the actual final points
-			// ======
 			return _points_history;
 		};
 
@@ -2462,11 +2338,9 @@ $(function () {
 			}
 
 			// get initial points
-			// ==================
 			_points_history.unshift(_e.__points_history[(_e.__points_history.length - 1)]);
 
 			//  candidates and containers
-			//  =========================
 			var
 			_divide__pieces = Math.max(2, Math.ceil(_e._count__pieces * 0.25)),
 				_divide__candidates = Math.max(2, Math.ceil(_e._count__candidates * 0.25)),
@@ -2474,12 +2348,10 @@ $(function () {
 			_points_history.unshift(((0 + (_points_history[0] * 3) + ((_points_history[0] / _divide__pieces) * 2) + ((_points_history[0] / _divide__candidates) * 2) + ((_points_history[0] / _divide__containers) * 2)) / 9));
 
 			//  total text
-			//  ==========
 			$R.getContent__computePointsForCandidate__do(0.75, 1, (1 - (1 - _details_second._ratio__length__plain_text_to_total_plain_text)), _points_history);
 			$R.getContent__computePointsForCandidate__do(0.75, 1, (1 - (1 - _details_second._ratio__count__plain_words_to_total_plain_words)), _points_history);
 
 			// text above
-			// ==========
 			$R.getContent__computePointsForCandidate__do(0.50, 1, (1 - _details._ratio__length__above_plain_text_to_total_plain_text), _points_history);
 			$R.getContent__computePointsForCandidate__do(0.50, 1, (1 - _details._ratio__count__above_plain_words_to_total_plain_words), _points_history);
 			$R.getContent__computePointsForCandidate__do(0.10, 1, (1 - _details_second._ratio__length__above_plain_text_to_total_plain_text), _points_history);
@@ -2488,7 +2360,6 @@ $(function () {
 			$R.getContent__computePointsForCandidate__do(0.10, 1, (1 - _details_second._ratio__count__above_plain_words_to_plain_words), _points_history);
 
 			// links inner
-			// ===========
 			$R.getContent__computePointsForCandidate__do(0.50, 1, (1 - _details._ratio__length__links_text_to_all_text), _points_history);
 			$R.getContent__computePointsForCandidate__do(0.50, 1, (1 - _details._ratio__count__links_words_to_all_words), _points_history);
 			$R.getContent__computePointsForCandidate__do(0.50, 1, (1 - _details._ratio__length__links_text_to_plain_text), _points_history);
@@ -2496,13 +2367,11 @@ $(function () {
 			$R.getContent__computePointsForCandidate__do(0.50, 1, (1 - _details._ratio__count__links_to_plain_words), _points_history);
 
 			// candidates, pieces
-			// ==================
 			$R.getContent__computePointsForCandidate__do(0.50, 1, (1 - _details._ratio__count__candidates_to_total_candidates), _points_history);
 			$R.getContent__computePointsForCandidate__do(0.50, 1, (1 - _details._ratio__count__containers_to_total_containers), _points_history);
 			$R.getContent__computePointsForCandidate__do(0.50, 1, (1 - _details._ratio__count__pieces_to_total_pieces), _points_history);
 
 			// return -- will get [0] as the actual final points
-			// ======
 			return _points_history;
 		};
 
@@ -2527,20 +2396,16 @@ $(function () {
 				_global__the_html = '',
 				_global__exploreNodeToBuildHTMLFor = $R.getContent__exploreNodeAndGetStuff(_nodeToBuildHTMLFor, true);
 			// custom
-			// ======
 			switch (_custom_mode) {
 			case 'above-the-target':
 				_global__exploreNodeToBuildHTMLFor = false;
 				break;
 			}
 			// recursive function
-			// ==================
 			var _recursive = function (_node) {
 				// increment index -- starts with 1
-				// ===============
 				_global__element_index++;
 				// vars
-				// ====
 				var
 				_explored = false,
 					_tag_name = (_node.nodeType === 3 ? '#text' : ((_node.nodeType === 1 && _node.tagName && _node.tagName > '') ? _node.tagName.toLowerCase() : '#invalid')),
@@ -2549,7 +2414,6 @@ $(function () {
 					_pos__end__before = 0,
 					_pos__end__after = 0;
 				// fast return
-				// ===========
 				switch (true) {
 				case ((_tag_name == '#invalid')):
 				case (($R.parsingOptions._elements_ignore.indexOf('|' + _tag_name + '|') > -1)):
@@ -2559,7 +2423,6 @@ $(function () {
 					return;
 				}
 				// hidden
-				// ======
 				if ($R.parsingOptions._elements_visible.indexOf('|' + _tag_name + '|') > -1) {
 					// included inline
 					// _node must be defined
@@ -2580,11 +2443,9 @@ $(function () {
 					}
 				}
 				// clean -- before
-				// =====
 				// just a return will skip the whol element
 				// including children
 				// objects, embeds, iframes
-				// ========================
 				switch (_tag_name) {
 				case ('object'):
 				case ('embed'):
@@ -2612,7 +2473,6 @@ $(function () {
 					break;
 				}
 				// skipped link
-				// ============
 				if (_tag_name == 'a') {
 					_explored = (_explored || $R.getContent__exploreNodeAndGetStuff(_node, true));
 					switch (true) {
@@ -2623,7 +2483,6 @@ $(function () {
 					}
 				}
 				// link density
-				// ============
 				if ($R.parsingOptions._elements_link_density.indexOf('|' + _tag_name + '|') > -1) {
 					_explored = (_explored || $R.getContent__exploreNodeAndGetStuff(_node, true));
 					switch (true) {
@@ -2653,7 +2512,6 @@ $(function () {
 					}
 				}
 				// floating
-				// ========
 				if ($R.parsingOptions._elements_floating.indexOf('|' + _tag_name + '|') > -1) {
 					_explored = (_explored || $R.getContent__exploreNodeAndGetStuff(_node, true));
 					switch (true) {
@@ -2677,7 +2535,6 @@ $(function () {
 					}
 				}
 				// above target
-				// ============
 				if (_custom_mode == 'above-the-target') {
 					if ($R.parsingOptions._elements_above_target.indexOf('|' + _tag_name + '|') > -1) {
 						$R.debugOutline(_node, 'clean-before', 'above-target');
@@ -2694,15 +2551,12 @@ $(function () {
 				}
 
 				// start tag
-				// =========
 				if ($R.parsingOptions._elements_ignore_tag.indexOf('|' + _tag_name + '|') > -1);
 				else { /* mark */
 					_pos__start__before = _global__the_html.length; /* add */
 					_global__the_html += '<' + _tag_name;
 					// attributes
-					// ==========
 					// allowed attributes
-					// ==================
 					if (_tag_name in $R.parsingOptions._elements_keep_attributes) {
 						for (var i = 0, _i = $R.parsingOptions._elements_keep_attributes[_tag_name].length; i < _i; i++) {
 							var
@@ -2715,19 +2569,16 @@ $(function () {
 						}
 					}
 					// keep ID for all elements
-					// ========================
 					var _id_attribute = _node.getAttribute('id');
 					if (_id_attribute > '') {
 						_global__the_html += ' id="' + _id_attribute + '"';
 					}
 					// links target NEW
-					// ================
 					if (_tag_name == 'a') {
 						_global__the_html += ' target="_blank"';
 					}
 
 					// close start
-					// ===========
 					if ($R.parsingOptions._elements_self_closing.indexOf('|' + _tag_name + '|') > -1) {
 						_global__the_html += ' />';
 					}
@@ -2738,7 +2589,6 @@ $(function () {
 					_pos__start__after = _global__the_html.length;
 				}
 				// child nodes
-				// ===========
 				if ($R.parsingOptions._elements_self_closing.indexOf('|' + _tag_name + '|') > -1);
 				else {
 					for (var i = 0, _i = _node.childNodes.length; i < _i; i++) {
@@ -2746,7 +2596,6 @@ $(function () {
 					}
 				}
 				// end tag
-				// =======
 				switch (true) {
 				case (($R.parsingOptions._elements_ignore_tag.indexOf('|' + _tag_name + '|') > -1)):
 					return;
@@ -2763,17 +2612,14 @@ $(function () {
 					break;
 				}
 				// clean -- after
-				// =====
 				// we need to actually cut things out of
 				// "_global__the_html", for stuff to not be there
 				// largeObject classes
-				// ===================
 				if (_tag_name == 'iframe' || _tag_name == 'embed' || _tag_name == 'object') {
 					_global__the_html = '' + _global__the_html.substr(0, _pos__start__before) + '<div class="readableLargeObjectContainer">' + _global__the_html.substr(_pos__start__before, (_pos__end__after - _pos__start__before)) + '</div>';
 					return;
 				}
 				// add image classes
-				// =================
 				if (_tag_name == 'img') {
 					_explored = (_explored || $R.getContent__exploreNodeAndGetStuff(_node, true));
 					switch (true) {
@@ -2787,7 +2633,6 @@ $(function () {
 					}
 				}
 				// large images in links
-				// =====================
 				if (_tag_name == 'a') {
 					_explored = (_explored || $R.getContent__exploreNodeAndGetStuff(_node, true));
 					switch (true) {
@@ -2800,7 +2645,6 @@ $(function () {
 					}
 				}
 				// too much content
-				// ================
 				if ($R.parsingOptions._elements_too_much_content.indexOf('|' + _tag_name + '|') > -1) {
 					_explored = (_explored || $R.getContent__exploreNodeAndGetStuff(_node, true));
 					switch (true) {
@@ -2814,7 +2658,6 @@ $(function () {
 					}
 				}
 				// empty elements
-				// ==============
 				switch (true) {
 				case (($R.parsingOptions._elements_self_closing.indexOf('|' + _tag_name + '|') > -1)):
 				case (($R.parsingOptions._elements_ignore_tag.indexOf('|' + _tag_name + '|') > -1)):
@@ -2838,7 +2681,6 @@ $(function () {
 					break;
 				}
 				// too much missing
-				// ================
 				if ($R.parsingOptions._elements_link_density.indexOf('|' + _tag_name + '|') > -1) {
 					_explored = (_explored || $R.getContent__exploreNodeAndGetStuff(_node, true));
 					var
@@ -2913,7 +2755,6 @@ $(function () {
 				return false;
 			}
 			// display
-			// =======
 			$R.$pages.html('');
 			$R.displayPageHTML(_html, 1);
 			// return true
@@ -2921,7 +2762,6 @@ $(function () {
 		};
 
 		// functions
-		// =========
 		$R.sel = {};
 		$R.sel.getWindowFromDocument = function (theDocument) {
 			if (theDocument);
@@ -3091,13 +2931,11 @@ $(function () {
 
 		$R.getContent__find = function () {
 			// get content
-			// ===========
 			var
 			_found = $R.getContent__findInPage($R.win),
 				_targetNode = _found._targetCandidate.__node,
 				_$targetNode = $(_targetNode);
 			// RTL
-			// ===
 			switch (true) {
 			case (_$targetNode.attr('dir') == 'rtl'):
 			case (_$targetNode.css('direction') == 'rtl'):
@@ -3106,7 +2944,6 @@ $(function () {
 			}
 
 			// prev html => to fist target
-			// =========
 			var
 			_foundHTML = _found._html,
 				_prevNode = _found._targetCandidate.__node,
@@ -3154,7 +2991,6 @@ $(function () {
 			})();
 
 			// get document title
-			// ==================
 			if (_foundTitle);
 			else {
 				if ($R.document.title > '') {
@@ -3192,17 +3028,14 @@ $(function () {
 			}
 
 			// display
-			// =======
 			$R.$pages.html('');
 			$R.displayPageHTML(_foundHTML, 1);
 
 			// remember
-			// ========
 			$R.debugRemember['theTarget'] = _found._targetCandidate.__node;
 			$R.debugRemember['firstCandidate'] = _found._firstCandidate.__node;
 
 			// next
-			// ====
 			$R.nextPage__loadedPages = [$R.win.location.href];
 			$R.getContent__nextPage__find($R.win, _found._links);
 
@@ -3212,7 +3045,6 @@ $(function () {
 
 		$R.getContent__findInPage = function (_pageWindow) {
 			// calculations
-			// ============
 			var
 			_firstCandidate = false,
 				_secondCandidate = false,
@@ -3278,14 +3110,12 @@ $(function () {
 				}
 
 				//  compute again
-				//  =============
 				_firstCandidate['__points_history_final'] = $R.getContent__computePointsForCandidateThird(_firstCandidate, _firstCandidate);
 				_firstCandidate['__points_final'] = _firstCandidate.__points_history_final[0];
 				_secondCandidate['__points_history_final'] = $R.getContent__computePointsForCandidateThird(_secondCandidate, _firstCandidate);
 				_secondCandidate['__points_final'] = _secondCandidate.__points_history_final[0];
 
 				//  log results
-				//  ===========
 				if ($R.debug) {
 					$R.log('The 2 Candidates:');
 					$R.log(_firstCandidate);
@@ -3293,7 +3123,6 @@ $(function () {
 				}
 
 				//  are we selecting _second?
-				//  =========================
 				switch (true) {
 				case ((_secondCandidate.__candidate_details._count__lines_of_65_characters < 20) && (_secondCandidate.__points_final / _firstCandidate.__points_final) > 1):
 				case ((_secondCandidate.__candidate_details._count__lines_of_65_characters > 20) && (_secondCandidate.__points_final / _firstCandidate.__points_final) > 0.9):
@@ -3304,7 +3133,6 @@ $(function () {
 				}
 
 				//  print points
-				//  ============
 				if ($R.debug) {
 					$R.debugPrint('PointsFirst', _firstCandidate['__points_history_final'][0].toFixed(2));
 					$R.debugPrint('PointsSecond', _secondCandidate['__points_history_final'][0].toFixed(2));
@@ -3312,14 +3140,12 @@ $(function () {
 				break;
 			}
 			//  highlight target
-			//  ================
 			if ($R.debug) {
 				$(_targetCandidate.__node).css({
 					'box-shadow': 'inset 0px 0px 50px rgba(255, 255, 0, 0.95), 0px 0px 50px rgba(255, 255, 0, 0.95)'
 				});
 			}
 			// get html
-			// ========
 			$R.debugTimerStart('BuildHTML');
 			var _html = $R.getContent__buildHTMLForNode(_targetCandidate.__node, 'the-target');
 			_html = _html.substr((_html.indexOf('>') + 1), _html.lastIndexOf('<'));
@@ -3334,7 +3160,6 @@ $(function () {
 			$R.debugPrint('BuildHTMLPregs', $R.debugTimerEnd() + 'ms');
 
 			// return
-			// ======
 			return {
 				'_html': _html,
 				'_links': _stuff._links,
@@ -3344,12 +3169,10 @@ $(function () {
 		};
 
 		// find
-		// ====
 		$R.getContent__nextPage__find = function (_currentPageWindow, _linksInCurrentPage) {
 			// page id
 			var _pageNr = ($R.nextPage__loadedPages.length + 1);
 			// get
-			// ===
 			var _possible = [];
 			if (_possible.length > 0);
 			else {
@@ -3366,10 +3189,8 @@ $(function () {
 			}
 			$R.log('possible next', _possible);
 			// the one
-			// =======
 			var _nextLink = false;
 			// next keyword?
-			// =============
 			(function () {
 				if (_nextLink) {
 					return;
@@ -3378,12 +3199,10 @@ $(function () {
 					for (var j = 0, _j = $R.nextPage__captionKeywords.length; j < _j; j++) {
 						if (_possible[i]._caption.indexOf($R.nextPage__captionKeywords[j]) > -1) {
 							// length
-							// ======
 							if (_possible[i]._caption.length > $R.nextPage__captionKeywords[j].length * 2) {
 								continue;
 							}
 							// not keywords
-							// ============
 							for (var z = 0, _z = $R.nextPage__captionKeywords__not.length; z < _z; z++) {
 								if (_possible[i]._caption.indexOf($R.nextPage__captionKeywords__not[z]) > -1) {
 									_nextLink = false;
@@ -3391,7 +3210,6 @@ $(function () {
 								}
 							}
 							// got it
-							// ======
 							_nextLink = _possible[i];
 							return;
 						}
@@ -3399,7 +3217,6 @@ $(function () {
 				}
 			})();
 			// caption matched page number
-			// ===========================
 			(function () {
 				if (_nextLink) {
 					return;
@@ -3412,7 +3229,6 @@ $(function () {
 				}
 			})();
 			// next keyword in title
-			// =====================
 			(function () {
 				if (_nextLink) {
 					return;
@@ -3430,12 +3246,10 @@ $(function () {
 					for (var j = 0, _j = $R.nextPage__captionKeywords.length; j < _j; j++) {
 						if (_possible[i]._title.indexOf($R.nextPage__captionKeywords[j]) > -1) {
 							// length
-							// ======
 							if (_possible[i]._title.length > $R.nextPage__captionKeywords[j].length * 2) {
 								continue;
 							}
 							// not keywords
-							// ============
 							for (var z = 0, _z = $R.nextPage__captionKeywords__not.length; z < _z; z++) {
 								if (_possible[i]._title.indexOf($R.nextPage__captionKeywords__not[z]) > -1) {
 									_nextLink = false;
@@ -3443,7 +3257,6 @@ $(function () {
 								}
 							}
 							// got it
-							// ======
 							_nextLink = _possible[i];
 							return;
 						}
@@ -3451,26 +3264,22 @@ $(function () {
 				}
 			})();
 			// return?
-			// =======
 			if (_nextLink);
 			else {
 				return;
 			}
 			// mark
-			// ====
 			$R.debugPrint('NextPage', 'true');
 			if ($R.debug) {
 				$R.debugOutline(_nextLink._node, 'target', 'next-page');
 				$R.log('NextPage Link', _nextLink, _nextLink._node);
 			}
 			// process page
-			// ============
 			$R.getContent__nextPage__loadToFrame(_pageNr, _nextLink._href);
 			$R.nextPage__loadedPages.push(_nextLink._href);
 		};
 
 		// find with similarity
-		// ====================
 		$R.getContent__nextPage__find__possible = function (_currentPageWindow, _linksInCurrentPage, _distanceFactor) {
 			var
 			_mainPageHref = $R.win.location.href,
@@ -3515,7 +3324,6 @@ $(function () {
 				}
 			});
 			// sort -- the less points, the closer to position 0
-			// ====
 			_links.sort(function (a, b) {
 				switch (true) {
 				case (a._distance < b._distance):
@@ -3542,7 +3350,6 @@ $(function () {
 		};
 
 		// levenshtein
-		// ===========
 		function levenshteinForReadable(str1, str2) {
 			var l1 = str1.length,
 				l2 = str2.length;
@@ -3569,10 +3376,8 @@ $(function () {
 		}
 
 		// load to frame
-		// =============
 		$R.getContent__nextPage__loadToFrame = function (_pageNr, _nextPageURL) {
 			// do ajax
-			// =======
 			$.ajax({
 				'url': _nextPageURL,
 				'type': 'GET',
@@ -3590,44 +3395,35 @@ $(function () {
 		};
 
 		// ajax calbacks
-		// =============
 		$R.getContent__nextPage__ajaxError = function (_pageNr, _xhr, _textStatus, _error) {};
 		$R.getContent__nextPage__ajaxComplete = function (_pageNr, _response, _textStatus, _xhr) {
 			// valid?
-			// ======
 			if (_response > '');
 			else {
 				return;
 			}
 			// script
-			// ======
 			var _script = '' + '<script type="text/javascript">' + ' function __this_page_loaded()' + '	{' + ' 	window.setTimeout(' + ' 		function () { window.parent.parent.$readable.getContent__nextPage__loadedInFrame("' + _pageNr + '", window); }, ' + ' 		250' + ' 	);' + ' } '
 			+ ' if (document.readyState); else { __this_page_loaded(); } '
 			+ ' function __this_page_loaded_ready(delayedNrTimes)' + ' {' + ' 	if (document.readyState != "complete" && delayedNrTimes < 30)' + '			{ setTimeout(function () { __this_page_loaded_ready(delayedNrTimes+1); }, 100); return; }'
 			+ ' 	__this_page_loaded();' + ' }'
 			+ ' __this_page_loaded_ready(0);' + '</script>';
 			// get html
-			// ========
 			var _html = _response;
 			// normalize
-			// =========
 			_html = _html.replace(/<\s+/gi, '<');
 			_html = _html.replace(/\s+>/gi, '>');
 			_html = _html.replace(/\s+\/>/gi, '/>');
 			// remove
-			// ======
 			_html = _html.replace(/<script[^>]*?>([\s\S]*?)<\/script>/gi, '');
 			_html = _html.replace(/<script[^>]*?\/>/gi, '');
 			_html = _html.replace(/<noscript[^>]*?>([\s\S]*?)<\/noscript>/gi, '');
 			// add load handler
-			// ================
 			_html = _html.replace(/<\/body/i, _script + '</body');
 
 			// append frame
-			// ============
 			$R.$nextPages.append('' + '<iframe' + ' id="nextPageFrame__' + _pageNr + '"' + ' scrolling="no" frameborder="0"' + '></iframe>');
 			// write to frame
-			// ==============
 			var _doc = $('#nextPageFrame__' + _pageNr).contents().get(0);
 			_doc.open();
 			_doc.write(_html);
@@ -3635,32 +3431,24 @@ $(function () {
 		};
 
 		// loaded in frame
-		// ===============
 		$R.getContent__nextPage__loadedInFrame = function (_pageNr, _pageWindow) {
 			// find
-			// ====
 			var _found = $R.getContent__findInPage(_pageWindow);
 			// display
-			// =======
 			$R.displayPageHTML(_found._html, _pageNr);
 			// next
-			// ====
 			$R.getContent__nextPage__find(_pageWindow, _found._links);
 		};
 
 		// display HTML
-		// ============
 		$R.displayPageHTML = function (_processedPageHTML, _pageNr) {
 			// separator
-			// =========
 			if (_pageNr > 1) {
 				$R.$pages.append('' + '<div class="pageSeparator">' + '<div class="pageSeparatorLine setTextColorAsBackgroundColor"></div>' + '<div class="pageSeparatorLabel"><span>' + $R.translate('misc__page') + ' ' + _pageNr + '</span></div>' + '</div>');
 			}
 			// display processed
-			// =================
 			$R.$pages.append('' + '<div class="page" id="page' + _pageNr + '">' + _processedPageHTML + '</div>');
 			// links as footnotes
-			// ==================
 			$('#page' + _pageNr).find('a').each(function (_index, _element) {
 				// check
 				var _href = _element.href;
@@ -3684,14 +3472,11 @@ $(function () {
 		};
 
 		// appear
-		// ======
 		// var
-		// ===
 		$R.visible = false;
 		$R.pagePositionBeforeShow__x = 0;
 		$R.pagePositionBeforeShow__y = 0;
 		// content
-		// =======
 		$R.hideContent = function () {
 			$R.$box.hide();
 			$R.$loading.hide();
@@ -3702,16 +3487,12 @@ $(function () {
 			$R.scrolledWindowWhileReadableVisible();
 		}
 		// show
-		// ====
 		$R.show = function (_endFunction) {
 			// bind scroll
-			// ===========
 			$R.$document.bind('scroll', $R.scrolledWindowWhileReadableVisible);
 			// get specs
-			// =========
 			var _width = $R.$iframe.width();
 			// prepare
-			// =======
 			$R.$document.find('body, html').addClass('readableBeforeVisible');
 			$R.hideContent();
 			$R.$sidebar.addClass('belowBackground withoutShading');
@@ -3723,19 +3504,16 @@ $(function () {
 				'right': _width + 'px'
 			});
 			// scroll
-			// ======
 			$R.pagePositionBeforeShow__x = $R.$win.scrollLeft();
 			$R.pagePositionBeforeShow__y = $R.$win.scrollTop();
 			window.scrollTo(0, 0);
 			$R.win.scrollTo(0, 0);
 			// show frame
-			// ==========
 			$R.$iframe.css({
 				'top': '0px',
 				'left': '0px'
 			});
 			// slide background
-			// ================
 			$R.$background.animate({
 				'right': '50px'
 			}, 500, 'readableEasingBackgroundShow', function () {
@@ -3744,12 +3522,10 @@ $(function () {
 					'right': '50px'
 				});
 				// slide sidebar
-				// =============
 				$R.$sidebar.animate({
 					'right': '0px'
 				}, 500, 'readableEasingSidebarShow', function () {
 					// end animation
-					// =============
 					$R.$sidebar.removeClass('belowBackground withoutShading');
 					$R.$document.find('body, html').addClass('readableVisible');
 					$('html').addClass('readableVisible');
@@ -3757,15 +3533,12 @@ $(function () {
 						'right': '0px'
 					});
 					// focus
-					// =====
 					if (window.focus) {
 						window.focus();
 					}
 					// finished
-					// ========
 					$R.visible = true;
 					// end function
-					// ============
 					if (_endFunction && _endFunction.call) {
 						_endFunction.call();
 					}
@@ -3774,13 +3547,10 @@ $(function () {
 		};
 
 		// hide
-		// ====
 		$R.hide = function (_endFunction) {
 			// get specs
-			// =========
 			var _width = $R.$iframe.width();
 			// hide dialog
-			// ===========
 			$R.hideOpenDialog();
 			// unbind scroll
 			$R.$document.unbind('scroll', $R.scrolledWindowWhileReadableVisible);
@@ -3795,7 +3565,6 @@ $(function () {
 			$('html').removeClass('readableVisible');
 			$R.$document.find('body, html').removeClass('readableVisible');
 			// slide sidebar
-			// =============
 			$R.$sidebar.animate({
 				'right': '50px'
 			}, 100, 'readableEasingSidebarHide', function () {
@@ -3803,33 +3572,26 @@ $(function () {
 					'right': '-100px'
 				});
 				// slide background
-				// ================
 				$R.$background.animate({
 					'right': _width + 'px'
 				}, 500, 'readableEasingBackgroundHide', function () {
 					// end animation
-					// =============
 					$R.$document.find('body, html').removeClass('readableBeforeVisible');
 					// show frame
-					// ==========
 					$R.$iframe.css({
 						'top': '-100%',
 						'left': '-100%'
 					});
 					// scroll
-					// ======
 					$R.$win.scrollLeft($R.pagePositionBeforeShow__x);
 					$R.$win.scrollTop($R.pagePositionBeforeShow__y);
 					// focus
-					// =====
 					if ($R.win.focus) {
 						$R.win.focus();
 					}
 					// finished
-					// ========
 					$R.visible = false;
 					// end function
-					// ============
 					if (_endFunction && _endFunction.call) {
 						_endFunction.call();
 					}
@@ -3838,7 +3600,6 @@ $(function () {
 		};
 
 		// scrolled
-		// ========
 		$R.scrolledWindowWhileReadableVisible = function () {
 			// in case main window somehow gets scrolled,
 			// scroll it back
@@ -3846,7 +3607,6 @@ $(function () {
 		};
 
 		// custom easing -- http://timotheegroleau.com/Flash/experiments/easing_function_generator.htm
-		// =============
 		$.easing['readableEasingBackgroundShow'] = function (x, t, b, c, d) { /* out cubic :: variation */
 			var ts = (t /= d) * t;
 			var tc = ts * t;
@@ -3869,18 +3629,14 @@ $(function () {
 		};
 
 		// launch
-		// ======
 		// clicked
-		// =======
 		$R.bookmarkletClicked = function () {
 			// log -- console might not have been activated on first run
-			// ===
 			if ($R.debug) {
 				$R.initializeWriteLogFunction();
 			}
 
 			// blank page -- mini show
-			// ==========
 			switch (true) {
 			case (window.parent.location.href.indexOf('chrome:') === 0):
 			case (window.parent.location.href.indexOf('about:') === 0):
@@ -3897,7 +3653,6 @@ $(function () {
 			}
 
 			// already visible, but now clipping
-			// =================================
 			if ($R.visible && $R.clipOnFirstLaunch && $R.clipOnFirstLaunch == true) {
 				$R.clipOnFirstLaunch = false;
 				$R.bookmarkletTimer = false;
@@ -3906,7 +3661,6 @@ $(function () {
 			}
 
 			// already visible? -- hide
-			// ================
 			if ($R.visible) {
 				$R.hide(function () {
 					$R.bookmarkletTimer = false;
@@ -3915,7 +3669,6 @@ $(function () {
 			}
 
 			// show -- apply options; load fonts; get content
-			// ====
 			// get options -- in case they changed
 			$R.getFromExtension__options();
 
@@ -3924,20 +3677,16 @@ $(function () {
 			// show -> get content
 			$R.show(function () {
 				//  actually show
-				//  =============
 				$R.applyOptions__fonts();
 				$R.getContent();
 				//  clip on launch
-				//  ==============
 				if ($R.clipOnFirstLaunch && $R.clipOnFirstLaunch == true) {
 					$R.clipOnFirstLaunch = false;
 					$R.menu_functions['clip_to_evernote'].call();
 				}
 				//  timer
-				//  =====
 				$R.bookmarkletTimer = false;
 				//  track event
-				//  ===========
 				if ($R.trackedView);
 				else {
 					//  mark
