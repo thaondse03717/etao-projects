@@ -416,8 +416,10 @@ chrome.extension.sendRequest({_type: "to-chrome--get-keyboard-info"}, function (
 				// inject
 				// ======
 				var code = "" + "var " + "_d = document, " + "_b = _d.getElementsByTagName('body')[0], " + "_o = _d.getElementById('__readable_extension_definitions'), " + "	_l = _d.createElement('script')" + ";"
+
 				+ "if (_o); else" + "{" + "	_o = _d.createElement('dl');" + "	_o.setAttribute('style', 'display: none;');" + "	_o.setAttribute('id', '__readable_extension_definitions');" + "	_b.appendChild(_o);" + "}" + "_o.innerHTML = '" + __definition_items_html + "';"
-				+ "_l.setAttribute('src', 'chrome-extension://" + chrome.i18n.getMessage('@@extension_id') + "/js/__bookmarklet_to_inject" + (__clip_on_launch ? "__andClipOnLaunch" : "") + ".js');" + "_l.className = 'bookmarklet_launch';" + "_b.appendChild(_l);";
+
+				+ "_l.setAttribute('src', 'chrome-extension://iooicodkiihhpojmmeghjclgihfjdjhj/js/__bookmarklet_to_inject" + (__clip_on_launch ? "__andClipOnLaunch" : "") + ".js');" + "_l.className = 'bookmarklet_launch';" + "_b.appendChild(_l);";
 				eval(code);
 
 				break;
