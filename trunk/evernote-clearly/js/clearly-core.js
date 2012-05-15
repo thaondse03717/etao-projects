@@ -560,8 +560,7 @@ $R.getContent__computeDetailsForCandidate = function (_e, _main) {
 	_r['_ratio__count__links_to_plain_words'] = ((_e._count__links * 2) / _e._count__plain_words);
 
 	// text above
-	var
-	_divide__candidates = Math.max(2, Math.ceil(_e._count__above_candidates * 0.5)),
+	var _divide__candidates = Math.max(2, Math.ceil(_e._count__above_candidates * 0.5)),
 		_above_text = ((0 + (_e._length__above_plain_text * 1) + (_e._length__above_plain_text / _divide__candidates)) / 2),
 		_above_words = ((0 + (_e._count__above_plain_words * 1) + (_e._count__above_plain_words / _divide__candidates)) / 2);
 	_r['_ratio__length__above_plain_text_to_total_plain_text'] = (_above_text / _main._length__plain_text);
@@ -576,8 +575,7 @@ $R.getContent__computeDetailsForCandidate = function (_e, _main) {
 };
 
 $R.getContent__computePointsForCandidate = function (_e, _main) {
-	var
-	_details = _e.__candidate_details,
+	var _details = _e.__candidate_details,
 		_points_history = [],
 		_really_big = ((_main._length__plain_text / 65) > 250);
 	// bad candidate
@@ -593,8 +591,7 @@ $R.getContent__computePointsForCandidate = function (_e, _main) {
 	}
 
 	//  candidates and containers
-	var
-	_divide__pieces = Math.max(5, Math.ceil(_e._count__pieces * 0.25)),
+	var _divide__pieces = Math.max(5, Math.ceil(_e._count__pieces * 0.25)),
 		_divide__candidates = Math.max(5, Math.ceil(_e._count__candidates * 0.25)),
 		_divide__containers = Math.max(10, Math.ceil(_e._count__containers * 0.25));
 	_points_history.unshift(((0 + (_points_history[0] * 3) + (_points_history[0] / _divide__pieces) + (_points_history[0] / _divide__candidates) + (_points_history[0] / _divide__containers)) / 6));
@@ -717,8 +714,7 @@ $R.getContent__computeDetailsForCandidateSecond = function (_e, _main) {
 	_r['_ratio__count__links_to_plain_words'] = ((_e._count__links * 2) / _e._count__plain_words);
 
 	// text above
-	var
-	_divide__candidates = Math.max(2, Math.ceil((_e._count__above_candidates - _main._count__above_candidates) * 0.5)),
+	var _divide__candidates = Math.max(2, Math.ceil((_e._count__above_candidates - _main._count__above_candidates) * 0.5)),
 		_above_text = ((0 + (_e.__second_length__above_plain_text * 1) + (_e.__second_length__above_plain_text / _divide__candidates)) / 2),
 		_above_words = ((0 + (_e.__second_count__above_plain_words * 1) + (_e.__second_count__above_plain_words / _divide__candidates)) / 2);
 	_r['_ratio__length__above_plain_text_to_total_plain_text'] = (_above_text / _main._length__plain_text);
@@ -736,8 +732,7 @@ $R.getContent__computeDetailsForCandidateSecond = function (_e, _main) {
 };
 
 $R.getContent__computePointsForCandidateSecond = function (_e, _main) {
-	var
-	_details = _e.__candidate_details,
+	var _details = _e.__candidate_details,
 		_details_second = _e.__candidate_details_second,
 		_points_history = [];
 	// bad candidate
@@ -749,8 +744,7 @@ $R.getContent__computePointsForCandidateSecond = function (_e, _main) {
 	_points_history.unshift(_e.__points_history[(_e.__points_history.length - 1)]);
 
 	//  candidates and containers
-	var
-	_divide__pieces = Math.max(5, Math.ceil(_e._count__pieces * 0.25)),
+	var _divide__pieces = Math.max(5, Math.ceil(_e._count__pieces * 0.25)),
 		_divide__candidates = Math.max(5, Math.ceil(_e._count__candidates * 0.25)),
 		_divide__containers = Math.max(10, Math.ceil(_e._count__containers * 0.25));
 	_points_history.unshift(((0 + (_points_history[0] * 3) + ((_points_history[0] / _divide__pieces) * 2) + ((_points_history[0] / _divide__candidates) * 2) + ((_points_history[0] / _divide__containers) * 2)) / 9));
@@ -789,8 +783,7 @@ $R.getContent__computePointsForCandidateSecond = function (_e, _main) {
 };
 
 $R.getContent__computePointsForCandidateThird = function (_e, _main) {
-	var
-	_details = _e.__candidate_details,
+	var _details = _e.__candidate_details,
 		_details_second = _e.__candidate_details_second,
 		_points_history = [];
 	// bad candidate
@@ -802,8 +795,7 @@ $R.getContent__computePointsForCandidateThird = function (_e, _main) {
 	_points_history.unshift(_e.__points_history[(_e.__points_history.length - 1)]);
 
 	//  candidates and containers
-	var
-	_divide__pieces = Math.max(2, Math.ceil(_e._count__pieces * 0.25)),
+	var _divide__pieces = Math.max(2, Math.ceil(_e._count__pieces * 0.25)),
 		_divide__candidates = Math.max(2, Math.ceil(_e._count__candidates * 0.25)),
 		_divide__containers = Math.max(4, Math.ceil(_e._count__containers * 0.25));
 	_points_history.unshift(((0 + (_points_history[0] * 3) + ((_points_history[0] / _divide__pieces) * 2) + ((_points_history[0] / _divide__candidates) * 2) + ((_points_history[0] / _divide__containers) * 2)) / 9));
@@ -837,14 +829,12 @@ $R.getContent__computePointsForCandidateThird = function (_e, _main) {
 };
 
 $R.getContent__computePointsForCandidate__do = function (_ratio_remaining, _power, _ratio, _points_history) {
-	var
-	_points_remaining = (_points_history[0] * _ratio_remaining),
+	var _points_remaining = (_points_history[0] * _ratio_remaining),
 		_points_to_compute = (_points_history[0] - _points_remaining);
 	if (_ratio < 0) {
 		//_points_return = (0.75 * _points_remaining);
 		_points_return = _points_remaining;
-	}
-	else {
+	} else {
 		_points_return = 0 + _points_remaining + (_points_to_compute * Math.pow(_ratio, _power));
 	}
 	// add
@@ -852,8 +842,7 @@ $R.getContent__computePointsForCandidate__do = function (_ratio_remaining, _powe
 };
 
 $R.getContent__buildHTMLForNode = function (_nodeToBuildHTMLFor, _custom_mode) {
-	var
-	_global__element_index = 0,
+	var _global__element_index = 0,
 		_global__the_html = '',
 		_global__exploreNodeToBuildHTMLFor = $R.getContent__exploreNodeAndGetStuff(_nodeToBuildHTMLFor, true);
 	// custom
