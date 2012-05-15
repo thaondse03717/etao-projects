@@ -1,9 +1,9 @@
 (function()
 {
 	//	vars
-	_readableTargetPath = 'chrome-extension://iooicodkiihhpojmmeghjclgihfjdjhj/js/target.js';
+	_readableTargetPath = 'chrome-extension://' + chrome.i18n.getMessage('@@extension_id') + '/js/target.js';
 
-	
+
 	//	if body is missing, stop
 	if (document.getElementsByTagName('body').length > 0); else { return; }
 
@@ -15,7 +15,7 @@
 
 	//	also do clip
 	window.$readable.clipOnFirstLaunch = true;
-	
+
 	//	the bookmarklet was clicked
 	window.$readable.bookmarkletTimer = true;
 

@@ -5,7 +5,7 @@
       "default_title": "__MSG_chrome_browser_action__"
    },
    "content_scripts": [ {
-      "js": [ "content.js" ],
+      "js": [ "js/content.js" ],
       "matches": [ "\u003Call_urls\u003E" ]
    } ],
    "default_locale": "en",
