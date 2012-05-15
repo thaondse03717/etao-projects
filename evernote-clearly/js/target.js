@@ -6,6 +6,7 @@ function __readable_launch($R) {
 	// ====
 	$R.win = window;
 	$R.document = window.document;
+	$R.debug = false;
 
 	// init
 	// ====

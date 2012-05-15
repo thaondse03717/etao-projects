@@ -142,7 +142,7 @@ window.document.addEventListener('click', function (_event) {
 		_event_name = __custom_events__keys_to_names[_event_key],
 		_stop = false;
 
-	console.log(_event);
+	//console.log(_event);
 	console.log(_event_name);
 
 	// encode
