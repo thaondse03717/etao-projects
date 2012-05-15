@@ -12,7 +12,7 @@ function __readable_launch($R) {
 	// paths
 	// =====
 	$R.paths = {
-		'main': 'chrome-extension://' + chrome.i18n.getMessage('@@extension_id') + '/',
+		'main': 'chrome-extension://iooicodkiihhpojmmeghjclgihfjdjhj/',
 		'evernote': 'https://www.evernote.com/'
 	};
 
