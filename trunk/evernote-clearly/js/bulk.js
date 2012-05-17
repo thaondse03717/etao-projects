@@ -3051,9 +3051,11 @@ $(function () {
 				_targetCandidate = false;
 			$R.debugTimerStart('ExploreAndGetStuff');
 			var _stuff = $R.getContent__exploreNodeAndGetStuff(_pageWindow.document.body);
+			console.log(_stuff);
 			$R.debugPrint('ExploreAndGetStuff', $R.debugTimerEnd() + 'ms');
 			$R.debugTimerStart('ProcessFirst');
 			var _processedCandidates = $R.getContent__processCandidates(_stuff._candidates);
+			console.log(_processedCandidates);
 			_firstCandidate = _processedCandidates[0];
 			_targetCandidate = _firstCandidate;
 			$R.debugPrint('ProcessFirst', $R.debugTimerEnd() + 'ms');
