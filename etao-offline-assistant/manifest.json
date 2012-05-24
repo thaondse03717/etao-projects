@@ -1,6 +1,6 @@
 {
 	"name" : "Etao Offline Assistant",
-	"version" : "1.3",
+	"version" : "1.4",
 	"description" : "Etao Offline Assistant",
 	"minimum_chrome_version" : "12.0.0.0",
 	"background_page" : "background.html",
