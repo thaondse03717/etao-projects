@@ -10,7 +10,7 @@ function onOptionsLoaded(options) {
 	var auctions = jQuery(options.selector_entry).css({ position: 'relative' });
 	var checkbox = jQuery('<input type="checkbox"/>')
 		.attr('title', 'Click to offline!')
-		.addClass('checkbox injected')
+		.addClass('checkbox')
 		.css({
 			position: 'absolute',
 			left: '0px',
@@ -19,9 +19,17 @@ function onOptionsLoaded(options) {
 			height: '3em'
 		});
 
-	//if (options.hide_compare_links) {
-	//	jQuery('a.btn-compare').parents('div.griditem, li.listitem').remove();
-	//}
+	var strong = jQuery('<strong contenteditable="true">NID</strong>')
+		.addClass('link')
+		.css({
+			cursor: 'default',
+			position: 'absolute',
+			left: '3em',
+			top: '0px',
+			width: 'auto',
+			lineHeight: '3em',
+			height: '3em'
+		});
 
 	jQuery.each(auctions, function (i, item) {
 
@@ -51,18 +59,22 @@ function onOptionsLoaded(options) {
 			if (matches.id) {
 				nid = matches.id[0].substring(4, matches.id[0].length);
 				addCheckboxListener(auction, checkbox, nid, url, title);
+				addCopyListener(auction, strong, nid, url, title, i);
 			} else if (matches.nid) {
 				nid = matches.nid[0].substring(5, matches.nid[0].length);
 				addCheckboxListener(auction, checkbox, nid, url, title);
+				addCopyListener(auction, strong, nid, url, title, i);
 			} else if (matches.p4p) {
 				nid = matches.p4p[0].substring(11, matches.p4p[0].length);
 				addCheckboxListener(auction, checkbox, nid, url, title);
+				addCopyListener(auction, strong, nid, url, title, i);
 			} else {
 				jQuery.get(url, function (data) {
 					matches.rec = data.match(patterns.rec);
 					if (matches.rec) {
 						var nid = matches.rec[0].substring(8, matches.rec[0].length - 1);
 						addCheckboxListener(auction, checkbox, nid, url, title);
+						addCopyListener(auction, strong, nid, url, title, i);
 					}
 				});
 			}
@@ -79,6 +91,15 @@ function addCheckboxListener(auction, checkbox, nid, url, title) {
 			chrome.extension.sendRequest(request, function(response) {
 				//console.log('status:' + response.status + ', code: ' + response.code);
 			});
+		}));
+	}
+}
+
+function addCopyListener(auction, strong, nid, url, title, i) {
+	if (nid) {
+		auction.append(strong.clone().text(nid).click(function (event) {
+			event.stopPropagation();
+			return false;
 		}));
 	}
 }
