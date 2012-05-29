@@ -27,13 +27,23 @@ function clearly(url, filename, callback) {
 	*/
 
 	page.open(url, function (status) {
-		page.includeJs("http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js", function () {
+		if (queue[url] === true) {
+			return true;
+		}
+
+		page.includeJs("http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js", function () {
 			html = page.evaluate(function () {
 				window.readable = {};
 				window.readable.window = window;
 				window.readable.document = window.document;
 
 				return (function ($R) {
+
+					// debug
+					$R.log = function (message) {
+						return false;
+						console.log(message);
+					};
 
 					// options
 					$R.parsingOptions = {
@@ -61,18 +71,6 @@ function clearly(url, filename, callback) {
 						}
 					};
 
-					// next page keywords -- (?? charCodeAt() > 127)
-					$R.nextPage__captionKeywords = [
-						/* english */ 'next page', 'next',
-						/* german */ 'vorw&#228;rts', 'weiter',
-						/* japanese */ '&#27425;&#12408;'
-					];
-
-					// caption keywords
-					$R.nextPage__captionKeywords__not = [
-						/* english */ 'article', 'story', 'post', 'comment', 'section', 'chapter'
-					];
-
 					// skip links
 					$R.skipStuffFromDomains__links = [
 						'doubleclick.net', 'fastclick.net', 'adbrite.com',
@@ -92,19 +90,32 @@ function clearly(url, filename, callback) {
 
 					// keep video
 					$R.keepStuffFromDomain__video = [
+						// foreign video sites
 						'youtube.com', 'youtube-nocookie.com',
 						'vimeo.com', 'hulu.com', 'yahoo.com',
-						'flickr.com', 'newsnetz.ch'
+						'flickr.com', 'newsnetz.ch',
+						// china video sites
+						// @link http://blogunion.org/blogging-tools/china-video-sharing-website-list.html
+						'100tv.com', '21gt.com', '51bo.com', '56.com', '5show.com',
+						'6rooms.com', '94haokan.com', 'aipaike.com', 'bapo.cn',
+						'feesee.com', 'flashmov.com', 'happy3g.com', 'homhow.com',
+						'hubotv.com', 'i35mm.cn', 'ivtv.com.cn', 'jiuduo.com',
+						'ku6.com',  'letv.com', 'lookev.com', 'maidee.com', 'omytvs.com',
+						'openv.tv', 'ouou.com', 'podlook.com', 'pomoho.com', 'qianboo.com',
+						'quxiu.com', 'seehaha.com', 'showker.com', 'tudou.com', 'tv.mofile.com',
+						'tvix.cn', 'uume.com', 'vkuoo.com', 'vottie.com', 'woaide.com',
+						'xmyan.com', 'yoqoo.com', 'zaguo.com'
 					];
 
 					// measure text
 					// asian languages
-					// http://msdn.microsoft.com/en-us/goglobal/bb688158
-					// http://en.wikipedia.org/wiki/Japanese_punctuation
-					// http://en.wikipedia.org/wiki/Japanese_typographic_symbols
-					// http://unicode.org/charts/PDF/U3000.pdf
+					// @link http://msdn.microsoft.com/en-us/goglobal/bb688158
+					// @link http://en.wikipedia.org/wiki/Japanese_punctuation
+					// @link http://en.wikipedia.org/wiki/Japanese_typographic_symbols
+					// @link http://unicode.org/charts/PDF/U3000.pdf
 					// CJK: Chnese, Japanese, Korean -- HAN character set
-					// length,
+
+					// text length,
 					$R.measureText__getTextLength = function (_the_text) {
 						return _the_text.replace(/[\s\n\r]+/gi, '').length;
 					};
@@ -153,18 +164,18 @@ function clearly(url, filename, callback) {
 						return $R.getContent__find();
 					};
 
+					// Detect language by randomly selected paragraphs from page
 					$R.getContent__detectLanguage = function () {
-						//  default
 						$R.language = 'general';
 
-						//  the text - start with title
+						// the text - start with title
 						var _test_text = ' ' + $R.document.title;
 
-						//  add couple of random paragraphs, divs
+						// add couple of random paragraphs, divs
 						var _ps = $R.document.getElementsByTagName('p'),
 							_ds = $R.document.getElementsByTagName('div');
 
-						//  add
+						// add
 						for (var i = 0; i < 5; i++) {
 							_test_text += ' ' + $(_ps[Math.floor(Math.random() * _ps.length)]).text();
 						}
@@ -172,7 +183,7 @@ function clearly(url, filename, callback) {
 							_test_text += ' ' + $(_ds[Math.floor(Math.random() * _ds.length)]).text();
 						}
 
-						//  check
+						// check
 						switch (true) {
 							case (_test_text.match(/([\u3000])/gi) != null):
 							case (_test_text.match(/([\u3001])/gi) != null):
@@ -182,19 +193,24 @@ function clearly(url, filename, callback) {
 								break;
 						}
 
-						//  in case we stop
-						console.log('Language: ' + $R.language);
+						// in case we stop
+						$R.log('Language: ' + $R.language);
 					};
 
+					// Decide tagName of a node, we just need #text, a, img nodes
 					$R.getContent_detectNodeTagName = function (_node) {
-						_tag_name = (_node.nodeType === 3)
-							? '#text'
-							: (_node.nodeType === 1 && _node.tagName && _node.tagName > '')
-								? _node.tagName.toLowerCase()
-								: '#invalid';
+						if (_node.nodeType === 3) {
+							_tag_name = '#text';
+						} else if (_node.nodeType === 1 && _node.tagName && _node.tagName > '') {
+							_tag_name = _node.tagName.toLowerCase();
+						} else {
+							_tag_name = '#invalid';
+						}
+
 						return _tag_name;
 					};
 
+					// Explore the node recursively, get candidate nodes
 					$R.getContent__exploreNodeAndGetStuff = function (_nodeToExplore, _justExploring) {
 						var _global__element_index = 0,
 							_global__inside_link = false,
@@ -214,8 +230,8 @@ function clearly(url, filename, callback) {
 						// recursive function
 						var _recursive = function (_node) {
 							// increment index
-							// starts with 1
 							_global__element_index++;
+
 							var _tag_name = $R.getContent_detectNodeTagName(_node),
 								_result = {
 									'__index': _global__element_index,
@@ -260,35 +276,36 @@ function clearly(url, filename, callback) {
 
 							// fast return
 							switch (true) {
+								// will return, if node is invalid or ignored
 								case ((_tag_name == '#invalid')):
 								case (($R.parsingOptions._elements_ignore.indexOf('|' + _tag_name + '|') > -1)):
 									return;
+
+								// will return, if node is hidden
 								case (($R.parsingOptions._elements_visible.indexOf('|' + _tag_name + '|') > -1)):
-									// included inline
-									// _node must be defined
-									// will return, if node is hidden
 									switch (true) {
-									case (_node.offsetWidth > 0):
-									case (_node.offsetHeight > 0):
-										break;
-									default:
-										switch (true) {
-										case (_node.offsetLeft > 0):
-										case (_node.offsetTop > 0):
+										case (_node.offsetWidth > 0):
+										case (_node.offsetHeight > 0):
+											break;
+										default:
+											switch (true) {
+												case (_node.offsetLeft > 0):
+												case (_node.offsetTop > 0):
+													break;
+												default:
+													return;
+											}
+											break;
+										}
+									break;
+
+								// will return, if node is self closing elements, besides img
+								case ($R.parsingOptions._elements_self_closing.indexOf('|' + _tag_name + '|') > -1):
+									switch (true) {
+										case ((_tag_name == 'img')):
 											break;
 										default:
 											return;
-										}
-										break;
-									}
-									break;
-									// self-closing -- with some exceptions
-								case ($R.parsingOptions._elements_self_closing.indexOf('|' + _tag_name + '|') > -1):
-									switch (true) {
-									case ((_tag_name == 'img')):
-										break;
-									default:
-										return;
 									}
 									break;
 							}
@@ -297,9 +314,8 @@ function clearly(url, filename, callback) {
 							switch (true) {
 								// text node
 								case ((_tag_name == '#text')):
-									// mark
 									_result._is__text = true;
-									// get
+
 									var _nodeText = _node.nodeValue;
 
 									// result
@@ -315,9 +331,10 @@ function clearly(url, filename, callback) {
 
 									return _result;
 
-									// link
+								// link node
 								case (_tag_name == 'a'):
 									var _href = _node.href;
+
 									// sanity
 									if (!_href || !_href.indexOf) {
 										break;
@@ -343,7 +360,7 @@ function clearly(url, filename, callback) {
 									_return__links.push(_result);
 									break;
 
-									// image
+								// image node
 								case (_tag_name == 'img'):
 									// skip
 									if (_node.src && _node.src.indexOf) {
@@ -382,7 +399,7 @@ function clearly(url, filename, callback) {
 							for (var i = 0, _i = _node.childNodes.length; i < _i; i++) {
 								var _child = _node.childNodes[i],
 									_child_result = _recursive(_child);
-								// if false, continue
+
 								if (!_child_result) {
 									continue;
 								}
@@ -426,7 +443,7 @@ function clearly(url, filename, callback) {
 							if (_result._is__container || ((_result.__index == 1) && (_justExploring == true))) {
 								// add to containers
 								_return__containers.push(_result);
-								//  increase above containers
+								// increase above containers
 								if (_result._is__container) {
 									_global__count__above_containers++;
 								}
@@ -449,7 +466,7 @@ function clearly(url, filename, callback) {
 											// good candidate
 											_result._is__candidate = true;
 											_return__candidates.push(_result);
-											//  increase above candidates
+											// increase above candidates
 											_global__count__above_candidates++;
 											break;
 									}
@@ -508,6 +525,7 @@ function clearly(url, filename, callback) {
 							// pieces
 							var _count__pieces = 0,
 								_array__pieces = [];
+
 							for (var k = i, _k = _candidates.length; k < _k; k++) {
 								if (_candidates[k]._count__candidates > 0) {
 									continue;
@@ -605,18 +623,31 @@ function clearly(url, filename, callback) {
 						}
 
 						// the basics
-						_points_history.unshift(((0 + (_details._count__paragraphs_of_3_lines) + (_details._count__paragraphs_of_5_lines * 1.5) + (_details._count__paragraphs_of_50_words) + (_details._count__paragraphs_of_80_words * 1.5) + (_e._count__images_large * 3) - ((_e._count__images_skip + _e._count__images_small) * 0.5)) * 1000));
+						_points_history.unshift(((0
+							+ (_details._count__paragraphs_of_3_lines)
+							+ (_details._count__paragraphs_of_5_lines * 1.5)
+							+ (_details._count__paragraphs_of_50_words)
+							+ (_details._count__paragraphs_of_80_words * 1.5)
+							+ (_e._count__images_large * 3)
+							- ((_e._count__images_skip + _e._count__images_small) * 0.5)
+						) * 1000));
 
-						//  negative
+						// negative
 						if (_points_history[0] < 0) {
 							return [0];
 						}
 
-						//  candidates and containers
+						// candidates and containers
 						var _divide__pieces = Math.max(5, Math.ceil(_e._count__pieces * 0.25)),
 							_divide__candidates = Math.max(5, Math.ceil(_e._count__candidates * 0.25)),
 							_divide__containers = Math.max(10, Math.ceil(_e._count__containers * 0.25));
-						_points_history.unshift(((0 + (_points_history[0] * 3) + (_points_history[0] / _divide__pieces) + (_points_history[0] / _divide__candidates) + (_points_history[0] / _divide__containers)) / 6));
+
+						_points_history.unshift(((0
+							+ (_points_history[0] * 3)
+							+ (_points_history[0] / _divide__pieces)
+							+ (_points_history[0] / _divide__candidates)
+							+ (_points_history[0] / _divide__containers)
+						) / 6));
 
 						// total text
 						$R.getContent__computePointsForCandidate__do(0.10, 2, (1 - (1 - _details._ratio__length__plain_text_to_total_plain_text)), _points_history);
@@ -639,7 +670,7 @@ function clearly(url, filename, callback) {
 						$R.getContent__computePointsForCandidate__do(0.75, 1, (1 - _details._ratio__count__links_words_to_total_links_words), _points_history);
 						$R.getContent__computePointsForCandidate__do(0.75, 1, (1 - _details._ratio__count__links_to_total_links), _points_history);
 
-						//  links inner
+						// links inner
 						var __lr = ($R.language == 'cjk' ? 0.75 : 0.50);
 						$R.getContent__computePointsForCandidate__do(__lr, 1, (1 - _details._ratio__length__links_text_to_plain_text), _points_history);
 						$R.getContent__computePointsForCandidate__do(__lr, 1, (1 - _details._ratio__count__links_words_to_plain_words), _points_history);
@@ -670,7 +701,7 @@ function clearly(url, filename, callback) {
 									return _element;
 							}
 						});
-						//  add main - to amke sure the result is never blank
+						// add main - to amke sure the result is never blank
 						_candidates.unshift(_main);
 
 						// sort _candidates -- the lower in the dom, the closer to position 0
@@ -766,7 +797,7 @@ function clearly(url, filename, callback) {
 						// get initial points
 						_points_history.unshift(_e.__points_history[(_e.__points_history.length - 1)]);
 
-						//  candidates and containers
+						// candidates and containers
 						var _divide__pieces = Math.max(5, Math.ceil(_e._count__pieces * 0.25)),
 							_divide__candidates = Math.max(5, Math.ceil(_e._count__candidates * 0.25)),
 							_divide__containers = Math.max(10, Math.ceil(_e._count__containers * 0.25));
@@ -818,13 +849,13 @@ function clearly(url, filename, callback) {
 						// get initial points
 						_points_history.unshift(_e.__points_history[(_e.__points_history.length - 1)]);
 
-						//  candidates and containers
+						// candidates and containers
 						var _divide__pieces = Math.max(2, Math.ceil(_e._count__pieces * 0.25)),
 							_divide__candidates = Math.max(2, Math.ceil(_e._count__candidates * 0.25)),
 							_divide__containers = Math.max(4, Math.ceil(_e._count__containers * 0.25));
 						_points_history.unshift(((0 + (_points_history[0] * 3) + ((_points_history[0] / _divide__pieces) * 2) + ((_points_history[0] / _divide__candidates) * 2) + ((_points_history[0] / _divide__containers) * 2)) / 9));
 
-						//  total text
+						// total text
 						$R.getContent__computePointsForCandidate__do(0.75, 1, (1 - (1 - _details_second._ratio__length__plain_text_to_total_plain_text)), _points_history);
 						$R.getContent__computePointsForCandidate__do(0.75, 1, (1 - (1 - _details_second._ratio__count__plain_words_to_total_plain_words)), _points_history);
 
@@ -891,7 +922,7 @@ function clearly(url, filename, callback) {
 								_pos__end__before = 0,
 								_pos__end__after = 0;
 
-							// fast return
+							// fast return on invalid nodes, ignored nodes, text nodes
 							switch (true) {
 								case ((_tag_name == '#invalid')):
 								case (($R.parsingOptions._elements_ignore.indexOf('|' + _tag_name + '|') > -1)):
@@ -901,11 +932,8 @@ function clearly(url, filename, callback) {
 									return;
 							}
 
-							// hidden
+							// will return, if node is hidden
 							if ($R.parsingOptions._elements_visible.indexOf('|' + _tag_name + '|') > -1) {
-								// included inline
-								// _node must be defined
-								// will return, if node is hidden
 								switch (true) {
 									case (_node.offsetWidth > 0):
 									case (_node.offsetHeight > 0):
@@ -923,15 +951,18 @@ function clearly(url, filename, callback) {
 							}
 
 							// clean -- before
-							// just a return will skip the whol element
+							// just a return will skip the whole element
 							// including children
+
 							// objects, embeds, iframes
+							// @TODO chinese video website objects need furthur work
 							switch (_tag_name) {
 								case ('object'):
 								case ('embed'):
 								case ('iframe'):
 									var _src = (_tag_name == 'object' ? $(_node).find("param[name='movie']").attr('value') : $(_node).attr('src')),
 										_skip = ((_src > '') ? false : true);
+
 									if (_skip === false) {
 										// default skip
 										_skip = true;
@@ -943,10 +974,12 @@ function clearly(url, filename, callback) {
 											}
 										}
 									}
+
 									// skip?
 									if (_skip) {
 										return;
 									}
+
 									break;
 							}
 
@@ -1062,8 +1095,7 @@ function clearly(url, filename, callback) {
 							}
 
 							// child nodes
-							if ($R.parsingOptions._elements_self_closing.indexOf('|' + _tag_name + '|') > -1);
-							else {
+							if ($R.parsingOptions._elements_self_closing.indexOf('|' + _tag_name + '|') < 0) {
 								for (var i = 0, _i = _node.childNodes.length; i < _i; i++) {
 									_recursive(_node.childNodes[i]);
 								}
@@ -1187,6 +1219,7 @@ function clearly(url, filename, callback) {
 						return _global__the_html;
 					};
 
+					// Find page title, h{1,2,3} within the body is preferred, if not found, document.title is used
 					$R.getContent__find = function () {
 						// get content
 						var _found = $R.getContent__findInPage($R.window),
@@ -1202,15 +1235,16 @@ function clearly(url, filename, callback) {
 						(function () {
 							while (true) {
 								switch (true) {
-								case ((_prevNode.tagName && _prevNode.tagName.toLowerCase() == 'body')):
-								case ((_found._firstCandidate.__node != _found._targetCandidate.__node) && (_prevNode == _found._firstCandidate.__node)):
-									return;
+									case ((_prevNode.tagName && _prevNode.tagName.toLowerCase() == 'body')):
+									case ((_found._firstCandidate.__node != _found._targetCandidate.__node) && (_prevNode == _found._firstCandidate.__node)):
+										return;
 								}
 
 								// do it
 								if (_prevNode.previousSibling) {
 									// previous
 									_prevNode = _prevNode.previousSibling;
+
 									// get html
 									var _h = $R.getContent__buildHTMLForNode(_prevNode, 'above-the-target');
 									_prevHTML = _h + _prevHTML;
@@ -1220,6 +1254,7 @@ function clearly(url, filename, callback) {
 									if ($R.measureText__getTextLength(_prevHTML.replace(/<[^>]+?>/gi, '')) > (65 * 3 * 3)) {
 										return;
 									}
+
 									// found heading
 									var _headingStartPos = _foundHTML.indexOf('<h1');
 									_headingStartPos = (_headingStartPos > -1 ? _headingStartPos : _foundHTML.indexOf('<h2'));
@@ -1227,6 +1262,7 @@ function clearly(url, filename, callback) {
 									if (_headingStartPos > -1) {
 										var _toHeadingLength = $R.measureText__getTextLength(_foundHTML.substr(0, _headingStartPos).replace(/<[^>]+?>/gi, ''));
 										if (_toHeadingLength < (65 * 3 * 2)) {
+											$R.log('use title found in page');
 											_foundTitle = true;
 											return;
 										}
@@ -1238,36 +1274,37 @@ function clearly(url, filename, callback) {
 						})();
 
 						// get document title
-						if (_foundTitle);
-						else {
+						if (!_foundTitle) {
 							if ($R.document.title > '') {
+								$R.log('use title from document.title');
 								var _the_title = '',
 									_doc_title = $R.document.title,
 									_doc_title_parts = [],
 									_doc_title_pregs = [/( [-][-] |( [-] )|( [>][>] )|( [<][<] )|( [|] )|( [\/] ))/i, /(([:] ))/i];
-								// loop through pregs
+
+								// loop through pregs, until we managed a split
 								for (var i = 0, _i = _doc_title_pregs.length; i < _i; i++) {
-									// split
 									_doc_title_parts = _doc_title.split(_doc_title_pregs[i]);
-									// break if we managed a split
 									if (_doc_title_parts.length > 1) {
 										break;
 									}
 								}
-								// sort title parts
-								// longer goes higher up -- i.e. towards 0
+
+								// sort title parts, longer goes higher up -- i.e. towards 0
 								_doc_title_parts.sort(function (a, b) {
 									switch (true) {
-									case (a.length > b.length):
-										return -1;
-									case (a.length < b.length):
-										return 1;
-									default:
-										return 0;
+										case (a.length > b.length):
+											return -1;
+										case (a.length < b.length):
+											return 1;
+										default:
+											return 0;
 									}
 								});
+
 								// more than one word?
 								_the_title = (_doc_title_parts[0].split(/\s+/i).length > 1 ? _doc_title_parts[0] : _doc_title);
+
 								// add
 								_foundHTML = '<h1>' + _the_title + '</h1>' + _foundHTML;
 							}
@@ -1277,20 +1314,19 @@ function clearly(url, filename, callback) {
 						return _foundHTML;
 					};
 
+					// Find the most promising candidate that acts as the main container, then build HTML
 					$R.getContent__findInPage = function (_pageWindow) {
-						// calculations
 						var _firstCandidate = _secondCandidate = _targetCandidate = false;
 
 						var _stuff = $R.getContent__exploreNodeAndGetStuff(_pageWindow.document.body);
-						console.log(_stuff);
 
+						$R.log('getContent__processCandidates: 1st round');
 						var _processedCandidates = $R.getContent__processCandidates(_stuff._candidates);
-						console.log(_processedCandidates);
 
 						_firstCandidate = _processedCandidates[0];
 						_targetCandidate = _firstCandidate;
 
-						//  do second?
+						// do second?
 						switch (true) {
 							case (!(_firstCandidate._count__containers > 0)):
 							case (!(_firstCandidate._count__candidates > 0)):
@@ -1299,21 +1335,23 @@ function clearly(url, filename, callback) {
 								break;
 							default:
 
+								$R.log('getContent__processCandidates: 2nd round');
 								var _processedCandidatesSecond = $R.getContent__processCandidatesSecond(_processedCandidates);
 								_secondCandidate = _processedCandidatesSecond[0];
 
-								//  they're the same
+								// they're the same
 								if (_firstCandidate.__node == _secondCandidate.__node) {
 									break;
 								}
 
-								//  compute again
+								// compute again
+								$R.log('getContent__processCandidates: 3rd round');
 								_firstCandidate['__points_history_final'] = $R.getContent__computePointsForCandidateThird(_firstCandidate, _firstCandidate);
 								_firstCandidate['__points_final'] = _firstCandidate.__points_history_final[0];
 								_secondCandidate['__points_history_final'] = $R.getContent__computePointsForCandidateThird(_secondCandidate, _firstCandidate);
 								_secondCandidate['__points_final'] = _secondCandidate.__points_history_final[0];
 
-								//  are we selecting _second?
+								// are we selecting _second?
 								switch (true) {
 									case ((_secondCandidate.__candidate_details._count__lines_of_65_characters < 20) && (_secondCandidate.__points_final / _firstCandidate.__points_final) > 1):
 									case ((_secondCandidate.__candidate_details._count__lines_of_65_characters > 20) && (_secondCandidate.__points_final / _firstCandidate.__points_final) > 0.9):
@@ -1325,15 +1363,19 @@ function clearly(url, filename, callback) {
 								break;
 						}
 
+						$R.log(_targetCandidate.__node);
+
 						// get html
 						var _html = $R.getContent__buildHTMLForNode(_targetCandidate.__node, 'the-target');
+
+						// @TODO handle illegal self-closing elements such as <br> <hr>
 						_html = _html.substr((_html.indexOf('>') + 1), _html.lastIndexOf('<'));
-						_html = _html.replace(/<(blockquote|div|p|td|li)([^>]*)>(\s*<br \/>)+/gi, '<$1$2>');
-						_html = _html.replace(/(<br \/>\s*)+<\/(blockquote|div|p|td|li)>/gi, '</$2>');
-						_html = _html.replace(/(<br \/>\s*)+<(blockquote|div|h\d|ol|p|table|ul|li)([^>]*)>/gi, '<$2$3>');
-						_html = _html.replace(/<\/(blockquote|div|h\d|ol|p|table|ul|li)>(\s*<br \/>)+/gi, '</$1>');
-						_html = _html.replace(/(<hr \/>\s*<hr \/>\s*)+/gi, '<hr />');
-						_html = _html.replace(/(<br \/>\s*<br \/>\s*)+/gi, '<br /><br />');
+						_html = _html.replace(/<(blockquote|div|p|td|li)([^>]*)>(\s*<br \/>)+/gi, '<$1$2>');						// multiple ending BR
+						_html = _html.replace(/(<br \/>\s*)+<\/(blockquote|div|p|td|li)>/gi, '</$2>');									// multiple procceding BR
+						_html = _html.replace(/(<br \/>\s*)+<(blockquote|div|h\d|ol|p|table|ul|li)([^>]*)>/gi, '<$2$3>');	// multiple procceding BR
+						_html = _html.replace(/<\/(blockquote|div|h\d|ol|p|table|ul|li)>(\s*<br \/>)+/gi, '</$1>');				// multiple ending BR
+						_html = _html.replace(/(<hr \/>\s*<hr \/>\s*)+/gi, '<hr />');																// multiple HR
+						_html = _html.replace(/(<br \/>\s*<br \/>\s*)+/gi, '<br /><br />');													// multiple BR
 
 						// return
 						return {
@@ -1350,8 +1392,12 @@ function clearly(url, filename, callback) {
 				})(window.readable);
 			});
 
+			page.render(filename.split('.')[0] + '.png');
+
 			var fs = require('fs');
 			fs.write(filename, html, 'w');
+
+			queue[url] = true;
 
 			callback(url, filename);
 		});
@@ -1568,14 +1614,6 @@ function md5(str) {
 
 var system = require('system');
 
-// Extend the Array Prototype with a 'foreach'
-Array.prototype.each = function (action) {
-	var i, len;
-	for (i = 0, len = this.length; i < len; ++i) {
-		action(i, this[i], len);
-	}
-};
-
 // Read the passed args
 var urls;
 if (system.args.length > 1) {
@@ -1585,15 +1623,35 @@ if (system.args.length > 1) {
 	phantom.exit();
 }
 
-// For each URL
-urls.each(function (index, url, total) {
-	var filename = (new Date).getTime() + ".html";
+// 因为所有的URL是异步开始请求的, 每个URL完成之后需要轮询, 确定是否所有的都完成了
+var queue = {};
 
-	console.log('Start extract {' + url + '}');
-	clearly(url, filename, function (url, file) {
-		console.log("Finish extract {" + url + "} to {" + file + "}");
-		if (index === total - 1) {
-			phantom.exit();
-		}
-	});
-});
+// 并发开始处理多个URL
+for (var i=0, length=urls.length; i<length; i++) {
+	// @TODO 这里的文件名如何确定, 更加与URL地址匹配
+	var url = urls[i], filename = (new Date).getTime() + ".html";
+
+	queue[url] = false;
+
+	console.log("Start process #" + (i+1) + " {" + url + "}");
+
+	clearly(url, filename, function (_i) {
+		return function (url, file) {
+			console.log("Finish process #" + (_i+1) + " {" + url + "} to {" + file + "}");
+
+			var all_finished = true;
+
+			for (var id in queue) {
+				if (queue.hasOwnProperty(id) && (queue[id] === false)) {
+					all_finished = false;
+					break;
+				}
+			}
+
+			if (all_finished) {
+				console.log("All urls are processed");
+				phantom.exit();
+			}
+		};
+	}(i));
+}
