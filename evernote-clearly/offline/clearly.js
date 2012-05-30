@@ -2,7 +2,10 @@
  * Extract readable content from a web page and save as html file, similar to Evernote Clearly, but in console
  *
  * @param string str
- * @return string
+ * @return void
+ * @link http://code.google.com/p/phantomjs/wiki/Interface
+ * @link http://bbs.kafan.cn/thread-1137245-1-1.html
+ * @todo Õº∆¨∑¥∑¥µ¡¡¥
  */
 function clearly(url, filename, callback) {
 	var page = require('webpage').create();
