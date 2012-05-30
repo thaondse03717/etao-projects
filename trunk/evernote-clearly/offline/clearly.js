@@ -960,15 +960,24 @@ function clearly(url, filename, callback) {
 								case ('object'):
 								case ('embed'):
 								case ('iframe'):
-									var _src = (_tag_name == 'object')
-										? $(_node).find("param[name='movie']").attr('value')
-										: $(_node).attr('src');
+									var _src = '';
+									if (_tag_name == 'object') {
+										if ($(_node).find("param[name='movie']").length > 0) {
+											_src = $(_node).find("param[name='movie']").attr('value');
+										} else if ($(_node).find("param[name='src']").length > 0) {
+											_src = $(_node).find("param[name='src']").attr('value');
+										}
+									} else {
+										_src = $(_node).attr('src');
+									}
+
+									$R.log('Video SRC: ' + _src);
+
 									var _skip = ((_src > '') ? false : true);
 
 									if (_skip === false) {
-										// default skip
 										_skip = true;
-										// loop
+										// keep stuff from certain domains
 										for (var i = 0, _i = $R.keepStuffFromDomain__video.length; i < _i; i++) {
 											if (_src.indexOf($R.keepStuffFromDomain__video[i]) > -1) {
 												_skip = false;
