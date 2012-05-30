@@ -104,7 +104,7 @@ function clearly(url, filename, callback) {
 						'openv.tv', 'ouou.com', 'podlook.com', 'pomoho.com', 'qianboo.com',
 						'quxiu.com', 'seehaha.com', 'showker.com', 'tudou.com', 'tv.mofile.com',
 						'tvix.cn', 'uume.com', 'vkuoo.com', 'vottie.com', 'woaide.com',
-						'xmyan.com', 'yoqoo.com', 'zaguo.com'
+						'xmyan.com', 'yoqoo.com', 'youku.com', 'zaguo.com'
 					];
 
 					// measure text
@@ -960,8 +960,10 @@ function clearly(url, filename, callback) {
 								case ('object'):
 								case ('embed'):
 								case ('iframe'):
-									var _src = (_tag_name == 'object' ? $(_node).find("param[name='movie']").attr('value') : $(_node).attr('src')),
-										_skip = ((_src > '') ? false : true);
+									var _src = (_tag_name == 'object')
+										? $(_node).find("param[name='movie']").attr('value')
+										: $(_node).attr('src');
+									var _skip = ((_src > '') ? false : true);
 
 									if (_skip === false) {
 										// default skip
@@ -1061,17 +1063,17 @@ function clearly(url, filename, callback) {
 								_global__the_html += '<' + _tag_name; /* add */
 
 								// allowed attributes
-								// @TODO we need to get absolute path for img elements
 								if (_tag_name in $R.parsingOptions._elements_keep_attributes) {
 									for (var i = 0, _i = $R.parsingOptions._elements_keep_attributes[_tag_name].length; i < _i; i++) {
 										var _attribute_name = $R.parsingOptions._elements_keep_attributes[_tag_name][i],
 											_attribute_value = _node.getAttribute(_attribute_name);
 
+										// we need to get absolute path for img elements
 										if ((_tag_name === 'img') && (_attribute_name === 'src')) {
 											var img = document.createElement('img');
-											img.src = _attribute_value; // set string url
-											_attribute_value = img.src; // get qualified url
-											img.src = null; // no server request
+											img.src = _attribute_value;
+											_attribute_value = img.src;
+											img.src = null;
 										}
 
 										// if present
