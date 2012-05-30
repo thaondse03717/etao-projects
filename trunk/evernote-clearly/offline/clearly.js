@@ -1061,10 +1061,19 @@ function clearly(url, filename, callback) {
 								_global__the_html += '<' + _tag_name; /* add */
 
 								// allowed attributes
+								// @TODO we need to get absolute path for img elements
 								if (_tag_name in $R.parsingOptions._elements_keep_attributes) {
 									for (var i = 0, _i = $R.parsingOptions._elements_keep_attributes[_tag_name].length; i < _i; i++) {
 										var _attribute_name = $R.parsingOptions._elements_keep_attributes[_tag_name][i],
 											_attribute_value = _node.getAttribute(_attribute_name);
+
+										if ((_tag_name === 'img') && (_attribute_name === 'src')) {
+											var img = document.createElement('img');
+											img.src = _attribute_value; // set string url
+											_attribute_value = img.src; // get qualified url
+											img.src = null; // no server request
+										}
+
 										// if present
 										if (_attribute_value > '') {
 											_global__the_html += ' ' + _attribute_name + '="' + (_attribute_value) + '"';
