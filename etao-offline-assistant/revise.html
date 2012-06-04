@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-	<title>Etao Auction Offline Assistant</title>
+	<title>Etao Operation Assistant</title>
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 	<script type="text/javascript" src="js/jquery.1.6.2.min.js"></script>
 	<script type="text/javascript" src="js/assistant.js"></script>
@@ -194,14 +194,14 @@ function setLastMemo(memo) {
 // 页面加载后自动抽取NID
 jQuery(document).ready(function () {
 	registerCallbacks();
-//	if (options.auto_extract === 'true') {
-//		addItems();
-//	}
-//	if (options.auto_memo === 'true') {
-//		getLastMemo();
-//	}
+	if (options.auto_extract === 'true') {
+		addItems();
+	}
+	if (options.auto_memo === 'true') {
+		getLastMemo();
+	}
 
-	var server = options.server_url.substr(0, options.server_url.indexOf('?'));
+	var server = options.server_url;
 
 	$('#categories').categories({
 		count: 4,
@@ -217,6 +217,7 @@ jQuery(document).ready(function () {
 			name: server + '?c=categories&f=name&category_id='
 		}
 	});
+
 });
 
 </script>

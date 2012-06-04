@@ -18,7 +18,7 @@
 			"http://s.etao.com/*",
 			"http://www.etao.com/*"
 		],
-		"js": ["js/jquery.1.6.2.min.js", "js/assistant.inject.js"]
+		"js": ["js/jquery.1.7.2.min.js", "js/assistant.inject.js"]
 	}],
 	"icons" : {
 		"16" : "images/icon.16.png",
