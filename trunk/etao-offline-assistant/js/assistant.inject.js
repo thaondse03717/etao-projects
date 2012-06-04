@@ -40,6 +40,10 @@ function onOptionsLoaded(options) {
 			stat = auction.attr('data-stat'),
 			nid = false;
 
+		if (!title) {
+			title = auction.find('img').attr('title');
+		}
+
 		// 提取NID (内网商品和外网商品的连接不同)
 		// 对于P4P商品需要额外的ajax请求来确定
 		if (url != '') {

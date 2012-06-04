@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <head>
-	<title>Etao Auction Offline Assistant</title>
+	<title>Etao Operation Assistant</title>
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
-	<script type="text/javascript" src="js/jquery.1.6.2.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.2.0.4.min.css" />
+	<script type="text/javascript" src="js/jquery.1.7.2.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.2.0.4.min.js"></script>
 	<script type="text/javascript" src="js/assistant.js"></script>
 </head>
 <body>
@@ -203,29 +205,45 @@ jQuery(document).ready(function () {
 
 </script>
 
-<div class="trashbox main">
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container-fluid">
+			<a class="brand" href="#">Etao Operation Assistant</a>
+		</div>
+	</div>
+</div>
 
-	<div class="header">
-		<a href="javascript:void(0)" id="extract" class="button">Extract</a>
-		<textarea id="memo" placeholder="Please enter the reason for offline these auctions!"></textarea>
-		<a href="javascript:void(0)" id="submit" class="button current">Submit</a>
+<div class="container-fluid">
+
+	<div class="row-fluid" style="margin-top: 60px;">
+		<div class="span12">
+
+		<table class="table table-striped table-bordered" id="datalist">
+			<thead>
+				<tr>
+					<th width="18%">NID</th>
+					<th width="60%">TITLE</th>
+					<th width="22%">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+		</div>
+
 	</div>
 
-	<table class="datalist" id="datalist" style="display:none;">
-		<thead>
-			<tr>
-				<th width="18%">NID</th>
-				<th width="60%">TITLE</th>
-				<th width="22%">Actions</th>
-			</tr>
-		</thead>
-		<tbody>
-		</tbody>
-	</table>
-
-	<p class="footer">Etao Operation Assistant v1.4 by <a href="mailto:wangshijun2010@gmail.com">wangshijun2010@gmail.com</a></p>
+	<div class="row-fluid">
+		<div class="span12">
+			<input type="text" id="memo" class="span9" placeholder="Please enter the reason for offline these auctions!"/>
+			<a href="javascript:void(0)" id="extract" class="btn btn-primary">Extract</a>
+			<a href="javascript:void(0)" id="submit" class="btn btn-primary">Submit</a>
+		</div>
+	</div>
 
 </div>
+
+<footer>Etao Operation Assistant v1.4 by <a href="mailto:wangshijun2010@gmail.com">wangshijun2010@gmail.com</a></footer>
 
 </body>
 </html>
