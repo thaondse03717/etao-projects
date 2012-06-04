@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<head>
+	<title>Etao Auction Offline Assistant</title>
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<script type="text/javascript" src="js/jquery.1.6.2.min.js"></script>
+	<script type="text/javascript" src="js/assistant.js"></script>
+	<script type="text/javascript" src="js/app.category.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+// 读取插件配置
+var options = assistant.getOptions();
+
+//添加所有已选宝贝到垃圾箱
+function addItems() {
+	jQuery('#datalist tr:has(td)').remove();
+
+	// 从Background页抽取以选中的数据
+	var selected = chrome.extension.getBackgroundPage().selected;
+	var selectedNids = [];
+	for (var nid in selected) {
+		if (selected[nid] !== null) {
+			selectedNids.push(nid);
+		}
+	}
+
+	if (selectedNids.length == 0) {
+		assistant.notify(chrome.i18n.getMessage('error_none_selected'), 'error');
+		if (jQuery('#datalist tr:has(td)').size() === 0) {
+			jQuery('#datalist').hide();
+		}
+		return false;
+	}
+
+	jQuery("#datalist").show();
+
+	var current = 0;
+	addItem();
+
+
+	// 添加1个宝贝到垃圾箱
+	function addItem() {
+
+		if (current === selectedNids.length) {
+			jQuery("table.datalist tbody tr:nth-child(even)").addClass("altrow");
+			jQuery("table.datalist tbody tr").hover(function () {
+				jQuery(this).addClass('highlight');
+			}, function () {
+				jQuery(this).removeClass('highlight');
+			});
+
+			assistant.notify(current + ' auctions to be set offline', 'success');
+
+			return false;
+		}
+
+		var item = selected[selectedNids[current]];
+		var close = jQuery('<a href="javascript:void(0)" title="Do not offline this ">Delete</a>').click(function () {
+			jQuery(this).parents('tr').remove();
+			if (jQuery('#datalist tr:has(td)').size() === 0) {
+				jQuery('#datalist').hide();
+			}
+		});
+
+		jQuery('<tr/>')
+			.attr('id', item.nid)
+			.append(jQuery('<td/>').text(item.nid))
+			.append(jQuery('<td/>').html('<a target="_blank" href="' + item.url + '">' + item.title + '</a>' ))
+			.append(jQuery('<td class="actions"/>').append(close))
+			.appendTo(jQuery('#datalist tbody'));
+
+		setTimeout(function () {
+			current++;
+			addItem();
+		}, 120);
+	}
+}
+
+// 递归提交所有的下架请求
+function submitItems() {
+	var memo = jQuery('#memo').val();
+	if (memo == '') {
+		assistant.notify('Please enter the reason for offline these auctions!', 'error');
+		return false;
+	}
+
+	unregisterCallbacks();
+
+	if (options.auto_memo === 'true') {
+		setLastMemo(memo);
+	}
+
+	var server = options.server_url;
+	var selected = jQuery('tbody tr');
+
+	var current = 0;
+	submitItem();
+
+	// 提交单个的宝贝下架请求, 每次Ajax结束后都会对当前状态调整
+	function submitItem() {
+		if (current === selected.length) {
+			assistant.notify('All auction offline requests completed successfully!', 'success', onSubmitComplete);
+			return false;
+		}
+
+		var item = jQuery(selected[current]);
+		var nid = item.attr('id');
+		var loader = jQuery('<span class="loader">&nbsp;</span>').hide();
+
+		item.find('td.actions').empty().append(loader);
+
+		jQuery.ajax({
+			url: server,
+			data: {
+				c: 'auction_offlines',
+				f: 'add',
+				nid: nid,
+				memo: memo,
+				ajax: 1
+			},
+			method: 'POST',
+			dataType: 'json',
+			beforeSend: function () {
+				loader.show();
+			},
+			complete: function (response) {
+				try {
+					var json = JSON.parse(response.responseText);
+				} catch (error) {
+					assistant.notify('Sorry, an error occurred, maybe you are not logged in Eharmony in current browser!', 'error');
+					item.find('td.actions').text('Oops!');
+					registerCallbacks(); /* 出错之后需要重新监听 */
+					return false;
+				}
+
+				loader.removeClass('loader').addClass('icon');
+				loader.addClass(json.status ? 'accept' : 'block');
+				item.find('td.actions').append(json.code);
+
+				setTimeout(function () {
+					current++;
+					submitItem();
+				}, 250);
+			}
+		});
+	}
+
+	// 所有请求处理完毕之后给出提示
+	function onSubmitComplete() {
+		chrome.tabs.getSelected(null, function (tab) {
+			chrome.extension.getBackgroundPage().resetCheckBoxes();
+
+			// 回到SRP页
+			if (options.auto_close === 'true') {
+				var selectedIndex = chrome.extension.getBackgroundPage().selectedIndex;
+				if (selectedIndex !== null) {
+					chrome.tabs.update(selectedIndex, {selected: true});
+				}
+				chrome.tabs.remove(tab.id, function () { });
+
+			// 如果不关闭当前页, 则重新注册事件
+			} else {
+				registerCallbacks();
+			}
+		});
+	}
+}
+
+// 注册按钮回调
+function registerCallbacks() {
+	jQuery('#submit').click(submitItems).removeClass('disabled');
+	jQuery('#extract').click(addItems).removeClass('disabled');
+}
+
+// 取消按钮回调
+function unregisterCallbacks() {
+	jQuery('#submit, #extract').unbind('click').addClass('disabled');
+}
+
+// 读取上次的下架原因
+function getLastMemo() {
+	var memo = window.localStorage.getItem('memo');
+	if (memo !== null) {
+		jQuery('#memo').text(memo);
+	}
+}
+
+// 设置上次的下架原因到textarea
+function setLastMemo(memo) {
+	return window.localStorage.setItem('memo', memo);
+}
+
+// 页面加载后自动抽取NID
+jQuery(document).ready(function () {
+	registerCallbacks();
+//	if (options.auto_extract === 'true') {
+//		addItems();
+//	}
+//	if (options.auto_memo === 'true') {
+//		getLastMemo();
+//	}
+
+	var server = options.server_url.substr(0, options.server_url.indexOf('?'));
+
+	$('#categories').categories({
+		count: 4,
+		onChange: function (data) {
+			$('#category_id').attr('value', data.id);
+			if (data.name) {
+				$('#category_name').attr('value', data.name);
+			}
+		},
+		apis: {
+			children: server + '?c=categories&f=children&category_id=',
+			path: server + '?c=categories&f=path&category_id=',
+			name: server + '?c=categories&f=name&category_id='
+		}
+	});
+});
+
+</script>
+
+<div class="trashbox main">
+
+	<div class="header">
+		<a href="javascript:void(0)" id="extract" class="button">Extract</a>
+		<textarea id="memo" placeholder="Please enter the reason for offline these auctions!"></textarea>
+		<a href="javascript:void(0)" id="submit" class="button current">Submit</a>
+	</div>
+
+	<table class="datalist" id="datalist" style="display:none;">
+		<thead>
+			<tr>
+				<th width="18%">NID</th>
+				<th width="60%">TITLE</th>
+				<th width="22%">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+
+	<div class="input">
+		<label>类目:</label>
+		<span id="categories"></span>
+		<input type="hidden" name="category_id" id="category_id" value=""/>
+		<input type="hidden" name="category_name" id="category_name" value=""/>
+	</div>
+
+	<p class="footer">Etao Operation Assistant v1.4 by <a href="mailto:wangshijun2010@gmail.com">wangshijun2010@gmail.com</a></p>
+
+</div>
+
+</body>
+</html>

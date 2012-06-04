@@ -1,10 +1,11 @@
 {
-	"name" : "Etao Offline Assistant",
+	"name" : "__MSG_ext_name__",
 	"version" : "1.4",
-	"description" : "Etao Offline Assistant",
+	"description" : "__MSG_ext_name__",
 	"minimum_chrome_version" : "12.0.0.0",
 	"background_page" : "background.html",
 	"options_page": "options.html",
+	"default_locale": "zh_CN",
 	"permissions" : [
 		"contextMenus",
 		"tabs",

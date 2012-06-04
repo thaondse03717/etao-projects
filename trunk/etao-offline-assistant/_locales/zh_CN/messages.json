@@ -1,0 +1,26 @@
+{
+	"ext_name": {
+		"message": "etao运营助手",
+		"description": "Extension Name"
+	},
+	"menu_offline": {
+		"message": "下架所选",
+		"description": "Offline Selected"
+	},
+	"menu_revise": {
+		"message": "订正类目",
+		"description": "Revise Category"
+	},
+	"btn_extract": {
+		"message": "抽取",
+		"description": "Extract"
+	},
+	"btn_submit": {
+		"message": "提交",
+		"description": "Submit"
+	},
+	"memo_placeholder": {
+		"message": "请填写下架原因!",
+		"description": "Please enter the reason for offline these auctions!"
+	}
+}

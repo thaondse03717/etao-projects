@@ -1,0 +1,30 @@
+{
+	"ext_name": {
+		"message": "Etao Operation Assistant",
+		"description": "Extension Name"
+	},
+	"menu_offline": {
+		"message": "Offline Selected",
+		"description": "Offline Selected"
+	},
+	"error_none_selected": {
+		"message": "No auction is selected, please select auctions to be offline first!",
+		"description": "No auction is selected, please select auctions to be offline first!"
+	},
+	"menu_revise": {
+		"message": "Revise Selected",
+		"description": "Revise Selected"
+	},
+	"btn_extract": {
+		"message": "Extract",
+		"description": "Extract"
+	},
+	"btn_submit": {
+		"message": "Submit",
+		"description": "Submit"
+	},
+	"memo_placeholder": {
+		"message": "Please enter the reason for offline these auctions!",
+		"description": "Please enter the reason for offline these auctions!"
+	}
+}
