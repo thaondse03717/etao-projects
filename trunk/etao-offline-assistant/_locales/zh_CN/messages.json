@@ -1,26 +1,42 @@
 {
-	"ext_name": {
-		"message": "etao运营助手",
-		"description": "Extension Name"
-	},
-	"menu_offline": {
-		"message": "下架所选",
-		"description": "Offline Selected"
-	},
-	"menu_revise": {
-		"message": "订正类目",
-		"description": "Revise Category"
-	},
-	"btn_extract": {
-		"message": "抽取",
-		"description": "Extract"
-	},
-	"btn_submit": {
-		"message": "提交",
-		"description": "Submit"
-	},
-	"memo_placeholder": {
-		"message": "请填写下架原因!",
-		"description": "Please enter the reason for offline these auctions!"
-	}
+	"ext_name": {"message": "一淘运营助手"},
+	"ext_options": {"message": "配置一淘运营助手"},
+	"ext_version": {"message": "v2.0"},
+
+	"menu_offline": {"message": "下架所选商品"},
+	"menu_revise": {"message": "修改商品类目"},
+
+	"msg_none_selected": {"message": "您还没有选择任何商品, 请返回是SRP页选择商品!"},
+	"msg_auction_count": {"message": "您共选中$counter$个宝贝", "placeholders": {"counter": { "content" :"$1"}}},
+	"msg_memo_required": {"message": "请输入商品下架的原因!"},
+	"msg_offline_succeed": {"message": "所有的请求已经处理完毕!"},
+	"msg_login_required": {"message": "出错啦, 可能您尚未登录到和谐号中!"},
+
+	"msg_option_saved": {"message": "选项已保存!"},
+	"msg_option_restored": {"message": "选项已恢复到默认!"},
+
+	"thead_nid": {"message": "NID"},
+	"thead_title": {"message": "标题"},
+	"thead_actions": {"message": "操作"},
+
+	"label_category": {"message": "选择后台类目"},
+
+	"opt_server_url": {"message": "服务器地址"},
+	"opt_selector_entry": {"message": "商品选择器"},
+	"opt_selector_entry_tip": {"message": "除非您知道这个选项的功能, 不要随意修改!"},
+	"opt_selector_link": {"message": "连接选择器"},
+	"opt_selector_link_tip": {"message": "除非您知道这个选项的功能, 不要随意修改!"},
+	"opt_behaviors": {"message": "插件行为"},
+	"opt_auto_extract": {"message": "打开商品下架助手或类目订正助手时自动抽取以选中的商品信息?"},
+	"opt_auto_memo": {"message": "记住并自动恢复到上次填写的下架原因?"},
+	"opt_auto_close": {"message": "操作完成后自动关闭下架助手或类目订正助手页面?"},
+
+	"action_delete": {"message": "删除"},
+	"action_extract": {"message": "抽取商品"},
+	"action_submit": {"message": "提交"},
+	"action_save": {"message": "保存"},
+	"action_restore": {"message": "恢复"},
+	"action_config": {"message": "选项"},
+
+	"placeholder_memo": {"message": "请输入商品下架的原因!"}
 }
