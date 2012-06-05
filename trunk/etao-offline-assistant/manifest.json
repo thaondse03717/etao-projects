@@ -1,6 +1,6 @@
 {
 	"name" : "__MSG_ext_name__",
-	"version" : "1.4",
+	"version" : "2.0",
 	"description" : "__MSG_ext_name__",
 	"minimum_chrome_version" : "12.0.0.0",
 	"background_page" : "background.html",
