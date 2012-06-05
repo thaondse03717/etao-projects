@@ -1,3 +1,10 @@
+body {
+	font-family: "Microsoft Yahei", "Georgia", Sans-Serif;
+	font-size: 1em;
+	font-weight: normal;
+	line-height: 1.8em;
+}
+
 /* Icons & Messages */
 a.icon, span.icon {
 	display: inline-block;
@@ -24,29 +31,6 @@ span.loader {
 	height: 16px;
 }
 
-/* Messages */
-div.message {
-	border-radius: 8px;
-	box-shadow: 2px 2px 1px #BDBDBD;
-	font-weight: bold;
-	font-size: 1.5em;
-	padding: 0.75em;
-	text-align: center;
-	width: auto;
-	position: absolute;
-	top: 20%;
-}
-
-div.message.error {
-	background-color: #ED1B24;
-	color: #FFFFFF;
-}
-
-div.message.success {
-	background-color: #1FA038;
-	color: #FFFFFF;
-}
-
 /* 偏好设置页 */
 .options h1 {
 	font-size: 150%;
@@ -55,4 +39,14 @@ div.message.success {
 	background: transparent url(../images/icon.48.png) left top no-repeat;
 	border-bottom: 5px solid #9cc2ef;
 	line-height: 48px;
+}
+
+#container {
+	margin-top: 5em;
+}
+
+footer {
+	margin-top: 2em;
+	padding: 1em 0;
+	border-top: 1px solid #dedede;
 }
