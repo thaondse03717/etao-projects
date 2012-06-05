@@ -1,7 +1,7 @@
 {
    "app": {
       "launch": {
-         "local_path": "index.html"
+         "local_path": "javascript.html"
       }
    },
    "description": "The handy tool to unpack & tidy Souce Code Files.",
