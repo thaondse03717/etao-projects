@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Code Beautifier</title>
+	<script type="text/javascript" src="js/unpackers/javascriptobfuscator_unpacker.js" ></script>
+	<script type="text/javascript" src="js/unpackers/bookmarklet_unpacker.js" ></script>
+	<script type="text/javascript" src="js/unpackers/p_a_c_k_e_r_unpacker.js" ></script>
+	<script type="text/javascript" src="js/beautifier.js.js" ></script>
+	<script type="text/javascript" src="js/app.js.js" ></script>
+	<script type="text/javascript" src="js/app.core.js" ></script>
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="css/app.css" />
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container-fluid">
+			<a class="brand" href="javascript:void(0)">Code Beautifier</a>
+			<ul class="nav">
+				<li><a href="javascript.html" id="javascript">Javascript</a></li>
+				<li><a href="css.html" id="css">CSS</a></li>
+				<li><a href="html.html" id="html">HTML</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div id="container" class="container-fluid">
+
+	<div class="row-fluid">
+
+		<!-- 代码输出区 -->
+		<div class="span10">
+			<textarea name="content" id="content"></textarea>
+		</div>
+
+		<!-- 选项设置 -->
+		<div class="span2">
+			<div class="control-group">
+				<label class="control-label">Indent With</label>
+				<div class="controls">
+					<select name="tabsize" id="tabsize" class="span2">
+						<option value="1">a tab character</option>
+						<option value="2">2 spaces</option>
+						<option value="3">3 spaces</option>
+						<option value="4" selected="selected">4 spaces</option>
+						<option value="8">8 spaces</option>
+					</select>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Options</label>
+				<div class="controls">
+					<label class="checkbox">
+						<input type="checkbox" id="braces-on-own-line" name="braces-on-own-line">Braces on own line?
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" id="preserve-newlines" name="preserve-newlines" checked="checked">Preserve empty lines?
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" id="detect-packers" name="detect-packers" checked="checked">Detect packers?
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" id="keep-array-indentation" name="keep-array-indentation">Keep array indentation?
+					</label>
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="controls">
+					<button onclick="return do_js_beautify()" id="beautify" class="btn btn-success btn-large">Beautify Code</button>
+				</div>
+			</div>
+		</div>
+
+</div>
+
+</body>
+</html>

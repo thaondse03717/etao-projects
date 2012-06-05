@@ -83,11 +83,9 @@ function do_js_beautify() {
 		indent_char = '\t';
 	}
 
-
 	if (js_source && js_source[0] === '<' && js_source.substring(0, 4) !== '<!--') {
 		document.getElementById('content').value = style_html(js_source, indent_size, indent_char, 80);
-	}
-	else {
+	} else {
 		document.getElementById('content').value =
 		js_beautify(unpacker_filter(js_source), {
 			indent_size: indent_size,
@@ -107,15 +105,4 @@ function do_js_beautify() {
 function get_var(name) {
 	var res = new RegExp("[\\?&]" + name + "=([^&#]*)").exec(window.location.href);
 	return res ? res[1] : "";
-}
-
-function run_tests() {
-	var st = new SanityTest();
-	run_beautifier_tests(st);
-	JavascriptObfuscator.run_tests(st);
-	P_A_C_K_E_R.run_tests(st);
-	EscapedBookmarklet.run_tests(st);
-
-	document.getElementById('testresults').style.display = 'block';
-	document.getElementById('testresults').innerHTML = st.results();
 }
