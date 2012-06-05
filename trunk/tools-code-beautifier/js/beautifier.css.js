@@ -1,4 +1,15 @@
-/* File Created: 三月 25, 2012, From:http://artwl.cnblogs.com */
+/**
+ * 用JS美化javascript代码
+ *
+ * Copyright (c) 2011 tomato
+ *
+ * @author	 tomato <wangshijun2010@gmail.com>
+ * @copyright	(c) 2011 www.taobao.com
+ * @version	1.0
+ * @link http://artwl.cnblogs.com
+ * @link http://procssor.com/
+ */
+
 window.onload = function () {
 	var submitBtn = document.getElementById("submit");
 	var tabsize = document.getElementById("tabsize");
