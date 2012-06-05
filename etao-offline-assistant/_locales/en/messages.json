@@ -19,7 +19,7 @@
 	"thead_title": {"message": "Title"},
 	"thead_actions": {"message": "Actions"},
 
-	"label_category": {"message": "Category"},
+	"label_category": {"message": "Choose Category"},
 
 	"opt_server_url": {"message": "Server URI"},
 	"opt_selector_entry": {"message": "Item Selector"},
