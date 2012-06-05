@@ -1,7 +1,7 @@
 {
 	"ext_name": {"message": "Etao Operation Assistant"},
 	"ext_options": {"message": "Etao Operation Assistant Options"},
-	"ext_version": {"message": "v1.4"},
+	"ext_version": {"message": "v2.0"},
 
 	"menu_offline": {"message": "Offline Selected"},
 	"menu_revise": {"message": "Revise Selected"},
