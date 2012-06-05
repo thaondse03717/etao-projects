@@ -1,5 +1,6 @@
 {
 	"ext_name": {"message": "Etao Operation Assistant"},
+	"ext_options": {"message": "Etao Operation Assistant Options"},
 
 	"menu_offline": {"message": "Offline Selected"},
 	"menu_revise": {"message": "Revise Selected"},
@@ -10,15 +11,31 @@
 	"msg_offline_succeed": {"message": "All auction offline requests completed successfully!"},
 	"msg_login_required": {"message": "Sorry, an error occurred, maybe you are not logged in Eharmony in current browser!"},
 
+	"msg_option_saved": {"message": "Options Saved!"},
+	"msg_option_restored": {"message": "Default Options Restored!"},
+
 	"thead_nid": {"message": "NID"},
 	"thead_title": {"message": "Title"},
 	"thead_actions": {"message": "Actions"},
 
 	"label_category": {"message": "Category"},
 
+	"opt_server_url": {"message": "Server URI"},
+	"opt_selector_entry": {"message": "Item Selector"},
+	"opt_selector_entry_tip": {"message": "Do not change this unless you really understand what this means!"},
+	"opt_selector_link": {"message": "Link Selector"},
+	"opt_selector_link_tip": {"message": "Do not change this unless you really understand what this means!"},
+	"opt_behaviors": {"message": "Behaviors"},
+	"opt_auto_extract": {"message": "Extract selected auctions after opening the assistant?"},
+	"opt_auto_memo": {"message": "Remember & recall the offline reason from last operation?"},
+	"opt_auto_close": {"message": "Close the auction offline assistant page after proccess complete?"},
+
 	"action_delete": {"message": "Delete"},
 	"action_extract": {"message": "Extract"},
 	"action_submit": {"message": "Submit"},
+	"action_save": {"message": "Save Options"},
+	"action_restore": {"message": "Restore Defaults"},
+	"action_config": {"message": "Options"},
 
 	"placeholder_memo": {"message": "Please enter the reason for offline these auctions!"}
 }

@@ -31,14 +31,13 @@ span.loader {
 	height: 16px;
 }
 
-/* 偏好设置页 */
-.options h1 {
-	font-size: 150%;
-	padding: 0 0 5px 50px;
-	margin-bottom: 10px;
-	background: transparent url(../images/icon.48.png) left top no-repeat;
-	border-bottom: 5px solid #9cc2ef;
-	line-height: 48px;
+.navbar .pull-right {
+	line-height: 40px;
+}
+
+.navbar .pull-right a {
+	color: #FFFFFF;
+	text-decoration: none;
 }
 
 #container {
@@ -49,4 +48,5 @@ footer {
 	margin-top: 2em;
 	padding: 1em 0;
 	border-top: 1px solid #dedede;
+	color: #555555;
 }

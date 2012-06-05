@@ -134,6 +134,17 @@ var assistant = {
 		$('[data-i18n-title]').each(function() {
 			$(this).attr('title', chrome.i18n.getMessage(this.getAttribute('data-i18n-title')));
 		});
+	},
+
+	// 注册按钮回调
+	registerCallbacks: function() {
+		jQuery('#submit').click(assistant.submitItems).removeClass('disabled');
+		jQuery('#extract').click(assistant.addItems).removeClass('disabled');
+	},
+
+	// 取消按钮回调
+	unregisterCallbacks: function() {
+		jQuery('#submit, #extract').unbind('click').addClass('disabled');
 	}
 
 };
