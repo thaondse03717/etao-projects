@@ -1,8 +1,8 @@
 /**
- * ÒıÇæÉÌÆ·ÀàÄ¿¶à¼¶¼¶Áª×Ô¶¯¼ÓÔØjQuery²å¼ş
- * ÔÚÉÌÆ·ÀàÄ¿¼Û¸ñÇø¼äÉèÖÃ, °´ÀàÄ¿ÏÂ¼ÜÉÌÆ·ÖĞÓÃµ½
+ * å¼•æ“å•†å“ç±»ç›®å¤šçº§çº§è”è‡ªåŠ¨åŠ è½½jQueryæ’ä»¶
+ * åœ¨å•†å“ç±»ç›®ä»·æ ¼åŒºé—´è®¾ç½®, æŒ‰ç±»ç›®ä¸‹æ¶å•†å“ä¸­ç”¨åˆ°
  *
- * Ê¹ÓÃ·½·¨¼û /templates/category_offlines/add.php
+ * ä½¿ç”¨æ–¹æ³•è§ /templates/category_offlines/add.php
  *
  * $('#categories').categories({
  * 		count: 4,
@@ -14,7 +14,7 @@
  *
  * @author	 tomato <wangshijun2010@gmail.com>
  * @copyright	(c) 2011 www.taobao.com
- * @see ²å¼ş´úÂëÄ©Î²µÄÄ¬ÈÏÉèÖÃÏîµÄËµÃ÷
+ * @see æ’ä»¶ä»£ç æœ«å°¾çš„é»˜è®¤è®¾ç½®é¡¹çš„è¯´æ˜
  * @version	1.0
  */
 
@@ -35,18 +35,18 @@ $.fn.categories = function (options) {
 	var prefix = {id: 'select-', selector: '#select-'};
 
 	return $(this).each(function () {
-		// ÉèÖÃÊÇ·ñ³õÊ¼»¯µÄ±êÖ¾²ÎÊı
+		// è®¾ç½®æ˜¯å¦åˆå§‹åŒ–çš„æ ‡å¿—å‚æ•°
 		$.data(this, 'initialized', false);
 		var self = this;
 
 		self.uuids = [];
 
-		// ÎªµÚ1¸öselectÌí¼ÓvalueÎª-1µÄoption
+		// ä¸ºç¬¬1ä¸ªselectæ·»åŠ valueä¸º-1çš„option
 		var start_category = options.start_category ? options.start_category : -1;
-		var loader = $('<select><option value="' + start_category + '" selected="selected">ËùÓĞ×ÓÀàÄ¿</option></select>');
+		var loader = $('<select><option value="' + start_category + '" selected="selected">æ‰€æœ‰å­ç±»ç›®</option></select>');
 
-		// ¸½¼Ó¸÷¼¶ÀàÄ¿selectµÄÈİÆ÷
-		// ÕâÀï¸½¼ÓÁË1¸öÒş²ØµÄspan#select_0, ÓÃÓÚ´¥·¢¶¥¼¶ÀàÄ¿µÄ¼ÓÔØ
+		// é™„åŠ å„çº§ç±»ç›®selectçš„å®¹å™¨
+		// è¿™é‡Œé™„åŠ äº†1ä¸ªéšè—çš„span#select_0, ç”¨äºè§¦å‘é¡¶çº§ç±»ç›®çš„åŠ è½½
 		for (var i=0; i<=options.count+1; i++) {
 			self.uuids[i] = categories.uuid();
 			if (i == 0) {
@@ -57,10 +57,10 @@ $.fn.categories = function (options) {
 			$(prefix.selector + self.uuids[i]).attr('load_next_on_change', i < options.count+1);
 		}
 
-		// ÎªÏÂÀ­ÁĞ±íµÄÑ¡ÔñÊÂ¼ş°ó¶¨¼àÌıÕß
+		// ä¸ºä¸‹æ‹‰åˆ—è¡¨çš„é€‰æ‹©äº‹ä»¶ç»‘å®šç›‘å¬è€…
 		$('select', this).live('change', function () {
 
-			// ÒòÎªÓĞÊ±¿ÉÄÜÖ»ĞèÒªÇ°¼¸¼¶ÀàÄ¿, ×îºóÄÇ¼¶ÀàÄ¿·¢Éú±ä»¯Ê±ÎŞĞèajaxÇëÇó
+			// å› ä¸ºæœ‰æ—¶å¯èƒ½åªéœ€è¦å‰å‡ çº§ç±»ç›®, æœ€åé‚£çº§ç±»ç›®å‘ç”Ÿå˜åŒ–æ—¶æ— éœ€ajaxè¯·æ±‚
 			if ($(this).parent('span').attr('load_next_on_change') == false) {
 				return false;
 			}
@@ -69,8 +69,8 @@ $.fn.categories = function (options) {
 			var category_name = $('option:selected', this).text();
 			var target_id = $(this).parent('span').next('span').attr('id');
 
-			// Èç¹ûÑ¡ÔñÁËËùÓĞÀàÄ¿(value=-1)²¢ÇÒÒÑ¾­³õÊ¼»¯, ÔòÇå¿Õ×ÓÀàÄ¿Ñ¡Ôñ
-			// ²¢ÇÒ°ÑÑ¡ÖĞÀàÄ¿IDÉèÖÃÎªµ±Ç°µÈ¼¶ÉÏ¼¶ÀàÄ¿±»Ñ¡ÖĞµÄÀàÄ¿ID, ÒòÎªÊÇËùÓĞ×ÓÀàÄ¿
+			// å¦‚æœé€‰æ‹©äº†æ‰€æœ‰ç±»ç›®(value=-1)å¹¶ä¸”å·²ç»åˆå§‹åŒ–, åˆ™æ¸…ç©ºå­ç±»ç›®é€‰æ‹©
+			// å¹¶ä¸”æŠŠé€‰ä¸­ç±»ç›®IDè®¾ç½®ä¸ºå½“å‰ç­‰çº§ä¸Šçº§ç±»ç›®è¢«é€‰ä¸­çš„ç±»ç›®ID, å› ä¸ºæ˜¯æ‰€æœ‰å­ç±»ç›®
 			if ((category_id == '-1') && ($.data(self, 'initialized') == true)) {
 				$(this).parent('span').nextAll('span').empty();
 				var selected = $(this).parent('span').prev('span').find('select');
@@ -79,7 +79,7 @@ $.fn.categories = function (options) {
 					category_name = $('option:selected', selected).text();
 				}
 
-			// ·ñÔòajax¼ÓÔØËùÑ¡ÖĞµÄÀàÄ¿µÄ×ÓÀàÄ¿
+			// å¦åˆ™ajaxåŠ è½½æ‰€é€‰ä¸­çš„ç±»ç›®çš„å­ç±»ç›®
 			} else {
 				$.data(self, 'initialized', true);
 				if ($(this).is(':not(categories span:last)')) {
@@ -93,7 +93,7 @@ $.fn.categories = function (options) {
 				});
 			}
 
-			// ×îºó¸üĞÂÒş²ØÓòµÄID
+			// æœ€åæ›´æ–°éšè—åŸŸçš„ID
 			if ($.isFunction(options.onChange)) {
 				options.onChange({
 					id: category_id,
@@ -102,11 +102,11 @@ $.fn.categories = function (options) {
 			}
 		});
 
-		// ½øĞĞ³õÊ¼»¯, ´¥·¢¶¥¼¶ÀàÄ¿µÄ¼ÓÔØ
+		// è¿›è¡Œåˆå§‹åŒ–, è§¦å‘é¡¶çº§ç±»ç›®çš„åŠ è½½
 		loader.trigger('change');
 
-		// Èç¹ûÓÃ»§Ö¸¶¨ÁË±¾À´µÄÑ¡ÖĞÖµ(¿ÉÄÜÔÚ¶¥¼¶ÀàÄ¿, Ò²¿ÉÄÜÔÚÈÎÒâÉî¶ÈµÄ×ÓÀàÄ¿ÏÂÃæ)
-		// ÔòĞèÒª×ö½ø1²½µÄ³õÊ¼»¯´¦Àí, ÕâÖÖÇé¿öÍ¨³£ÔÚÊı¾İ¼ÇÂ¼µÄ±à¼­Ò³Ãæ³öÏÖ
+		// å¦‚æœç”¨æˆ·æŒ‡å®šäº†æœ¬æ¥çš„é€‰ä¸­å€¼(å¯èƒ½åœ¨é¡¶çº§ç±»ç›®, ä¹Ÿå¯èƒ½åœ¨ä»»æ„æ·±åº¦çš„å­ç±»ç›®ä¸‹é¢)
+		// åˆ™éœ€è¦åšè¿›1æ­¥çš„åˆå§‹åŒ–å¤„ç†, è¿™ç§æƒ…å†µé€šå¸¸åœ¨æ•°æ®è®°å½•çš„ç¼–è¾‘é¡µé¢å‡ºç°
 		if (options.category_id) {
 			$.getJSON(apis.path + options.category_id, function (data) {
 				log(data);
@@ -130,7 +130,7 @@ $.fn.categories = function (options) {
 			});
 		}
 
-		// °´ÕÕÀàÄ¿²ã¼¶¼ÓÔØ¶à¼¶ÀàÄ¿, Ïàµ±ÓÚ1¸öAjax¶ÓÁĞ
+		// æŒ‰ç…§ç±»ç›®å±‚çº§åŠ è½½å¤šçº§ç±»ç›®, ç›¸å½“äº1ä¸ªAjaxé˜Ÿåˆ—
 		function startQueue() {
 			log('self.current: ' + self.current + ' path.current: ' + self.category_ids[self.current]);
 
@@ -143,7 +143,7 @@ $.fn.categories = function (options) {
 
 				log('queue complete selector: ' + select + ':option[value="' + self.category_ids[self.current] + '"]');
 
-				// ¶ÓÁĞ¼ÓÔØÍê±Ïºó¸üĞÂÒş²ØÓòµÄID
+				// é˜Ÿåˆ—åŠ è½½å®Œæ¯•åæ›´æ–°éšè—åŸŸçš„ID
 				if ($.isFunction(options.onChange)) {
 					options.onChange({
 						id: self.category_ids[self.current],
@@ -175,15 +175,15 @@ $.fn.categories = function (options) {
 	}
 };
 
-// Ä¬ÈÏÑ¡Ïî
+// é»˜è®¤é€‰é¡¹
 var categories = {
 	defaults: {
-		count: 4,									// ×î´óÖ§³Ö¼¸¼¶ÀàÄ¿Õ¹Ê¾
-		category_id: false,					// Ä¬ÈÏÑ¡ÖĞÄÄ¸öÀàÄ¿
-		start_category: false,				// ÒÔÄÄ¸öÀàÄ¿×÷Îª¸ùÀàÄ¿
-		onChange: function () {},			// Òş²ØÓò±ä»¯Ê±µÄ»Øµ÷
-		onComplete: function () {},		// Ã¿´ÎAjaxÇëÇó½áÊø
-		container: $('<span class="select"></span>'), // Ã¿¸öÀàÄ¿selectµÄÈİÆ÷
+		count: 4,									// æœ€å¤§æ”¯æŒå‡ çº§ç±»ç›®å±•ç¤º
+		category_id: false,					// é»˜è®¤é€‰ä¸­å“ªä¸ªç±»ç›®
+		start_category: false,				// ä»¥å“ªä¸ªç±»ç›®ä½œä¸ºæ ¹ç±»ç›®
+		onChange: function () {},			// éšè—åŸŸå˜åŒ–æ—¶çš„å›è°ƒ
+		onComplete: function () {},		// æ¯æ¬¡Ajaxè¯·æ±‚ç»“æŸ
+		container: $('<span class="select"></span>'), // æ¯ä¸ªç±»ç›®selectçš„å®¹å™¨
 		debug: false,
 		apis: false
 	},
@@ -203,8 +203,8 @@ var categories = {
 	}
 };
 
-// °ÑÄ¬ÈÏÑ¡Ïî¸½¼Óµ½²å¼şAPIÉÏ, ¿ÉÒÔ.²Ù×÷·ûÉè¶¨
-// Èç $.fn.categories.defaults.apis = 'blah blah';
+// æŠŠé»˜è®¤é€‰é¡¹é™„åŠ åˆ°æ’ä»¶APIä¸Š, å¯ä»¥.æ“ä½œç¬¦è®¾å®š
+// å¦‚ $.fn.categories.defaults.apis = 'blah blah';
 $.extend($.fn.categories, categories.defaults);
 
 })(jQuery);

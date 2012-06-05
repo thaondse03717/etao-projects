@@ -1,203 +1,26 @@
 <!DOCTYPE html>
 <head>
-	<title>Etao Operation Assistant</title>
+	<title data-i18n-content="ext_name"></title>
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 	<link type="text/css" rel="stylesheet" href="css/bootstrap.2.0.4.min.css" />
 	<script type="text/javascript" src="js/jquery.1.7.2.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.2.0.4.min.js"></script>
 	<script type="text/javascript" src="js/assistant.js"></script>
+	<script type="text/javascript" src="js/assistant.offline.js"></script>
 </head>
 <body>
 
 <script type="text/javascript">
-// 读取插件配置
 var options = assistant.getOptions();
 
-//添加所有已选宝贝到垃圾箱
-function addItems() {
-	jQuery('#datalist tr:has(td)').remove();
-
-	// 从Background页抽取以选中的数据
-	var selected = chrome.extension.getBackgroundPage().selected;
-	var selectedNids = [];
-	for (var nid in selected) {
-		if (selected[nid] !== null) {
-			selectedNids.push(nid);
-		}
-	}
-
-	if (selectedNids.length == 0) {
-		assistant.notify('No auction is selected, please select auctions to be offline first!', 'error');
-		if (jQuery('#datalist tr:has(td)').size() === 0) {
-			jQuery('#datalist').hide();
-		}
-		return false;
-	}
-
-	jQuery("#datalist").show();
-
-	var current = 0;
-	addItem();
-
-
-	// 添加1个宝贝到垃圾箱
-	function addItem() {
-
-		if (current === selectedNids.length) {
-			jQuery("table.datalist tbody tr:nth-child(even)").addClass("altrow");
-			jQuery("table.datalist tbody tr").hover(function () {
-				jQuery(this).addClass('highlight');
-			}, function () {
-				jQuery(this).removeClass('highlight');
-			});
-
-			assistant.notify(current + ' auctions to be set offline', 'success');
-
-			return false;
-		}
-
-		var item = selected[selectedNids[current]];
-		var close = jQuery('<a href="javascript:void(0)" title="Do not offline this ">Delete</a>').click(function () {
-			jQuery(this).parents('tr').remove();
-			if (jQuery('#datalist tr:has(td)').size() === 0) {
-				jQuery('#datalist').hide();
-			}
-		});
-
-		jQuery('<tr/>')
-			.attr('id', item.nid)
-			.append(jQuery('<td/>').text(item.nid))
-			.append(jQuery('<td/>').html('<a target="_blank" href="' + item.url + '">' + item.title + '</a>' ))
-			.append(jQuery('<td class="actions"/>').append(close))
-			.appendTo(jQuery('#datalist tbody'));
-
-		setTimeout(function () {
-			current++;
-			addItem();
-		}, 120);
-	}
-}
-
-// 递归提交所有的下架请求
-function submitItems() {
-	var memo = jQuery('#memo').val();
-	if (memo == '') {
-		assistant.notify('Please enter the reason for offline these auctions!', 'error');
-		return false;
-	}
-
-	unregisterCallbacks();
-
-	if (options.auto_memo === 'true') {
-		setLastMemo(memo);
-	}
-
-	var server = options.server_url;
-	var selected = jQuery('tbody tr');
-
-	var current = 0;
-	submitItem();
-
-	// 提交单个的宝贝下架请求, 每次Ajax结束后都会对当前状态调整
-	function submitItem() {
-		if (current === selected.length) {
-			assistant.notify('All auction offline requests completed successfully!', 'success', onSubmitComplete);
-			return false;
-		}
-
-		var item = jQuery(selected[current]);
-		var nid = item.attr('id');
-		var loader = jQuery('<span class="loader">&nbsp;</span>').hide();
-
-		item.find('td.actions').empty().append(loader);
-
-		jQuery.ajax({
-			url: server,
-			data: {
-				c: 'auction_offlines',
-				f: 'add',
-				nid: nid,
-				memo: memo,
-				ajax: 1
-			},
-			method: 'POST',
-			dataType: 'json',
-			beforeSend: function () {
-				loader.show();
-			},
-			complete: function (response) {
-				try {
-					var json = JSON.parse(response.responseText);
-				} catch (error) {
-					assistant.notify('Sorry, an error occurred, maybe you are not logged in Eharmony in current browser!', 'error');
-					item.find('td.actions').text('Oops!');
-					registerCallbacks(); /* 出错之后需要重新监听 */
-					return false;
-				}
-
-				loader.removeClass('loader').addClass('icon');
-				loader.addClass(json.status ? 'accept' : 'block');
-				item.find('td.actions').append(json.code);
-
-				setTimeout(function () {
-					current++;
-					submitItem();
-				}, 250);
-			}
-		});
-	}
-
-	// 所有请求处理完毕之后给出提示
-	function onSubmitComplete() {
-		chrome.tabs.getSelected(null, function (tab) {
-			chrome.extension.getBackgroundPage().resetCheckBoxes();
-
-			// 回到SRP页
-			if (options.auto_close === 'true') {
-				var selectedIndex = chrome.extension.getBackgroundPage().selectedIndex;
-				if (selectedIndex !== null) {
-					chrome.tabs.update(selectedIndex, {selected: true});
-				}
-				chrome.tabs.remove(tab.id, function () { });
-
-			// 如果不关闭当前页, 则重新注册事件
-			} else {
-				registerCallbacks();
-			}
-		});
-	}
-}
-
-// 注册按钮回调
-function registerCallbacks() {
-	jQuery('#submit').click(submitItems).removeClass('disabled');
-	jQuery('#extract').click(addItems).removeClass('disabled');
-}
-
-// 取消按钮回调
-function unregisterCallbacks() {
-	jQuery('#submit, #extract').unbind('click').addClass('disabled');
-}
-
-// 读取上次的下架原因
-function getLastMemo() {
-	var memo = window.localStorage.getItem('memo');
-	if (memo !== null) {
-		jQuery('#memo').text(memo);
-	}
-}
-
-// 设置上次的下架原因到textarea
-function setLastMemo(memo) {
-	return window.localStorage.setItem('memo', memo);
-}
-
-// 页面加载后自动抽取NID
 jQuery(document).ready(function () {
+	assistant.getTranslation();
 	registerCallbacks();
+
 	if (options.auto_extract === 'true') {
-		addItems();
+		assistant.addItems();
 	}
+
 	if (options.auto_memo === 'true') {
 		getLastMemo();
 	}
@@ -208,22 +31,22 @@ jQuery(document).ready(function () {
 <div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
 		<div class="container-fluid">
-			<a class="brand" href="#">Etao Operation Assistant</a>
+			<a class="brand" target="_blank" href="http://code.google.com/p/etao-projects/downloads/list" data-i18n-content="ext_name"></a>
 		</div>
 	</div>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid" id="container">
 
-	<div class="row-fluid" style="margin-top: 60px;">
+	<div class="row-fluid">
 		<div class="span12">
 
 		<table class="table table-striped table-bordered" id="datalist">
 			<thead>
 				<tr>
-					<th width="18%">NID</th>
-					<th width="60%">TITLE</th>
-					<th width="22%">Actions</th>
+					<th width="18%" data-i18n-content="thead_nid"></th>
+					<th width="60%" data-i18n-content="thead_title"></th>
+					<th width="22%" data-i18n-content="thead_actions"></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -235,15 +58,23 @@ jQuery(document).ready(function () {
 
 	<div class="row-fluid">
 		<div class="span12">
-			<input type="text" id="memo" class="span9" placeholder="Please enter the reason for offline these auctions!"/>
-			<a href="javascript:void(0)" id="extract" class="btn btn-primary">Extract</a>
-			<a href="javascript:void(0)" id="submit" class="btn btn-primary">Submit</a>
+			<div class="control-group">
+				<div class="controls">
+					<textarea id="memo" class="span12 input-xlarge" data-i18n-title="placeholder_memo" title="Please enter the reason for offline these auctions!"></textarea>
+				</div>
+			</div>
+			<div class="form-actions">
+				<a href="javascript:void(0)" id="submit" class="btn btn-large btn-info"><i class="icon-ok icon-white"></i>&nbsp;</a>
+				<a href="javascript:void(0)" id="extract" class="btn btn-large btn-info"><i class="icon-refresh icon-white"></i>&nbsp;</a>
+			</div>
 		</div>
 	</div>
 
-</div>
+	<footer>
+		<p><strong data-i18n-content="ext_name"></strong> v1.4 by <a href="mailto:wangshijun2010@gmail.com">wangshijun2010@gmail.com</a></p>
+	</footer>
 
-<footer>Etao Operation Assistant v1.4 by <a href="mailto:wangshijun2010@gmail.com">wangshijun2010@gmail.com</a></footer>
+</div>
 
 </body>
 </html>

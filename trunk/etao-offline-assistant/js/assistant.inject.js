@@ -50,7 +50,7 @@ function onOptionsLoaded(options) {
 			var patterns = {
 				id:			 /\?id=\d+/gi,									// 内网商品NID
 				nid:			[/&nid=\d+/gi, /\?nid=\d+/gi],		// 外网商品NID
-				p4p:			/&value=nid_\d+/gi,							// P4P商品NID
+				p4p:			/&value=nid_\d+/gi,						// P4P商品NID
 				rec:			/itemid:\"\d+\"/gi							// 推广商品NID
 			};
 
