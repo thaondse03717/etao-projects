@@ -7,31 +7,37 @@
 	<script type="text/javascript" src="js/bootstrap.2.0.4.min.js"></script>
 	<script type="text/javascript" src="js/assistant.js"></script>
 	<script type="text/javascript" src="js/assistant.offline.js"></script>
+	<script type="text/javascript">
+
+		var options = assistant.getOptions();
+
+		jQuery(document).ready(function () {
+			assistant.getTranslation();
+			assistant.registerCallbacks();
+
+			if (options.auto_extract === 'true') {
+				assistant.addItems();
+			}
+
+			if (options.auto_memo === 'true') {
+				assistant.getLastMemo();
+			}
+		});
+
+	</script>
 </head>
 <body>
-
-<script type="text/javascript">
-var options = assistant.getOptions();
-
-jQuery(document).ready(function () {
-	assistant.getTranslation();
-	registerCallbacks();
-
-	if (options.auto_extract === 'true') {
-		assistant.addItems();
-	}
-
-	if (options.auto_memo === 'true') {
-		getLastMemo();
-	}
-});
-
-</script>
 
 <div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
 		<div class="container-fluid">
 			<a class="brand" target="_blank" href="http://code.google.com/p/etao-projects/downloads/list" data-i18n-content="ext_name"></a>
+			<p class="nav pull-right">
+				<a href="options.html" target="_blank">
+					<i class="icon-cog icon-white"></i>&nbsp;
+					<span data-i18n-content="action_config"></span>
+				</a>
+			</p>
 		</div>
 	</div>
 </div>
@@ -64,8 +70,14 @@ jQuery(document).ready(function () {
 				</div>
 			</div>
 			<div class="form-actions">
-				<a href="javascript:void(0)" id="submit" class="btn btn-large btn-info"><i class="icon-ok icon-white"></i>&nbsp;</a>
-				<a href="javascript:void(0)" id="extract" class="btn btn-large btn-info"><i class="icon-refresh icon-white"></i>&nbsp;</a>
+				<a href="javascript:void(0)" id="submit" class="btn btn-large btn-info">
+					<i class="icon-ok icon-white"></i>&nbsp;
+					<span data-i18n-content="action_submit"></span>
+				</a>
+				<a href="javascript:void(0)" id="extract" class="btn btn-large btn-info">
+					<i class="icon-refresh icon-white"></i>&nbsp;
+					<span data-i18n-content="action_extract"></span>
+				</a>
 			</div>
 		</div>
 	</div>

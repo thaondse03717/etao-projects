@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <head>
-	<title>Options - Etao Auction Offline Assistant</title>
+	<title data-i18n-content="ext_options"></title>
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
-	<script type="text/javascript" src="js/jquery.1.6.2.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.2.0.4.min.css" />
+	<script type="text/javascript" src="js/jquery.1.7.2.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.2.0.4.min.js"></script>
 	<script type="text/javascript" src="js/assistant.js"></script>
 </head>
 <body>
 
 <script type="text/javascript">
 jQuery(document).ready(function () {
+	assistant.getTranslation();
 
-	jQuery('#submit').click(saveOptions);
+	jQuery('#save').click(saveOptions);
 	jQuery('#restore').click(restoreOptions);
-	jQuery('#toggle').click(function () {
-		$('#advanced').toggle();
-	});
 
 	getOptions();
 
 	function saveOptions(internal) {
 		_saveOptions();
-		assistant.notify('Options Saved', 'success');
+		assistant.notify(chrome.i18n.getMessage("msg_option_saved"), 'success');
 	}
 
 	function restoreOptions() {
 		_renderOptions(assistant.defaults);
 		_saveOptions();
-		assistant.notify('Default Options Restored', 'success');
+		assistant.notify(chrome.i18n.getMessage("msg_option_restored"), 'success');
 	}
 
 	function getOptions() {
@@ -47,7 +47,7 @@ jQuery(document).ready(function () {
 	}
 
 	function _renderOptions(options) {
-		console.log(assistant.defaults);
+		console.log(options);
 
 		jQuery('#selector_entry').attr('value', options.selector_entry);
 		jQuery('#selector_link').attr('value', options.selector_link);
@@ -72,53 +72,82 @@ jQuery(document).ready(function () {
 });
 </script>
 
-<div class="options main">
-
-	<h1>Config Auction Offline Assistant</h1>
-
-	<div class="input">
-		<label>Server URI</label>
-		<input type="text" id="server_url" name="server_url" class="text" />
-	</div>
-
-	<div id="advanced" style="display:none;">
-		<div class="input">
-			<label>Item Selector</label>
-			<input type="text" id="selector_entry" name="selector_entry" class="text" />
-		</div>
-
-		<div class="input">
-			<label>Link Selector</label>
-			<input type="text" id="selector_link" name="selector_link" class="text" />
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container-fluid">
+			<a class="brand" target="_blank" href="http://code.google.com/p/etao-projects/downloads/list" data-i18n-content="ext_options"></a>
 		</div>
 	</div>
+</div>
 
-	<div class="input">
-		<label>&nbsp;</label>
-		<input type="checkbox" name="auto_extract" id="auto_extract" value="1" />
-		<label for="auto_extract" class="inline">extract selected auctions after opening the assistant?</label>
+<div class="container-fluid" id="container">
+
+	<div class="row-fluid">
+		<div class="span12">
+
+			<form method="post" action="" class="form-horizontal">
+
+				<div class="control-group">
+					<label class="control-label" data-i18n-content="opt_server_url"></label>
+					<div class="controls">
+						<input type="text" id="server_url" name="server_url" class="span4" />
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" data-i18n-content="opt_selector_entry"></label>
+					<div class="controls">
+						<input type="text" id="selector_entry" name="selector_entry" class="span4" />
+						<span class="help-inline" data-i18n-content="opt_selector_entry_tip"></span>
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" data-i18n-content="opt_selector_link"></label>
+					<div class="controls">
+						<input type="text" id="selector_link" name="selector_link" class="span4" />
+						<span class="help-inline" data-i18n-content="opt_selector_link_tip"></span>
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" data-i18n-content="opt_behaviors"></label>
+					<div class="controls">
+						<label class="checkbox">
+							<input type="checkbox" name="auto_extract" id="auto_extract" value="1" />
+							<span data-i18n-content="opt_auto_extract"></span>
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" name="auto_memo" id="auto_memo" value="1" />
+							<span data-i18n-content="opt_auto_memo"></span>
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" name="auto_close" id="auto_close" value="1" />
+							<span data-i18n-content="opt_auto_close"></span>
+						</label>
+					</div>
+				</div>
+
+				<div class="form-actions">
+					<a href="javascript:void(0)" id="save" class="btn btn-large btn-info">
+						<i class="icon-ok icon-white"></i>&nbsp;
+						<span data-i18n-content="action_save"></span>
+					</a>
+					<a href="javascript:void(0)" id="restore" class="btn btn-large btn-info">
+						<i class="icon-refresh icon-white"></i>&nbsp;
+						<span data-i18n-content="action_restore"></span>
+					</a>
+				</div>
+
+			</form>
+
+		</div>
+
 	</div>
 
-	<div class="input">
-		<label>&nbsp;</label>
-		<input type="checkbox" name="auto_memo" id="auto_memo" value="1" />
-		<label for="auto_memo" class="inline">remember & recall the offline reason from last operation?</label>
-	</div>
-
-	<div class="input">
-		<label>&nbsp;</label>
-		<input type="checkbox" name="auto_close" id="auto_close" value="1" />
-		<label for="auto_close" class="inline">close the auction offline assistant page after proccess complete?</label>
-	</div>
-
-	<div class="input" style="margin-top: 1em;">
-		<label>&nbsp;</label>
-		<a href="javascript:void(0)" id="submit" class="button current" style="margin-right: 1em;">Save Options</a>
-		<a href="javascript:void(0)" id="restore" class="button" style="margin-right: 1em;">Restore Defaults</a>
-		<a href="javascript:void(0)" id="toggle" class="button">Advanced Options</a>
-	</div>
-
-	<p class="footer">Auction Offline Assistant v1.1 by <a href="mailto:wangshijun2010@gmail.com">wangshijun2010@gmail.com</a></p>
+	<footer>
+		<p><strong data-i18n-content="ext_name"></strong> v1.4 by <a href="mailto:wangshijun2010@gmail.com">wangshijun2010@gmail.com</a></p>
+	</footer>
 
 </div>
 
