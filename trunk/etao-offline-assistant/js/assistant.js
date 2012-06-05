@@ -92,7 +92,7 @@ var assistant = {
 					jQuery(this).removeClass('highlight');
 				});
 
-				assistant.notify(chrome.i18n.getMessage("msg_auction_count", current), 'success');
+				// assistant.notify(chrome.i18n.getMessage("msg_auction_count", current), 'success');
 
 				return false;
 			}

@@ -9,12 +9,9 @@ $.extend(assistant, {
 
 		assistant.unregisterCallbacks();
 
-		if (options.auto_memo === 'true') {
-			assistant.setLastMemo(memo);
-		}
-
 		var server = options.server_url;
 		var selected = jQuery('tbody tr');
+		var category_id = jQuery('#category_id').val();
 
 		var current = 0;
 		submitItem();
@@ -36,10 +33,10 @@ $.extend(assistant, {
 			jQuery.ajax({
 				url: server,
 				data: {
-					c: 'auction_offlines',
+					c: 'auction_modifications',
 					f: 'add',
 					nid: nid,
-					memo: memo,
+					category_id: category_id,
 					ajax: 1
 				},
 				method: 'POST',
