@@ -22,7 +22,7 @@ $.extend(assistant, {
 		// 提交单个的宝贝下架请求, 每次Ajax结束后都会对当前状态调整
 		function submitItem() {
 			if (current === selected.length) {
-				assistant.notify(chrome.i18n.getMessage("msg_revise_succeed"), 'success');
+				assistant.notify(chrome.i18n.getMessage("msg_offline_succeed"), 'success');
 				onSubmitComplete();
 				return false;
 			}
@@ -57,9 +57,9 @@ $.extend(assistant, {
 						return false;
 					}
 
-					loader.removeClass('loader').addClass('icon');
-					loader.addClass(json.status ? 'accept' : 'block');
-					item.find('td.actions').append(json.code);
+					loader.removeClass('loader').hide();
+					var badge = $('<span class="badge"></span>').addClass(json.status ? 'badge-success' : 'badge-important').text(json.code);
+					item.find('td.actions').append(badge);
 
 					setTimeout(function () {
 						current++;

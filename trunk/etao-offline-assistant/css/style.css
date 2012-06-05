@@ -1,27 +1,6 @@
 body {
 	font-family: "Microsoft Yahei", "Georgia", Sans-Serif;
-	font-size: 1em;
-	font-weight: normal;
-	line-height: 1.8em;
 }
-
-/* Icons & Messages */
-a.icon, span.icon {
-	display: inline-block;
-	vertical-align: middle;
-	width: 25px;
-	height: 25px;
-	background-repeat: no-repeat;
-	background-position: left top;
-	background-color: transparent;
-	background-image: url(../images/icons.gif);
-	overflow: hidden;
-	text-decoration: none;
-	cursor: pointer;
-}
-
-.icon.accept { background-position: 0px -250px; }
-.icon.block { background-position: 0px -275px; }
 
 /* Ajax Loader */
 span.loader {

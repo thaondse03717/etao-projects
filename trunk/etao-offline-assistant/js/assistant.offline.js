@@ -57,9 +57,9 @@ $.extend(assistant, {
 						return false;
 					}
 
-					loader.removeClass('loader').addClass('icon');
-					loader.addClass(json.status ? 'accept' : 'block');
-					item.find('td.actions').append(json.code);
+					loader.removeClass('loader').hide();
+					var badge = $('<span class="badge"></span>').addClass(json.status ? 'badge-success' : 'badge-important').text(json.code);
+					item.find('td.actions').append(badge);
 
 					setTimeout(function () {
 						current++;
