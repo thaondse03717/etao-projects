@@ -1,0 +1,30 @@
+﻿*
+{
+    font-family:微软雅黑,宋体,Calibri,Tahoma,Verdana;
+}
+
+html, body
+{
+    
+}
+
+body
+{
+    font-size:12px;
+}
+
+a
+{
+	color:blue;
+    outline:none;
+}
+
+a:hover
+{
+    color:#3E80FA;
+}
+
+img
+{
+    border:none;
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="../magix/src/fs/bg/injection.js"></script>
+    <script src="../magix/src/magix.js"></script>
+    <style>
+        html, body
+        {
+            margin:0;
+        }
+        
+        ul
+        {
+            white-space:nowrap;
+            margin:0;
+            padding:0;
+            list-style:none;
+        }
+        
+        ul li
+        {
+            position:relative;
+            border-bottom:1px solid #E0E0E0;;
+        }
+        
+        ul li:last-child
+        {
+            border-bottom:none;
+        }
+        
+        ul li a
+        {
+            color:black;
+            display:block;
+            height:40px;
+            line-height:40px;
+            padding-left:5px;
+            padding-right:5px;
+            text-decoration:none;
+        }
+        
+        ul li a:hover
+        {
+            background:-webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#EFEFFF));
+        }
+        
+        ul li img
+        {
+            position:absolute;
+            top:6px;
+        }
+        
+        ul li span
+        {
+            margin-left:38px;
+        }
+    </style>
+    
+    <script>
+        function _showLogin()
+        {
+            var url = $mappath("https://www.$google/accounts/Login?continue=http://www.$google");
+            window.open(url);
+        }
+    </script>
+</head>
+<body>
+    <ul id="popupMenu">
+        <li>
+            <a target="open" href="javascript:_showLogin();">
+                <img src="../icons/google_account_32.png"/>
+                <span>@@login_google_first</span>
+            </a>
+        </li>
+        <li>
+            <a target="open" href="javascript:_showLogin();">
+                <img width="211" height="140" src="../_locales/@@locale/images/login_suggestion.png"/>
+            </a>
+        </li>
+    </ul>
+    <script>
+        $translate(popupMenu);
+    </script>
+</body>
+</html>

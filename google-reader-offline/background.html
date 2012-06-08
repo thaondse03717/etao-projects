@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="magix/src/fs/bg/boot.js"></script>
+    <script src="magix/src/magix.js"></script>
+    <script>
+        $import("g.Chrome");
+        $import("g.Urls");
+        $import("g.Account");
+        $import("g.Reader");
+
+        $import("fs.Preferences");
+        $import("fs.entities.Feed");
+        $import("fs.actions.AppIconClickAction");
+        $import("fs.listeners.GReaderListener");
+        $import("fs.bg.Storage");
+        $import("fs.bg.Core");
+    </script>
+</head>
+<body>
+    <script>
+        fs.Pref.init();
+        g.Chrome.init();
+        fs.bg.Storage.init();
+        fs.bg.Core.init();
+        g.Reader.init();
+        g.Account.init();
+
+        chrome.browserAction.onClicked.addListener(new fs.actions.AppIconClickAction().doAction);
+    </script>
+</body>
+</html>

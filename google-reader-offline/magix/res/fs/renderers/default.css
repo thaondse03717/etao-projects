@@ -1,0 +1,188 @@
+.feed-list > .message
+{
+    color:#555;
+}
+
+.feed-list > li
+{
+    display:block;
+    background-color:white;
+    padding-top:30px;
+    padding-bottom:0px;
+    padding-left:48px;
+    padding-right:48px;
+    margin-bottom:18px;
+    border:1px solid white;
+    -webkit-box-shadow:0px 0px 16px #888;
+    background-repeat:no-repeat;
+}
+
+
+.feed-list > li.unread
+{
+    border:1px solid #EB8900;
+    -webkit-box-shadow:0px 0px 16px #ff8888;
+}
+
+
+.feed-list > li.selected
+{
+    border:1px solid #0089EB;
+    -webkit-box-shadow:0px 0px 16px #8888ff;
+}
+
+.feed-list > li > #title
+{
+    display:block;
+    text-decoration:none;
+    padding-bottom:3px;
+    margin-bottom:5px;
+    cursor:pointer;
+}
+
+.feed-list > li > #title #new
+{
+    display:inline-block;
+    font-size:12px;
+    font-weight:bold;
+    background-color:#FFE28A;
+    margin-left:8px;
+    padding-left:4px;
+    padding-right:4px;
+    border-radius:4px;
+}
+
+
+
+
+.feed-list > li > #info
+{
+    color:gray;
+    display:block;
+    height:8px;    
+}
+
+.feed-list > li > #info > #published
+{
+    display:inline;
+    float:left;
+}
+
+.feed-list > li > #info > #author
+{
+    display:inline;
+    float:left;
+    padding-left:5px;
+}
+
+.feed-list > li > #info > #origin
+{
+    display:inline;
+    margin-top:4px;
+    line-height:20px;
+    float:right;
+}
+
+.feed-list > li > #info > #origin > #from
+{
+    margin-right:4px;
+}
+
+.feed-list > li > #info > #origin > img
+{
+    width:16px;
+    height:16px;
+    margin-right:2px;
+}
+
+.feed-list > li > #info > #origin > a
+{
+    
+}
+
+
+
+
+.feed-list > li > #content
+{
+    display:block;
+}
+
+.list-view > li
+{
+    padding-bottom:20px;
+}
+
+
+.list-view > li > #content
+{
+    display:none;
+}
+
+.list-view > li .bottom.toolstrip
+{
+    display:none;
+}
+
+
+.feed-list > li.expand > #content
+{
+	display:block;
+}
+
+.feed-list > li.expand .bottom.toolstrip
+{
+    display:block;
+}
+
+
+.feed-list .toolstrip
+{
+	display:block;
+	opacity:0.2;
+	-webkit-transition: opacity 0.3s linear;
+	margin-top:20px;
+	height:40px;
+}
+
+.feed-list .toolstrip:hover
+{
+    opacity:1;
+}
+
+.feed-list .toolstrip > .toolbar
+{
+	float:right;
+	display:inline-block;
+    margin-top:7px;
+}
+
+
+
+
+
+
+.feed-list .pager
+{
+    -webkit-user-select:none;
+    cursor:pointer;
+    text-align:center;
+    font-size:15px;
+    font-weight:bold;
+    display:block;
+    height:38px;
+    line-height:38px;
+    background:-webkit-gradient(linear, left top, left bottom, from(orange), to(yellow));
+    border-left:1px solid #FF8910;
+    border-top:1px solid #FF8910;
+    border-bottom:1px solid #E78910;
+    border-right:1px solid #E78910;
+    border-radius:10px 10px 0px 0px;
+    -webkit-box-shadow:0px 0px 5px #888;
+}
+
+
+.feed-list .pager:active
+{
+    background:-webkit-gradient(linear, left top, left bottom, from(#ffff00), to(#orange));
+}

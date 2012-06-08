@@ -1,0 +1,821 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>MagicCube FeedStore</title>
+    <script src="../magix/src/fs/bg/injection.js"></script>
+    <script src="../magix/src/magix.js"></script>
+    
+    <script>
+        $include("~/skins/default/browser.css");
+    
+        $import("fs.ui.renderers.FeedListRenderer");
+        $import("fs.ui.renderers.DefaultFeedListRenderer");
+        $import("fs.ui.controls.ColorTable");
+        $import("fs.ui.controls.ColorPicker");
+        $import("fs.ui.controls.StyleSelector");
+        $import("fs.ui.views.NaviListView");
+        $import("fs.ui.views.FeedListView");
+        $import("fs.ui.Shotcuts");
+    </script>
+    
+    <script for="Browser">
+        var _default_path = null;
+
+        if (fs.bg.Storage.unreads.length > 0 && fs.Pref.getSetting("gen", "jumpToUnreadsFirst"))
+        {
+            _default_path = "unreads";
+        }
+        else
+        {
+            _default_path = fs.Pref.getSetting("gen", "startPage");
+        }
+        
+        function _init()
+        {
+            if (fs.Pref.getSetting("reading", "viewMode") == "detail")
+            {
+                btnDetailView_onclick();
+            }
+            else
+            {
+                btnListView_onclick();
+            }
+            
+            if (location.hash != null && location.hash != "" && location.hash != "#")
+            {
+                naviListView.selectItem(location.hash.substr(1), null, function() { naviListView.selectItem(_default_path); });
+            }
+            else
+            {
+                naviListView.selectItem(_default_path);
+            }
+
+            if (fs.bg.Storage.subscriptions.length == 0)
+            {
+                btnRefresh_onclick();
+            }
+            else
+            {
+                setTimeout(btnRefresh_onclick, 1500);
+            }
+
+            fs.bg.Storage.onUnreadsChanged.$(_fs_bg_Storage_onFeedsChanged);
+            fs.bg.Storage.onFeedsChanged.$(_fs_bg_Storage_onFeedsChanged);
+
+            fs.ui.Shotcuts.init();
+        }
+        
+        function _updateStatus()
+        {
+            if (naviListView.selectedPath == "preferences")
+            {
+                _setStatus();
+            }
+            else
+            {
+                if (feedListView.items.length > 1)
+                {
+                    _setStatus("feed_list_status", [feedListView.items.length, feedListView.getUnreadCount()]);
+                }
+                else
+                {
+                    _setStatus();
+                }
+            }
+        }
+
+        function _setStatus(p_message, p_args)
+        {
+            if (typeof(statusBar) != "undefined")
+            {
+                statusBar.innerText = (p_message != null ? $msg(p_message, p_args) : "");
+            }
+        }
+
+
+
+        function naviListView_onSelectionChanging(sender, e)
+        {
+            if (naviListView.selectedPath == "preferences" && _preferencesChanged)
+            {
+                if (confirm($msg("confirm_save_preferences")))
+                {
+                    _savePreferences();
+                }
+            }
+        }
+        
+
+        function naviListView_onSelectionChanged(sender, e)
+        {
+            switch (naviListView.selectedPath)
+            {
+                case "preferences":
+                    userPrefTabControl.style.display = "";
+                    seperatorPanel.style.display = "none";
+                    seperatorPanel.style.backgroundColor = "white";
+                    feedListView.container.style.position = "absolute";
+                    feedListView.container.style.top = "-10000px";  // 'display:none' doesn't work correctly.
+                    _loadPreferences();
+                    break;
+                default:
+                    userPrefTabControl.style.display = "none";
+                    seperatorPanel.style.display = "";
+                    seperatorPanel.style.backgroundColor = "#CBCFD3";
+                    feedListView.container.style.position = "";
+                    feedListView.path =  naviListView.selectedPath;
+                    feedListView.refresh();
+                    break;
+            }
+            _onresize();
+            _updateStatus();
+        }
+
+        function _fs_bg_Storage_onFeedsChanged()
+        {
+            _updateStatus();
+        }
+
+        function btnMarkAsRead_onclick()
+        {
+            if (naviListView.selectedPath != "preferences")
+            {
+                if (feedListView.path == "all" || feedListView.path == "unreads")
+                { 
+                    fs.bg.Storage.markAllAsRead();
+                }
+                else
+                {
+                    feedListView.markAllAsRead();
+                }
+            }
+        }
+
+        function btnRefresh_onclick()
+        {
+            fs.bg.Core.gReaderListener.doCheck();
+        }
+
+        function btnListView_onclick()
+        {
+            btnListView.className = "checked";
+            btnDetailView.className = "";
+            feedListView.setViewMode("list");
+        }
+        
+        function btnDetailView_onclick()
+        {
+            btnListView.className = "";
+            btnDetailView.className = "checked";
+            feedListView.setViewMode("detail");
+        }
+    </script>
+    
+    
+    <script for="Preferences">
+        _preferencesChanged = false;
+
+        
+        function _loadPreferences()
+        {
+            _loadOptions();
+            _loadStyles();
+            _preferencesChanged = false;
+        }
+
+        function _savePreferences()
+        {
+            _updateOptions();
+            _updateStyles();
+            fs.Pref.save();
+            _preferencesChanged = false;
+        }
+
+        
+        function _loadOptions()
+        {
+            // General
+            selStartPage.value = fs.Pref.getSetting("gen", "startPage");
+            chkJumpToUnreadsFirst.checked = fs.Pref.getSetting("gen", "jumpToUnreadsFirst");
+            selFeedCheckInterval.value = fs.Pref.getSetting("gen", "feedCheckInterval");
+            chkDownloadUnreadOnly.checked = fs.Pref.getSetting("gen", "downloadUnreadOnly");
+            chkMarkAllAsRead.checked = fs.Pref.getSetting("gen", "markAllAsReadAfterDownloading");
+
+            // Reading
+            selPageSize.value = fs.Pref.getSetting("reading", "pageSize");
+            selViewMode.value = fs.Pref.getSetting("reading", "viewMode");
+            chkAutoPaging.checked = fs.Pref.getSetting("reading", "autoPaging");
+            chkForceOpenInNewWindow.checked = fs.Pref.getSetting("reading", "forceOpenInNewWindow");
+
+            // Storage
+            selStorageMaxAge.value = fs.Pref.getSetting("storage", "maxAge");
+            selStorageMaxCount.value = fs.Pref.getSetting("storage", "maxCount");
+
+            // Accessibility
+            chkScrollTrackingInDetailView.checked = fs.Pref.getSetting("access", "scrollTrackingInDetailView");
+            chkScrollTrackingInListView.checked = fs.Pref.getSetting("access", "scrollTrackingInListView");
+        }
+
+        function _loadStyles()
+        {            
+            fs.ui.renderers.FeedListRenderer.applyPrefStyle(divTitleStyle.style, "titleStyle");
+            fs.ui.renderers.FeedListRenderer.applyPrefStyle(divContentStyle.style, "contentStyle");
+
+            titleStyleSelector.setStyle(_cloneStyle(fs.Pref.getSetting("styles", "titleStyle")));
+            contentStyleSelector.setStyle(_cloneStyle(fs.Pref.getSetting("styles", "contentStyle")));
+        }
+
+        function _cloneStyle(p_style)
+        {
+            var result = {};
+            for (var name in p_style)
+            {
+                result[name] = p_style[name];
+            }
+            return result;
+        }
+
+        function _updateOptions()
+        {
+            // General
+            fs.Pref.setSetting("gen", "startPage", selStartPage.value);
+            fs.Pref.setSetting("gen", "jumpToUnreadsFirst", chkJumpToUnreadsFirst.checked);
+            fs.Pref.setSetting("gen", "feedCheckInterval", parseInt(selFeedCheckInterval.value));
+            fs.Pref.setSetting("gen", "downloadUnreadOnly", chkDownloadUnreadOnly.checked);
+            fs.Pref.setSetting("gen", "markAllAsReadAfterDownloading", chkMarkAllAsRead.checked);
+            
+            // Reading
+            fs.Pref.setSetting("reading", "pageSize", parseInt(selPageSize.value));
+            fs.Pref.setSetting("reading", "viewMode", selViewMode.value);
+            fs.Pref.setSetting("reading", "autoPaging", chkAutoPaging.checked);
+            fs.Pref.setSetting("reading", "forceOpenInNewWindow", chkForceOpenInNewWindow.checked);
+
+            // Storage
+            fs.Pref.setSetting("storage", "maxAge", parseInt(selStorageMaxAge.value));
+            fs.Pref.setSetting("storage", "maxCount", parseInt(selStorageMaxCount.value));
+
+            // Accessibility
+            fs.Pref.setSetting("access", "scrollTrackingInDetailView", chkScrollTrackingInDetailView.checked);
+            fs.Pref.setSetting("access", "scrollTrackingInListView", chkScrollTrackingInListView.checked);
+        }
+
+        function _updateStyles()
+        {
+            if (titleStyleSelector.changed)
+            {
+                fs.Pref.setSetting("styles", "titleStyle", titleStyleSelector.style);
+                titleStyleSelector.changed = false;
+            }
+            
+            if (contentStyleSelector.changed)
+            {
+                fs.Pref.setSetting("styles", "contentStyle", contentStyleSelector.style);
+                contentStyleSelector.changed = false;
+            }
+        }
+
+        function userPrefTabControl_ontabclick()
+        {
+            if (event.srcElement.tagName == "LI")
+            {
+                var li = event.srcElement;
+                var ul = li.parentNode;
+                var ulChildren = ul.children;
+                
+                var td = userPrefTabControl.tBodies[0].rows[0].cells[0];
+                var tdChildren = td.children;
+                
+                for (var i = 0; i < ulChildren.length; i++)
+                {
+                    if (ulChildren[i] == li)
+                    {
+                        ulChildren[i].className = "selected";
+                        tdChildren[i].style.display = "";
+                    }
+                    else
+                    {
+                        ulChildren[i].className = "";
+                        tdChildren[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+        function _preferences_onchange()
+        {
+            _preferencesChanged = true;
+        }
+
+        window.addEventListener("load", function()
+                {
+                    var inputs = userPrefTabControl.getElementsByTagName("INPUT");
+                    for (var i = 0; i < inputs.length; i++)
+                    {
+                        var input = inputs[i];
+                        input.onchange = _preferences_onchange;
+                    }
+                    
+                    var selects = userPrefTabControl.getElementsByTagName("SELECT");
+                    for (var i = 0; i < selects.length; i++)
+                    {
+                        var select = selects[i];
+                        select.onchange = _preferences_onchange;
+                    }
+                }, false);
+    </script>
+    
+    
+    <script for="Resizing">
+        window.addEventListener("load", function()
+            {            
+                seperatorPanel.addEventListener("mousedown", _seperator_onmousedown);
+            }, false);
+
+        var _seperatorIndicator = $new("div");
+        _seperatorIndicator.style.width = "3px";
+        _seperatorIndicator.style.height = "100%";
+        _seperatorIndicator.style.backgroundColor = "blue";
+        _seperatorIndicator.style.opacity = "0.2";
+        _seperatorIndicator.style.position = "absolute";
+        
+        var _mouseX, _mouseY;
+        function _seperator_onmousedown()
+        {
+            if (event.srcElement.id == "seperator") return;
+            if (seperator.className != "expanded") return;
+            
+            _mouseX = event.x;
+            document.body.style.cursor = "col-resize";
+            document.body.style.webkitUserSelect = "none";
+            
+            _seperatorIndicator.style.posTop = topPanel.offsetHeight;
+            _seperatorIndicator.style.posLeft = naviPanel.offsetWidth;
+            _seperatorIndicator.style.posHeight = browserLayout.offsetHeight - topPanel.offsetHeight - bottomPanel.offsetHeight;
+            contentPanel.style.position = "relative";
+            contentPanel.appendChild(_seperatorIndicator);
+            
+            document.addEventListener("mousemove", _seperator_onmousemove, true);
+            document.addEventListener("mouseup", _seperator_onmouseup, true);
+        }
+
+        function _seperator_onmousemove()
+        {
+            var disp = (event.x - _mouseX);
+            var width = (naviPanel.offsetWidth + disp);
+            if (width < 150)
+            {
+                width = 150;
+            }
+            _seperatorIndicator.style.posLeft = width;
+        }
+
+        function _seperator_onmouseup()
+        {
+            var disp = (event.x - _mouseX);
+            _setNaviPanelWidth(naviPanel.offsetWidth + disp);
+            document.body.style.cursor = "";
+            document.body.style.webkitUserSelect = "";
+            contentPanel.style.position = "";
+            contentPanel.removeChild(_seperatorIndicator);
+            
+            document.removeEventListener("mousemove", _seperator_onmousemove, true);
+            document.removeEventListener("mouseup", _seperator_onmouseup, true);
+        }
+
+        function _seperator_onclick()
+        {
+            _setNaviPanelExpanded(seperator.className != "expanded")
+        }
+
+        function _setNaviPanelWidth(p_width)
+        {
+            if (p_width < 150)
+            {
+                p_width = 150;
+            }
+            naviCol.style.posWidth = p_width;
+            _onresize();
+
+            localStorage["fs.profiles.*.ui.browser.naviPanel.width"] = p_width;
+        }
+
+        var _naviPanelExpanded = true;
+        function _setNaviPanelExpanded(p_expanded)
+        {
+            if (!p_expanded)
+            {
+                seperator.className = "";
+                naviCol.style.display = "none";
+                naviPanel.style.display = "none";
+                seperatorPanel.style.cursor = "";
+            }
+            else
+            {
+                seperator.className = "expanded";
+                naviCol.style.display = "";
+                naviPanel.style.display = "";
+                seperatorPanel.style.cursor = "col-resize";
+            }
+            _onresize();
+
+            localStorage["fs.profiles.*.ui.browser.naviPanel.expanded"] = p_expanded;
+
+            _naviPanelExpanded = p_expanded;
+        }
+        
+    
+        function _onresize()
+        {
+            var width = document.body.offsetWidth - naviPanel.offsetWidth - seperatorPanel.offsetWidth;
+            if (width < 100)
+            {
+                width = 100;
+            }
+            feedListView.setWidth(width - 32);
+            userPrefTabControl.style.width = width + "px";
+        }
+        $onResize.$(_onresize);
+    </script>
+    
+    <script>
+        window.addEventListener("load", function()
+        {
+            fs.ui.Shotcuts.registerKey(function() { _setNaviPanelExpanded(!_naviPanelExpanded); }, "u");
+            fs.ui.Shotcuts.registerKey(btnRefresh_onclick, "r");
+            fs.ui.Shotcuts.registerKey(btnDetailView_onclick, "1");
+            fs.ui.Shotcuts.registerKey(btnListView_onclick, "2");
+
+            fs.ui.Shotcuts.registerKey(function() { if (feedListView.selectedItem) {feedListView.markAsRead(feedListView.selectedItem);} }, "m");
+            fs.ui.Shotcuts.registerKey(btnMarkAsRead_onclick, "a", true);
+            fs.ui.Shotcuts.registerKey(function(){ if (feedListView.selectedItem) { feedListView.openSourceLink(feedListView.selectedItem); } }, "v");
+            fs.ui.Shotcuts.registerKey(function(){ if (feedListView.selectedItem) { feedListView.switchFavourites(feedListView.selectedItem); } }, "s");
+            
+            fs.ui.Shotcuts.registerKey(feedListView.selectNextItem, "j");
+            fs.ui.Shotcuts.registerKey(feedListView.selectNextItem, 32);
+            fs.ui.Shotcuts.registerKey(feedListView.selectPreviousItem, "k");
+            fs.ui.Shotcuts.registerKey(feedListView.selectPreviousItem, 32, true);
+        }, false);
+    </script>
+</head>
+<body onload="_init();">
+<table id="browserLayout" cellpadding="0" cellspacing="0">
+    <colgroup>
+        <col id="naviCol"/>
+        <col id="seperatorCol"/>
+        <col id="contentCol"/>
+    </colgroup>
+    <tr>
+        <td id="topPanel" colspan="3">
+            <img id="logo" src="../images/app_title.png"/>
+            <div id="toolstrip">
+                <ul class="toolbar">
+                    <li id="btnPrevious" onclick="feedListView.selectPreviousItem();"><img src="../icons/previous_16.png"/></li>
+                    <li id="btnNext" onclick="feedListView.selectNextItem();"><img src="../icons/next_16.png"/></li>
+                </ul>
+                <ul class="toolbar">
+                    <li id="btnRefresh" onclick="btnRefresh_onclick();"><span>@@action_refresh</span></li>
+                    <li id="btnMarkAsRead" onclick="btnMarkAsRead_onclick();"><span>@@action_mark_all_as_read</span></li>
+                </ul>
+                <ul class="toolbar">
+                    <li id="btnDetailView" title="@@action_detail_view" onclick="btnDetailView_onclick();"><img src="../icons/detail_view_16.png"/></li>
+                    <li id="btnListView" title="@@action_list_view" onclick="btnListView_onclick();"><img src="../icons/list_view_16.png"/></li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td id="naviPanel">
+            
+            <ul id="naviListView_container"></ul>
+            <script>
+                var naviListView = new fs.ui.views.NaviListView(naviListView_container);
+                naviListView.onSelectionChanging.$(naviListView_onSelectionChanging);
+                naviListView.onSelectionChanged.$(naviListView_onSelectionChanged);
+                naviListView.init();
+            </script>
+            
+        </td>
+        
+        
+        
+        <td id="seperatorPanel" style="cursor:col-resize">
+            <div id="seperator" class="expanded" onclick="_seperator_onclick();"/>
+        </td>
+        
+        
+        <td id="contentPanel">
+        
+            <ul id="feedListView_container"></ul>
+            <script>
+                var feedListView = new fs.ui.views.FeedListView(feedListView_container);
+                feedListView.init();
+            </script>
+            
+            
+            <table id="userPrefTabControl" cellpadding="0" cellspacing="0" style="display:none;">
+                <thead>
+                    <tr>
+                        <td>
+                            <ul onclick="userPrefTabControl_ontabclick();">
+                                <li class="selected">@@options</li>
+                                <li>@@styles</li>
+                                <li>@@about</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td valign="top">
+                            <div id="optionsTab">
+                                <dl id="general">
+                                    <dt>@@general</dt>
+                                    <dd>
+                                        <ul>
+                                            <li>
+                                                @@start_page_1
+                                                <select id="selStartPage">
+                                                    <option value="all">@@navi_list_all</option>
+                                                    <option value="favourites">@@navi_list_favourites</option>
+                                                    <option value="today">@@navi_list_today</option>
+                                                    <option value="24hours">@@navi_list_24hours</option>
+                                                </select>
+                                                @@start_page_2
+                                                <ul>
+                                                    <li>
+                                                        <input type="checkbox" id="chkJumpToUnreadsFirst"/>
+                                                        <label for="chkJumpToUnreadsFirst">@@auto_jump_to_unreads_first</label>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                @@check_freq_1
+                                                <select id="selFeedCheckInterval">
+                                                    <option   value="30000">0.5</option>
+                                                    <option   value="60000">1</option>
+                                                    <option  value="300000">5</option>
+                                                    <option  value="600000">10</option>
+                                                    <option value="1200000">20</option>
+                                                    <option value="1800000">30</option>
+                                                    <option value="1800000">60</option>
+                                                    <option value="3600000">120</option>
+                                                </select>
+                                                @@check_freq_2
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" id="chkDownloadUnreadOnly"/>
+                                                <label for="chkDownloadUnreadOnly">@@download_unread_only</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" id="chkMarkAllAsRead"/>
+                                                <label for="chkMarkAllAsRead">@@mark_all_as_read_after_downloading</label>
+                                            </li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                                
+                                <dl id="reading">
+                                    <dt>@@reading</dt>
+                                    <dd>
+                                        <ul>
+                                            <li>
+                                                @@page_size_1
+                                                <select id="selPageSize">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="10">10</option>
+                                                    <option value="15">15</option>
+                                                    <option value="20">20</option>
+                                                    <option value="30">30</option>
+                                                    <option value="50">50</option>
+                                                    <option value="80">80</option>
+                                                    <option value="100">100</option>
+                                                </select>
+                                                @@page_size_2
+                                            </li>
+                                            
+                                            <li>
+                                                @@default_view_mode_1
+                                                <select id="selViewMode">
+                                                    <!-- <option value="rememberLast">@@remember_last_choise</option> -->
+                                                    <option value="detail">@@action_detail_view</option>
+                                                    <option value="list">@@action_list_view</option>
+                                                </select>
+                                                @@default_view_mode_2
+                                            </li>
+                                            
+                                            <li>
+                                                <input type="checkbox" id="chkAutoPaging"/>
+                                                <label for="chkAutoPaging">@@auto_paging</label>
+                                            </li>
+                                            
+                                            <li>
+                                                <input type="checkbox" id="chkForceOpenInNewWindow"/>
+                                                <label for="chkForceOpenInNewWindow">@@force_open_in_new_window</label>
+                                            </li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                                                            
+                                <dl id="storage">
+                                    <dt>@@storage</dt>
+                                    <dd>
+                                        <ul>
+                                            <li>
+                                                @@storage_max_age_1
+                                                <select id="selStorageMaxAge">
+                                                    <option value="24">24 @@hours</option>
+                                                    <option value="48">2 @@days</option>
+                                                    <option value="72">3 @@days</option>
+                                                    <option value="96">4 @@days</option>
+                                                    <option value="120">5 @@days</option>
+                                                    <option value="144">6 @@days</option>
+                                                    <option value="168">1 @@week</option>
+                                                    <option value="336">2 @@weeks</option>
+                                                    <option value="720">1 @@month</option>
+                                                    <option value="4320">6 @@months</option>
+                                                    <option value="8640">12 @@months</option>
+                                                </select>
+                                                @@storage_max_age_2
+                                            </li>
+                                            <li>
+                                                @@storage_max_count_1
+                                                <select id="selStorageMaxCount">
+                                                    <option value="50">50</option>
+                                                    <option value="100">100</option>
+                                                    <option value="200">200</option>
+                                                    <option value="300">300</option>
+                                                    <option value="500">500</option>
+                                                    <option value="800">800</option>
+                                                    <option value="1000">1000</option>
+                                                </select>
+                                                @@storage_max_count_2
+                                            </li>
+                                            <li>
+                                                <button class="warning" onclick="if (confirm($msg('confirm_clear_storage'))) { fs.bg.Storage.clearLocalStorage(); }" style="padding-left:15px;padding-right:15px;">@@clear_storage</button>
+                                            </li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                                
+                                <dl id="accessibility">
+                                    <dt>@@accessibility</dt>
+                                    <dd>
+                                        <ul>
+                                            <li>
+                                                <input id="chkScrollTrackingInDetailView" type="checkbox"/>
+                                                <label for="chkScrollTrackingInDetailView">@@scroll_tracking_detail_view</label>
+                                            </li>
+                                            <li>
+                                                <input id="chkScrollTrackingInListView" type="checkbox"/>
+                                                <label for="chkScrollTrackingInListView">@@scroll_tracking_list_view</label>
+                                            </li>
+                                   
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            <div id="stylesTab" style="display:none">
+                                <dl id="colorsAndFonts">
+                                    <dt>@@colors_and_fonts</dt>
+                                    <dd>
+                                        <ul>
+                                            <li>
+                                                @@title_style
+                                                
+                                                <div id="titleStyleSelector_container" style="margin-left:12px;margin-top:5px;"></div>                                                
+                                                <div id="divTitleStyle">
+                                                    @@title_example
+                                                </div>
+                                                
+                                            </li>
+                                            
+                                            <li>
+                                                @@content_style
+                                                
+                                                <div id="contentStyleSelector_container" style="margin-left:12px;margin-top:5px;"></div>                                                
+                                                <div id="divContentStyle">
+                                                    @@content_example
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                                <dl id="rendering">
+                                    <dt>@@rendering</dt>
+                                    <dd>
+                                        <ul>
+                                            <li>
+                                                @@skin
+                                                <select id="selRenderer">
+                                                    <option value="default">Default Skin</option>
+                                                </select>
+                                            </li>
+                                            
+                                            <li>
+                                                @@feed_list_renderer
+                                                <select id="selRenderer">
+                                                    <option value="fs.ui.renderers.DefaultFeedListRenderer">Default Renderer</option>
+                                                </select>
+                                            </li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            <div id="aboutTab" style="display:none">
+                                <dl id="about">
+                                    <dt>@@about</dt>
+                                    <dd>
+                                        <table>
+                                            <tr>
+                                                <td><img src="../icons/app_128.png"/></td>
+                                                <td>
+                                                    <h1>MagicCube Feed Store</h1>
+                                                    <hr/>
+                                                    <div id="slogan">@@slogan</div>
+                                                    <div id="version">@@version <label id="ver"></label></div>
+                                                    <div id="developer">@@developed_by MagicCube</div>
+                                                    <div id="developer">@@developer <a href="mailto:henry1943@163.com">Henry Lee</a></div>
+                                                </td>
+                                            </tr>
+                                        </table>                        
+                                    </dd>
+                                </dl>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="buttonPanel">
+                            <button id="btnRestoreDefaults" onclick="if (confirm($msg('confirm_restore_defaults'))) { fs.Pref.restore(); _loadPreferences(); }">@@action_restore_defaults</button>
+                            <button id="btnApply" onclick="_savePreferences();">@@action_apply</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td id="bottomPanel" colspan="3">
+            <div id="statusBar"></div>
+        </td>
+    </tr>
+</table>
+
+<script>
+    $translate(userPrefTabControl);
+    $translate(toolstrip);
+    ver.innerText = $mainfest.version;
+
+    if (localStorage["fs.profiles.*.ui.browser.naviPanel.expanded"] == "false")
+    {
+        _setNaviPanelExpanded(false);
+    }
+    if (localStorage["fs.profiles.*.ui.browser.naviPanel.width"] != null)
+    {
+        _setNaviPanelWidth(parseInt(localStorage["fs.profiles.*.ui.browser.naviPanel.width"]));
+    }
+
+    var titleStyleSelector = new fs.ui.controls.StyleSelector(titleStyleSelector_container);
+    titleStyleSelector.displayLineSpacing = false;
+    titleStyleSelector.onChanged.$(function()
+        {
+            _preferencesChanged = true;
+            fs.ui.renderers.FeedListRenderer.applyStyle(divTitleStyle.style, titleStyleSelector.style);
+        });
+    titleStyleSelector.init();
+
+    var contentStyleSelector = new fs.ui.controls.StyleSelector(contentStyleSelector_container);
+    contentStyleSelector.onChanged.$(function()
+        {
+            _preferencesChanged = true;
+            fs.ui.renderers.FeedListRenderer.applyStyle(divContentStyle.style, contentStyleSelector.style);
+        });
+    contentStyleSelector.init();
+</script>
+
+</body>
+</html>

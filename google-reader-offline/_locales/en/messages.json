@@ -1,0 +1,329 @@
+{
+   "about": {
+      "message": "About"
+   },
+   "accessibility": {
+      "message": "Accessibility"
+   },
+   "action_add_to_favourites": {
+      "message": "Add to Favourites"
+   },
+   "action_apply": {
+      "message": "Apply Settings"
+   },
+   "action_cancel": {
+      "message": "Cancel"
+   },
+   "action_delete": {
+      "message": "Delete"
+   },
+   "action_detail_view": {
+      "message": "Detail View"
+   },
+   "action_list_view": {
+      "message": "List View"
+   },
+   "action_mark_all_as_read": {
+      "message": "Mark All as Read"
+   },
+   "action_mark_as_read": {
+      "message": "Mark as Read"
+   },
+   "action_refresh": {
+      "message": "Refresh"
+   },
+   "action_remove_from_favourites": {
+      "message": "Remove from Favourites"
+   },
+   "action_restore_defaults": {
+      "message": "Restore Defaults"
+   },
+   "action_source": {
+      "message": "Source"
+   },
+   "auto_jump_to_unreads_first": {
+      "message": "If there're unread items, please jump to 'Unread Items' first."
+   },
+   "auto_paging": {
+      "message": "Enable 'Auto-Paging'."
+   },
+   "check_freq_1": {
+      "message": "Check Google Reader every"
+   },
+   "check_freq_2": {
+      "message": "minutes."
+   },
+   "clear_storage": {
+      "message": "Clear All Data"
+   },
+   "colors_and_fonts": {
+      "message": "Colors and Fonts"
+   },
+   "confirm_clear_storage": {
+      "message": "Are you sure to clear all the data (excluding your favourites)?\r\n\r\n - Both account and preferences will be reserved"
+   },
+   "confirm_import_feeds": {
+      "message": "It seems that this is your first time here. Do you want to import your previous readings from Google Reader?"
+   },
+   "confirm_new_feed_fresh": {
+      "message": "New feeds arrived! Do you wanto refrsh now?"
+   },
+   "confirm_remove_from_favourites": {
+      "message": "Also remove it from your favourites?"
+   },
+   "confirm_restore_defaults": {
+      "message": "Are you sure to restore defaults?"
+   },
+   "confirm_save_preferences": {
+      "message": "Preferences have been changed. Do you want to apply these changes?"
+   },
+   "content_example": {
+      "message": "The quick brown fox jumps over the lazy dog.\u003Cbr/\u003EThe quick brown fox jumps over the lazy dog.\u003Cbr/\u003EThe quick brown fox jumps over the lazy dog."
+   },
+   "content_style": {
+      "message": "Content Style:"
+   },
+   "date_time_format": {
+      "message": "yyyy-MM-dd HH:mm:ss"
+   },
+   "day": {
+      "message": "day"
+   },
+   "day_ago": {
+      "message": "1 day ago"
+   },
+   "days": {
+      "message": "days"
+   },
+   "days_ago": {
+      "message": "$1 days ago"
+   },
+   "default_font": {
+      "message": "Calibri,Tahoma,Verdana"
+   },
+   "default_view_mode_1": {
+      "message": "Use"
+   },
+   "default_view_mode_2": {
+      "message": "as my default view mode."
+   },
+   "developed_by": {
+      "message": "Develop by : "
+   },
+   "developer": {
+      "message": "Developer: "
+   },
+   "download_unread_only": {
+      "message": "Download unread items only."
+   },
+   "err_http_0": {
+      "message": "FeedStore was enabled to fetch RSS feeds from Google Reader. Please check your internet connection."
+   },
+   "err_http_400": {
+      "message": "Sign in Google to customize your FeedStore"
+   },
+   "err_http_403": {
+      "message": "Sign in Google to customize your FeedStore"
+   },
+   "err_http_404": {
+      "message": "FeedStore was enabled to fetch RSS feeds from Google Reader, the protocal may have been changed."
+   },
+   "err_http_500": {
+      "message": "FeedStore was enabled to fetch RSS feeds from Google Reader, the server may have some problems."
+   },
+   "err_http_504": {
+      "message": "FeedStore was enabled to fetch RSS feeds from Google Reader. Please check your internet connection."
+   },
+   "err_http_common": {
+      "message": "FeedStore was enabled to fetch RSS feeds from Google Reader. The server returned HTTP $1 status."
+   },
+   "feed_list_item_not_found": {
+      "message": "Item not found in your selection."
+   },
+   "feed_list_pager": {
+      "message": "Read the next $1 items, $1 left"
+   },
+   "feed_list_renderer": {
+      "message": "Feed List Renderer:"
+   },
+   "feed_list_status": {
+      "message": "$1 items, $2 unread"
+   },
+   "font_family": {
+      "message": "Font"
+   },
+   "font_size": {
+      "message": "Font Size"
+   },
+   "fonts": {
+      "message": "Calibri,Tahoma,Verdana"
+   },
+   "force_open_in_new_window": {
+      "message": "Force open link in new window."
+   },
+   "fore_color": {
+      "message": "Fore Color"
+   },
+   "from": {
+      "message": "from"
+   },
+   "general": {
+      "message": "General"
+   },
+   "google_host": {
+      "message": "google.com"
+   },
+   "hour": {
+      "message": "hour"
+   },
+   "hour_ago": {
+      "message": "1 hour ago"
+   },
+   "hours": {
+      "message": "hours"
+   },
+   "hours_ago": {
+      "message": "$1 hours ago"
+   },
+   "line_spacing": {
+      "message": "Line Spacing"
+   },
+   "line_spacing_line": {
+      "message": "line"
+   },
+   "line_spacing_lines": {
+      "message": "lines"
+   },
+   "locale": {
+      "message": "en"
+   },
+   "login_google_first": {
+      "message": "Please login to your Google Account first"
+   },
+   "mark_all_as_read_after_downloading": {
+      "message": "Mark all as read after downloading to the local storage \u003Cfont color='gray'\u003E(\u003Cb\u003ENote:\u003C/b\u003E \u003Cb\u003EALL\u003C/b\u003E your unread items will be marked as \u003Cb\u003EREAD\u003C/b\u003E)\u003C/font\u003E."
+   },
+   "minute_ago": {
+      "message": "1 minute ago"
+   },
+   "minutes_ago": {
+      "message": "$1 minutes ago"
+   },
+   "month": {
+      "message": "month"
+   },
+   "months": {
+      "message": "months"
+   },
+   "navi_list_24hours": {
+      "message": "24 Hours Updates"
+   },
+   "navi_list_all": {
+      "message": "All Items"
+   },
+   "navi_list_favourites": {
+      "message": "Favourites"
+   },
+   "navi_list_localstorage": {
+      "message": "Local Storage"
+   },
+   "navi_list_options": {
+      "message": "Options"
+   },
+   "navi_list_preferences": {
+      "message": "Preferences"
+   },
+   "navi_list_subscriptions": {
+      "message": "Subscriptions"
+   },
+   "navi_list_today": {
+      "message": "Today's Update"
+   },
+   "navi_list_unreads": {
+      "message": "Unread Items"
+   },
+   "new_feed": {
+      "message": "NEW"
+   },
+   "options": {
+      "message": "Options"
+   },
+   "page_size_1": {
+      "message": "Display "
+   },
+   "page_size_2": {
+      "message": "items per page."
+   },
+   "reading": {
+      "message": "Reading"
+   },
+   "remember_last_choise": {
+      "message": "(Remember My Last Choise)"
+   },
+   "rendering": {
+      "message": "Rendering"
+   },
+   "scroll_tracking_detail_view": {
+      "message": "Available Scroll-Tracking in detail view. Mark items as read when i scroll past them."
+   },
+   "scroll_tracking_list_view": {
+      "message": "Also available Scroll-Tracking in list view."
+   },
+   "skin": {
+      "message": "Skin:"
+   },
+   "slogan": {
+      "message": "Your local offline Google Reader"
+   },
+   "start_page_1": {
+      "message": "Start Page: "
+   },
+   "start_page_2": {
+      "message": ""
+   },
+   "storage": {
+      "message": "Storage"
+   },
+   "storage_max_age_1": {
+      "message": "Remove items after"
+   },
+   "storage_max_age_2": {
+      "message": "(requires restart)."
+   },
+   "storage_max_count_1": {
+      "message": "Remove older items when there are more than "
+   },
+   "storage_max_count_2": {
+      "message": "items (requires restart)."
+   },
+   "styles": {
+      "message": "Styles"
+   },
+   "title_example": {
+      "message": "The Quick Brown Fox Jumps Over the Lazy Dog"
+   },
+   "title_style": {
+      "message": "Title Style:"
+   },
+   "untitled": {
+      "message": "Untitled"
+   },
+   "user_status_unauthenticated": {
+      "message": "(Unauthenticated User)"
+   },
+   "users": {
+      "message": "Users"
+   },
+   "version": {
+      "message": "Version: "
+   },
+   "week": {
+      "message": "week"
+   },
+   "weeks": {
+      "message": "weeks"
+   },
+   "your_favourite": {
+      "message": "Your Favourite"
+   }
+}
