@@ -1,0 +1,630 @@
+html,body
+{
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    width:100%;
+    height:100%;
+}
+
+button, .button
+{
+    display:inline-block;
+    cursor:pointer;
+    color:#2A2A2A;
+    text-shadow:0px 1px 0px white;
+    font-size:12px;
+    height:24px;
+    line-height:24px;
+    padding:0;
+    padding-left:8px;
+    padding-right:8px;
+    margin:0;
+    border-left:1px solid #515151;
+    border-right:1px solid #4F4F4F;
+    border-top:1px solid #555555;
+    border-bottom:1px solid #4C4C4C;
+    border-radius:5px;
+    background:-webkit-gradient(linear, left top, left bottom, from(#F2F2F2), to(#CCCCCC));
+}
+
+button:hover, .button:hover
+{
+    background:-webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#C8C8C8));
+}
+
+button:active, .button:active
+{
+    background:-webkit-gradient(linear, left top, left bottom, from(#C8C8C8), to(#F2F2F2));
+}
+
+.toolbar li.warning:hover, button.warning:hover
+{
+    background:-webkit-gradient(linear, left top, left bottom, from(#FFDDDD), to(#FF5555));
+}
+
+.toolbar
+{
+    display:block;
+    -webkit-user-select: none;
+    list-style:none;
+    padding:0;
+    margin:0;
+    margin-right:8px;
+}
+
+.toolbar li
+{
+    cursor:pointer;
+    color:#4A4A4A;
+    text-shadow:0px 1px 0px white;
+    font-size:12px;
+    float:left;
+    height:22px;
+    line-height:22px;
+    padding:0;
+    padding-left:8px;
+    padding-right:8px;
+    margin:0;
+    border-left:1px solid #7F7F7F;
+    border-top:1px solid #828282;
+    border-bottom:1px solid #787878;
+    background:-webkit-gradient(linear, left top, left bottom, from(#F2F2F2), to(#CCCCCC));
+}
+
+.toolbar li:hover
+{
+    background:-webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#D8D8DF));
+}
+
+.toolbar li:active
+{
+    background:-webkit-gradient(linear, left top, left bottom, from(#C8C8C8), to(#F2F2F2));
+    -webkit-box-shadow:inset 2px 0px 4px #555;
+    cursor:pointer;
+}
+
+.toolbar li.checked, .toolbar li.checked:hover, .toolbar li.checked:active, button.checked, button.checked:hover, button.checked:active
+{
+    background:-webkit-gradient(linear, left top, left bottom, from(#A3A7AB), to(#777E88));
+    -webkit-box-shadow:inset 2px 0px 4px #555;
+}
+
+.toolbar li img
+{
+    margin-left:2px;
+    margin-right:2px;
+    margin-top:3px;
+}
+
+.toolbar li.single
+{
+    border-radius:5px;
+    border-left:1px solid #828282;
+    border-right:1px solid #828282;
+}
+
+.toolbar li:first-child
+{
+    border-radius:5px 0px 0px 5px;
+    border-left:1px solid #828282;
+}
+
+.toolbar li:last-child
+{
+    border-radius:0px 5px 5px 0px;
+    border-left:1px solid #828282;
+    border-right:1px solid #828282;
+}
+
+
+#browserLayout
+{
+    table-layout:fixed;
+    width:100%;
+    height:100%;
+    background-color:#CBCFD3;
+}
+#browserLayout #topPanel
+{
+    -webkit-user-select: none;
+    cursor:default;
+    height:34px;
+    border-bottom:1px solid #919191;
+    background-color:#A7A8A9;
+    background:-webkit-gradient(linear, left top, left bottom, from(#E8E8E8), to(#C8C8C8));
+}
+
+#logo
+{
+    float:left;
+    margin-left:4px;
+    margin-right:20px;
+    margin-top:3px;
+}
+
+#toolstrip
+{
+    float:left;
+    height:33px;
+    line-height:33px;
+}
+
+#toolstrip .toolbar
+{
+    margin-top:5px;
+    float:left;
+}
+
+
+#browserLayout #naviCol
+{
+    width:200px;
+    background:-webkit-gradient(linear, left top, left bottom, from(#EDF1F5), to(#D1D8DF));
+}
+#browserLayout #naviPanel
+{
+    -webkit-user-select: none;
+    vertical-align: top;
+    overflow-x:hidden;
+}
+
+
+
+
+
+
+
+#browserLayout #seperatorCol
+{
+    width:7px;
+}
+#browserLayout #seperatorPanel
+{
+    -webkit-user-select: none;
+    border-left:1px solid #BBBBBB;
+    background-color:#CBCFD3;
+}
+
+#seperator
+{
+    cursor:pointer;
+    width:7px;
+    height:160px;
+    background-repeat:norepeat;
+    background-image:url(../../images/seperator.png);
+    background-position-x:0px;
+}
+
+#seperator.expanded
+{
+    background-position-x:6px;
+}
+
+
+
+
+#browserLayout #contentCol
+{
+    
+}
+
+#browserLayout #contentPanel
+{
+    background-color:#CBCFD3;
+}
+
+
+
+
+#browserLayout #bottomPanel
+{
+    height:22px;
+    border-top:1px solid #919191;
+    border-bottom:1px solid #919191;
+    background:-webkit-gradient(linear, left top, left bottom, from(#E8E8E8), to(#C8C8C8));
+}
+
+#statusBar
+{
+    height:23px;
+    line-height:23px;
+    text-align:center;
+    border-top:1px solid #DDDEDF;
+    border-bottom:1px solid #979899;
+    color:black;
+    text-shadow:0px 1px 0px white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.navi-list
+{
+    list-style:none;
+    margin:0;
+    padding:0;
+    padding-top:5px;
+    cursor:default;
+    height:100%;
+    overflow-y:auto;
+}
+
+.navi-list > li
+{
+    text-indent:10px;
+    margin-bottom:16px;
+}
+
+.navi-list > li > img
+{
+    margin-right:3px;
+}
+
+.navi-list > li > a
+{
+    color:#627080;
+    font-weight:bold;
+    text-shadow:0px 1px 0px #F6F8FA;
+    cursor:default;
+}
+
+.navi-list > li ul
+{
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+
+.navi-list > li > ul > li
+{
+    height:23px;
+    line-height:23px;
+    text-indent:25px;
+    border-top:1px solid transparent;
+    cursor:pointer;
+    white-space:nowrap;
+    position:relative;
+}
+
+.navi-list > li > ul li > img
+{
+    position:relative;
+    top:3px;
+    width:16px;
+    height:16px;
+}
+
+.navi-list > li > ul li > img.fav
+{
+    background-color:white;
+    border-radius:5px;
+    -webkit-box-shadow:0px 0px 3px #888;
+}
+
+.navi-list > li > ul li > a
+{
+    width:65%;
+    text-indent:6px;
+    display:inline-block;
+    overflow:hidden;
+    white-space:nowrap;
+    color:black;
+    text-decoration:none;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.navi-list .badge
+{
+    position:absolute;
+    right:3px;
+    top:3px;
+    display:inline-block;
+    height:15px;
+    line-height:15px;
+    text-indent:0;
+    color:white;
+    background-color:#A6B4C8;
+    font-family:arial;
+    font-size:12px;
+    border-radius: 4px;
+    padding-left:6px;
+    padding-right:6px;
+}
+
+.navi-list-drag-indicator
+{
+    position:absolute;
+    display:block;
+    list-style:none;
+    text-indent:40px;
+    opacity:0.5;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+}
+
+
+.navi-list-drag-indicator, .navi-list li.selected
+{
+    border-top:1px solid #5594D2;
+    background:-webkit-gradient(linear, left top, left bottom, from(#6FA6DE), to(#1E6CBB));
+}
+
+.navi-list-drag-indicator, .navi-list li.selected > a
+{
+    color:white;
+    font-weight:bold;
+    text-shadow:0px 1px 0px #22568C;
+}
+
+.navi-list .selected .badge
+{
+    color:#555;
+    font-weight:bold;
+    background-color:white;
+}
+
+
+.navi-list .unread.selected
+{
+    border-top:1px solid #FF7827;
+    background:-webkit-gradient(linear, left top, left bottom, from(#FF904E), to(#DD5300));
+}
+
+
+
+
+
+
+
+
+.feed-list
+{
+    padding:16px;
+    padding-bottom:0;
+    width:97.3%;
+    height:100%;
+    list-style:none;
+    overflow:auto;
+}
+
+
+
+
+
+
+#userPrefTabControl
+{
+    border-left:1px solid #BBBBBB;
+    font-size:1.1em;
+    background-color:white;
+    width:100%;
+    height:100%;
+    -webkit-user-select:none;
+}
+
+
+
+
+
+#userPrefTabControl thead td
+{
+    height:32px;
+    padding:0;
+    margin:0;
+    background-color:#323B4C;
+    -webkit-box-shadow:inset 0 -2px 5px black;
+    vertical-align:bottom;
+    text-align:center;
+}
+
+#userPrefTabControl thead ul
+{
+    cursor:pointer;
+    display:inline-block;
+    background-color:#788BAB;
+    height:23px;
+    margin:0;
+    padding:0;
+    list-style:none;
+    border-radius:5px 5px 0 0;
+}
+
+#userPrefTabControl thead li
+{
+    border-radius:0px 5px 0 0;
+    height:23px;
+    line-height:23px;
+    text-align:center;
+    min-width:100px;
+    float:left;
+    margin:0;
+    padding:0;
+    color:white;
+    font-weight:bold;
+    background-color:#788BAB;
+    -webkit-box-shadow:0 -2px 5px black;
+}
+
+#userPrefTabControl thead li.selected
+{
+    color:#333333;
+    background-color:white;
+    border-radius:5px 5px 0 0;
+    position:relative;
+}
+
+#userPrefTabControl thead li:first-child
+{
+    border-radius:5px 5px 0 0;
+}
+
+
+
+
+#userPrefTabControl > tbody > tr > td >div
+{
+    overflow:auto;
+    height:100%;
+}
+
+#userPrefTabControl > tbody > tr > td >div dl
+{
+    margin:0;
+    padding:0;
+}
+
+#userPrefTabControl > tbody > tr > td > div dl:nth-child(even)
+{
+    background-color:#E5E5E5;
+}
+
+#userPrefTabControl > tbody > tr > td > div dl dt
+{
+    padding-left:28px;
+    padding-top:16px;
+    padding-bottom:10px;
+    color:#5F686F;
+    font-size:15px;
+    font-weight:bold;
+}
+
+#userPrefTabControl > tbody > tr > td > div dl dd
+{
+    margin-bottom:5px;
+    min-height:80px;
+}
+
+#userPrefTabControl > tbody > tr > td > div ul
+{
+    margin-left:5px;
+    padding-bottom:5px;
+    list-style:circle;
+}
+
+#userPrefTabControl > tbody > tr > td > div ul li
+{
+    margin-top:8px;
+    margin-bottom:8px;
+}
+
+#userPrefTabControl > tbody > tr > td > div ul li > ul
+{
+    list-style:none;
+    margin:0;
+    padding:0;
+    padding-bottom:5px;
+}
+
+
+
+
+
+
+
+
+
+#userPrefTabControl #stylesTab #divTitleStyle, #userPrefTabControl #stylesTab #divContentStyle
+{
+    width:85%;
+    display:inline-block;
+    margin-top:5px;
+    margin-bottom:10px;
+    margin-left:15px;
+    padding:10px;
+    background-color:white;
+    border-radius:5px;
+    border:1px inset;
+    -webkit-box-shadow:inset 0px 0px 6px #888;
+}
+
+
+
+
+
+
+
+
+#userPrefTabControl #aboutTab h1
+{
+    font-size:29px;
+    padding:0;
+    margin:0;
+    margin-bottom:1px;
+    letter-spacing:1px;
+}
+
+#userPrefTabControl #aboutTab hr
+{
+    margin-top:3px;
+    margin-bottom:0px;
+}
+
+#userPrefTabControl #aboutTab div
+{
+    font-size:12px;
+    height:20px;
+    line-height:20px;
+    color:gray;
+}
+
+#userPrefTabControl #aboutTab a
+{
+    font-size:12px;
+    color:#3E80FA;
+}
+
+#userPrefTabControl #aboutTab a:hover
+{
+    color:blue;
+}
+
+#userPrefTabControl #aboutTab #slogan
+{
+    font-size:12px;
+    color:#555;
+    margin-top:1px;
+    margin-bottom:10px;
+    letter-spacing:5px;
+    width:355px;
+    text-align:center;
+}
+
+
+
+
+
+
+
+
+
+#userPrefTabControl #buttonPanel
+{
+    height:55px;
+    background:-webkit-gradient(linear, left top, left bottom, from(#999DA6), to(#7F8690));
+    -webkit-box-shadow:inset 0px 5px 5px #555;
+}
+
+#userPrefTabControl #buttonPanel button
+{
+    float:right;
+    padding-left:20px;
+    padding-right:20px;
+    margin-right:10px;
+    height:26px;
+}
+
+#userPrefTabControl #buttonPanel button#btnApply
+{
+    font-weight:bold;
+}

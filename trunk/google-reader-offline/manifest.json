@@ -1,0 +1,22 @@
+{
+   "background_page": "background.html",
+   "browser_action": {
+      "default_icon": "icons/app_gray_19.png",
+      "default_title": "MagicCube FeedStore"
+   },
+   "default_locale": "en",
+   "description": "Your local offline Google Reader.",
+   "icons": {
+      "128": "icons/app_128.png",
+      "16": "icons/app_16.png",
+      "19": "icons/app_19.png",
+      "32": "icons/app_32.png",
+      "48": "icons/app_48.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDHc9YhEa84PmueY+cQvR508dquOX2/s51w8thINZz0T4XMhD1mmkyk6kB5rHLuTGe3XIjilXs9ZDojEYNXMnFGBUfrRJByRCMuxLIuw938QC/sMYQwXJ1ZPhrja4TmOOyCttGIDTqyjMGZudYaF4eKaeAraufOH9V4hwB8fvj47QIDAQAB",
+   "name": "MagicCube FeedStore for Google Reader",
+   "options_page": "pages/browser.html#preferences",
+   "permissions": [ "tabs", "cookies", "http://*/", "https://*/", "chrome://favicon/" ],
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "1.1"
+}
