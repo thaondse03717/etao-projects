@@ -1,108 +1,93 @@
-function add_onload_function(fn) {
-	var oe = window.onload;
+// ◊¢≤· ¬º˛
+function addLoadEvent(newonload) {
+	var oldonload = window.onload;
 	window.onload = function () {
-		if (oe) {
-			oe();
+		if (oldonload) {
+			oldonload();
 		}
-		fn();
+		newonload();
 	}
 }
 
-add_onload_function(get_default_settings);
-add_onload_function(set_content_height);
+// »°≈‰÷√
+function getPreference(name) {
+	return localStorage.getItem(name);
+}
 
-function get_default_settings() {
+// –¥≈‰÷√
+function setPreference(name, value) {
+	return localStorage.setItem(name, value);
+}
 
-	var tabsize = get_var('tabsize');
-	var braces_on_own_line = get_var('braces');
-	var c;
+// ∂¡ƒ¨»œ≈‰÷√
+function getDefaultPreferences() {
+	return {
+		tabsize: 1,	// 1 tab character
+		braces_on_new_line: 0,
+		preserve_newlines: 1,
+		detect_packers: 1,
+		keep_array_indention: 1,
+	};
+}
+
+addLoadEvent(function () {
+	var tabsize = getPreference('tabsize');
+	var braces_on_new_line = getPreference('braces_on_new_line');
+	var preserve_newlines = getPreference('preserve_newlines');
+	var detect_packers = getPreference('detect_packers');
+	var keep_array_indention = getPreference('keep_array_indention');
+
+	if (!tabsize) {
+		var preferences = getDefaultPreferences();
+
+		var tabsize = preferences.tabsize;
+		var braces_on_new_line = preferences.braces_on_new_line;
+		var preserve_newlines = preferences.preserve_newlines;
+		var detect_packers = preferences.detect_packers;
+		var keep_array_indention = preferences.keep_array_indention;
+
+		setPreference('tabsize', tabsize);
+		setPreference('braces_on_new_line', braces_on_new_line);
+		setPreference('preserve_newlines', preserve_newlines);
+		setPreference('detect_packers', detect_packers);
+		setPreference('keep_array_indention', keep_array_indention);
+	}
 
 	if (tabsize) {
 		document.getElementById('tabsize').value = tabsize;
+		document.getElementById('tabsize').onchange = function () {
+			setPreference('tabsize', this.value);
+		}
 	}
 
-	if (braces_on_own_line) {
+	if (braces_on_new_line) {
 		document.getElementById('braces-on-own-line').checked = 'checked';
+		document.getElementById('braces-on-own-line').onchange = function () {
+			setPreference('braces_on_new_line', this.checked);
+		}
 	}
 
-}
+	if (preserve_newlines) {
+		document.getElementById('preserve-newlines').checked = 'checked';
+		document.getElementById('preserve-newlines').onchange = function () {
+			setPreference('preserve_newlines', this.checked);
+		}
+	}
 
-function set_content_height() {
+	if (detect_packers) {
+		document.getElementById('detect-packers').checked = 'checked';
+		document.getElementById('detect-packers').onchange = function () {
+			setPreference('detect_packers', this.checked);
+		}
+	}
+
+	if (keep_array_indention) {
+		document.getElementById('keep-array-indentation').checked = 'checked';
+		document.getElementById('keep-array-indentation').onchange = function () {
+			setPreference('keep_array_indention', this.checked);
+		}
+	}
+
 	document.getElementById('content').style.height = (window.outerHeight - 180) + 'px';
-}
+});
 
-function trim_leading_comments(str) {
-	// very basic. doesn't support /* ... */
-	str = str.replace(/^(\s*\/\/[^\n]*\n)+/, '');
-	str = str.replace(/^\s+/, '');
-	return str;
-}
-
-function unpacker_filter(source) {
-
-	if (document.getElementById('detect-packers').checked) {
-
-		var stripped_source = trim_leading_comments(source);
-		var unpacked = '';
-
-		if (P_A_C_K_E_R.detect(stripped_source)) {
-			unpacked = P_A_C_K_E_R.unpack(stripped_source);
-			if (unpacked !== stripped_source) {
-				return unpacker_filter(unpacked);
-			}
-		}
-
-		if (EscapedBookmarklet.detect(source)) {
-			unpacked = EscapedBookmarklet.unpack(source);
-			if (unpacked !== stripped_source) {
-				return unpacker_filter(unpacked);
-			}
-		}
-
-		if (JavascriptObfuscator.detect(stripped_source)) {
-			unpacked = JavascriptObfuscator.unpack(stripped_source);
-			if (unpacked !== stripped_source) {
-				return unpacker_filter(unpacked);
-			}
-		}
-	}
-	return source;
-
-}
-
-function do_js_beautify() {
-	document.getElementById('beautify').disabled = true;
-	var js_source = document.getElementById('content').value.replace(/^\s+/, '');
-	var indent_size = document.getElementById('tabsize').value;
-	var indent_char = ' ';
-	var preserve_newlines = document.getElementById('preserve-newlines').checked;
-	var keep_array_indentation = document.getElementById('keep-array-indentation').checked;
-	var braces_on_own_line = document.getElementById('braces-on-own-line').checked;
-
-	if (indent_size == 1) {
-		indent_char = '\t';
-	}
-
-	if (js_source && js_source[0] === '<' && js_source.substring(0, 4) !== '<!--') {
-		document.getElementById('content').value = style_html(js_source, indent_size, indent_char, 80);
-	} else {
-		document.getElementById('content').value =
-		js_beautify(unpacker_filter(js_source), {
-			indent_size: indent_size,
-			indent_char: indent_char,
-			preserve_newlines: preserve_newlines,
-			braces_on_own_line: braces_on_own_line,
-			keep_array_indentation: keep_array_indentation,
-			space_after_anon_function: true
-		});
-	}
-
-	document.getElementById('beautify').disabled = false;
-	return false;
-}
-
-
-function get_var(name) {
-	var res = new RegExp("[\\?&]" + name + "=([^&#]*)").exec(window.location.href);
-	return res ? res[1] : "";
-}
