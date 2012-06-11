@@ -10,46 +10,21 @@
  * @link http://procssor.com/
  */
 
-window.onload = function () {
-	var submitBtn = document.getElementById("submit");
-	var tabsize = document.getElementById("tabsize");
-	var sourceCon = document.getElementById("source");
-	var size = 4;
-	var formatType = "format";
-	submitBtn.onclick = function () {
-		var radios = document.getElementsByName("format_type");
-		for (i = 0; i < radios.length; i++) {
-			if (radios[i].checked) {
-				formatType = radios[i].value;
-				break;
-			}
-		}
-		var Formatter = new CssFormatter(sourceCon.value, size, formatType);
-		Formatter.formatCss();
-		sourceCon.value = Formatter.source;
-	}
-
-	tabsize.onchange = function () {
-		size = this.options[this.options.selectedIndex].value;
-		submitBtn.click();
-		return false;
-	}
-}
-
-function CssFormatter(source, spaceWidth, formatType) {
+function CssFormatter(source, options) {
+	var options = {} || options;
 	this.source = source;
 	this.spaceStr = "    ";
-	if (!isNaN(spaceWidth)) {
-		if (spaceWidth > 1) {
+	if (!isNaN(options.spaceWidth)) {
+		if (options.spaceWidth > 1) {
 			this.spaceStr = "";
-			for (var i = 0; i < spaceWidth; i++) {
+			for (var i = 0; i < options.spaceWidth; i++) {
 				this.spaceStr += " ";
 			}
 		} else {
 			this.spaceStr = "\t";
 		}
 	}
-	this.formatType = formatType;
+	this.formatType = options.formatType;
 	this.output = [];
 }
 

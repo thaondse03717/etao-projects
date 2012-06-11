@@ -1,14 +1,3 @@
-// ×¢²áÊÂ¼þ
-function addLoadEvent(newonload) {
-	var oldonload = window.onload;
-	window.onload = function () {
-		if (oldonload) {
-			oldonload();
-		}
-		newonload();
-	}
-}
-
 // È¡ÅäÖÃ
 function getPreference(name) {
 	return localStorage.getItem(name);
@@ -30,7 +19,7 @@ function getDefaultPreferences() {
 	};
 }
 
-addLoadEvent(function () {
+$(function () {
 	var tabsize = getPreference('tabsize');
 	var braces_on_new_line = getPreference('braces_on_new_line');
 	var preserve_newlines = getPreference('preserve_newlines');
