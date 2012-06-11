@@ -9,11 +9,12 @@ $(function () {
 
 		var formatter = new CssFormatter(source, {
 			spaceWidth: indent_size == 1 ? 0 : indent_size,
+			preserve_newlines: preserve_newlines,
+			braces_on_own_line: braces_on_own_line,
 			formatType: 'format'
 		});
-		formatter.formatCss();
 
-		document.getElementById('content').value = formatter.source;
+		document.getElementById('content').value = formatter.formatCss();
 
 		document.getElementById('beautify').disabled = false;
 		return false;
