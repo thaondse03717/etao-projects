@@ -3,13 +3,13 @@ chrome.extension.sendRequest({options: true}, onOptionsLoaded);
 // 读取插件配置后, 在页面中查找NID节点, 并且注入复选框
 function onOptionsLoaded(options) {
 	if (!options.selector_entry || !options.selector_link) {
-		alert('Oops! cannot load extension settings, please contact the developer');
+		alert(chrome.i18n.getMessage('msg_error_options'));
 		return false;
 	}
 
 	var auctions = jQuery(options.selector_entry).css({ position: 'relative' });
 	var checkbox = jQuery('<input type="checkbox"/>')
-		.attr('title', 'Click to offline!')
+		.attr('title', chrome.i18n.getMessage('msg_click_hover'))
 		.addClass('checkbox')
 		.css({
 			position: 'absolute',
@@ -21,6 +21,7 @@ function onOptionsLoaded(options) {
 
 	var strong = jQuery('<strong contenteditable="true">NID</strong>')
 		.addClass('link')
+		.attr('title', chrome.i18n.getMessage('msg_click_copy'))
 		.css({
 			cursor: 'default',
 			position: 'absolute',
@@ -85,6 +86,9 @@ function onOptionsLoaded(options) {
 		}
 
 	});
+
+	// 创建隐藏的textarea
+	jQuery(document.body).append('<textarea style="display:none" id="clipboard"></textarea>');
 }
 
 function addCheckboxListener(auction, checkbox, nid, url, title) {
@@ -102,7 +106,7 @@ function addCheckboxListener(auction, checkbox, nid, url, title) {
 function addCopyListener(auction, strong, nid, url, title, i) {
 	if (nid) {
 		auction.append(strong.clone().text(nid).click(function (event) {
-			event.stopPropagation();
+			chrome.extension.sendRequest({ text: nid });
 			return false;
 		}));
 	}
