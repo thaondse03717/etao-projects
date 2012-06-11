@@ -4,8 +4,13 @@
 	"ext_version": {"message": "v2.0"},
 
 	"menu_offline": {"message": "下架所选商品"},
-	"menu_revise": {"message": "修改商品类目"},
+	"menu_category_revise": {"message": "修改商品类目"},
+	"menu_epid_add": {"message": "打上EPID"},
+	"menu_epid_remove": {"message": "移除EPID"},
 
+	"msg_error_options": {"message": "哎呀! 无法加载插件配置!"},
+	"msg_click_hover": {"message": "单击选中/取消选中该项目!"},
+	"msg_click_copy": {"message": "单击复制NID!"},
 	"msg_none_selected": {"message": "您还没有选择任何商品, 请返回是SRP页选择商品!"},
 	"msg_auction_count": {"message": "您共选中$counter$个宝贝", "placeholders": {"counter": { "content" :"$1"}}},
 	"msg_memo_required": {"message": "请输入商品下架的原因!"},

@@ -4,8 +4,13 @@
 	"ext_version": {"message": "v2.0"},
 
 	"menu_offline": {"message": "Offline Selected"},
-	"menu_revise": {"message": "Revise Selected"},
+	"menu_category_revise": {"message": "Revise Selected"},
+	"menu_epid_add": {"message": "Add EPID"},
+	"menu_epid_remove": {"message": "Remove EPID"},
 
+	"msg_error_options": {"message": "Oops! cannot load extension settings, please contact the developer!"},
+	"msg_click_hover": {"message": "Click to select/unselect this item!"},
+	"msg_click_copy": {"message": "Click to copy NID to clipboard!"},
 	"msg_none_selected": {"message": "No auction is selected, please select auctions to be offline first!"},
 	"msg_auction_count": {"message": "$counter$ auctions to be set offline", "placeholders": {"counter": { "content" :"$1"}}},
 	"msg_memo_required": {"message": "Please enter the reason for offline these auctions!"},
