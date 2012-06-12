@@ -16,6 +16,7 @@
 	"content_scripts": [{
 		"matches": [
 			"http://s.etao.com/*",
+			"http://*.s.etao.com/*",
 			"http://www.etao.com/*"
 		],
 		"js": ["js/jquery.1.7.2.min.js", "js/assistant.inject.js"]

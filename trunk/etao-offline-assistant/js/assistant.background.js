@@ -54,6 +54,8 @@ function getDocumentUrlPatterns(action) {
 	return [
 		"http://s.etao.com/search?*",
 		"http://s.etao.com/item*",
+		"http://*.s.etao.com/search?*",
+		"http://*.s.etao.com/item*",
 	];
 }
 
