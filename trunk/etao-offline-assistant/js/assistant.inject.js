@@ -89,6 +89,17 @@ function onOptionsLoaded(options) {
 
 	// 创建隐藏的textarea
 	jQuery(document.body).append('<textarea style="display:none" id="clipboard"></textarea>');
+
+	// 如果是比价页默认选中当前的产品节点
+	var matches = (/\/item\/(\d+)\.html/g).exec(window.location.href);
+	if (matches) {
+		var product = {};
+		product.epid = matches[1];
+		product.title = jQuery('div.title h3').text();
+		chrome.extension.sendRequest(product, function(response) {
+			//console.log(product);
+		});
+	}
 }
 
 function addCheckboxListener(auction, checkbox, nid, url, title) {

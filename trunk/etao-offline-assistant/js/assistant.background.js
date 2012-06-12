@@ -1,22 +1,29 @@
 var selectedIndex = null;		// 选中的标签
 var selected = {};					// 选中的商品
-var selected_epid = null;		// 选中的产品
+var selected_product = null;		// 选中的产品
 
 // 监听从contentScript传来的添加商品和获取配置的事件
 chrome.extension.onRequest.addListener(
 	function(request, sender, sendResponse) {
+		// 选中商品
 		if (request.nid) {
 			selected[request.nid] = request.status ? request : null;
 			sendResponse({status: true, code: request.status ? 'Item moved into trashbox' : 'Item moved out of trashbox' });
+		// 选中产品
+		} else if (request.epid) {
+			selected_product = request;
+			sendResponse({});
+		// 获取选项
 		} else if (request.options) {
 			sendResponse(assistant.getOptions());
+		// 复制NID
 		} else if (request.text) {
 			var textarea = document.getElementById("clipboard");
 			textarea.value = request.text;
 			textarea.select();
 			document.execCommand("copy", false, null);
 			sendResponse({});
-	  } else {
+		} else {
 			sendResponse({});
 		}
 	}
