@@ -1,0 +1,116 @@
+#game_labels, #beta_text {
+    display: none !important;
+}
+
+#menu_button, #menu_content a, #game_status a, #bg_btn_label span {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#menu_content a.menu_info {
+    padding-bottom: 4px;
+    padding-top: 4px;
+}
+#game_labels {
+    display: none !important;
+}
+#ind_container {
+    margin: auto;
+    left: 0;
+    right: 0;
+    width: 170px;
+}
+
+/** lightbox **/
+.lbx_window {
+    height: 100%;
+    width: 100%;
+}
+.lbx_header {
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    font-size: 12px;
+    height: 15px;
+    padding: 3px 5px 4px 14px;
+}
+.lbx_content {
+    height: 100%;
+}
+.lbx_container {
+    width: 100%;
+    height: 100%;
+}
+.lbx_container #exit {
+    right: 9px;
+    top: 7px;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    
+    background: url("/images/close.png") no-repeat scroll center center transparent;
+    height: 25px;
+    width: 35px;
+}
+.options_window {
+    height: 100%;
+}
+.cards_content {
+    margin-top: 80px;
+}
+.tab_buttons {
+    padding-top: 17px;
+}
+.tab_buttons a, .tab_buttons a.tab_selected {
+    font-size: 12px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    width: 100px;
+}
+.tab_contents {
+    height: 100%;
+    font-size: 12px;
+}
+.option_item .option_item_entry {
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+.options_window .tab_buttons a {
+    width: 61px;
+}
+.select_theme {
+    height: 60px;
+}
+.select_theme div.label_bg {
+    font-size: 15px;
+    height: 20px;
+    opacity: 0.5;
+    padding-left: 15px;
+    padding-top: 0;
+    top: -59px;
+}
+.select_theme img, .select_theme .card {
+    height: 99px;
+    width: 75px;
+}
+.select_theme .card {
+    margin-left: -50px;
+}
+.skin_item .select_advanced_theme, #donate, .skin_item div.label_bg .skin_item_default {
+    display: none !important;
+}
+.contact_cont textarea {
+    height: 170px;
+}
+.radio .option_item_entry span {
+    margin-top: -1px;
+}
+
+._css-loader {
+    height: 3px;
+}

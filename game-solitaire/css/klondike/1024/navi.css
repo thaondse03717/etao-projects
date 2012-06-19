@@ -1,0 +1,21 @@
+#beta_text {
+    display: block;
+    height: 48px;
+    opacity: 0.8;
+    position: fixed;
+    right: 10px;
+    top: 36px;
+    width: 48px;
+    -moz-border-radius: 25px 25px 25px 25px;
+    border-radius: 25px 25px 25px 25px;
+    box-shadow: 0px 0px 5px #000;
+    -webkit-box-shadow: 0px 0px 5px #000;
+    -moz-box-shadow: 0px 0px 5px #000;
+}
+#beta_text:hover {
+    opacity: 1;
+}
+
+._css-loader {
+    height: 3px;
+}

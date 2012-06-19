@@ -1,0 +1,21 @@
+{
+   "app": {
+      "launch": {
+         "local_path": "html/main.html"
+      }
+   },
+   "default_locale": "en",
+   "description": "__MSG_appDesc__",
+   "icons": {
+      "128": "images/icon_128.png",
+      "16": "images/icon_16.png",
+      "32": "images/icon_32.png",
+      "48": "images/icon_48.png",
+      "64": "images/icon_64.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDIsFgdiPVVopdtP6WacksJ1pYbqrrHBNhUJYO5GmJOut/knhJTj43SDaOMsWypkYp2Mi1qHEz7ExLGV8BwVGwIhKYVpX+StVtpnbDpqVH/Zf6S+TFrQ0q44doalOUVOf54oqoZWiP9lTqp11a20285SzcSGdvIVnyOVgY+PrxOfQIDAQAB",
+   "name": "__MSG_appName__",
+   "offline_enabled": true,
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "1.3.9.3"
+}
