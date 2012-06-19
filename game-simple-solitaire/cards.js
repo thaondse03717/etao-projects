@@ -1,7 +1,7 @@
 var RULES={
 	// name of the game type
 	name: 'Klondike',
-	
+
 	// appends elements to the table, sets up the deck, and lays out
 	// the cards
 	setupTable: function(table) {
@@ -20,14 +20,14 @@ var RULES={
 					.css('top', '0px');
 			});
 		}
-		
-		// create deck
+
+		// 创建牌桌并洗牌
 		var deck = new NDeck(52);
 		var deckIndex = 0;
 		deck.shuffle();
-		
-		
-		// repos
+
+
+		// 已排好顺序的纸牌区
 		{
 			var repos = $('<div id="repositories"></div>');
 			var repo = $('<div class="repository"></div>');
@@ -37,20 +37,20 @@ var RULES={
 				repos.append(repo.css('right', rightness));
 				repo = temp;
 			}
-			
+
 			table.append(repos);
 		} // repos end
-		
-		
-		// columns
+
+
+		// 用户操作纸牌区, 8列, 36张牌,
 		{
 			var column = $('<div class="column"></div>');
 			var columns = $('<div id="columns" style="position:absolute;left:0px;right:0px;top:202px;bottom:8px"></div>');
 			for (var columnIndex = 0; columnIndex < 7; ++columnIndex) {
 				var temp = columnIndex < 7 ? column.clone() : null;
-			
+
 				columns.append(column);
-			
+
 				// unload cards
 				var top = column;
 				for (var cardIndex = 0; cardIndex <= columnIndex; ++cardIndex, ++deckIndex) {
@@ -60,35 +60,37 @@ var RULES={
 					top = card_jq.appendTo(top);
 
 					card.enabled(true);
+
+					// 每列最上面那张正面朝上
 					if (cardIndex == columnIndex) {
 						card.facing(true);
 					}
 				}
-			
+
 				column = temp;
 			}
-			
+
 			table.append(columns);
 		} // columns end
-		
-		
+
+
 		// build the deck
 		{
 			var waste = $('<div id="waste"><div id="deckContainer"><div class="circle"></div><div id="deck"></div></div><div id="spawn"></div></div>');
 			var waste_deck = waste.find('#deck');
 			var waste_spawn = waste.children('#spawn');
 			var waste_trash = $('<div class="trash"></div>');
-			
+
 			{
 				var top = waste_deck;
 				for (; deckIndex < 52; ++deckIndex) {
 					var card = new NCard(deck.getCardAtIndex(deckIndex));
 					var body = card.getCardBody();
-					
+
 					top = body.appendTo(top);
 				}
 			}
-			
+
 			var data = {
 				divs: {
 					waste: waste,
@@ -96,23 +98,23 @@ var RULES={
 					spawn: waste_spawn,
 					trashTemp: waste_trash
 				},
-				
+
 				waiting: 0,
 				needToFlipDeck: false,
 				bottom: null,
-				
+
 				popSpawnCards: function() {
 					var spawnBottom = this.divs.spawn.children('.cardContainer');
 					if (spawnBottom.length == 0) {
 						return;
 					}
 					var spawns = this.divs.spawn.find('.cardContainer');
-					
+
 					spawnBottom.detach();
-					
+
 					var trash = this.divs.trashTemp.clone();
 					trash.append(spawnBottom.clone(false));
-					
+
 					spawns = spawns.detach().get();
 					for (var index in spawns) {
 						var spawn = $(spawns[index]);
@@ -123,31 +125,31 @@ var RULES={
 						}
 						spawn.data('card').enabled(false).facing(false);
 					}
-					
+
 					trash.prependTo(this.divs.waste).animate({'opacity':0}, 100, function(){$(this).remove();});
 				},
-				
+
 				pullCards: function(number) {
 					var top = this.divs.deck.find('.cardContainer').last();
 					if (top.length == 0) {
 						return;
 					}
-					
+
 					var newTop = this.divs.spawn;
 					this.popSpawnCards();
-					
+
 					var leftStart = -109;
 					while (number > 0 && top.length == 1) {
 						var parent = top.parent('.cardContainer');
-						
+
 						top.data('card').facing(true);
 						newTop = top.detach().appendTo(newTop).css('left', leftStart);
 						top = parent;
-						
+
 						leftStart = -32;
 						--number;
 					}
-					
+
 					var cards = this.divs.spawn.find('.cardContainer');
 					this.waiting += cards.length;
 					var handler = this;
@@ -155,49 +157,49 @@ var RULES={
 						$(this).data('card').enabled(true);
 						handler.waiting -= 1;
 					});
-					
+
 					this.needToFlipDeck = (this.divs.deck.children('.cardContainer').length == 0);
 				},
-				
+
 				resetDeck: function() {
 					this.popSpawnCards();
-					
+
 					if (this.bottom != null) {
 						this.bottom.appendTo(this.divs.deck);
 						this.bottom = null;
 					}
-					
+
 					this.needToFlipDeck = false;
 					return;
 				}
 			};
-			
+
 			waste_deck.click(data, function(event) {
 				event.stopPropagation();
-				
+
 				if (event.data.waiting > 0) {
 					return false;
 				}
-				
+
 				var deckHandler = event.data;
-				
+
 				if (deckHandler.needToFlipDeck) {
 					deckHandler.resetDeck();
 					return true;
 				}
-				
+
 				deckHandler.pullCards(3);
 			});
-			
+
 			table.prepend(waste);
-			
+
 		} // deck end
-		
+
 		// resizing
 		sizeColumns();
 		$(window).resize(sizeColumns);
 	},
-	
+
 	/**
 		Determines if two cards follow one another in a given stack
 		to decide whether or not the stack is valid and is therefore
@@ -205,7 +207,7 @@ var RULES={
 		For example, in solitaire, the rule would be that each card
 		above must be the number below it minus one, and that each
 		card alternates between red and black, as in this implementation.
-		
+
 		Must return either true or false.
 	**/
 	stackValidator: function(below, above) {
@@ -214,13 +216,13 @@ var RULES={
 			&& below.isRed() != above.isRed()
 		);
 	},
-	
+
 	/**
 		Finds and returns all possible anchor points (jquery objects)
 		for the given card.  In solitaire, this would be either one
 		of the wells or a column that can take the card at the top
 		of its stack.
-		
+
 		RETURN
 			Should return a jQuery object with however many elements
 			there are that can act as anchors for the card to be
@@ -229,57 +231,57 @@ var RULES={
 	anchorsForCard: function(card) {
 		var topMapping = function(index, domElem) {
 			var top = $(this).find('.cardContainer').last();
-			
+
 			if (top.length == 1) {
 				return top.get();
 			}
-			
+
 			return this;
 		};
-		
+
 		var num = card.getNumber();
 		var suit = card.getSuit();
 		var red = card.isRed();
-		
+
 		var columns = $('.column');
-		
+
 		var results = columns.map(topMapping).filter(
 			function() {
 				var anchor = $(this);
 				if (anchor.is('.column')) {
 					return num == 12;
 				}
-				
+
 				var anchorCard = anchor.data('card');
 				if (anchorCard.getNumber() == num + 1 && anchorCard.isRed() != red) {
 					return true;
 				}
-				
+
 				return false;
 			}
 		);
-		
+
 		if (!card.isStack()) {
 			var repos = $('.repository');
 			repos = repos.map(topMapping).filter(
 				function() {
 					var anchor = $(this);
-					
+
 					if (anchor.is('.repository')) {
 						return num == 0;
 					}
-					
+
 					var anchorCard = anchor.data('card');
 					if (anchorCard.getNumber() == num - 1 && anchorCard.getSuit() == suit) {
 						return true;
 					}
-					
+
 					return false;
 				}
 			);
 			results = results.add(repos);
 		}
-		
+
 		return results;
 	},
 };
@@ -292,39 +294,39 @@ function NDeck(size) {
 	if (size == undefined) {
 		size = 52;
 	}
-	
+
 	assert(
 		checkValue(size, isNumberCheck, isInRangeCheck(0, undefined, false)),
 		"Size out of range"
 	);
-	
+
 	var cardIndices = new Array();
 	for(var index = 0; index < size; ++index) {
 		cardIndices[index] = index % 52;
 	}
-	
+
 	this.indices = cardIndices;
-	
+
 	return this;
 }
 
-// methods
+// methods, 洗牌, 就是随机交换两张牌的位置
 NDeck.prototype.shuffle = function() {
 	var cards = this.indices;
 	var sz = 100 * cards.length;
-	
+
 	var swap_left, swap_right, temp;
-	
+
 	for (var iter = 0; iter < 8192; ++iter) {
 		swap_left  = Math.floor(Math.random() * sz) % 52;
 		swap_right = Math.floor(Math.random() * sz) % 52;
-		
+
 		temp = cards[swap_left];
-		
+
 		cards[swap_left]  = cards[swap_right];
 		cards[swap_right] = temp;
 	}
-	
+
 	return this;
 }
 
@@ -336,7 +338,7 @@ NDeck.prototype.getCardAtIndex = function(index) {
 
 /**
 	NCard is a class that stores data about a given card in a deck of 52 cards.
-	
+
 	Card indices are assumed to be within the range of [0,51]
 **/
 function NCard(cardIndex) {
@@ -349,31 +351,31 @@ function NCard(cardIndex) {
 			back: NCard.cardTemplate.back.clone()
 		};
 	}
-	
+
 	// default to showing the back
 	this.divs.card.prepend(this.divs.back);
-	
+
 	this._cardIndex = cardIndex;				// the index of the card [0,51]
 	this._suit = Math.floor(cardIndex / 13);	// the card suit, [0,3], e.g., spade, club, heart, diamond
 	this._red = this._suit > 1;					// whether or not the suit is red
 	this._number = cardIndex % 13;				// the card's number in the suit, [0..12] going ace, 2, 3, 4, .., 10, jack, queen, king
 	this._facing = false;						// whether or not the card front is visible
 	this._enabled = false;						// whether or not the card is enabled (disables event handling)
-	
+
 	// yay, circular references
 	// keeping this ref because the event handlers won't have
 	// access to the instance of the card as a closure variable
 	this.divs.body.data('card', this);
-	
+
 	// set up CSS for the card
 	this.divs.front.find('.number').html(this.getTitle());
 	this.divs.front.addClass('c'+this.getTitle())
 					.addClass('s'+this._suit);
-	
+
 	if (this._red) {
 		this.divs.front.addClass('red');
 	}
-	
+
 	return this;
 }
 
@@ -389,47 +391,47 @@ NCard.eventHandlers = {
 	card_mousedown_back: function(event) {
 		var card_jq = $(this);
 		var card = card_jq.data('card');
-		
+
 		assert(
 			checkValue(card, isObjectCheck),
 			"Card not selected"
 		);
-		
+
 		event.stopPropagation();
-		
+
 		if (card.getNextCard() != null) {
 			return false;
 		}
-		
+
 		card.facing(true);
 	},
-	
-	card_mousedown_front: function(event) {		
+
+	card_mousedown_front: function(event) {
 		var card_jq = $(this);
 		var card = card_jq.data('card');
-		
+
 		event.stopPropagation();
-		
+
 		if (!card.canBePickedUp()) {
 			return false;
 		}
-		
+
 		NCard._hookupDragging(card);
 		return true;
 	},
-	
+
 	table_mouseup: function(event) {
 		console.log('mouse released');
-		
+
 		$(this).unbind('mouseup')
 			.unbind('mousemove');
-		
+
 		var card = event.data.card;
 		var body = event.data.cardBody;
-		
+
 		var possibleAnchors = RULES.anchorsForCard(event.data.card);
 		anchor = card._pickIdealAnchor(possibleAnchors, event.data.anchor);
-		
+
 		if (anchor == event.data.anchor && event.data.prevCard != null) {
 			card._anchorTo(anchor,
 				function() {
@@ -443,19 +445,19 @@ NCard.eventHandlers = {
 				event.data.prevCard.enabled(true);
 			}
 		}
-		
+
 		event.stopPropagation();
 	},
-	
+
 	table_mousemove: function(event) {
 		var data = event.data;
 		var body = data.cardBody;
-		
+
 		body.offset({
 			left: event.pageX + data.offset.left,
 			top:  event.pageY + data.offset.top
 		});
-		
+
 		event.stopPropagation();
 	}
 }
@@ -463,11 +465,11 @@ NCard.eventHandlers = {
 NCard._hookupDragging = function(forCard) {
 	var body = forCard.divs.body;
 	body.unbind('mousedown', NCard.eventHandlers.card_mousedown_front);
-	
+
 	var table = $('#table');
-	
+
 	var offset = body.offset();
-	
+
 	var data = {
 		card: forCard,
 		prevCard: forCard.getPreviousCard(),
@@ -478,15 +480,15 @@ NCard._hookupDragging = function(forCard) {
 			top: offset.top - event.pageY
 		}
 	};
-	
+
 	if (data.prevCard != null) {
 		data.prevCard.enabled(false);
 	}
-	
+
 	body.detach()
 		.appendTo(table)
 		.offset(offset);
-	
+
 	table.bind('mousemove', data, NCard.eventHandlers.table_mousemove)
 		.bind('mouseup', data, NCard.eventHandlers.table_mouseup);
 }
@@ -498,7 +500,7 @@ NCard._hookupDragging = function(forCard) {
 NCard._offsetForAnchor = function(anchor) {
 	var offset = anchor.offset();
 	var root = anchor.closest('.repository, .column, #deck, #spawn');
-	
+
 	if (anchor.is('.repository')) {
 		offset.top += 5;
 		offset.left += 5;
@@ -512,7 +514,7 @@ NCard._offsetForAnchor = function(anchor) {
 			offset.top += 9;
 		}
 	}
-	
+
 	return offset;
 };
 
@@ -530,7 +532,7 @@ NCard.prototype._pickIdealAnchor = function(anchors, _default) {
 	if (_default == undefined) {
 		_default = null;
 	}
-	
+
 	var cardRect = NCard._rectForElem(this.divs.body);
 	var rankingArea = 400;
 	if (_default != null) {
@@ -538,18 +540,18 @@ NCard.prototype._pickIdealAnchor = function(anchors, _default) {
 		rankingArea = Math.min(rankingArea, defaultArea);
 	}
 	var result = _default;
-	
+
 	anchors.each(function () {
 		var anchor = $(this);
 		var aRect = NCard._rectForElem(anchor);
 		var area = aRect.intersection(cardRect).area();
-		
+
 		if (area > rankingArea) {
 			rankingArea = area;
 			result = anchor;
 		}
 	});
-	
+
 	return result;
 }
 
@@ -565,7 +567,7 @@ NCard.prototype._anchorTo = function(anchor, post, append) {
 		checkValue(anchor, isObjectCheck),
 		"anchor not provided"
 	);
-	
+
 	if (append == undefined) {
 		append = true;
 	} else {
@@ -574,7 +576,7 @@ NCard.prototype._anchorTo = function(anchor, post, append) {
 			"Argument 'append' is not a boolean"
 		);
 	}
-	
+
 	if (post == undefined) {
 		post = null;
 	} else if (post != null) {
@@ -583,34 +585,34 @@ NCard.prototype._anchorTo = function(anchor, post, append) {
 			"Argument 'post' is not a function"
 		);
 	}
-	
+
 	var body = this.divs.body;
 	var oldOffset = body.offset();
 	var newOffset = NCard._offsetForAnchor(anchor);
-	
+
 	if (!body.parent().is('#table')) {
 		// if the card isn't already appended to the table, detach it
 		// and move it to the table to fix z-ordering
 		body.detach()
 			.appendTo($('#table'));
 	}
-	
+
 	body.offset(oldOffset)
 		.unbind('mousedown')
 		.animate(newOffset, 150,
 			function() {
 				body.detach();
-				
+
 				if (append) {
 					body.appendTo(anchor);
 				} else {
 					body.prependTo(anchor);
 				}
-				
+
 				body.css('left', 0)
 					.css('top', 0)
 					.bind('mousedown', NCard.eventHandlers.card_mousedown_front);
-				
+
 				if (post != null) {
 					post();
 				}
@@ -643,15 +645,15 @@ NCard.prototype.enabled = function(enable) {
 	if (enable == undefined) {
 		return this._enabled;
 	}
-	
+
 	assert(
 		checkValue(enable, isBooleanCheck),
 		"Argument is not a boolean"
 	);
-	
+
 	this._enabled = enable;
 	this._checkEventHandlers();
-	
+
 	return this;
 }
 
@@ -661,7 +663,7 @@ NCard.prototype.getNextCard = function() {
 	if (card_jq.length == 1) {
 		return card_jq.data('card');
 	}
-	
+
 	return null;
 };
 
@@ -671,7 +673,7 @@ NCard.prototype.getPreviousCard = function() {
 	if (card_jq.length == 1) {
 		return card_jq.data('card');
 	}
-	
+
 	return null;
 };
 
@@ -679,39 +681,39 @@ NCard.prototype.canBePickedUp = function() {
 	if (!this._enabled) {
 		return false;
 	}
-	
+
 	var card_jq = this.getCardBody();
 	var root = card_jq.closest('.repository, .column, #deck, #spawn');
-	
+
 	if (root.is('.repository, #spawn') && (this.getNextCard() != null || this.isStack())) {
 		return false;
 	}
-	
+
 	if (this.isStack() && !(root.is('.column')
 		&& this.validateStack(RULES.stackValidator))) {
 		return false;
 	}
-	
+
 	return true;
 }
 
 NCard.prototype.isStack = function() {
 	var card_jq = this.getCardBody();
-	
+
 	return (card_jq.children('.cardContainer').length > 0);
 }
 
 /**
 	Determines whether or not the card is a valid stack (i.e., can be picked up)
-	
+
 	validator = function(below, above)
 	validator function must return either true or false
 	If the below card is allowed to follow the above card in a stack,
 	the validator must return true - if the card cannot follow, it
 	must return false.
-	
+
 	If this card is not beneath other cards, then this method will return true;
-	
+
 	It's an arbitrary use of the word 'valid', but in this case it means
 	that the stack or cards are playable - so, if you cannot play a certain
 	stack, then it's invalid.  Again, arbitrary.
@@ -721,7 +723,7 @@ NCard.prototype.validateStack = function(validator) {
 		checkValue(validator, isFunctionCheck),
 		"Validator is not a function"
 	);
-	
+
 	var below = this;
 	var above = below.getNextCard();
 	while (below && above) {
@@ -730,21 +732,21 @@ NCard.prototype.validateStack = function(validator) {
 			// not considered valid stacks
 			return false;
 		}
-		
+
 		var valid = validator(below, above);
 		assert(
 			checkValue(valid, isBooleanCheck),
 			"Validator returned non-boolean value"
 		);
-		
+
 		if (!valid) {
 			return false;
 		}
-		
+
 		below = above;
 		above = below.getNextCard();
 	}
-	
+
 	return true;
 }
 
@@ -752,20 +754,20 @@ NCard.prototype.facing = function(facing) {
 	if (facing == undefined) {
 		return this._facing;
 	}
-	
+
 	assert(
 		checkValue(facing, isBooleanCheck),
 		"Argument is not a boolean"
 	);
-	
+
 	var body = this.divs.body;
-	
+
 	var changed = (facing != this._facing);
 	if (changed) {
 		var detach, attach;
-		
+
 		this._facing = facing;
-		
+
 		if (facing) {
 			detach = this.divs.back;
 			attach = this.divs.front;
@@ -775,13 +777,13 @@ NCard.prototype.facing = function(facing) {
 			detach = this.divs.front;
 			body.addClass('flipped');
 		}
-		
+
 		detach.detach();
 		attach.prependTo(this.divs.card);
-		
+
 		this._checkEventHandlers();
 	}
-	
+
 	return this;
 }
 
