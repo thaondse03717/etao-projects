@@ -1,0 +1,22 @@
+{
+   "background_page": "js/chrome/background.html",
+   "browser_action": {
+      "default_icon": "icons/anydo-16.png"
+   },
+   "content_scripts": [ {
+      "js": [ "js/chrome/intercept.js" ],
+      "matches": [ "http://www.any.do/*" ]
+   } ],
+   "description": "Any.DO helps you remember everything you have to do.",
+   "homepage_url": "http://www.any.do",
+   "icons": {
+      "128": "icons/anydo-128.png",
+      "16": "icons/anydo-16.png",
+      "48": "icons/anydo-48.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDWZI1aBzUpUQVtA5dwIjrAUiS3STNyqBbizO1aWIyMuSl8xjoCpf6Wzf++HKc/N86YnUGTA5n7DQR9ZN3uhlQVPzz0wFefpt7fAyKtaR5HX/oIGKI/avvHcDo5k6JHQEjIUQvKdFtZI1i9b9s76EkQMDXe9pzaUh45o4+8n40K5wIDAQAB",
+   "name": "Any.DO",
+   "permissions": [ "notifications", "contextMenus", "contentSettings", "cookies", "tabs", "contextMenus", "http://sm-dev.any.do/*/", "http://*/*", "https://*/*" ],
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "1.0.0.62"
+}

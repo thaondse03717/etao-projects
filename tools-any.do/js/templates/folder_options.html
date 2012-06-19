@@ -1,0 +1,18 @@
+<div class="popover-background"></div>
+<div class="popover-window">
+    <div class="popover-anchor"></div>
+    <div class="choose-folder">Choose a folder</div>
+    <ul>
+        <% _.each(categories, function(category) { %>
+        <li data-id="<%- category["id"] %>" class="icon-folders <%= category["selected"]==true ? "selected" : "" %>">
+            <div class="icon"></div>
+			<%= category["canBeDeleted"]==true? "<div class='delete-button'></div>" : "" %>
+			<%= category["canBeDeleted"]==true? "<div class='edit-button'></div>" : "" %>
+            <div class="text"><%- category["text"] %></div>
+			<input class="edit-box" maxlength="100" value="<%- category["text"] %>"/>
+        </li>
+        <% }); %>
+    </ul>
+    <input placeholder="New Folder..." class="new-folder" maxlength="100" />
+
+</div>
