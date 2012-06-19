@@ -1,0 +1,34 @@
+#social_addons {
+    display: none !important;
+}
+.lbx_games {
+    width: 520px !important;
+    height: 386px;
+}
+.games_window {
+    height: 257px;
+}
+.lbx_games .ads, .option_item .game_preview, 
+    .lbx_games .option_item_entry span.stars {
+    display: none !important;
+}
+.lbx_games .option_item .option_item_entry {
+    height: 16px !important;
+    font-size: 12px !important;
+}
+p.game_desc {
+    display: none !important;
+}
+#game_action_auth {
+    bottom: 0px;
+    border-radius: 25px 0 0 0 !important;
+    -moz-border-radius: 25px 0 0 0 !important;
+    -webkit-border-radius: 25px 0 0 0 !important;
+    position: fixed;
+    right: 0px;
+}
+
+
+._css-loader-navi {
+    height: 11px;
+}

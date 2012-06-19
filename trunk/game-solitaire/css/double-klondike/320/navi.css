@@ -1,0 +1,27 @@
+#game_labels, #beta_text, #social_addons {
+    display: none !important;
+}
+
+#menu_content {
+    left: 50px;
+}
+#menu_button, #menu_content a, #game_status a {
+    width: 50px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+#game_status {
+    left: 82px;
+}
+#game_status img {
+    display: none !important;
+}
+#game_status a#game_action_undo {
+    width: 50px;
+    padding-right: 7px;
+}
+
+
+._css-loader {
+    height: 3px;
+}

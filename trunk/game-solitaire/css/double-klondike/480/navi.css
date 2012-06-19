@@ -1,0 +1,9 @@
+#game_labels, #beta_text, #social_addons {
+    display: none !important;
+}
+
+
+
+._css-loader {
+    height: 3px;
+}

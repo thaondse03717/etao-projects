@@ -1,0 +1,49 @@
+#menu_content a {
+    width: 92px
+}
+.select_theme .card, .select_advanced_theme .card, .select_advanced_theme img.back_card {
+    height: 144px;
+    width: 109px;
+    display: inline;
+}
+
+.lbx_win table {
+    padding: 15px;
+    width: 80%;
+}
+.lbx_win td {
+    font-size: 21px;
+}
+.lbx_win .win_buttons {
+    width: 100%;
+    text-align: center;
+}
+.lbx_win input {
+    margin: 15px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    display: inline;
+    float: none;
+}
+.lbx_win input.new_game {
+    margin-left: 0px;
+}
+.select_theme {
+    height: 100px;
+}
+.select_theme div.label_bg {
+    font-size: 19px;
+    height: 23px;
+    opacity: 0.5;
+    padding-left: 15px;
+    padding-top: 0;
+    top: -54px;
+}
+.select_theme img, .select_theme .card {
+    height: 131px;
+    width: 99px;
+}
+
+._css-loader {
+    height: 3px;
+}
