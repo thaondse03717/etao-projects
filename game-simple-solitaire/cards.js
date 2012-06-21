@@ -26,7 +26,6 @@ var RULES={
 		var deckIndex = 0;
 		deck.shuffle();
 
-
 		// 已排好顺序的纸牌区
 		{
 			var repos = $('<div id="repositories"></div>');
@@ -39,8 +38,7 @@ var RULES={
 			}
 
 			table.append(repos);
-		} // repos end
-
+		}
 
 		// 用户操作纸牌区, 8列, 36张牌,
 		{
@@ -71,16 +69,16 @@ var RULES={
 			}
 
 			table.append(columns);
-		} // columns end
+		}
 
-
-		// build the deck
+		// 发牌区
 		{
 			var waste = $('<div id="waste"><div id="deckContainer"><div class="circle"></div><div id="deck"></div></div><div id="spawn"></div></div>');
 			var waste_deck = waste.find('#deck');
 			var waste_spawn = waste.children('#spawn');
 			var waste_trash = $('<div class="trash"></div>');
 
+			// 将剩下的牌放到发牌区
 			{
 				var top = waste_deck;
 				for (; deckIndex < 52; ++deckIndex) {
@@ -91,6 +89,7 @@ var RULES={
 				}
 			}
 
+			// 发牌区单击事件共享的数据
 			var data = {
 				divs: {
 					waste: waste,
@@ -103,6 +102,7 @@ var RULES={
 				needToFlipDeck: false,
 				bottom: null,
 
+				// 发牌
 				popSpawnCards: function() {
 					var spawnBottom = this.divs.spawn.children('.cardContainer');
 					if (spawnBottom.length == 0) {
