@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Search Box</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="editplus" />
+	<meta name="author" content="tomato(wangshijun2010@gmail.com)" />
+	<script type="text/javascript" src="./js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript">
+	window.onload = function () {
+		document.querySelector('#submit').onclick = startSearch;
+	};
+
+	function startSearch() {
+		var query = document.querySelector('#query').value;
+		if (!query) {
+			alert('query cannot be empty');
+			return false;
+		}
+
+		var worker = new Worker('search.js');
+
+		worker.onmessage = function (response) {
+			console.log(response.data);
+		};
+
+		worker.postMessage('google text ' + query);
+		worker.postMessage('google image ' + query);
+		worker.postMessage('baidu text ' + query);
+		worker.postMessage('baidu image ' + query);
+		worker.postMessage('wikipedia text ' + query);
+		worker.postMessage('stackoverflow text ' + query);
+
+		return false;
+	}
+	</script>
+</head>
+<body>
+
+<form method="post" action="">
+	<input type="text" name="query" id="query" value="" class="input text" placeholder="input to search" />
+	<input type="submit" name="submit" id="submit" value="Search" class="submit"/>
+</form>
+
+<div id="list">
+	<ul id="google"></ul>
+	<ul id="baidu"></ul>
+</div>
+
+</body>
+</html>
